@@ -1,0 +1,25 @@
+# Logs
+/logs
+*.log
+npm-debug.log*
+
+# Mac files
+.DS_Store
+
+# Compiled sanity studio
+/dist
+
+# Dependency directories
+/node_modules
+
+# Lock files
+package-lock.json
+/package-lock.json
+/yarn.lock
+
+# IDE and editors
+.idea
+.vscode
+
+# dotenv environment variables file
+.env

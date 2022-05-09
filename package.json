@@ -1,0 +1,24 @@
+{
+  "name": "tutorchase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "scripts": {
+    "dev": "lerna run dev --parallel",
+    "build": "lerna run build --parallel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pasha-z25/tutorchase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pasha-z25/tutorchase/issues"
+  },
+  "homepage": "https://github.com/pasha-z25/tutorchase#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
