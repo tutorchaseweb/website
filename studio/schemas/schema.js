@@ -4,6 +4,12 @@ import createSchema from 'part:@sanity/base/schema-creator'
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
+// Document types
+import siteConfig from './documents/siteConfig'
+
+// Object types
+import logo from './objects/brandLogo'
+
 // We import object and document schemas
 import blockContent from './blockContent'
 import category from './category'
@@ -17,6 +23,8 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
+    siteConfig,
+    logo,
     // The following are document types which will appear
     // in the studio.
     post,

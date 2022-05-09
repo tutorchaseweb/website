@@ -1,41 +1,37 @@
 import { groq } from 'next-sanity'
+import client from '../../utils/sanity-client'
+import { Layout } from '~/components/Layout'
 
-const Blog = (props) => {
-  console.log(props);
+export const Blog = ({ posts }) => {
   return (
-    <article>
+    <Layout>
       <h1>Blog</h1>
-    </article>
+      <ul>
+        {posts.map(post => {
+          return (
+            <li key={post._id}>
+              <a href={`/blog/${post.slug.current}`}>{post.title}</a>
+            </li>
+          )
+        })}
+      </ul>
+    </Layout>
   )
 }
 
-// export async function getStaticPaths() {
-//   const paths = await getClient()
-//     .fetch(groq`*[_type == "post" && defined(slug.current)][].slug.current`)
-//     .then((res) => {
-//       return [...res]
-//     })
-//
-//   return {
-//     paths: paths.map((slug) => ({ params: { slug } })),
-//     fallback: false,
-//   }
-// }
+export async function getServerSideProps() {
+  const QUERY = groq`
+    *[_type == "post"] {
+      ...,
+    }
+  `
+  const data = await client.fetch(QUERY)
 
-// export async function getServerSideProps({ params, preview = false }) {
-//   const QUERY = groq`
-//     *[_type == "post" && slug.current == $slug][0] {
-//       ...,
-//     }
-//   `
-//   const post = await getClient(preview).fetch(QUERY, {
-//     slug: params.slug,
-//   })
-//
-//   return {
-//     props: {
-//       preview,
-//       data: { post },
-//     },
-//   }
-// }
+  return {
+    props: {
+      posts: data
+    },
+  }
+}
+
+export default Blog
