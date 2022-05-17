@@ -1,0 +1,27 @@
+@import 'assets/fonts/fonts.css';
+
+// Colors
+$color-blue: #001A96;
+$default-text-color: #171D23;
+$color-black: #000000;
+$color-white: #FFFFFF;
+
+// Fonts
+$primary-font: Gilroy, sans-serif;
+
+// Sizes
+$small-font-size: 14px;
+$basic-font-size: 16px;
+$large-font-size: 20px;
+$basic-space: 8px;
+//$basic-indent: 15px;
+
+// Screen width for media queries
+$xs: 425px;
+$sm: 640px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1450px;
+$hd: 1650px;
+$fhd: 2100px;
