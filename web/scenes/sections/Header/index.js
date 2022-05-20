@@ -1,46 +1,11 @@
-import { gql, useQuery } from '@apollo/client'
-import { Loader } from '~/components/Loader'
-
-export const Header = () => {
-  const QUERY = gql`
-    query Config {
-      SiteConfig(id: "global-config") {
-        _id
-        title
-        description
-        logo {
-          alt
-          asset {
-            url
-          }
-          hotspot {
-            width
-            height
-          }
-        }
-      }
-    }
-  `
-  const { data, loading, error } = useQuery(QUERY)
-
-  if (loading) {
-    return <Loader />
-  }
-  if (error) {
-    console.error(error)
-    return null
-  }
-
-  const { SiteConfig } = data
-  console.log(SiteConfig)
-
+export const Header = ({ logo }) => {
   return (
-    Boolean(SiteConfig) && (
+    Boolean(logo) && (
       <header className="py-3x pt-3x pb-3x">
-        <div className="container wide flex justify-between">
-          <img src={SiteConfig?.logo?.asset?.url} alt={SiteConfig?.logo?.alt} />
+        <div className="container wide flex justify-between items-center">
+          <img src={logo.asset.url} alt={logo.alt} />
           <nav className="flex-1 flex justify-center">
-            <ul>
+            <ul className="flex items-center gap-8">
               <li>Online Tutoring</li>
               <li>University Admissions</li>
               <li>About Us</li>
