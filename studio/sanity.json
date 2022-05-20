@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "tutorchase"
+    "name": "tutorchase-studio"
   },
   "api": {
     "projectId": "8q6kwhxs",
@@ -17,13 +17,20 @@
     "development": {
       "plugins": [
         "@sanity/vision"
-      ]
+      ],
+      "api": {
+        "dataset": "develop"
+      }
     }
   },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
     }
   ]
 }

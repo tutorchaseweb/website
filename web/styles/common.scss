@@ -23,3 +23,44 @@ html {
     font-size: $large-font-size;
   }
 }
+
+.container {
+  width: 100%;
+  max-width: 80rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container.wide {
+  max-width: 86rem;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  border-radius: 4px;
+  min-width: 13.5rem;
+  padding: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.btn.small {
+  font-size: 1rem;
+  line-height: 1.375;
+  padding: 0.75rem;
+  min-width: 8rem;
+}
+.btn.large {}
+.btn.btn-gray {
+  background-color: #D8DAE5;
+  color: $default-text-color;
+}
+.btn.btn-blue {
+  background-color: $color-blue;
+  color: $color-white;
+}
+.btn.btn-white {
+  background-color: $color-white;
+  color: $color-blue;
+}

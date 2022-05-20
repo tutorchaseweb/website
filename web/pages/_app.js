@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
 import apolloClient from '~/utils/apollo-client'
 
-import 'swiper/swiper.scss'
+import 'swiper/scss'
 import '../styles/index.scss'
 
 const MyApp = ({ Component, pageProps }) => {
