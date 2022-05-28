@@ -1,0 +1,12 @@
+.firstScreen {
+    background-image: url('../../../assets/images/girl.png'), url('../../../assets/images/lines.png'), linear-gradient(130.77deg, #FFFFFF 18.52%, #ECECEC 86.63%);
+    background-repeat: no-repeat;
+    background-size: auto, contain;
+    background-position: right bottom, right center;
+
+    :global {
+        p {
+            font-size: 0.8rem;
+        }
+    }
+}
