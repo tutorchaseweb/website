@@ -1,18 +1,52 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export const Header = ({ logo }) => {
+  const { route } = useRouter()
+
   return (
     <header className="pt-3x pb-3x">
       <div className="container wide flex justify-between items-center">
-        <Link href="/">
-          <a>{Boolean(logo) && <img src={logo.asset.url} alt={logo.alt} />}</a>
-        </Link>
-        <nav className="flex-1 flex justify-center">
+        {
+          route === '/' ? (
+            <img src={logo.asset.url} alt={logo.alt} />
+          ) : (
+            <Link href="/">
+              <a><img src={logo.asset.url} alt={logo.alt} /></a>
+            </Link>
+          )
+        }
+        <nav className="flex-1 flex justify-center font-semibold">
           <ul className="flex items-center gap-8">
-            <li>Online Tutoring</li>
-            <li>University Admissions</li>
-            <li>About Us</li>
-            <li>Reviews</li>
+            <li>
+              <Link href="/">
+                <a>
+                  Online Tutoring
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>
+                  University Admissions
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>
+                  About Us
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/reviews">
+                <a>
+                  Reviews
+                </a>
+              </Link>
+
+            </li>
           </ul>
         </nav>
         <a href="tel:+18882763561" className="flex items-center font-semibold mr-4x">

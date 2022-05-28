@@ -10,6 +10,10 @@ img, svg {
   max-width: 100%;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 html {
   box-sizing: border-box;
   font-family: $primary-font;
