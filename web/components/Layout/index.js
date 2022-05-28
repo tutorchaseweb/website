@@ -33,30 +33,28 @@ export const Layout = ({ children }) => {
   const { SiteConfig } = data
 
   return (
-    <>
-      {Boolean(SiteConfig) && (
-        <>
-          <Head>
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width, viewport-fit=cover"
-            />
-            <meta charSet="utf-8" />
-            <title>{SiteConfig.title}</title>
-            <meta name="description" content={SiteConfig.description} />
-            <meta property="og:title" content={SiteConfig.title} key="title" />
-            <meta property="og:description" content={SiteConfig.description} key="description" />
-            <meta property="og:image" content={SiteConfig.logo.asset.url} key="image" />
-            <meta property="og:site_name" content={SiteConfig.title} />
-            <meta property="og:url" content={SiteConfig.url} key="url" />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <Header logo={SiteConfig.logo} />
-        </>
-      )}
-      <main className="main-content">{children}</main>
-      <Footer />
-    </>
+    Boolean(SiteConfig) && (
+      <>
+        <Head>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width, viewport-fit=cover"
+          />
+          <meta charSet="utf-8" />
+          <title>{SiteConfig.title}</title>
+          <meta name="description" content={SiteConfig.description} />
+          <meta property="og:title" content={SiteConfig.title} key="title" />
+          <meta property="og:description" content={SiteConfig.description} key="description" />
+          <meta property="og:image" content={SiteConfig.logo.asset.url} key="image" />
+          <meta property="og:site_name" content={SiteConfig.title} />
+          <meta property="og:url" content={SiteConfig.url} key="url" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Header logo={SiteConfig.logo} />
+        <main className="main-content">{children}</main>
+        <Footer logo={SiteConfig.logo} />
+      </>
+    )
   )
 }
 

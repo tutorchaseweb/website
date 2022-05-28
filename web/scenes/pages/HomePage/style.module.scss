@@ -1,0 +1,64 @@
+@import 'styles/variables';
+
+.firstScreen {
+    background-image: url('../../../assets/images/lines.png'), linear-gradient(130.77deg, #FFFFFF 18.52%, #ECECEC 86.63%);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+    padding-top: 150px;
+    //min-height: 100vh;
+
+    :global {
+        .text-wrapper {
+            max-width: 30rem;
+        }
+        .description {
+            font-size: 1rem;
+            font-weight: 500;
+            @media (min-width: $lg) {
+                font-size: 1.25rem;
+                font-weight: 400;
+            }
+        }
+        .blue-book {
+            width: 5.5rem;
+            top: 72px;
+            left: 32px;
+            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+        }
+        .lesson1 {
+            top: 135px;
+            right: -50px;
+            max-width: 120px;
+            padding: 1.5rem 1.25rem 1.125rem 1.25rem;
+            .play {
+                width: 3.25rem;
+                cursor: pointer;
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    border-top: 5px solid transparent;
+                    border-left: 10px solid $color-white;
+                    border-bottom: 5px solid transparent;
+                }
+            }
+        }
+        .tutor {
+            padding: 1.25rem;
+            bottom: 180px;
+            left: -50px;
+            .line {
+                display: inline-block;
+                width: 32px;
+                height: 4px;
+                border-radius: 2px;
+                margin-right: 4px;
+                &:last-child {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}

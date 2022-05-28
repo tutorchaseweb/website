@@ -7,7 +7,7 @@ export default {
       name: "title",
       type: "string",
       title: "Page title",
-      description: "Describe your site for search engines and social media.",
+      description: "Title for your site, search engines and social media.",
     },
     {
       name: "description",
