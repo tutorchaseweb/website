@@ -8,10 +8,10 @@ export const HomePage = () => {
           <h1 className="font-bold fz-40p lg:fz-86p mb-3x">
             Elite Online <span className="color-blue">Tutoring</span>
           </h1>
-          <p className="fz-20p mb-5x lg:mb-7x">
+          <p className="fz-20p mb-5x lg:mb-7x color-tahiti">
             Exam Preparation and Admissions Support. Delivered globally by the World's Top Tutors.
           </p>
-          <a href="#" className="btn btn-blue">
+          <a href="#" className="btn btn-blue text-lg md:text-xl">
             Hire a Tutor
           </a>
           <img src="#" alt="employer" />
