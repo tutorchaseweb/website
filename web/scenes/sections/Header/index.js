@@ -5,7 +5,7 @@ export const Header = ({ logo }) => {
   const { route } = useRouter()
 
   return (
-    <header className="pt-3x pb-3x">
+    <header className="w-full pt-3x pb-3x" style={{float: 'left'}}>
       <div className="container wide flex justify-between items-center">
         {
           route === '/' ? (
@@ -16,7 +16,7 @@ export const Header = ({ logo }) => {
             </Link>
           )
         }
-        <nav className="flex-1 flex justify-center font-semibold">
+        <nav className="flex-1 flex justify-center fw-600">
           <ul className="flex items-center gap-8">
             <li>
               <Link href="/">
@@ -49,7 +49,7 @@ export const Header = ({ logo }) => {
             </li>
           </ul>
         </nav>
-        <a href="tel:+18882763561" className="flex items-center font-semibold mr-4x">
+        <a href="tel:+18882763561" className="flex items-center fw-600 mr-4x">
           <svg
             className="phone-icon mr-1x"
             width="30"
