@@ -9,6 +9,9 @@
 .flex-1 {
   flex: 1;
 }
+.flex-col {
+  flex-direction: column;
+}
 .items-center {
   align-items: center;
 }
@@ -100,6 +103,10 @@
 .bg-orange {
   background-color: $color-orange;
 }
+.bg-blue {
+  background-color: $color-blue;
+  color: $color-white;
+}
 
 
 
@@ -118,6 +125,14 @@
 
 .w-full {
   width: 100%;
+}
+.w-1\/2 {
+  width: 50%;
+  &_lg {
+    @media (min-width: $lg) {
+      width: 50%;
+    }
+  }
 }
 .rounded-small {
   border-radius: 0.5rem;

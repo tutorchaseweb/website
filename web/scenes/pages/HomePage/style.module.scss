@@ -6,7 +6,6 @@
     background-size: contain;
     background-position: right center;
     padding-top: 150px;
-    //min-height: 100vh;
 
     :global {
         .text-wrapper {
@@ -58,6 +57,47 @@
                 &:last-child {
                     opacity: 0.5;
                 }
+            }
+        }
+    }
+}
+
+.study {
+    padding-top: 148px;
+    padding-bottom: 148px;
+
+    :global {
+        .cards-wrapper {
+            margin-top: 148px;
+        }
+        .card-1 {
+            flex: 4;
+            .title {
+                max-width: 330px;
+            }
+        }
+        .card-2 {
+            flex: 3;
+            .title {
+                max-width: 195px;
+            }
+            .logo {
+                align-self: flex-end;
+            }
+        }
+        .card-3 {
+            flex: 3;
+            border: 1px solid #E6E7ED;
+            .title {
+                max-width: 220px;
+            }
+            .tag {
+                display: inline-block;
+                padding: 1px 8px;
+                background: #F3F4F4;
+                border-radius: 4px;
+                margin-right: 8px;
+                margin-bottom: 8px;
             }
         }
     }

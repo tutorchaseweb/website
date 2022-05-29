@@ -7,6 +7,9 @@
   padding: 0;
 }
 
+//img {
+//  display: block;
+//}
 img, svg {
   max-width: 100%;
 }
@@ -34,6 +37,10 @@ html {
   @media (min-width: $fhd) {
     font-size: $large-font-size;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
 }
 
 .container {
