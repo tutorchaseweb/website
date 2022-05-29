@@ -1,4 +1,7 @@
+import Link from 'next/link'
 import styles from './style.module.scss'
+
+// all used images
 import employerImg from '~/assets/images/girl.png'
 import tutorImg from '~/assets/images/frame_48095504.png'
 import stanfordLogo from '~/assets/images/stanford.png'
@@ -6,7 +9,9 @@ import oxfordLogo from '~/assets/images/oxford.png'
 import harvardLogo from '~/assets/images/harvard.png'
 import cambridgeLogo from '~/assets/images/cambridge.png'
 import massachusettsLogo from '~/assets/images/massachusetts.png'
-import Link from "next/link";
+import videoImg from '~/assets/images/video.png'
+import avatarsImg from '~/assets/images/avatars.png'
+import oxfordSmallLogo from '~/assets/images/oxford_logo.png'
 
 export const HomePage = () => {
   return (
@@ -91,36 +96,84 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className="study">
+      <section className={`study ${styles.study}`}>
         <div className="container">
-          <img src="#" alt="employer" />
-          <p>Study With Our Tutors</p>
-          <h2>Experienced and highly qualified tutors</h2>
-          <p>
-            We help students gain top grades in exams and achieve admission into the UK and US's top
-            universities including Oxbridge and Ivy League.
-          </p>
-          <a href="#" className="btn btn-blue">
-            How it works?
-          </a>
-          <div className="card">
-            <h4>Internationally Trusted</h4>
-            <p>Trusted by students and parents around the world</p>
-            <p>
-              <img src="#" alt="logo" /> 1000+ Satisfied Students
-            </p>
+          <div className="flex items-center">
+            <div className="w-full w-1/2_lg">
+              <img src={videoImg.src} alt="video" className="block" />
+            </div>
+            <div className="w-full w-1/2_lg">
+              <div className="text-wrapper ml-12x">
+                <p className="fz-18p fw-600 color-lightGray uppercase mb-2x">Study With Our Tutors</p>
+                <h2 className="fz-48p fw-600 mb-4x">Experienced and highly qualified tutors</h2>
+                <p className="fz-18p mb-7x">
+                  We help students gain top grades in exams and achieve admission into the UK and US's top
+                  universities including Oxbridge and Ivy League.
+                </p>
+                <a href="#" className="btn btn-blue">
+                  How it works?
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="card">
-            <h4>Prestigious Partners</h4>
-            <p>Trusted by Oxford University and elite schools as a tutoring partner</p>
-            <p>
-              <img src="#" alt="logo" />
-            </p>
-          </div>
-          <div className="card">
-            <h4>Premium Tutors</h4>
-            <p>Exam and Admissions Experts</p>
-            <p>#tags</p>
+          <div className="cards-wrapper flex gap-8">
+            <div className="card card-1 bg-blue rounded-small p-4x">
+              <div className="flex items-center justify-between mb-4x">
+                <p className="fw-600 uppercase">Internationally Trusted</p>
+                <span>
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_938_4947)">
+                      <path d="M13.987 2.33398C7.54703 2.33398 2.33203 7.56065 2.33203 14.0007C2.33203 20.4407 7.54703 25.6673 13.987 25.6673C20.4387 25.6673 25.6654 20.4407 25.6654 14.0007C25.6654 7.56065 20.4387 2.33398 13.987 2.33398ZM22.072 9.33398H18.6304C18.257 7.87565 17.7204 6.47565 17.0204 5.18065C19.167 5.91565 20.952 7.40898 22.072 9.33398ZM13.9987 4.71398C14.967 6.11398 15.7254 7.66565 16.227 9.33398H11.7704C12.272 7.66565 13.0304 6.11398 13.9987 4.71398ZM4.9687 16.334C4.78203 15.5873 4.66536 14.8057 4.66536 14.0007C4.66536 13.1957 4.78203 12.414 4.9687 11.6673H8.91203C8.8187 12.4373 8.7487 13.2073 8.7487 14.0007C8.7487 14.794 8.8187 15.564 8.91203 16.334H4.9687ZM5.92536 18.6673H9.36703C9.74036 20.1257 10.277 21.5257 10.977 22.8207C8.83036 22.0856 7.04536 20.604 5.92536 18.6673ZM9.36703 9.33398H5.92536C7.04536 7.39732 8.83036 5.91565 10.977 5.18065C10.277 6.47565 9.74036 7.87565 9.36703 9.33398ZM13.9987 23.2873C13.0304 21.8873 12.272 20.3356 11.7704 18.6673H16.227C15.7254 20.3356 14.967 21.8873 13.9987 23.2873ZM16.7287 16.334H11.2687C11.1637 15.564 11.082 14.794 11.082 14.0007C11.082 13.2073 11.1637 12.4257 11.2687 11.6673H16.7287C16.8337 12.4257 16.9154 13.2073 16.9154 14.0007C16.9154 14.794 16.8337 15.564 16.7287 16.334ZM17.0204 22.8207C17.7204 21.5257 18.257 20.1257 18.6304 18.6673H22.072C20.952 20.5923 19.167 22.0856 17.0204 22.8207ZM19.0854 16.334C19.1787 15.564 19.2487 14.794 19.2487 14.0007C19.2487 13.2073 19.1787 12.4373 19.0854 11.6673H23.0287C23.2154 12.414 23.332 13.1957 23.332 14.0007C23.332 14.8057 23.2154 15.5873 23.0287 16.334H19.0854Z" fill="white"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_938_4947">
+                        <rect width="28" height="28" fill="white"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </span>
+              </div>
+              <h4 className="title fz-32p fw-600 mb-5x">Trusted by students and parents around the world</h4>
+              <p className="flex items-center">
+                <img src={avatarsImg.src} alt="avatars" className="block mr-2x" /> 1000+ Satisfied Students
+              </p>
+            </div>
+            <div className="card card-2 bg-lightGray rounded-small p-4x flex flex-col">
+              <div className="flex items-center justify-between mb-4x">
+                <p className="fw-600 uppercase">Prestigious Partners</p>
+                <span>
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.0026 2.33301C7.5626 2.33301 2.33594 7.55967 2.33594 13.9997C2.33594 20.4397 7.5626 25.6663 14.0026 25.6663C20.4426 25.6663 25.6693 20.4397 25.6693 13.9997C25.6693 7.55967 20.4426 2.33301 14.0026 2.33301ZM11.6693 19.833L5.83594 13.9997L7.48094 12.3547L11.6693 16.5313L20.5243 7.67634L22.1693 9.33301L11.6693 19.833Z" fill="#F57C40"/>
+                  </svg>
+                </span>
+              </div>
+              <div className="flex justify-between flex-1">
+                <h4 className="title fz-24p fw-600">Trusted by Oxford University and elite schools as a tutoring partner</h4>
+                <p className="logo">
+                  <img src={oxfordSmallLogo.src} alt="Oxford Logo" className="block" width="68" />
+                </p>
+              </div>
+            </div>
+            <div className="card card-3 bg-white rounded-small p-4x">
+              <div className="flex items-center justify-between mb-4x">
+                <p className="fw-600 uppercase">Premium Tutors</p>
+                <span>
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.4141 5.25C18.1391 5.25 15.6891 5.71667 13.9974 7C12.3057 5.71667 9.85573 5.25 7.58073 5.25C5.30573 5.25 2.85573 5.71667 1.16406 7V24.0917C1.16406 24.85 2.01573 24.6167 2.03906 24.6167C3.61406 23.8583 5.88906 23.3333 7.58073 23.3333C9.85573 23.3333 12.3057 23.8 13.9974 25.0833C15.5724 24.0917 18.4307 23.3333 20.4141 23.3333C22.3391 23.3333 24.3224 23.6833 25.9557 24.5583C26.4341 24.8033 26.8307 24.3367 26.8307 24.0333V7C25.0924 5.69333 22.5957 5.25 20.4141 5.25ZM24.4974 21.5833C23.2141 21.175 21.8141 21 20.4141 21C18.4307 21 15.5724 21.7583 13.9974 22.75V9.33333C15.5724 8.34167 18.4307 7.58333 20.4141 7.58333C21.8141 7.58333 23.2141 7.75833 24.4974 8.16667V21.5833Z" fill="#F57C40"/>
+                  </svg>
+                </span>
+              </div>
+              <h4 className="title fz-24p fw-600 mb-3x">Exam and Admissions Experts</h4>
+              <p className="color-blue fz-14p fw-600">
+                <span className="tag">GCSE</span>
+                <span className="tag">IGCSE</span>
+                <span className="tag">IB</span>
+                <span className="tag">UK / Oxbridge Admissions</span>
+                <span className="tag">AP</span>
+                <span className="tag">US / Ivy League Admissions</span>
+                <span className="tag">A-Level</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
