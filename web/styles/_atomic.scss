@@ -113,7 +113,9 @@
 }
 
 
-
+.transition {
+  transition: all 0.2s linear;
+}
 .relative {
   position: relative;
 }
@@ -125,6 +127,12 @@
 }
 .top-0 {
   top: 0;
+}
+.right-0 {
+  right: 0;
+}
+.inset-0 {
+  inset: 0;
 }
 
 .w-full {
@@ -138,6 +146,15 @@
     }
   }
 }
+.border {
+  border: 1px solid;
+}
+.border-light {
+  border: 1px solid #E6E7ED;
+}
 .rounded-small {
   border-radius: 0.5rem;
+}
+.border-round {
+  border-radius: 50%;
 }
