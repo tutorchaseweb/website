@@ -102,3 +102,16 @@
         }
     }
 }
+
+.reviews {
+    background: url('/images/bg-gradient-small.jpg') no-repeat center/cover;
+
+    :global {
+        .card {
+            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.03);
+        }
+        .content {
+            max-width: 864px;
+        }
+    }
+}
