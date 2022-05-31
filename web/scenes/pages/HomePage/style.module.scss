@@ -87,7 +87,6 @@
         }
         .card-3 {
             flex: 3;
-            border: 1px solid #E6E7ED;
             .title {
                 max-width: 220px;
             }
@@ -98,6 +97,110 @@
                 border-radius: 4px;
                 margin-right: 8px;
                 margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+.reviews {
+    z-index: 1;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 120px;
+        left: 0;
+        background: url('/images/bg-gradient.jpg') no-repeat center/cover;
+    }
+
+    :global {
+        .card {
+            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.03);
+        }
+        .content {
+            max-width: 864px;
+        }
+    }
+}
+
+.tutors {
+    :global {
+        .card {
+            &:hover {
+                text-decoration: none;
+                background-color: #F8F9FE;
+                border-color: $color-blue;
+                .arrow {
+                    background-color: $color-blue;
+                    border-color: $color-blue;
+                    svg {
+                        path {
+                            fill: $color-white;
+                        }
+                    }
+                }
+            }
+            .arrow {
+                width: 3rem;
+                height: 3rem;
+            }
+            .avatar {
+                width: 8.5rem;
+                height: 8.5rem;
+                border-radius: 50%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+.premium {
+    :global {
+        .card {
+            max-width: 14.5rem;
+            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+            top: -2.5rem;
+            right: 2rem;
+        }
+        .check-book {
+            left: 2rem;
+            bottom: 2rem;
+            width: 74px;
+            box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            min-width: 10rem;
+        }
+        li {
+            counter-increment: index;
+            display: flex;
+            align-items: flex-start;
+
+            + li {
+                margin-top: 3rem;
+            }
+            &::before {
+                content: "0" counter(index);
+                display: block;
+                width: 44px;
+                min-width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background: rgba(245, 124, 64, 0.12);
+                font-weight: 600;
+                line-height: 44px;
+                text-align: center;
+                letter-spacing: 0.03em;
+                color: #F57C40;
+                margin-right: 2rem;
             }
         }
     }
