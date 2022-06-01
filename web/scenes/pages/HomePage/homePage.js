@@ -1,7 +1,19 @@
 import Link from 'next/link'
-import styles from './style.module.scss'
+import { ReviewBlock } from '~/scenes/sections/ReviewBlock'
+import { BlueCardBlock } from '~/scenes/sections/BlueCardBlock'
+import { OurServiceBlock } from '~/scenes/sections/OurServiceBlock'
 import SVG from '~/components/SVG'
-import {star, bookFull, openedBook, arrowTopRight, checkCircle, globe, videoCam} from '~/utils/svgImages'
+import {
+  star,
+  bookFull,
+  openedBook,
+  arrowTopRight,
+  checkCircle,
+  globe,
+  videoCam,
+} from '~/utils/svgImages'
+
+import styles from './style.module.scss'
 // import { Color } from '~/utils/constants'
 
 // all used images
@@ -168,30 +180,12 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className={`reviews relative pt-9x ${styles.reviews}`}>
-        <div className="container">
-          <div className="card bg-white rounded-small p-8x">
-            <div className="content text-center mx-auto">
-              <p className="fz-22p l-height-1/5 mb-4x">
-                “I received a great tutor who had a fantastic way of teaching the content,{' '}
-                <span className="fw-600">
-                  allowing me to gain an understanding far beyond that I gained in the classroom.”
-                </span>
-              </p>
-              <p className="mb-2x">
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-              </p>
-              <p className="l-height-1/5">
-                <span className="fw-600">Elizabeth</span> | Parent of English student
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReviewBlock
+        content={`I received a great tutor who had a fantastic way of teaching the content, <b>
+          allowing me to gain an understanding far beyond that I gained in the classroom.</b>`}
+        author={'Elizabeth'}
+        position={'Parent of English student'}
+      />
       <section className={`tutors pt-15x pb-15x text-center ${styles.tutors}`}>
         <div className="container">
           <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">The World's Best Tutors</p>
@@ -203,11 +197,15 @@ export const HomePage = () => {
                   <SVG content={arrowTopRight()} size={20} />
                 </span>
                 <p className="avatar color-blue border border-round relative mx-auto">
-                  <img src={tutor1avatar.src} alt="Mally" className="absolute inset-0 border-round p-1x"/>
+                  <img
+                    src={tutor1avatar.src}
+                    alt="Mally"
+                    className="absolute inset-0 border-round p-1x"
+                  />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Mally</p>
                 <p className="mb-3x">English Tutor</p>
-                <img src={stanfordLogo.src} alt="Stanford Logo" style={{ height: '24px' }}/>
+                <img src={stanfordLogo.src} alt="Stanford Logo" style={{ height: '24px' }} />
               </a>
             </Link>
             <Link href={'/'}>
@@ -216,11 +214,15 @@ export const HomePage = () => {
                   <SVG content={arrowTopRight()} size={20} />
                 </span>
                 <p className="avatar color-blue border border-round relative mx-auto">
-                  <img src={tutor2avatar.src} alt="Mally" className="absolute inset-0 border-round p-1x"/>
+                  <img
+                    src={tutor2avatar.src}
+                    alt="Mally"
+                    className="absolute inset-0 border-round p-1x"
+                  />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Mally</p>
                 <p className="mb-3x">English Tutor</p>
-                <img src={oxfordLogo.src} alt="Oxford Logo" style={{ height: '24px' }}/>
+                <img src={oxfordLogo.src} alt="Oxford Logo" style={{ height: '24px' }} />
               </a>
             </Link>
             <Link href={'/'}>
@@ -229,11 +231,15 @@ export const HomePage = () => {
                   <SVG content={arrowTopRight()} size={20} />
                 </span>
                 <p className="avatar color-blue border border-round relative mx-auto">
-                  <img src={tutor3avatar.src} alt="Matthew" className="absolute inset-0 border-round p-1x"/>
+                  <img
+                    src={tutor3avatar.src}
+                    alt="Matthew"
+                    className="absolute inset-0 border-round p-1x"
+                  />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Matthew</p>
                 <p className="mb-3x">English Tutor</p>
-                <img src={harvardLogo.src} alt="Harvard Logo" style={{ height: '24px' }}/>
+                <img src={harvardLogo.src} alt="Harvard Logo" style={{ height: '24px' }} />
               </a>
             </Link>
             <Link href={'/'}>
@@ -242,11 +248,15 @@ export const HomePage = () => {
                   <SVG content={arrowTopRight()} size={20} />
                 </span>
                 <p className="avatar color-blue border border-round relative mx-auto">
-                  <img src={tutor4avatar.src} alt="Matthew" className="absolute inset-0 border-round p-1x"/>
+                  <img
+                    src={tutor4avatar.src}
+                    alt="Matthew"
+                    className="absolute inset-0 border-round p-1x"
+                  />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Matthew</p>
                 <p className="mb-3x">English Tutor</p>
-                <img src={cambridgeLogo.src} alt="Cambridge Logo" style={{ height: '24px' }}/>
+                <img src={cambridgeLogo.src} alt="Cambridge Logo" style={{ height: '24px' }} />
               </a>
             </Link>
             <Link href={'/'}>
@@ -255,11 +265,19 @@ export const HomePage = () => {
                   <SVG content={arrowTopRight()} size={20} />
                 </span>
                 <p className="avatar color-blue border border-round relative mx-auto">
-                  <img src={tutor5avatar.src} alt="Matthew" className="absolute inset-0 border-round p-1x"/>
+                  <img
+                    src={tutor5avatar.src}
+                    alt="Matthew"
+                    className="absolute inset-0 border-round p-1x"
+                  />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Matthew</p>
                 <p className="mb-3x">English Tutor</p>
-                <img src={massachusettsLogo.src} alt="Massachusetts Logo" style={{ height: '24px' }}/>
+                <img
+                  src={massachusettsLogo.src}
+                  alt="Massachusetts Logo"
+                  style={{ height: '24px' }}
+                />
               </a>
             </Link>
           </div>
@@ -283,15 +301,19 @@ export const HomePage = () => {
             <div className="w-full w-1/2_lg pl-10x">
               <div className="flex items-center justify-between mb-6x">
                 <h2 className="fz-32p fw-600">Premium UK and US Tutors</h2>
-                <a href="#" className="btn btn-blue ml-5x">Hire a Tutor</a>
+                <a href="#" className="btn btn-blue ml-5x">
+                  Hire a Tutor
+                </a>
               </div>
 
               <ul>
                 <li>
-                  We personally interview all our tutors to ensure they deliver the highest quality tuition.
+                  We personally interview all our tutors to ensure they deliver the highest quality
+                  tuition.
                 </li>
                 <li>
-                  Tutors act as mentors who have successfully navigated exams and the university application process themselves
+                  Tutors act as mentors who have successfully navigated exams and the university
+                  application process themselves
                 </li>
                 <li>
                   They each have extensive experience helping students achieve their academic goals
@@ -301,33 +323,76 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className={`reviews relative pt-9x ${styles.reviews}`}>
+      <ReviewBlock
+        content={`My Son had an excellent tutor who helped him in preparing for his STEP exam. Her
+          teaching style was very good, allowing him to solve the Maths problem by himself
+          with a little hint, rather than helping him with the answer. <b> Highly recommend 
+          Tutor Chase, they helped me to find the right Tutor within our Budget and the tutor 
+          was a Cambridge Mathematics Graduate, which we were looking for.</b>`}
+        author={'Elizabeth'}
+        position={'Parent of English student'}
+      />
+      <section className={`globally pt-15x ${styles.globally}`}>
+        <div className="container text-center">
+          <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">Trusted Globally</p>
+          <h2 className="title fz-48p fw-600 mb-6x mx-auto">
+            Tutoring delivered in the UK, US, and Internationally
+          </h2>
+        </div>
+        <div className="map pt-6x pb-15x">
+          <div className="container">
+            <p>Lesson 2 1h 30m</p>
+            <p>Students in 70+ countries</p>
+            <p>Tutors fit to your schedule in your time zone</p>
+          </div>
+        </div>
         <div className="container">
-          <div className="card bg-white rounded-small p-8x">
-            <div className="content text-center mx-auto">
-              <p className="fz-22p l-height-1/5 mb-4x">
-                “My Son had an excellent tutor who helped him in preparing for his STEP exam.
-                Her teaching style was very good, allowing him to solve the Maths problem by
-                himself with a little hint, rather than helping him with the answer.{' '}
-                <span className="fw-600">
-                  Highly recommend Tutor Chase, they helped me to find the right Tutor within our
-                  Budget and the tutor was a Cambridge Mathematics Graduate, which we were looking for.”
-                </span>
+          <BlueCardBlock
+            title={'98% of Students Recommend Us'}
+            content={'Get in Touch Now'}
+            linkText={'Hire a Tutor'}
+            linkUrl={'/'}
+          />
+        </div>
+      </section>
+      <section className={`interactive pt-18x pb-18x ${styles.interactive}`}>
+        <div className="container">
+          <div className="flex items-center">
+            <div className="w-full w-1/2_lg relative">
+              <img src="" alt="Illustration" />
+            </div>
+            <div className="w-full w-1/2_lg">
+              <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
+                Interactive Tutoring Platform
               </p>
-              <p className="mb-2x">
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-                <SVG content={star()} size={24} />
-              </p>
-              <p className="l-height-1/5">
-                <span className="fw-600">Elizabeth</span> | Parent of English student
+              <h2 className="fz-48p fw-600 mb-4x">Engaging Lessons with our Platform</h2>
+              <p className="fz-18p">
+                Lessons are brought to life and students can interact with tutors by drawing
+                diagrams, solving equations, editing essays, and annotating work.
               </p>
             </div>
           </div>
         </div>
       </section>
+      <section className={`rated`}>
+        <div className="wrapper">
+          <div className="content">
+            <p className="mb-2x">
+              <SVG content={star()} size={24} />
+              <SVG content={star()} size={24} />
+              <SVG content={star()} size={24} />
+              <SVG content={star()} size={24} />
+              <SVG content={star()} size={24} />
+            </p>
+            <h2 className="fz-48p fw-600 mb-4x">Rated 4.92/5 based on 214 reviews</h2>
+            <p className="fz-20p">Trusted globally by students and parents</p>
+            <Link href={'/'}>
+              <a className="btn btn-blue">Read our verified reviews</a>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <OurServiceBlock />
     </>
   )
 }

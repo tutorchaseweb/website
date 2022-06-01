@@ -102,30 +102,6 @@
     }
 }
 
-.reviews {
-    z-index: 1;
-    &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        right: 0;
-        bottom: 120px;
-        left: 0;
-        background: url('/images/bg-gradient.jpg') no-repeat center/cover;
-    }
-
-    :global {
-        .card {
-            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.03);
-        }
-        .content {
-            max-width: 864px;
-        }
-    }
-}
-
 .tutors {
     :global {
         .card {
@@ -204,4 +180,19 @@
             }
         }
     }
+}
+
+.globally {
+    :global {
+        .title {
+            max-width: 40rem;
+        }
+        .map {
+            background: url('/images/bg_map.png') no-repeat center/cover;
+        }
+    }
+}
+
+.interactive {
+
 }

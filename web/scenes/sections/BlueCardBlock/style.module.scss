@@ -1,0 +1,20 @@
+@import 'styles/variables';
+
+.card {
+  max-width: 66rem;
+  background: url('/images/bg_blue.jpg') no-repeat center/cover;
+  color: $color-white;
+
+  :global {
+    .title {
+      max-width: 40rem;
+    }
+    .content {
+      max-width: 30rem;
+    }
+    .btn {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
+}
