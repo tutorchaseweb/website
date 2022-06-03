@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ReviewBlock } from '~/scenes/sections/ReviewBlock'
 import { BlueCardBlock } from '~/scenes/sections/BlueCardBlock'
 import { OurServiceBlock } from '~/scenes/sections/OurServiceBlock'
+import { HireFormBlock } from '~/scenes/sections/HireFormBlock'
 import SVG from '~/components/SVG'
 import {
   star,
@@ -19,6 +20,7 @@ import styles from './style.module.scss'
 // all used images
 import employerImg from '~/assets/images/girl.png'
 import tutorImg from '~/assets/images/frame_48095504.png'
+import tutor2Img from '~/assets/images/frame_480955042.png'
 import stanfordLogo from '~/assets/images/stanford.png'
 import oxfordLogo from '~/assets/images/oxford.png'
 import harvardLogo from '~/assets/images/harvard.png'
@@ -33,6 +35,13 @@ import tutor3avatar from '~/assets/images/tutor_3.jpg'
 import tutor4avatar from '~/assets/images/tutor_4.jpg'
 import tutor5avatar from '~/assets/images/tutor_5.jpg'
 import premiumTutor from '~/assets/images/premium_tutor.png'
+import illustrationImg from '~/assets/images/illustration.png'
+import image_591 from '~/assets/images/image_591.png'
+import image_592 from '~/assets/images/image_592.png'
+import image_810 from '~/assets/images/image_810.png'
+import image_811 from '~/assets/images/image_811.png'
+import image_812 from '~/assets/images/image_812.png'
+import image_813 from '~/assets/images/image_813.png'
 
 export const HomePage = () => {
   return (
@@ -200,7 +209,7 @@ export const HomePage = () => {
                   <img
                     src={tutor1avatar.src}
                     alt="Mally"
-                    className="absolute inset-0 border-round p-1x"
+                    className="absolute inset-0 w-full h-full border-round p-1x"
                   />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Mally</p>
@@ -217,7 +226,7 @@ export const HomePage = () => {
                   <img
                     src={tutor2avatar.src}
                     alt="Mally"
-                    className="absolute inset-0 border-round p-1x"
+                    className="absolute inset-0 w-full h-full border-round p-1x"
                   />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Mally</p>
@@ -234,7 +243,7 @@ export const HomePage = () => {
                   <img
                     src={tutor3avatar.src}
                     alt="Matthew"
-                    className="absolute inset-0 border-round p-1x"
+                    className="absolute inset-0 w-full h-full border-round p-1x"
                   />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Matthew</p>
@@ -251,7 +260,7 @@ export const HomePage = () => {
                   <img
                     src={tutor4avatar.src}
                     alt="Matthew"
-                    className="absolute inset-0 border-round p-1x"
+                    className="absolute inset-0 w-full h-full border-round p-1x"
                   />
                 </p>
                 <p className="fz-18p fw-700 mb-1x">Matthew</p>
@@ -339,11 +348,73 @@ export const HomePage = () => {
             Tutoring delivered in the UK, US, and Internationally
           </h2>
         </div>
-        <div className="map pt-6x pb-15x">
-          <div className="container">
-            <p>Lesson 2 1h 30m</p>
-            <p>Students in 70+ countries</p>
-            <p>Tutors fit to your schedule in your time zone</p>
+        <div className="map flex pt-6x pb-15x">
+          <div className="container relative">
+            <p className="avatar logo_1 border border-round absolute mx-auto">
+              <img
+                src={image_810.src}
+                alt="User photo"
+                className="absolute inset-0 w-full h-full border-round"
+              />
+            </p>
+            <p className="avatar logo_2 border border-round absolute mx-auto">
+              <img
+                src={image_811.src}
+                alt="User photo"
+                className="absolute inset-0 w-full h-full border-round"
+              />
+            </p>
+            <p className="avatar logo_3 border border-round absolute mx-auto">
+              <img
+                src={image_812.src}
+                alt="User photo"
+                className="absolute inset-0 w-full h-full border-round"
+              />
+            </p>
+            <p className="avatar logo_4 border border-round absolute mx-auto">
+              <img
+                src={image_591.src}
+                alt="User photo"
+                className="absolute inset-0 w-full h-full border-round"
+              />
+            </p>
+            <p className="avatar logo_5 border border-round absolute mx-auto">
+              <img
+                src={image_592.src}
+                alt="User photo"
+                className="absolute inset-0 w-full h-full border-round"
+              />
+            </p>
+            <p className="avatar logo_6 border border-round absolute mx-auto">
+              <img
+                src={image_813.src}
+                alt="User photo"
+                className="absolute inset-0 w-full h-full border-round"
+              />
+            </p>
+            <p
+              className={`card_1 absolute rounded-small bg-white flex items-center pt-2x pb-2x pl-3x pr-3x`}
+            >
+              <span className="fz-18p fw-600 l-height-1/4 flex-1 pr-2x">
+                Students in 70+ countries
+              </span>
+              <SVG content={checkCircle()} size={24} />
+            </p>
+            <p className={`card_2 absolute rounded-small bg-white p-2x flex items-center`}>
+              <div className="play bg-white round relative mx-auto flex items-center justify-center mb-1x" />
+              <span className="ml-2x l-height-1/4">
+                <span className="block fw-700">Lesson 2</span>
+                <span className="block fz-14p">1h 30m</span>
+              </span>
+            </p>
+
+            <p className={`card_3 absolute rounded-small bg-white flex items-center p-2x`}>
+              <img src={tutor2Img.src} alt="Tutor" />
+              <span className="ml-2x fz-18p l-height-1/4">
+                <span className="block fw-600">Tutors fit to your schedule</span>
+                <span className="block fw-800">in your time zone</span>
+              </span>
+            </p>
           </div>
         </div>
         <div className="container">
@@ -359,9 +430,9 @@ export const HomePage = () => {
         <div className="container">
           <div className="flex items-center">
             <div className="w-full w-1/2_lg relative">
-              <img src="" alt="Illustration" />
+              <img src={illustrationImg.src} alt="Illustration" />
             </div>
-            <div className="w-full w-1/2_lg">
+            <div className="w-full w-1/2_lg pl-11x">
               <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
                 Interactive Tutoring Platform
               </p>
@@ -374,7 +445,7 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className={`rated`}>
+      <section className={`rated`} style={{ display: 'none' }}>
         <div className="wrapper">
           <div className="content">
             <p className="mb-2x">
@@ -393,6 +464,7 @@ export const HomePage = () => {
         </div>
       </section>
       <OurServiceBlock />
+      <HireFormBlock />
     </>
   )
 }
