@@ -1,0 +1,17 @@
+@import 'styles/variables';
+
+.block {}
+.card {}
+.contacts {
+  padding-top: 12rem;
+  background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .title {
+      max-width: 25rem;
+    }
+    .links {
+      max-width: 34rem;
+    }
+  }
+}

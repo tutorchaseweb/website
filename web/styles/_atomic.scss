@@ -22,6 +22,9 @@
   justify-content: space-between;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
 .gap-8 {
   gap: 2rem;
 }
@@ -81,6 +84,10 @@
   font-weight: 800;
 }
 
+.l-height-1\/4 {
+  line-height: 1.4;
+}
+
 .l-height-1\/5 {
   line-height: 1.5;
 }
@@ -135,8 +142,14 @@
   inset: 0;
 }
 
+.h-full {
+  height: 100%;
+}
 .w-full {
   width: 100%;
+}
+.w-1\/4 {
+  width: 25%;
 }
 .w-1\/2 {
   width: 50%;

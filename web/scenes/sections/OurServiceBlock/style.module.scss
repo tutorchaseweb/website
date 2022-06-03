@@ -1,0 +1,70 @@
+@import 'styles/variables';
+
+@mixin animate($animation,$duration,$method,$times, $delay) {
+  animation: $animation $duration $method $times $delay;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(rotate){
+  0% { transform: rotate(0deg) }
+  //40% { transform: rotate(135deg) }
+  //50% { transform: rotate(180deg) }
+  //60% { transform: rotate(225deg) }
+  //60% { transform: rotate(270deg) }
+  100% { transform: rotate(360deg) }
+}
+
+.service {
+  :global {
+    .card {
+      background-color: #F8F9FE;
+      box-shadow: 0 0 15px -10px rgba(215, 229, 255, 1);
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 15px -5px rgba(215, 229, 255, 1);
+      }
+      .circle {
+        width: 4.5rem;
+      }
+    }
+  }
+}
+
+.point {
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    bottom: -0.5rem;
+    left: -0.5rem;
+    border: 1px solid $color-blue;
+    border-radius: 50%;
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $color-blue;
+    top: -12px;
+    left: calc(50% - 5px)
+  }
+}
+.point1 {
+  @include animate(rotate, 4s, ease-in-out, infinite, 0s);
+}
+.point2 {
+  @include animate(rotate, 4.5s, ease-in-out, infinite, 1s);
+}
+.point3 {
+  @include animate(rotate, 3.5s, ease-in-out, infinite, 2s);
+}

@@ -102,30 +102,6 @@
     }
 }
 
-.reviews {
-    z-index: 1;
-    &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        right: 0;
-        bottom: 120px;
-        left: 0;
-        background: url('/images/bg-gradient.jpg') no-repeat center/cover;
-    }
-
-    :global {
-        .card {
-            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.03);
-        }
-        .content {
-            max-width: 864px;
-        }
-    }
-}
-
 .tutors {
     :global {
         .card {
@@ -150,11 +126,7 @@
             .avatar {
                 width: 8.5rem;
                 height: 8.5rem;
-                border-radius: 50%;
-
                 img {
-                    width: 100%;
-                    height: 100%;
                     object-fit: cover;
                 }
             }
@@ -204,4 +176,86 @@
             }
         }
     }
+}
+
+.globally {
+    :global {
+        .title {
+            max-width: 40rem;
+        }
+        .map {
+            min-height: 37rem;
+            background: url('/images/bg_map.png') no-repeat center/cover;
+        }
+        .avatar {
+            width: 6.75rem;
+            height: 6.75rem;
+            color: #046663;
+            img {
+                padding: 0.25rem;
+                object-fit: cover;
+            }
+        }
+        .logo_1 {
+            top: 15%;
+            left: 10%;
+        }
+        .logo_2 {
+            bottom: 4%;
+            left: 27%;
+        }
+        .logo_3 {
+            top: 50%;
+            left: 47%;
+        }
+        .logo_4 {
+            top: 0;
+            right: 36%;
+        }
+        .logo_5 {
+            top: 40%;
+            right: 20%;
+        }
+        .logo_6 {
+            top: 3%;
+            right: 9%;
+        }
+        .card_1 {
+            max-width: 12.5rem;
+            box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+            top: 23%;
+            left: 31%;
+        }
+        .card_2 {
+            max-width: 10rem;
+            background-color: #171D23;
+            color: $color-white;
+            box-shadow: 0 17px 17px -6px rgba(13, 19, 21, 0.08);
+            bottom: 10%;
+            left: 8%;
+        }
+        .card_3 {
+            max-width: 20rem;
+            box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+            right: 8%;
+            bottom: 0;
+        }
+        .play {
+            width: 2.625rem;
+            cursor: pointer;
+            &::after {
+                content: "";
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 5px solid transparent;
+                border-left: 10px solid $color-black;
+                border-bottom: 5px solid transparent;
+            }
+        }
+    }
+}
+
+.interactive {
+
 }
