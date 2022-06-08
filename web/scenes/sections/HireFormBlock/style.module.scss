@@ -1,7 +1,38 @@
 @import 'styles/variables';
 
 .block {}
-.card {}
+.card {
+  max-width: 66rem;
+  background: url('/images/bg-form.jpg') no-repeat center/cover;
+  transform: translate(0, 5.5rem);
+
+  :global {
+    .form {
+      max-width: 34rem;
+      color: $default-text-color;
+      select {
+        padding: 15px;
+      }
+      input:focus {
+        outline-width: 1px;
+        outline-color: $color-blue;
+      }
+      input[type="radio"] {
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+      input[type="radio"] + span {
+
+      }
+      input[type="radio"]:checked + span {
+        font-weight: 600;
+        color: $color-blue;
+        border-color: $color-blue;
+      }
+    }
+  }
+}
 .contacts {
   padding-top: 12rem;
   background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
