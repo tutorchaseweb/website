@@ -3,6 +3,7 @@ import { ReviewBlock } from '~/scenes/sections/ReviewBlock'
 import { BlueCardBlock } from '~/scenes/sections/BlueCardBlock'
 import { OurServiceBlock } from '~/scenes/sections/OurServiceBlock'
 import { HireFormBlock } from '~/scenes/sections/HireFormBlock'
+import { RatedBlock } from '~/scenes/sections/RatedBlock'
 import SVG from '~/components/SVG'
 import {
   star,
@@ -445,24 +446,7 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className={`rated`} style={{ display: 'none' }}>
-        <div className="wrapper">
-          <div className="content">
-            <p className="mb-2x">
-              <SVG content={star()} size={24} />
-              <SVG content={star()} size={24} />
-              <SVG content={star()} size={24} />
-              <SVG content={star()} size={24} />
-              <SVG content={star()} size={24} />
-            </p>
-            <h2 className="fz-48p fw-600 mb-4x">Rated 4.92/5 based on 214 reviews</h2>
-            <p className="fz-20p">Trusted globally by students and parents</p>
-            <Link href={'/'}>
-              <a className="btn btn-blue">Read our verified reviews</a>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <RatedBlock />
       <OurServiceBlock />
       <HireFormBlock />
     </>

@@ -1,0 +1,26 @@
+@import 'styles/variables';
+
+.rated {
+  background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
+  overflow: hidden;
+
+  :global {
+    .wrapper {
+      @media (min-width: $lg) {
+          transform: translate(calc((100vw - 80rem) / 2), 0);
+      }
+    }
+    .content {
+      min-height: 100vh;
+      max-width: 18.5rem;
+      //padding-bottom: 215px;
+    }
+    .swiper.swiper-vertical {
+      height: 100%;
+    }
+    .card {
+      max-width: 350px;
+      border-radius: 4px;
+    }
+  }
+}

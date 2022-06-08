@@ -84,6 +84,9 @@
   font-weight: 800;
 }
 
+.l-height-1 {
+  line-height: 1;
+}
 .l-height-1\/4 {
   line-height: 1.4;
 }
@@ -104,6 +107,12 @@
 }
 .color-blue {
   color: $color-blue;
+}
+.color-black {
+  color: $color-black;
+}
+.color-white {
+  color: $color-white;
 }
 .bg-white {
   background-color: $color-white;
@@ -165,9 +174,18 @@
 .border-light {
   border: 1px solid #E6E7ED;
 }
+.rounded-xSmall {
+  border-radius: 0.25rem;
+}
 .rounded-small {
   border-radius: 0.5rem;
 }
+.rounded-rem {
+  border-radius: 1rem;
+}
 .border-round {
   border-radius: 50%;
+}
+.pointer {
+  cursor: pointer;
 }
