@@ -1,9 +1,11 @@
 import Link from 'next/link'
-import { ReviewBlock } from '~/scenes/sections/ReviewBlock'
-import { BlueCardBlock } from '~/scenes/sections/BlueCardBlock'
-import { OurServiceBlock } from '~/scenes/sections/OurServiceBlock'
-import { HireFormBlock } from '~/scenes/sections/HireFormBlock'
-import { RatedBlock } from '~/scenes/sections/RatedBlock'
+import {
+  ReviewBlock,
+  BlueCardBlock,
+  OurServiceBlock,
+  HireFormBlock,
+  RatedBlock,
+} from '~/scenes/sections'
 import SVG from '~/components/SVG'
 import {
   star,

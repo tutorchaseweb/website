@@ -1,0 +1,14 @@
+{
+  "contacts": {
+    "email": "info@tutorchase.com",
+    "phone": "+44(0)1865306636",
+    "phone2": "+44(0)1865306636"
+  },
+  "menu": {
+    "Blog": "Blog"
+  },
+  "form": {
+    "btnNextStep": "Next Step",
+    "btnBackToForm": "Back to Form"
+  }
+}

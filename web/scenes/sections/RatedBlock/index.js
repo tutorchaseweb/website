@@ -2,9 +2,27 @@ import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import SVG from '~/components/SVG'
+import { shuffleArray, splitArray } from '~/utils/helpers'
 import { star } from '~/utils/svgImages'
 import reviews from './data.json'
 import styles from './style.module.scss'
+
+const getReviewCard = (review) => {
+  return (
+    <div className="card bg-white pt-4x pb-4x pl-3x pr-3x">
+      <p className="l-height-1/5 mb-3x">{review.content}</p>
+      <p className="l-height-1 mb-2x">
+        <SVG content={star()} size={18} />
+        <SVG content={star()} size={18} />
+        <SVG content={star()} size={18} />
+        <SVG content={star()} size={18} />
+        <SVG content={star()} size={18} />
+      </p>
+      <p className="fw-800 l-height-1 mb-1x">{review.author}</p>
+      <p className="fz-14p">{review.position}</p>
+    </div>
+  )
+}
 
 export const RatedBlock = () => {
   return (
@@ -36,23 +54,8 @@ export const RatedBlock = () => {
             speed={12000}
             modules={[Autoplay]}
           >
-            {reviews.map((review, idx) => {
-              return (
-                <SwiperSlide key={idx}>
-                  <div className="card bg-white pt-4x pb-4x pl-3x pr-3x">
-                    <p className="l-height-1/5">{review.content}</p>
-                    <p className="l-height-1">
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                    </p>
-                    <p className="fw-800">{review.author}</p>
-                    <p className="fz-14p">{review.position}</p>
-                  </div>
-                </SwiperSlide>
-              )
+            {reviews.reverse().map((review, idx) => {
+              return <SwiperSlide key={idx}>{getReviewCard(review)}</SwiperSlide>
             })}
           </Swiper>
           <Swiper
@@ -69,23 +72,8 @@ export const RatedBlock = () => {
             speed={10000}
             modules={[Autoplay]}
           >
-            {reviews.map((review, idx) => {
-              return (
-                <SwiperSlide key={idx}>
-                  <div className="card bg-white pt-4x pb-4x pl-3x pr-3x">
-                    <p className="l-height-1/5">{review.content}</p>
-                    <p className="l-height-1">
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                    </p>
-                    <p className="fw-800">{review.author}</p>
-                    <p className="fz-14p">{review.position}</p>
-                  </div>
-                </SwiperSlide>
-              )
+            {shuffleArray(reviews).map((review, idx) => {
+              return <SwiperSlide key={idx}>{getReviewCard(review)}</SwiperSlide>
             })}
           </Swiper>
           <Swiper
@@ -99,44 +87,10 @@ export const RatedBlock = () => {
             speed={8000}
             modules={[Autoplay]}
           >
-            {reviews.map((review, idx) => {
-              return (
-                <SwiperSlide key={idx}>
-                  <div className="card bg-white pt-4x pb-4x pl-3x pr-3x">
-                    <p className="l-height-1/5">{review.content}</p>
-                    <p className="l-height-1">
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                      <SVG content={star()} size={18} />
-                    </p>
-                    <p className="fw-800">{review.author}</p>
-                    <p className="fz-14p">{review.position}</p>
-                  </div>
-                </SwiperSlide>
-              )
+            {splitArray(reviews, 3)[2].map((review, idx) => {
+              return <SwiperSlide key={idx}>{getReviewCard(review)}</SwiperSlide>
             })}
           </Swiper>
-          {/*<Swiper*/}
-          {/*  autoHeight={true}*/}
-          {/*  autoplay={{ delay: 1000 }}*/}
-          {/*  direction={'vertical'}*/}
-          {/*  loop={true}*/}
-          {/*  spaceBetween={30}*/}
-          {/*  slidesPerView={'auto'}*/}
-          {/*  speed={1000}*/}
-          {/*  reverseDirection={true}*/}
-          {/*></Swiper>*/}
-          {/*<Swiper*/}
-          {/*  autoHeight={true}*/}
-          {/*  autoplay={{ delay: 1000 }}*/}
-          {/*  direction={'vertical'}*/}
-          {/*  loop={true}*/}
-          {/*  spaceBetween={30}*/}
-          {/*  slidesPerView={'auto'}*/}
-          {/*  speed={1000}*/}
-          {/*></Swiper>*/}
         </div>
       </div>
     </section>

@@ -7,7 +7,6 @@ export default function Home() {
     <Layout>
       <Head>
         <title>TutorChase</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomePage />
     </Layout>
