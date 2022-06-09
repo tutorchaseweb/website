@@ -1,0 +1,1 @@
+export { MathsPage } from './mathsPage'

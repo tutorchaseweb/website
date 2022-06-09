@@ -9,6 +9,7 @@
   :global {
     .form {
       max-width: 34rem;
+      min-height: 25rem;
       color: $default-text-color;
       select {
         padding: 15px;
@@ -29,6 +30,20 @@
         font-weight: 600;
         color: $color-blue;
         border-color: $color-blue;
+      }
+      .btn {
+        padding: 1rem;
+      }
+      .btn-gray {
+        min-width: 56px;
+
+      }
+      .btn-blue {
+        min-width: 11rem;
+      }
+      .round {
+        width: 4rem;
+        background: rgba(245, 124, 64, 0.2);
       }
     }
   }
