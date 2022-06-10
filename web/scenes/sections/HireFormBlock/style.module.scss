@@ -14,6 +14,9 @@
       select {
         padding: 15px;
       }
+      input, textarea {
+        font: inherit;
+      }
       input:focus {
         outline-width: 1px;
         outline-color: $color-blue;

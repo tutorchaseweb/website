@@ -6,12 +6,15 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Document types
 import siteConfig from './documents/siteConfig'
+import homePage from './documents/homePage'
 
 // Object types
 import logo from './objects/brandLogo'
+import firstScreen from './objects/homePage/firstScreen'
 
 // We import object and document schemas
 import blockContent from './blockContent'
+import simpleContent from './simpleContent'
 import category from './category'
 import post from './post'
 import author from './author'
@@ -24,6 +27,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     siteConfig,
+    homePage,
     logo,
     // The following are document types which will appear
     // in the studio.
@@ -33,5 +37,7 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
+    simpleContent,
+    firstScreen,
   ]),
 })

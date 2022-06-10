@@ -46,7 +46,11 @@ import image_811 from '~/assets/images/image_811.png'
 import image_812 from '~/assets/images/image_812.png'
 import image_813 from '~/assets/images/image_813.png'
 
-export const HomePage = () => {
+export const HomePage = ({ page }) => {
+  const firstScreen = page.firstScreenHome
+  console.log(page)
+  console.log(firstScreen)
+
   return (
     <>
       <section className={`first-screen ${styles.firstScreen}`}>
