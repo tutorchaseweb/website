@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
 import { email, phone, arrowLeft, doneCheck } from '~/utils/svgImages'
@@ -7,7 +8,11 @@ import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
 export const HireFormBlock = () => {
+  const router = useRouter()
+  const { route } = useRouter()
   const [activeStep, setActiveStep] = useState(0)
+  console.log(router)
+
   return (
     <section className={`block ${styles.block}`}>
       <div className="container">
@@ -75,6 +80,9 @@ export const HireFormBlock = () => {
                     />
                   </label>
                 </div>
+                <label>
+                  <input type="hidden" name="source" value={route} />
+                </label>
                 <div className="flex gap-4 items-center justify-between">
                   <span>
                     <b>1</b>/2 About yourself

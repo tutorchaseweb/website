@@ -1,5 +1,70 @@
 @import 'styles/variables';
 
 .firstScreen {
+  min-height: 33.75rem;
+  padding-top: 12rem;
+  /* eslint-disable-next-line */
   background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .title {
+      max-width: 55rem;
+    }
+    .description {
+      max-width: 31.5rem;
+    }
+    .lesson-card {
+      max-width: 8rem;
+      left: 0;
+      bottom: -25%;
+
+      .image {
+        background: #EBEBF8 url('/images/diagramm.png') no-repeat center;
+
+        &::before {
+          content: '';
+          display: block;
+          padding-top: 87%;
+        }
+      }
+
+      .text {
+         padding-top: 1.125rem;
+         padding-bottom: 1.125rem;
+       }
+    }
+    .play-card {
+      max-width: 8.25rem;
+      background: $color-white url('/images/live-tutor.png') no-repeat center/cover;
+      right: 0;
+      bottom: 50%;
+
+      .live {
+        top: 0.75rem;
+        left: 0.75rem;
+        display: inline-block;
+        font-size: 10px;
+        line-height: 13px;
+        padding: 0.25rem 0.5rem;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        padding-top: 125%;
+      }
+    }
+  }
+}
+
+.filter {
+  background-color: #F9FAFB;
+}
+
+.tutorsList {
+  :global {
+    .description {
+      max-width: 51rem;
+    }
+  }
 }

@@ -13,8 +13,7 @@ export const Footer = ({ logo }) => {
           <div className="link-group flex flex-col fz-14p">
             <Link href="/">
               <a className="mb-2x">
-                <span dangerouslySetInnerHTML={{ __html: logoSvg() }} />
-                {/*{Boolean(logo) && <img src={logo.asset.url} alt={logo.alt} />}*/}
+                {Boolean(logo) && <img src={logo.asset.url} alt={logo.alt} />}
               </a>
             </Link>
             <ul className="flex-1 mb-2x">
@@ -90,7 +89,7 @@ export const Footer = ({ logo }) => {
                 </Link>
               </li>
               <li className="mt-2x">
-                <Link href="/">
+                <Link href="/a-level">
                   <a>A-Level</a>
                 </Link>
               </li>
