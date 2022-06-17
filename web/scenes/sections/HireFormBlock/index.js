@@ -23,7 +23,7 @@ export const HireFormBlock = () => {
           <p className="fz-22p l-height-1/5 mb-4x text-center">
             Please fill out the form and we'll find a tutor for you
           </p>
-          <form className="form mx-auto bg-white rounded-small pt-5x pr-5x pb-4x pl-5x">
+          <form className="form mx-auto flex flex-col bg-white rounded-small pt-5x pr-5x pb-4x pl-5x">
             {activeStep === 0 && (
               <>
                 <div className="flex gap-4 mb-3x">
@@ -62,7 +62,7 @@ export const HireFormBlock = () => {
                     </select>
                   </label>
                 </div>
-                <div className="flex gap-4 mb-4x">
+                <div className="flex gap-4 mb-4x flex-1">
                   <label className="flex-1 fz-14p">
                     <span className="fw-500 color-black">Your phone</span>
                     <input
@@ -109,7 +109,7 @@ export const HireFormBlock = () => {
                     />
                   </label>
                 </div>
-                <div className="flex mb-7x">
+                <div className="flex mb-5x flex-1">
                   <label className="flex-1">
                     <span className="fz-14p fw-500 color-black">
                       Frequency and Duration of Tuition
@@ -146,12 +146,15 @@ export const HireFormBlock = () => {
             )}
             {activeStep === 2 && (
               <>
-                <div className="pb-1x text-center flex flex-col items-center justify-between">
+                <div className="text-center flex flex-col items-center justify-between">
                   <span className="round relative mx-auto flex items-center justify-center mb-4x">
                     <SVG content={doneCheck()} size={32} />
                   </span>
                   <p className="fz-24p fw-600 mb-3x">Thank you for your Enquiry</p>
-                  <p className="fz-18p pb-4x mx-auto l-height-1/4" style={{ maxWidth: '22rem' }}>
+                  <p
+                    className="fz-18p pb-4x mx-auto l-height-1/4 flex-1"
+                    style={{ maxWidth: '22rem' }}
+                  >
                     <span className="fw-600">We will be in contact shortly</span>
                     <br />
                     Please also check your junk email folder if you have not heard from us
