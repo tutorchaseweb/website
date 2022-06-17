@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
@@ -10,7 +11,11 @@ export const Home = ({ data }) => {
   return (
     <Layout>
       <Head>
-        <title>TutorChase</title>
+        <title>{page.title}</title>
+        <meta name="description" content={page.description} />
+        <meta property="og:title" content={page.title} key="title" />
+        <meta property="og:description" content={page.description} key="description" />
+        {/*<meta property="og:url" content={config.url + router.route} key="url" />*/}
       </Head>
       <HomePage page={page} />
     </Layout>

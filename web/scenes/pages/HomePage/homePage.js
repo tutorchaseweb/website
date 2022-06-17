@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PortableText } from '@portabletext/react'
 import {
   ReviewBlock,
   BlueCardBlock,
@@ -18,7 +19,6 @@ import {
 } from '~/utils/svgImages'
 
 import styles from './style.module.scss'
-// import { Color } from '~/utils/constants'
 
 // all used images
 import employerImg from '~/assets/images/girl.png'
@@ -47,9 +47,9 @@ import image_812 from '~/assets/images/image_812.png'
 import image_813 from '~/assets/images/image_813.png'
 
 export const HomePage = ({ page }) => {
-  const firstScreen = page.firstScreenHome
-  console.log(page)
-  console.log(firstScreen)
+  const firstScreen = page.firstScreen
+  // console.log(page)
+  // console.log(firstScreen)
 
   return (
     <>
@@ -60,10 +60,7 @@ export const HomePage = ({ page }) => {
               <h1 className="main-title fw-700 fz-40p mb-3x">
                 Elite Online <span className="color-blue">Tutoring</span>
               </h1>
-              <p className="description mb-5x mb-7x_lg">
-                Exam Preparation and Admissions Support. Delivered globally by the World's Top
-                Tutors.
-              </p>
+              <p className="description mb-5x mb-7x_lg">{firstScreen.description}</p>
               <div className="flex items-center">
                 <a href="#" className="btn btn-blue mr-5x">
                   Hire a Tutor
@@ -115,10 +112,11 @@ export const HomePage = ({ page }) => {
       <section className="bg-lightGray pt-5x pb-5x">
         <div className="container">
           <div className="partners-line flex gap-8 items-center">
-            <p className="flex-1 uppercase color-lightGray fw-500">
-              TUTORS FROM AND STUDENTS ACCEPTED <br /> INTO{' '}
-              <span className="color-blue fw-600">the World's Top Universities</span>
-            </p>
+            <div
+              className={`universities flex-1 uppercase color-lightGray fw-500 ${styles.universities}`}
+            >
+              <PortableText value={firstScreen.universities} />
+            </div>
             <img src={stanfordLogo.src} alt="Stanford" />
             <img src={oxfordLogo.src} alt="Oxford" />
             <img src={harvardLogo.src} alt="Harvard" />

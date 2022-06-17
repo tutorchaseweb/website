@@ -62,6 +62,17 @@
     }
 }
 
+.universities {
+    :global {
+        p {
+            max-width: 21rem;
+            strong {
+                color: $color-blue;
+            }
+        }
+    }
+}
+
 .study {
     padding-top: 148px;
     padding-bottom: 148px;

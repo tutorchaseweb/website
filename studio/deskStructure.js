@@ -48,9 +48,5 @@ export default () =>
                 .child(S.document().schemaType('home-page').documentId('home-page')),
             ])
         ),
-      // S.listItem()
-      //   .title("Blog")
-      //   .schemaType("blog")
-      //   .child(S.documentTypeList("blog").title("Blog")),
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])

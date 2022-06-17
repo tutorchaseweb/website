@@ -6,6 +6,9 @@
 .flex {
   display: flex;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 .flex-1 {
   flex: 1;
 }
@@ -62,6 +65,9 @@
 }
 .fz-48p {
   font-size: 3rem; // 48px
+}
+.fz-64p {
+  font-size: 4rem; // 64px
 }
 .fz-86p {
   font-size: 5.375rem; // 86px
@@ -188,4 +194,7 @@
 }
 .pointer {
   cursor: pointer;
+}
+.overflow-hidden {
+  overflow: hidden;
 }

@@ -147,9 +147,23 @@ export const arrowLeft = (color = Color.DarkGray) =>
     </svg>
   `
 
-export const doneCheck = (color = '#F57C40') =>
+export const doneCheck = (color = Color.Orange) =>
   `
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill="${color}" d="M12.0001 21.5999L6.40011 15.9999L4.53345 17.8666L12.0001 25.3332L28.0001 9.33322L26.1334 7.46655L12.0001 21.5999Z"/>
+    </svg>
+  `
+
+export const awesomeStar = (color = Color.Orange) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M14.5 9.5L12 4L9.5 9.5L4 12L9.5 14.5L12 20L14.5 14.5L20 12L14.5 9.5Z"/>
+    </svg>
+  `
+
+export const studyHat = (color = Color.Orange) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18ZM12 3L1 9L12 15L21 10.09V17H23V9L12 3Z"/>
     </svg>
   `

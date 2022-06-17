@@ -1,8 +1,11 @@
+import React from 'react'
 import Head from 'next/head'
 import { gql, useQuery } from '@apollo/client'
 import Header from '~/scenes/sections/Header'
 import Footer from '~/scenes/sections/Footer'
 import { Loader } from '~/components/Loader'
+
+export const ConfigContext = React.createContext({})
 
 export const Layout = ({ children }) => {
   const QUERY = gql`
@@ -34,7 +37,7 @@ export const Layout = ({ children }) => {
 
   return (
     Boolean(SiteConfig) && (
-      <>
+      <ConfigContext.Provider value={SiteConfig}>
         <Head>
           <meta
             name="viewport"
@@ -53,7 +56,7 @@ export const Layout = ({ children }) => {
         <Header logo={SiteConfig.logo} />
         <main className="main-content">{children}</main>
         <Footer logo={SiteConfig.logo} />
-      </>
+      </ConfigContext.Provider>
     )
   )
 }
