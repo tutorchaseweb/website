@@ -1,20 +1,12 @@
 import { groq } from 'next-sanity'
 import client from '../../utils/sanity-client'
 import { Layout } from '~/components/Layout'
+import { BlogPage } from '~/scenes/pages/Blog'
 
 export const Blog = ({ posts }) => {
   return (
     <Layout>
-      <h1>Blog</h1>
-      <ul>
-        {posts.map(post => {
-          return (
-            <li key={post._id}>
-              <a href={`/blog/${post.slug.current}`}>{post.title}</a>
-            </li>
-          )
-        })}
-      </ul>
+      <BlogPage posts={posts} />
     </Layout>
   )
 }
@@ -29,7 +21,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      posts: data
+      posts: data,
     },
   }
 }

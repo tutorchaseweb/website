@@ -5,5 +5,15 @@ import { HireFormBlock } from './HireFormBlock'
 import { OurServiceBlock } from './OurServiceBlock'
 import { RatedBlock } from './RatedBlock'
 import { ReviewBlock } from './ReviewBlock'
+import { InteractiveBlock } from './InteractiveBlock'
 
-export { Header, Footer, BlueCardBlock, HireFormBlock, OurServiceBlock, RatedBlock, ReviewBlock }
+export {
+  Header,
+  Footer,
+  BlueCardBlock,
+  HireFormBlock,
+  OurServiceBlock,
+  RatedBlock,
+  ReviewBlock,
+  InteractiveBlock,
+}

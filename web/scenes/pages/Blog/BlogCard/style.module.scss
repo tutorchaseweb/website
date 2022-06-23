@@ -1,0 +1,26 @@
+@import 'styles/variables';
+
+.blogArticle {
+  background-color: #F9FAFB;
+  &:hover {
+    :global {
+      .circle {
+        background-color: $color-blue !important;
+      }
+      .svg-wrap svg path {
+        fill: $color-white !important;
+      }
+    }
+  }
+
+  :global {
+    .circle, svg path {
+      transition: all 0.2s linear;
+    }
+    .featured {
+      padding: 0.25rem 0.5rem;
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+}

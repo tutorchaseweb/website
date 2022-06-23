@@ -140,10 +140,24 @@
           width: 12px;
           height: 12px;
           background: url('/images/arrow_down_blue.svg') no-repeat center/contain;
+          transition: all 0.3s linear;
+        }
+        &.active {
+          &::after {
+            transform: rotate(180deg);
+          }
         }
       }
       .answer {
-        display: none;
+        padding: 0 1.5rem;
+        overflow: hidden;
+        max-height: 0;
+        transition: all 0.3s linear;
+
+        &.open {
+          padding-bottom: 1.5rem;
+          max-height: 100vh;
+        }
       }
     }
   }

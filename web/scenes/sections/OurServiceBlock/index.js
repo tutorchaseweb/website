@@ -2,9 +2,9 @@ import SVG from '~/components/SVG'
 import { handshake, screenVideo, sendBack } from '~/utils/svgImages'
 import styles from './style.module.scss'
 
-export const OurServiceBlock = () => {
+export const OurServiceBlock = ({ className = '' }) => {
   return (
-    <section className={`service pt-15x pb-4x ${styles.service}`}>
+    <section className={`service pt-15x pb-4x ${styles.service} ${className}`}>
       <div className="container text-center">
         <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">Our Service</p>
         <h2 className="title fz-48p fw-600 mb-6x mx-auto">How it Works?</h2>

@@ -147,6 +147,13 @@ export const arrowLeft = (color = Color.DarkGray) =>
     </svg>
   `
 
+export const arrowRight = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M4.9961 12.9994L16.1961 12.9994L11.2961 17.8994C10.8961 18.2994 10.8961 18.8994 11.2961 19.2994C11.6961 19.6994 12.2961 19.6994 12.6961 19.2994L19.2961 12.6994C19.6961 12.2994 19.6961 11.6994 19.2961 11.2994L12.6961 4.69941C12.2961 4.29941 11.6961 4.29941 11.2961 4.69941C10.8961 5.09941 10.8961 5.69941 11.2961 6.09941L16.1961 10.9994L4.99609 10.9994C4.39609 10.9994 3.99609 11.3994 3.9961 11.9994C3.9961 12.5994 4.3961 12.9994 4.9961 12.9994Z"/>
+    </svg>
+  `
+
 export const doneCheck = (color = Color.Orange) =>
   `
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

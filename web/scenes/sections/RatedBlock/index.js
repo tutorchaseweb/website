@@ -24,9 +24,9 @@ const getReviewCard = (review) => {
   )
 }
 
-export const RatedBlock = () => {
+export const RatedBlock = ({ className }) => {
   return (
-    <section className={`rated ${styles.rated}`}>
+    <section className={`rated ${styles.rated} ${className}`}>
       <div className="wrapper flex">
         <div className="content flex flex-col justify-center pt-20x pb-20x mr-19x">
           <p className="mb-2x">

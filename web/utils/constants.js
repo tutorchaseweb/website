@@ -1,4 +1,5 @@
 export const Color = {
+  Transparent: 'transparent',
   Gold: '#FFC235',
   Orange: '#F57C40',
   Blue: '#001A96',

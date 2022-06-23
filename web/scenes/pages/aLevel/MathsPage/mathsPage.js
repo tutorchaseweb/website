@@ -5,12 +5,12 @@ import {
   OurServiceBlock,
   HireFormBlock,
   RatedBlock,
+  InteractiveBlock,
 } from '~/scenes/sections'
 import SVG from '~/components/SVG'
 import { awesomeStar, star, studyHat } from '~/utils/svgImages'
 import tutors from '../data.json'
 import styles from './style.module.scss'
-import illustrationImg from '~/assets/images/illustration.png'
 
 export const MathsPage = () => {
   return (
@@ -121,36 +121,16 @@ export const MathsPage = () => {
         </div>
       </section>
       <section>
-        <div className="container">
+        <div className="container narrow">
           <BlueCardBlock
             title={'Our academic consultants will find the perfect tutor for you!'}
             content={
               "Looking for something specific? Get in touch with us now and we'll find the best tutor for you."
             }
-            linkText={'Hire a Tutor'}
-            linkUrl={'/'}
           />
         </div>
       </section>
-      <section className={`interactive pt-18x pb-18x ${styles.interactive}`}>
-        <div className="container">
-          <div className="flex items-center">
-            <div className="w-full w-1/2_lg relative">
-              <img src={illustrationImg.src} alt="Illustration" />
-            </div>
-            <div className="w-full w-1/2_lg pl-11x">
-              <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
-                Interactive Tutoring Platform
-              </p>
-              <h2 className="fz-48p fw-600 mb-4x">Engaging Lessons with our Platform</h2>
-              <p className="fz-18p">
-                Lessons are brought to life and students can interact with tutors by drawing
-                diagrams, solving equations, editing essays, and annotating work.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <InteractiveBlock />
       <ReviewBlock
         content={
           'My Son had an excellent tutor who helped him in preparing for his STEP exam. Her teaching style was very good, allowing him to solve the Maths problem by himself with a little hint, rather than helping him with the answer. Highly recommend Tutor Chase, they helped me to find the right Tutor within our Budget and the tutor was a Cambridge Mathematics Graduate, which we were looking for.'
@@ -177,31 +157,71 @@ export const MathsPage = () => {
             <div className="wrapper flex-1">
               <div className="accordion">
                 <div className="item">
-                  <div className="question">General</div>
+                  <div
+                    className="question pointer"
+                    onClick={(e) => {
+                      e.target.classList.toggle('active')
+                      e.target.nextElementSibling.classList.toggle('open')
+                    }}
+                  >
+                    General
+                  </div>
                   <div className="answer">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                   </div>
                 </div>
                 <div className="item">
-                  <div className="question">Daily Check-in</div>
+                  <div
+                    className="question pointer"
+                    onClick={(e) => {
+                      e.target.classList.toggle('active')
+                      e.target.nextElementSibling.classList.toggle('open')
+                    }}
+                  >
+                    Daily Check-in
+                  </div>
                   <div className="answer">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                   </div>
                 </div>
                 <div className="item">
-                  <div className="question">How to hire a tutor who is the best fit for me?</div>
+                  <div
+                    className="question pointer"
+                    onClick={(e) => {
+                      e.target.classList.toggle('active')
+                      e.target.nextElementSibling.classList.toggle('open')
+                    }}
+                  >
+                    How to hire a tutor who is the best fit for me?
+                  </div>
                   <div className="answer">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                   </div>
                 </div>
                 <div className="item">
-                  <div className="question">Paying for classes</div>
+                  <div
+                    className="question pointer"
+                    onClick={(e) => {
+                      e.target.classList.toggle('active')
+                      e.target.nextElementSibling.classList.toggle('open')
+                    }}
+                  >
+                    Paying for classes
+                  </div>
                   <div className="answer">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                   </div>
                 </div>
                 <div className="item">
-                  <div className="question">How is the platform related to tutors?</div>
+                  <div
+                    className="question pointer"
+                    onClick={(e) => {
+                      e.target.classList.toggle('active')
+                      e.target.nextElementSibling.classList.toggle('open')
+                    }}
+                  >
+                    How is the platform related to tutors?
+                  </div>
                   <div className="answer">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                   </div>

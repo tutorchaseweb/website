@@ -1,8 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { gql, useQuery } from '@apollo/client'
-import Header from '~/scenes/sections/Header'
-import Footer from '~/scenes/sections/Footer'
+import { Header, Footer } from '~/scenes/sections'
 import { Loader } from '~/components/Loader'
 
 export const ConfigContext = React.createContext({})
@@ -12,8 +11,10 @@ export const Layout = ({ children }) => {
     query Config {
       SiteConfig(id: "global-config") {
         _id
+        _updatedAt
         title
         description
+        keywords
         url
         logo {
           alt
@@ -21,6 +22,12 @@ export const Layout = ({ children }) => {
             url
           }
         }
+        primaryPhone
+        secondaryPhone
+        email
+        facebook
+        twitter
+        linkedIn
       }
     }
   `
@@ -53,9 +60,9 @@ export const Layout = ({ children }) => {
           <meta property="og:url" content={SiteConfig.url} key="url" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Header logo={SiteConfig.logo} />
+        <Header />
         <main className="main-content">{children}</main>
-        <Footer logo={SiteConfig.logo} />
+        <Footer />
       </ConfigContext.Provider>
     )
   )
