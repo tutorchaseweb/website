@@ -154,6 +154,13 @@ export const arrowRight = (color = Color.White) =>
     </svg>
   `
 
+export const smallArrowRight = (color = Color.Blue) =>
+  `
+    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" d="M1 11L6 6L1 1" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  `
+
 export const doneCheck = (color = Color.Orange) =>
   `
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

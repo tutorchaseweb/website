@@ -24,6 +24,12 @@
 .justify-between {
   justify-content: space-between;
 }
+.grid {
+  display: grid;
+}
+.grid-columns-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
 
 .gap-4 {
   gap: 1rem;

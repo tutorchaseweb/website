@@ -1,0 +1,11 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
+  padding-bottom: 15rem;
+}
+
+.cardsWrap {
+  margin-top: -10rem;
+  z-index: 2;
+}

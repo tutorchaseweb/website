@@ -13,7 +13,7 @@ export const BlogCard = ({ article }) => {
   console.log(article)
   return (
     <article
-      className={`blog-article rounded-xSmall overflow-hidden flex flex-col ${styles.blogArticle}`}
+      className={`blog-article rounded-xSmall overflow-hidden w-full flex-1 flex flex-col ${styles.blogArticle}`}
     >
       <div className="relative" style={{ aspectRatio: '2/1' }}>
         {article.featured && (
@@ -29,11 +29,11 @@ export const BlogCard = ({ article }) => {
       </div>
       <div className="content flex-1 p-3x">
         <h3 className="fz-20p fw-600 mb-1x">{article.title}</h3>
-        <div className="description color-lightGray l-height-1/4">
+        <div className="description color-lightGray l-height-1/5">
           <PortableText value={article.description} />
         </div>
       </div>
-      <div className="flex items-center justify-between pl-3x pr-2x pb-2x">
+      <div className="flex items-center justify-between pt-4x pl-3x pr-2x pb-2x">
         <span>{article.reading} min Read</span>
         <Link href={`/blog/${article.slug.current}`}>
           <a>
