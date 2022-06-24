@@ -10,7 +10,7 @@ export const HireFormBlock = ({ className = '' }) => {
   const [activeStep, setActiveStep] = useState(0)
 
   return (
-    <section className={`block ${styles.block} ${className}`}>
+    <section className={`block ${className}`}>
       <div className="container narrow">
         <div
           className={`card rounded-rem bg-blue pt-10x pb-11x pl-4x pr-4x mx-auto ${styles.card}`}

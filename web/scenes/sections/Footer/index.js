@@ -13,10 +13,10 @@ export const Footer = () => {
         const {
           logo,
           email,
-          secondaryPhone,
-          facebook: facebookLink,
-          twitter: twitterLink,
-          linkedIn: linkedInLink,
+          secondaryPhone = text.contacts.secondaryPhone,
+          facebook: facebookLink = text.contacts.facebookLink,
+          twitter: twitterLink = text.contacts.twitterLink,
+          linkedIn: linkedInLink = text.contacts.linkedInLink,
         } = config
 
         return (

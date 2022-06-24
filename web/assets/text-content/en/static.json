@@ -2,7 +2,10 @@
   "contacts": {
     "email": "info@tutorchase.com",
     "primaryPhone": "+1 (888) 2763561",
-    "secondaryPhone": "+44(0)1865306636"
+    "secondaryPhone": "+44(0)1865306636",
+    "facebookLink": "https://www.facebook.com/",
+    "twitterLink": "https://twitter.com/",
+    "linkedInLink": "https://linkedin.com/"
   },
   "menu": {
     "OnlineTutoring": "Online Tutoring",
