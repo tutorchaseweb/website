@@ -10,7 +10,8 @@ import { Circle } from '~/components/Circle'
 import styles from './style.module.scss'
 
 export const BlogCard = ({ article }) => {
-  console.log(article)
+  // console.log(article)
+
   return (
     <article
       className={`blog-article rounded-xSmall overflow-hidden w-full flex-1 flex flex-col ${styles.blogArticle}`}

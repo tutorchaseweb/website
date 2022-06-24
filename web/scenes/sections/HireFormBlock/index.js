@@ -176,11 +176,11 @@ export const HireFormBlock = ({ className = '' }) => {
               </Circle>
               {text.contacts.email}
             </a>
-            <a href={`tel:${text.contacts.phone}`} className="flex items-center">
+            <a href={`tel:${text.contacts.primaryPhone}`} className="flex items-center">
               <Circle size={32} color={Color.Blue} classList="mr-1x">
                 <SVG content={phone()} size={14} />
               </Circle>
-              {text.contacts.phone}
+              {text.contacts.primaryPhone}
             </a>
           </div>
         </div>

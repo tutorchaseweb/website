@@ -43,9 +43,11 @@ export const ArticlePage = ({ article }) => {
   }
   const { allPost } = data
 
-  allPost && console.log(allPost)
+  // allPost && console.log(allPost)
 
   const posts = allPost.slice(0, 3)
+
+  console.log(article)
 
   return (
     <>

@@ -48,8 +48,8 @@ import image_813 from '~/assets/images/image_813.png'
 
 export const HomePage = ({ page }) => {
   const firstScreen = page.firstScreen
-  console.log(page)
-  console.log(firstScreen)
+  // console.log(page)
+  // console.log(firstScreen)
 
   return (
     <>
