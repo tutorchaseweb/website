@@ -21,7 +21,7 @@ export const BlogPage = ({ posts }) => {
           </div>
         </div>
       </section>
-      <section className={`cards-wrap relative ${styles.cardsWrap}`}>
+      <section className={`cards-wrap relative pt-8x ${styles.cardsWrap}`}>
         <div className="container">
           <form className="flex items-center justify-between mb-3x">
             <label className="search relative">

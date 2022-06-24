@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <ConfigContext.Consumer>
       {(config) => {
-        const { logo, primaryPhone } = config
+        const { logo, primaryPhone = text.contacts.primaryPhone } = config
 
         return (
           <header className="w-full pt-3x pb-3x" style={{ float: 'left' }}>
