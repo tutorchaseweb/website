@@ -11,6 +11,7 @@ import homePage from './documents/homePage'
 // Object types
 import logo from './objects/brandLogo'
 import mainImage from './objects/mainImage'
+import floatImage from './objects/floatImage'
 import link from './objects/link'
 import firstScreen from './objects/homePage/firstScreen'
 
@@ -32,6 +33,7 @@ export default createSchema({
     homePage,
     logo,
     mainImage,
+    floatImage,
     link,
     // The following are document types which will appear
     // in the studio.

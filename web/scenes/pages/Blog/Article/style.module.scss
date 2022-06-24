@@ -1,0 +1,65 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background-color: #F9FAFB;
+}
+.mainImageWrap {
+  max-width: 1120px;
+  aspect-ratio: 2/1;
+  border-radius: 16px;
+
+  :global {
+    .article-title {
+      max-width: 660px;
+      text-transform: capitalize;
+      z-index: 1;
+    }
+    .featured {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
+.textContentWrapper {
+  max-width: 58rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.articleContent {
+  :global {
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 140%;
+      color: #000000;
+      margin-top: 4rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+
+    }
+    p {
+      &::after {
+        content: '\00A0';
+      }
+    }
+
+    .body {
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+  }
+}
+
+.afterContent {
+  background-color: #F3F5FF;
+  border-radius: 16px;
+}
+
+.related {
+  background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
+}

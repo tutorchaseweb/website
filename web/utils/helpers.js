@@ -35,3 +35,24 @@ export const splitArray = (array = [], parts = 2) => {
   }
   return result
 }
+
+export const myPortableTextComponents = {
+  types: {
+    image: ({ value }) => (
+      <img
+        src={`${getImageUrl(value.asset._ref)}`}
+        alt=""
+        className="overflow-hidden rounded-small mt-2x mb-2x"
+      />
+    ),
+    floatImage: ({ value }) => (
+      <img
+        src={`${getImageUrl(value.asset._ref)}`}
+        alt=""
+        className={`image overflow-hidden rounded-small mt-2x mb-2x ${
+          value.floatRight ? 'float-right ml-3x' : 'float-left mr-3x'
+        }`}
+      />
+    ),
+  },
+}
