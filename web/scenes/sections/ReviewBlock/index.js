@@ -2,10 +2,10 @@ import SVG from '~/components/SVG'
 import { star } from '~/utils/svgImages'
 import styles from './style.module.scss'
 
-export const ReviewBlock = ({ content = '', author = '', position = '' }) => {
+export const ReviewBlock = ({ content = '', author = '', position = '', className = '' }) => {
   return (
-    <section className={`reviews relative pt-9x ${styles.reviews}`}>
-      <div className="container">
+    <section className={`reviews relative pt-9x ${styles.reviews} ${className}`}>
+      <div className="container narrow">
         <div className="card bg-white rounded-small p-8x mx-auto">
           <div className="content text-center mx-auto">
             <div

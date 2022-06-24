@@ -147,6 +147,34 @@ export const arrowLeft = (color = Color.DarkGray) =>
     </svg>
   `
 
+export const arrowRight = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M4.9961 12.9994L16.1961 12.9994L11.2961 17.8994C10.8961 18.2994 10.8961 18.8994 11.2961 19.2994C11.6961 19.6994 12.2961 19.6994 12.6961 19.2994L19.2961 12.6994C19.6961 12.2994 19.6961 11.6994 19.2961 11.2994L12.6961 4.69941C12.2961 4.29941 11.6961 4.29941 11.2961 4.69941C10.8961 5.09941 10.8961 5.69941 11.2961 6.09941L16.1961 10.9994L4.99609 10.9994C4.39609 10.9994 3.99609 11.3994 3.9961 11.9994C3.9961 12.5994 4.3961 12.9994 4.9961 12.9994Z"/>
+    </svg>
+  `
+
+export const smallArrowRight = (color = Color.Blue) =>
+  `
+    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linejoin="round" d="M1 11L6 6L1 1"/>
+    </svg>
+  `
+
+export const navArrowLeft = (color = Color.Blue) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linejoin="round" d="M15 6L9.00137 12L15 18"/>
+    </svg>
+  `
+
+export const navArrowRight = (color = Color.Blue) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linejoin="round" d="M9 6L14.9986 12L9 18"/>
+    </svg>
+  `
+
 export const doneCheck = (color = Color.Orange) =>
   `
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,5 +193,12 @@ export const studyHat = (color = Color.Orange) =>
   `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill="${color}" d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18ZM12 3L1 9L12 15L21 10.09V17H23V9L12 3Z"/>
+    </svg>
+  `
+
+export const magnifier = (color = Color.DarkGray) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linecap="round" d="M21 21L16.514 16.506L21 21ZM19 10.5C19 12.7543 18.1045 14.9163 16.5104 16.5104C14.9163 18.1045 12.7543 19 10.5 19C8.24566 19 6.08365 18.1045 4.48959 16.5104C2.89553 14.9163 2 12.7543 2 10.5C2 8.24566 2.89553 6.08365 4.48959 4.48959C6.08365 2.89553 8.24566 2 10.5 2C12.7543 2 14.9163 2.89553 16.5104 4.48959C18.1045 6.08365 19 8.24566 19 10.5V10.5Z"/>
     </svg>
   `

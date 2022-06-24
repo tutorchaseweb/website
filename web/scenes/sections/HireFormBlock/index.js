@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
 import { email, phone, arrowLeft, doneCheck } from '~/utils/svgImages'
@@ -7,15 +6,12 @@ import { Color } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
-export const HireFormBlock = () => {
-  const router = useRouter()
-  const { route } = useRouter()
+export const HireFormBlock = ({ className = '' }) => {
   const [activeStep, setActiveStep] = useState(0)
-  console.log(router)
 
   return (
-    <section className={`block ${styles.block}`}>
-      <div className="container">
+    <section className={`block ${styles.block} ${className}`}>
+      <div className="container narrow">
         <div
           className={`card rounded-rem bg-blue pt-10x pb-11x pl-4x pr-4x mx-auto ${styles.card}`}
         >
@@ -30,13 +26,13 @@ export const HireFormBlock = () => {
                   <label className="flex-1 relative">
                     <input type="radio" name="role" value="parent" className="absolute" />
                     <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
-                      I am parent
+                      I am a parent
                     </span>
                   </label>
                   <label className="flex-1 relative">
                     <input type="radio" name="role" value="student" className="absolute" />
                     <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
-                      I am student
+                      I am a student
                     </span>
                   </label>
                 </div>
@@ -81,7 +77,7 @@ export const HireFormBlock = () => {
                   </label>
                 </div>
                 <label>
-                  <input type="hidden" name="source" value={route} />
+                  <input type="hidden" name="source" value={window.location.href} />
                 </label>
                 <div className="flex gap-4 items-center justify-between">
                   <span>
@@ -101,7 +97,7 @@ export const HireFormBlock = () => {
               <>
                 <div className="flex mb-2x">
                   <label className="flex-1">
-                    <span className="fz-14p fw-500 color-black">Details of Tutoring Requesr</span>
+                    <span className="fz-14p fw-500 color-black">Details of Tutoring Request</span>
                     <textarea
                       id=""
                       name=""

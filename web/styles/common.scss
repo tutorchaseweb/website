@@ -27,6 +27,9 @@ a:hover {
 ul, ol {
   list-style: none;
 }
+strong {
+  color: $color-blue
+}
 
 html {
   box-sizing: border-box;
@@ -59,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 86rem;
 }
 .container.narrow {
-  max-width: 66rem;
+  max-width: 68rem;
 }
 .mx-auto {
   margin-left: auto;
@@ -116,5 +119,15 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     display: block;
     padding-top: 100%;
+  }
+}
+.image.float-left {
+  @media (min-width: $lg) {
+    float: left;
+  }
+}
+.image.float-right {
+  @media (min-width: $lg) {
+    float: right;
   }
 }

@@ -8,11 +8,11 @@ export const Custom404 = () => {
       <Head>
         <title>Error 404 - page not found</title>
       </Head>
-      <main className="main-content">
-          <div className="container">
-              <h1 className="text-center">Error page</h1>
-          </div>
-      </main>
+      <secton className="main-content">
+        <div className="container">
+          <h1 className="text-center">Error page</h1>
+        </div>
+      </secton>
     </Layout>
   )
 }

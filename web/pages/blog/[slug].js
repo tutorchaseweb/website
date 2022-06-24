@@ -1,11 +1,13 @@
 import client from '../../utils/sanity-client'
+import { Layout } from '~/components/Layout'
+import { ArticlePage } from "~/scenes/pages/Blog/Article";
 
 
 export const Post = ({ post }) => {
   return (
-    <article>
-      <h1>{post?.title}</h1>
-    </article>
+    <Layout>
+      <ArticlePage article={post} />
+    </Layout>
   )
 }
 

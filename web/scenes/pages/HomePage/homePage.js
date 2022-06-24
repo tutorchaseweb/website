@@ -6,6 +6,7 @@ import {
   OurServiceBlock,
   HireFormBlock,
   RatedBlock,
+  InteractiveBlock,
 } from '~/scenes/sections'
 import SVG from '~/components/SVG'
 import {
@@ -38,7 +39,6 @@ import tutor3avatar from '~/assets/images/tutor_3.jpg'
 import tutor4avatar from '~/assets/images/tutor_4.jpg'
 import tutor5avatar from '~/assets/images/tutor_5.jpg'
 import premiumTutor from '~/assets/images/premium_tutor.png'
-import illustrationImg from '~/assets/images/illustration.png'
 import image_591 from '~/assets/images/image_591.png'
 import image_592 from '~/assets/images/image_592.png'
 import image_810 from '~/assets/images/image_810.png'
@@ -48,8 +48,8 @@ import image_813 from '~/assets/images/image_813.png'
 
 export const HomePage = ({ page }) => {
   const firstScreen = page.firstScreen
-  // console.log(page)
-  // console.log(firstScreen)
+  console.log(page)
+  console.log(firstScreen)
 
   return (
     <>
@@ -422,34 +422,11 @@ export const HomePage = ({ page }) => {
             </p>
           </div>
         </div>
-        <div className="container">
-          <BlueCardBlock
-            title={'98% of Students Recommend Us'}
-            content={'Get in Touch Now'}
-            linkText={'Hire a Tutor'}
-            linkUrl={'/'}
-          />
+        <div className="container narrow">
+          <BlueCardBlock title={'98% of Students Recommend Us'} content={'Get in Touch Now'} />
         </div>
       </section>
-      <section className={`interactive pt-18x pb-18x ${styles.interactive}`}>
-        <div className="container">
-          <div className="flex items-center">
-            <div className="w-full w-1/2_lg relative">
-              <img src={illustrationImg.src} alt="Illustration" />
-            </div>
-            <div className="w-full w-1/2_lg pl-11x">
-              <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
-                Interactive Tutoring Platform
-              </p>
-              <h2 className="fz-48p fw-600 mb-4x">Engaging Lessons with our Platform</h2>
-              <p className="fz-18p">
-                Lessons are brought to life and students can interact with tutors by drawing
-                diagrams, solving equations, editing essays, and annotating work.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <InteractiveBlock />
       <RatedBlock />
       <OurServiceBlock />
       <HireFormBlock />
