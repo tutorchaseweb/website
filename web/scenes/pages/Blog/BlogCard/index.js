@@ -31,7 +31,12 @@ export const BlogCard = ({ article }) => {
             objectPosition="center"
           />
         ) : (
-          <img src={`${article.mainImage.asset.url}`} alt={article.mainImage?.alt} />
+          <img
+            src={`${article.mainImage.asset.url}`}
+            alt={article.mainImage?.alt}
+            className="absolute inset-0 w-full h-full"
+            style={{ objectFit: 'cover' }}
+          />
         )}
       </div>
       <div className="content flex-1 p-3x">
