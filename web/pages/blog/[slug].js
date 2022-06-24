@@ -1,7 +1,6 @@
 import client from '../../utils/sanity-client'
 import { Layout } from '~/components/Layout'
-import { ArticlePage } from "~/scenes/pages/Blog/Article";
-
+import { ArticlePage } from '~/scenes/pages/Blog/Article'
 
 export const Post = ({ post }) => {
   return (
@@ -12,26 +11,27 @@ export const Post = ({ post }) => {
 }
 
 export async function getStaticPaths() {
-  const paths = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  )
+  const paths = await client.fetch(`*[_type == "post" && defined(slug.current)][].slug.current`)
 
   return {
-    paths: paths.map((slug) => ({params: {slug}})),
+    paths: paths.map((slug) => ({ params: { slug } })),
     fallback: true,
   }
 }
 
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
-  const { slug = "" } = context.params
-  const post = await client.fetch(`
+  const { slug = '' } = context.params
+  const post = await client.fetch(
+    `
     *[_type == "post" && slug.current == $slug][0]
-  `, { slug })
+  `,
+    { slug }
+  )
   return {
     props: {
-      post
-    }
+      post,
+    },
   }
 }
 
