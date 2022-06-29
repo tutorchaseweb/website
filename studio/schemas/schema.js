@@ -7,6 +7,10 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import siteConfig from './documents/siteConfig'
 import homePage from './documents/homePage'
+import tutor from './documents/tutor'
+import review from './documents/review'
+import subject from './documents/subject'
+import level from './documents/level'
 
 // Object types
 import logo from './objects/brandLogo'
@@ -31,6 +35,10 @@ export default createSchema({
   types: schemaTypes.concat([
     siteConfig,
     homePage,
+    tutor,
+    review,
+    subject,
+    level,
     logo,
     mainImage,
     floatImage,
