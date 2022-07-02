@@ -41,5 +41,11 @@ export default {
       description: 'Add level of the tutor.',
       of: [{ type: 'reference', to: { type: 'level' } }],
     },
+    {
+      name: 'qualifications',
+      type: 'array',
+      title: 'Qualifications',
+      of: [{ type: 'qualification' }],
+    },
   ],
 }

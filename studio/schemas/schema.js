@@ -7,6 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import siteConfig from './documents/siteConfig'
 import homePage from './documents/homePage'
+import blogPage from './documents/blogPage'
 import tutor from './documents/tutor'
 import review from './documents/review'
 import subject from './documents/subject'
@@ -18,6 +19,7 @@ import mainImage from './objects/mainImage'
 import floatImage from './objects/floatImage'
 import link from './objects/link'
 import firstScreen from './objects/homePage/firstScreen'
+import qualification from './objects/tutor/qualification'
 
 // We import object and document schemas
 import blockContent from './blockContent'
@@ -35,6 +37,7 @@ export default createSchema({
   types: schemaTypes.concat([
     siteConfig,
     homePage,
+    blogPage,
     tutor,
     review,
     subject,
@@ -53,5 +56,6 @@ export default createSchema({
     blockContent,
     simpleContent,
     firstScreen,
+    qualification,
   ]),
 })

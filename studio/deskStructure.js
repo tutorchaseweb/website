@@ -17,6 +17,7 @@ const hiddenDocTypes = (listItem) =>
   ![
     'site-config',
     'home-page',
+    'blog-page',
     'category',
     'author',
     'post',
@@ -56,6 +57,10 @@ export default () =>
                 .title('Home page')
                 .icon(AiOutlineHome)
                 .child(S.document().schemaType('home-page').documentId('home-page')),
+              S.listItem()
+                .title('Blog page')
+                .icon(IoNewspaperOutline)
+                .child(S.document().schemaType('blog-page').documentId('blog-page')),
             ])
         ),
       S.listItem()

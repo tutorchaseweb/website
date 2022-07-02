@@ -15,7 +15,9 @@ export const Home = ({ data }) => {
         <meta name="description" content={page.description} />
         <meta property="og:title" content={page.title} key="title" />
         <meta property="og:description" content={page.description} key="description" />
-        {/*<meta property="og:url" content={config.url + router.route} key="url" />*/}
+        {typeof window !== 'undefined' && (
+          <meta property="og:url" content={window.location.href} key="url" />
+        )}
       </Head>
       <HomePage page={page} />
     </Layout>
