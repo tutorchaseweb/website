@@ -7,7 +7,7 @@ export const Post = ({ tutor }) => {
   return (
     <Layout>
       <Head>
-        <title>{tutor.name}</title>
+        <title>{tutor?.name}</title>
       </Head>
       <TutorPage tutor={tutor} />
     </Layout>
