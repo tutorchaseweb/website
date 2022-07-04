@@ -48,6 +48,12 @@ html {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F9FAFB;
+}
 
 .container {
   width: 100%;

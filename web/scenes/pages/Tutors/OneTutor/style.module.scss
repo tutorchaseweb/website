@@ -1,0 +1,49 @@
+@import 'styles/variables';
+
+.mainInfo {
+  :global {
+    .avatar {
+      width: 100%;
+      max-width: 16rem;
+      aspect-ratio: 1/1;
+    }
+    .teach {
+      display: inline-block;
+      line-height: 1.2;
+      background-color: #F4F5FA;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
+.vettedTutor {
+  background-color: #EDF0FF;
+
+  :global {
+    .title {
+      b {
+        color: #F57C40;
+        text-decoration: underline;
+      }
+    }
+    strong {
+      color: inherit;
+    }
+  }
+}
+
+.experience {
+  background: #FFF1EC url('/images/illustration.png') no-repeat right center/contain;
+
+  :global {
+    .activity {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+
+      + .activity {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

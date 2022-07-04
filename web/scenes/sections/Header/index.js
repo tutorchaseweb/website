@@ -16,7 +16,7 @@ export const Header = () => {
         const { logo, primaryPhone = text.contacts.primaryPhone } = config
 
         return (
-          <header className="w-full pt-3x pb-3x" style={{ float: 'left' }}>
+          <header className="w-full pt-3x pb-3x absolute">
             <div className="container wide flex justify-between items-center gap-8">
               {route === '/' ? (
                 <img src={logo.asset.url} alt={logo.alt} />
