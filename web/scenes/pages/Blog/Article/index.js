@@ -42,12 +42,7 @@ export const ArticlePage = ({ article }) => {
     return null
   }
   const { allPost } = data
-
-  // allPost && console.log(allPost)
-
   const posts = allPost.slice(0, 3)
-
-  console.log(article)
 
   return (
     <>

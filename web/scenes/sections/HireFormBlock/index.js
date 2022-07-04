@@ -76,9 +76,11 @@ export const HireFormBlock = ({ className = '' }) => {
                     />
                   </label>
                 </div>
-                <label>
-                  <input type="hidden" name="source" value={window.location.href} />
-                </label>
+                {typeof window !== 'undefined' && (
+                  <label>
+                    <input type="hidden" name="source" value={window.location.href} />
+                  </label>
+                )}
                 <div className="flex gap-4 items-center justify-between">
                   <span>
                     <b>1</b>/2 About yourself

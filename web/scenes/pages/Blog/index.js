@@ -8,20 +8,20 @@ import { BlogCard } from './BlogCard'
 
 import styles from './style.module.scss'
 
-export const BlogPage = ({ posts }) => {
+export const BlogPage = ({ page, posts }) => {
   return (
     <>
       <section className={`firstScreen pt-19x ${styles.firstScreen}`}>
         <div className="container">
           <div className="text-center">
-            <h1 className="fz-64p fw-700 l-height-1 mb-2x">Blog</h1>
+            <h1 className="fz-64p fw-700 l-height-1 mb-2x">{page.title}</h1>
             <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '400px' }}>
-              Elite online tutoring delivered globally by expert A-Level Maths tutors.
+              {page.description}
             </p>
           </div>
         </div>
       </section>
-      <section className={`cards-wrap relative pt-8x ${styles.cardsWrap}`}>
+      <section className={`cards-wrap relative pb-8x ${styles.cardsWrap}`}>
         <div className="container">
           <form className="flex items-center justify-between mb-3x">
             <label className="search relative">
@@ -29,8 +29,12 @@ export const BlogPage = ({ posts }) => {
               <input type="search" placeholder="Search" />
             </label>
             <label className="sorting">
-              <select name="sorting" className="p-1x border-light l-height-1 w-full rounded-xSmall">
-                <option value="none">Sort By</option>
+              <select
+                name="sorting"
+                defaultValue="DEFAULT"
+                className="p-1x border-light l-height-1 w-full rounded-xSmall"
+              >
+                <option value="DEFAULT">Sort By</option>
                 <option value="new">New</option>
                 <option value="old">Old</option>
               </select>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { gql, useQuery } from '@apollo/client'
 import { Header, Footer } from '~/scenes/sections'
 import { Loader } from '~/components/Loader'
@@ -7,6 +8,8 @@ import { Loader } from '~/components/Loader'
 export const ConfigContext = React.createContext({})
 
 export const Layout = ({ children }) => {
+  const { route } = useRouter()
+
   const QUERY = gql`
     query Config {
       SiteConfig(id: "global-config") {
@@ -61,8 +64,8 @@ export const Layout = ({ children }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header />
-        <main className="main-content">{children}</main>
-        <Footer />
+        <main className="main-content flex-1 flex flex-col">{children}</main>
+        {route !== '/404' && <Footer />}
       </ConfigContext.Provider>
     )
   )
