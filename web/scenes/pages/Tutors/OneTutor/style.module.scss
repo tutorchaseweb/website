@@ -1,7 +1,32 @@
 @import 'styles/variables';
 
 .section {
+  z-index: 1;
 
+  &::before {
+    content: '';
+    display: block;
+    width: 50%;
+    aspect-ratio: 4/3;
+    background: rgba(176, 190, 255, 0.4);
+    filter: blur(300px);
+    position: absolute;
+    left: 0;
+    top: 40%;
+    z-index: -2;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 50%;
+    aspect-ratio: 4/3;
+    background: rgba(225, 220, 207, 0.8);
+    filter: blur(200px);
+    position: absolute;
+    right: 0;
+    top: 40%;
+    z-index: -1;
+  }
 }
 
 .mainInfo {

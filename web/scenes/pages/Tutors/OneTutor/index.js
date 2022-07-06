@@ -12,7 +12,7 @@ import styles from './style.module.scss'
 export const TutorPage = ({ tutor }) => {
   return (
     <>
-      <section className="pt-20x">
+      <section className={`pt-20x relative ${styles.section}`}>
         <div className="container narrow">
           <div className={`bg-white rounded-rem pt-7x pb-8x pl-8x pr-8x mb-4x ${styles.mainInfo}`}>
             <div className="flex items-center">
@@ -55,7 +55,7 @@ export const TutorPage = ({ tutor }) => {
               </div>
             </div>
           </div>
-          <div className="flex mb-4x">
+          <div className="flex mb-4x rounded-rem overflow-hidden">
             <div className="w-1/2_lg bg-white pt-7x pb-8x pl-8x pr-8x">
               <h3 className="fz-20p fw-600 mb-4x">Qualifications</h3>
               {tutor.qualifications.map((qualification, i) => {
@@ -96,7 +96,7 @@ export const TutorPage = ({ tutor }) => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-8x mb-4x">
+          <div className="bg-white p-8x mb-4x rounded-rem">
             <h3 className="fz-20p fw-600 mb-2x">Tutoring Experience</h3>
             <PortableText value={tutor.tutoringExperience} />
             <h3 className="fz-20p fw-600 mt-6x mb-2x">Tutoring Approach</h3>
