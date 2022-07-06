@@ -6,12 +6,12 @@ import { Layout } from '~/components/Layout'
 export const Tutors = (props) => {
   return (
     <Layout>
-      <div className="container">
-        <h1>Tutors</h1>
+      <div className="container pt-20x">
+        <h1>Tutors list</h1>
         <ul>
           {props.tutors.map((tutor) => {
             return (
-              <li>
+              <li key={tutor._id} className="fz-18p fw-500">
                 <Link href={`/tutors/${tutor.slug.current}`}>
                   <a>{tutor.name}</a>
                 </Link>

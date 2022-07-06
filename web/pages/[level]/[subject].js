@@ -4,7 +4,7 @@ import { Layout } from '~/components/Layout'
 export const Subject = ({ level, subject }) => {
   return (
     <Layout>
-      <div className="container">
+      <div className="container pt-20x">
         <h1>Subject {subject?.title}</h1>
         <h3>Level {level?.title}</h3>
       </div>

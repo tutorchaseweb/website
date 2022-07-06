@@ -1,5 +1,9 @@
 @import 'styles/variables';
 
+.section {
+
+}
+
 .mainInfo {
   :global {
     .avatar {
@@ -44,6 +48,46 @@
       + .activity {
         margin-left: 1rem;
       }
+    }
+  }
+}
+
+.findTutor {
+  :global {
+    .avatar {
+      max-width: 13rem;
+      aspect-ratio: 3/4;
+
+      .live {
+        top: 1rem;
+        left: 1rem;
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        z-index: 3;
+        border-radius: 4px;
+      }
+    }
+    .card {
+      background-image: url('/images/graph.png');
+      background-repeat: no-repeat;
+      background-position-y: center;
+      background-position-x: calc(100% - 3rem);
+      width: 100%;
+      max-width: 38rem;
+    }
+    .text {
+      width: 100%;
+      max-width: 20.5rem;
+    }
+    .flexible {
+      top: -2rem;
+      right: 2rem;
+      max-width: 13rem;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+    }
+    .controlPanel {
+      right: 2rem;
+      bottom: 2rem;
     }
   }
 }
