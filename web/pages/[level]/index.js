@@ -13,7 +13,7 @@ export const Level = ({ level, subjects }) => {
   return (
     <Layout>
       {!!level && (
-        <div className="container">
+        <div className="container pt-20x">
           <h1>Level {level.title}</h1>
           <h3>Subjects</h3>
           <ul>
@@ -51,7 +51,7 @@ export async function getStaticProps(context) {
       _type == 'level' && slug.current == $level => {
         ...,
       },
-      _type == 'level' => {
+      _type == 'subject' => {
         ...,
       }
     }

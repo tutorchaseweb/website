@@ -4,14 +4,15 @@ import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
 import SVG from '~/components/SVG'
 import { HireFormBlock } from '~/scenes/sections'
-import { star, reviewsBlue, studyHat } from '~/utils/svgImages'
+import { star, reviewsBlue, studyHat, videoCam } from '~/utils/svgImages'
 
+import ControlPanel from '~/assets/images/Control_Panel.png'
 import styles from './style.module.scss'
 
 export const TutorPage = ({ tutor }) => {
   return (
     <>
-      <section className="pt-20x">
+      <section className={`pt-20x relative ${styles.section}`}>
         <div className="container narrow">
           <div className={`bg-white rounded-rem pt-7x pb-8x pl-8x pr-8x mb-4x ${styles.mainInfo}`}>
             <div className="flex items-center">
@@ -54,7 +55,7 @@ export const TutorPage = ({ tutor }) => {
               </div>
             </div>
           </div>
-          <div className="flex mb-4x">
+          <div className="flex mb-4x rounded-rem overflow-hidden">
             <div className="w-1/2_lg bg-white pt-7x pb-8x pl-8x pr-8x">
               <h3 className="fz-20p fw-600 mb-4x">Qualifications</h3>
               {tutor.qualifications.map((qualification, i) => {
@@ -95,7 +96,7 @@ export const TutorPage = ({ tutor }) => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-8x mb-4x">
+          <div className="bg-white p-8x mb-4x rounded-rem">
             <h3 className="fz-20p fw-600 mb-2x">Tutoring Experience</h3>
             <PortableText value={tutor.tutoringExperience} />
             <h3 className="fz-20p fw-600 mt-6x mb-2x">Tutoring Approach</h3>
@@ -109,7 +110,7 @@ export const TutorPage = ({ tutor }) => {
               </span>
             ))}
           </div>
-          <div className="bg-white pt-7x pb-4x pl-8x pr-8x rounded-rem">
+          <div className="bg-white pt-7x pb-4x pl-8x pr-8x mb-15x rounded-rem">
             <h2 className="fz-36p fw-600 ">Tutor reviews</h2>
             {tutor.reviews.map((review, idx) => {
               return (
@@ -134,6 +135,36 @@ export const TutorPage = ({ tutor }) => {
                 </div>
               )
             })}
+          </div>
+          <div className={`flex items-center justify-between gap-8 mb-8x ${styles.findTutor}`}>
+            <div className="card bg-white rounded-small relative p-8x">
+              <div className="avatar relative rounded-xSmall overflow-hidden">
+                <span className="live absolute bg-white color-blue fw-700 l-height-1">Live</span>
+                <Image
+                  src={`${getImageUrl(tutor.image.asset._ref)}`}
+                  alt={tutor.name}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </div>
+              <div className="flexible absolute pt-2x pb-2x pl-3x pr-3x rounded-small bg-white">
+                <SVG content={videoCam()} size={28} />
+                <p className="mt-2x">
+                  Flexible online tutoring to fit <b>around your schedule</b>
+                </p>
+              </div>
+              <img src={ControlPanel.src} alt="Control Panel" className="controlPanel absolute" />
+            </div>
+            <div className="text">
+              <p className="fz-18p fw-600 l-height-1 uppercase color-lightGray mb-3x">
+                Study With Our Tutors
+              </p>
+              <h2 className="fz-36p fw-600 l-height-1 mb-7x">Find a tutor like {tutor.name}</h2>
+              <a href="#" className="btn btn-blue">
+                Go Explore
+              </a>
+            </div>
           </div>
         </div>
       </section>
