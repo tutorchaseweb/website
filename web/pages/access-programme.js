@@ -1,14 +1,14 @@
+import Head from 'next/head'
 import { Layout } from '~/components/Layout'
+import { AccessProgrammePage } from '~/scenes/pages/AccessProgramme'
 
 export const AccessProgramme = () => {
   return (
     <Layout>
-      <section>
-        <div className="container">
-          <h1>Access Programme</h1>
-          <h3>TutorChase Access</h3>
-        </div>
-      </section>
+      <Head>
+        <title>TutorChase Access</title>
+      </Head>
+      <AccessProgrammePage />
     </Layout>
   )
 }

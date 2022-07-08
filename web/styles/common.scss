@@ -137,3 +137,30 @@ h1, h2, h3, h4, h5, h6 {
     float: right;
   }
 }
+
+.ordered-list {
+  li {
+    counter-increment: index;
+    display: flex;
+    align-items: flex-start;
+
+    + li {
+      margin-top: 1.5rem;
+    }
+    &::before {
+      content: "0" counter(index);
+      display: block;
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(245, 124, 64, 0.12);
+      font-weight: 600;
+      line-height: 44px;
+      text-align: center;
+      letter-spacing: 0.03em;
+      color: #F57C40;
+      margin-right: 2rem;
+    }
+  }
+}
