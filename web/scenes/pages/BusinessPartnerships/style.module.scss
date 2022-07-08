@@ -1,0 +1,60 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: #FFF1EC url('/images/bg-first-section.jpg') no-repeat center/cover;
+
+  :global {
+    .left-card {
+      max-width: 12.375rem;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.04);
+      border-radius: 8px;
+      padding: 1.5rem 1.5rem 1rem 1.5rem;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      text-align: left;
+    }
+    .right-card {
+      width: 100%;
+      max-width: 7.5rem;
+      padding: 3rem 1rem 1rem;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      border-radius: 8px;
+
+      .circle {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+.flexibility {
+
+  :global {
+    .square {
+      width: 3rem;
+      height: 3rem;
+      background-color: #F9FAFB;
+      border-radius: 8px;
+    }
+  }
+}
+
+.contacts {
+  background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .title {
+      max-width: 25rem;
+    }
+    .links {
+      max-width: 34rem;
+    }
+  }
+}

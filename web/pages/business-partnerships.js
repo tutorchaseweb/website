@@ -1,13 +1,14 @@
+import Head from 'next/head'
 import { Layout } from '~/components/Layout'
+import { BusinessPartnershipsPage } from '~/scenes/pages/BusinessPartnerships'
 
 export const BusinessPartnerships = () => {
   return (
     <Layout>
-      <section>
-        <div className="container">
-          <h1>Business Partnerships</h1>
-        </div>
-      </section>
+      <Head>
+        <title>Business Partnerships</title>
+      </Head>
+      <BusinessPartnershipsPage />
     </Layout>
   )
 }

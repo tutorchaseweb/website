@@ -20,7 +20,7 @@ export const Footer = () => {
         } = config
 
         return (
-          <footer className="pt-9x pb-9x">
+          <footer className="pt-9x pb-9x bg-lightGray">
             <div className="container">
               <div className="flex justify-between gap-8">
                 <div className="link-group flex flex-col fz-14p">
