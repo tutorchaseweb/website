@@ -7,7 +7,7 @@ export const ALevelPage = () => {
         <h1 className="text-center">A-Level</h1>
         <ul>
           <li>
-            <Link href={'/a-level/maths'}>
+            <Link href={'/a-lvl/maths'}>
               <a className="fw-600">Maths Tutors</a>
             </Link>
           </li>

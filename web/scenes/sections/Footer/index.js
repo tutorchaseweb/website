@@ -20,7 +20,7 @@ export const Footer = () => {
         } = config
 
         return (
-          <footer className="pt-9x pb-9x">
+          <footer className="pt-9x pb-9x bg-lightGray">
             <div className="container">
               <div className="flex justify-between gap-8">
                 <div className="link-group flex flex-col fz-14p">
@@ -82,12 +82,12 @@ export const Footer = () => {
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/access-programme">
                         <a>{text.menu.AccessProgramme}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/business-partnerships">
                         <a>{text.menu.BusinessPartnerships}</a>
                       </Link>
                     </li>
@@ -102,7 +102,7 @@ export const Footer = () => {
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/a-level">
+                      <Link href="/a-lvl">
                         <a>{text.menu.ALevel}</a>
                       </Link>
                     </li>

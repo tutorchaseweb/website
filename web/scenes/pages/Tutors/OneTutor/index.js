@@ -12,7 +12,7 @@ import styles from './style.module.scss'
 export const TutorPage = ({ tutor }) => {
   return (
     <>
-      <section className={`pt-20x relative ${styles.section}`}>
+      <section className={`pt-20x relative bg-lightGray ${styles.section}`}>
         <div className="container narrow">
           <div className={`bg-white rounded-rem pt-7x pb-8x pl-8x pr-8x mb-4x ${styles.mainInfo}`}>
             <div className="flex items-center">
@@ -167,8 +167,8 @@ export const TutorPage = ({ tutor }) => {
             </div>
           </div>
         </div>
+        <HireFormBlock />
       </section>
-      <HireFormBlock />
     </>
   )
 }

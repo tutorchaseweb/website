@@ -189,10 +189,17 @@ export const awesomeStar = (color = Color.Orange) =>
     </svg>
   `
 
+// export const studyHat2 = (color = Color.Orange) =>
+//   `
+//     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+//       <path fill="${color}" d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18ZM12 3L1 9L12 15L21 10.09V17H23V9L12 3Z"/>
+//     </svg>
+//   `
+
 export const studyHat = (color = Color.Orange) =>
   `
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="${color}" d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18ZM12 3L1 9L12 15L21 10.09V17H23V9L12 3Z"/>
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M5.83464 15.3767V20.0433L14.0013 24.5L22.168 20.0433V15.3767L14.0013 19.8333L5.83464 15.3767ZM14.0013 3.5L1.16797 10.5L14.0013 17.5L24.5013 11.7717V19.8333H26.8346V10.5L14.0013 3.5Z"/>
     </svg>
   `
 
@@ -207,5 +214,16 @@ export const reviewsBlue = (color = Color.Blue) =>
   `
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill="${color}" d="M23.334 2.33398H4.66732C3.38398 2.33398 2.33398 3.38398 2.33398 4.66732V25.6673L7.00065 21.0007H23.334C24.6173 21.0007 25.6673 19.9507 25.6673 18.6673V4.66732C25.6673 3.38398 24.6173 2.33398 23.334 2.33398ZM15.8323 13.499L14.0007 17.5007L12.169 13.499L8.16732 11.6673L12.169 9.83565L14.0007 5.83398L15.8323 9.83565L19.834 11.6673L15.8323 13.499Z"/>
+    </svg>
+  `
+
+export const academy = (color = Color.Orange) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M7 10H5V17H7V10Z"/>
+      <path fill="${color}" d="M13 10H11V17H13V10Z"/>
+      <path fill="${color}" d="M19 10H17V17H19V10Z"/>
+      <path fill="${color}" d="M22 6L12 1L2 6V8H22V6Z"/>
+      <path fill="${color}" d="M2 19V21H22C22 20.2409 22 19.7059 22 19H2Z"/>
     </svg>
   `
