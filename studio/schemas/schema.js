@@ -6,8 +6,11 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Document types
 import siteConfig from './documents/siteConfig'
-import homePage from './documents/homePage'
-import blogPage from './documents/blogPage'
+import homePage from './documents/pages/homePage'
+import blogPage from './documents/pages/blogPage'
+import post from './documents/post'
+import author from './documents/author'
+import category from './documents/category'
 import tutor from './documents/tutor'
 import review from './documents/review'
 import subject from './documents/subject'
@@ -15,18 +18,13 @@ import level from './documents/level'
 
 // Object types
 import logo from './objects/brandLogo'
+import blockContent from './objects/blockContent'
+import simpleContent from './objects/simpleContent'
 import mainImage from './objects/mainImage'
 import floatImage from './objects/floatImage'
 import link from './objects/link'
 import firstScreen from './objects/homePage/firstScreen'
 import qualification from './objects/tutor/qualification'
-
-// We import object and document schemas
-import blockContent from './blockContent'
-import simpleContent from './simpleContent'
-import category from './category'
-import post from './post'
-import author from './author'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -46,13 +44,9 @@ export default createSchema({
     mainImage,
     floatImage,
     link,
-    // The following are document types which will appear
-    // in the studio.
     post,
     author,
     category,
-    // When added to this list, object types can be used as
-    // { type: 'typename' } in other document schemas
     blockContent,
     simpleContent,
     firstScreen,
