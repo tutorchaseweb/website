@@ -1,13 +1,14 @@
+import Head from 'next/head'
 import { Layout } from '~/components/Layout'
+import { ReviewsPage } from '~/scenes/pages/Reviews'
 
 export const Reviews = () => {
   return (
     <Layout>
-      <section>
-        <div className="container">
-          <h1>Reviews</h1>
-        </div>
-      </section>
+      <Head>
+        <title>Reviews</title>
+      </Head>
+      <ReviewsPage />
     </Layout>
   )
 }

@@ -8,8 +8,10 @@ import {
   BsGear,
   BsJournalBookmark,
   BsStarHalf,
+  FaWpforms,
   IoAppsOutline,
   IoNewspaperOutline,
+  TbSchool,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -25,6 +27,7 @@ const hiddenDocTypes = (listItem) =>
     'review',
     'subject',
     'level',
+    'hireForm',
   ].includes(listItem.getId())
 
 export default () =>
@@ -46,6 +49,23 @@ export default () =>
         .icon(BsStarHalf)
         .schemaType('review')
         .child(S.documentTypeList('review').title('Review')),
+      S.listItem()
+        .title('Requests (forms)')
+        .icon(FaWpforms)
+        .child(
+          S.list()
+            .title('Choose the type')
+            .items([
+              S.listItem()
+                .title('Hire a tutor queries')
+                .icon(TbSchool)
+                .child(S.documentTypeList('hireForm').title('Hire a tutor')),
+              // S.listItem()
+              //   .title('Blog page')
+              //   .icon(GiTeacher)
+              //   .child(S.document().schemaType('blog-page').documentId('blog-page')),
+            ])
+        ),
       S.listItem()
         .title('Pages')
         .icon(BsBook)
