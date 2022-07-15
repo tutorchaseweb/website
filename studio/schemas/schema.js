@@ -16,6 +16,7 @@ import review from './documents/review'
 import subject from './documents/subject'
 import level from './documents/level'
 import hireForm from './documents/hireForm'
+import applyForm from './documents/applyForm'
 
 // Object types
 import logo from './objects/brandLogo'
@@ -42,6 +43,7 @@ export default createSchema({
     subject,
     level,
     hireForm,
+    applyForm,
     logo,
     mainImage,
     floatImage,

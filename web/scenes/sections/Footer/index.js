@@ -77,7 +77,7 @@ export const Footer = () => {
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/tutor-applications">
                         <a>{text.menu.TutorApplications}</a>
                       </Link>
                     </li>

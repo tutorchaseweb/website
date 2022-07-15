@@ -9,9 +9,10 @@ import {
   BsJournalBookmark,
   BsStarHalf,
   FaWpforms,
+  GiTeacher,
   IoAppsOutline,
   IoNewspaperOutline,
-  TbSchool,
+  IoSchoolOutline,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -28,6 +29,7 @@ const hiddenDocTypes = (listItem) =>
     'subject',
     'level',
     'hireForm',
+    'applyForm',
   ].includes(listItem.getId())
 
 export default () =>
@@ -58,12 +60,12 @@ export default () =>
             .items([
               S.listItem()
                 .title('Hire a tutor queries')
-                .icon(TbSchool)
+                .icon(IoSchoolOutline)
                 .child(S.documentTypeList('hireForm').title('Hire a tutor')),
-              // S.listItem()
-              //   .title('Blog page')
-              //   .icon(GiTeacher)
-              //   .child(S.document().schemaType('blog-page').documentId('blog-page')),
+              S.listItem()
+                .title('Apply form for tutors')
+                .icon(GiTeacher)
+                .child(S.documentTypeList('applyForm').title('Apply form')),
             ])
         ),
       S.listItem()
