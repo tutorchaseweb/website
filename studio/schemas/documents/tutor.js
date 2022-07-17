@@ -53,6 +53,13 @@ export default {
       of: [{ type: 'reference', to: { type: 'level' } }],
     },
     {
+      name: 'universities',
+      type: 'array',
+      title: 'Universities',
+      description: 'Add universities of the tutor.',
+      of: [{ type: 'reference', to: { type: 'university' } }],
+    },
+    {
       name: 'education',
       title: 'Basic education',
       type: 'string',
@@ -96,6 +103,13 @@ export default {
       options: {
         layout: 'tags',
       },
+    },
+    {
+      name: 'elected',
+      type: 'boolean',
+      title: 'Elected',
+      description: 'Enable this option to display the tutor on the main page',
+      initialValue: false,
     },
   ],
 }

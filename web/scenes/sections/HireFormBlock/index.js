@@ -1,13 +1,50 @@
 import { useState } from 'react'
 import SVG from '~/components/SVG'
+import { handleMutations } from '~/utils/helpers'
 import { Circle } from '~/components/Circle'
-import { email, phone, arrowLeft, doneCheck } from '~/utils/svgImages'
+import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
 export const HireFormBlock = ({ className = '' }) => {
   const [activeStep, setActiveStep] = useState(0)
+  const [source, setSource] = useState(process.env.SANITY_STUDIO_PROJECT_BASEPATH)
+  const [position, setPosition] = useState('not selected')
+  const [fullName, setFullName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [country, setCountry] = useState('not selected')
+  const [details, setDetails] = useState('')
+  const [frequencyDuration, setFrequencyDuration] = useState('')
+
+  const clearAllFields = () => {
+    setPosition('not selected')
+    setCountry('not selected')
+    setFullName('')
+    setPhone('')
+    setEmail('')
+  }
+
+  const sendForm = () => {
+    const mutations = [
+      {
+        create: {
+          _type: 'hireForm',
+          source,
+          position,
+          fullName,
+          country,
+          phone,
+          email,
+          details,
+          frequencyDuration,
+          processed: false,
+        },
+      },
+    ]
+    return handleMutations(mutations)
+  }
 
   return (
     <section className={`block ${className}`}>
@@ -24,13 +61,25 @@ export const HireFormBlock = ({ className = '' }) => {
               <>
                 <div className="flex gap-4 mb-3x">
                   <label className="flex-1 relative">
-                    <input type="radio" name="role" value="parent" className="absolute" />
+                    <input
+                      type="radio"
+                      name="role"
+                      value="parent"
+                      className="absolute"
+                      onChange={(e) => setPosition(e.target.value)}
+                    />
                     <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
                       I am a parent
                     </span>
                   </label>
                   <label className="flex-1 relative">
-                    <input type="radio" name="role" value="student" className="absolute" />
+                    <input
+                      type="radio"
+                      name="role"
+                      value="student"
+                      className="absolute"
+                      onChange={(e) => setPosition(e.target.value)}
+                    />
                     <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
                       I am a student
                     </span>
@@ -43,6 +92,8 @@ export const HireFormBlock = ({ className = '' }) => {
                       type="text"
                       placeholder="Enter your name here"
                       className="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
                     />
                   </label>
                   <label className="flex-1 fz-14p">
@@ -51,12 +102,17 @@ export const HireFormBlock = ({ className = '' }) => {
                       id=""
                       name="country"
                       className="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      onChange={(e) => setCountry(e.target.value)}
                     >
                       <option value="" selected disabled>
                         Select country
                       </option>
+                      <option value="USA">USA</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Australia">Australia</option>
                     </select>
                   </label>
+                  <p></p>
                 </div>
                 <div className="flex gap-4 mb-4x flex-1">
                   <label className="flex-1 fz-14p">
@@ -65,6 +121,8 @@ export const HireFormBlock = ({ className = '' }) => {
                       type="tel"
                       placeholder="Select method"
                       className="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </label>
                   <label className="flex-1 fz-14p">
@@ -73,6 +131,8 @@ export const HireFormBlock = ({ className = '' }) => {
                       type="email"
                       placeholder="Enter your email"
                       className="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </label>
                 </div>
@@ -88,7 +148,10 @@ export const HireFormBlock = ({ className = '' }) => {
                   <button
                     type="button"
                     className="btn btn-blue"
-                    onClick={() => setActiveStep(activeStep + 1)}
+                    onClick={() => {
+                      typeof window !== 'undefined' && setSource(window.location.href)
+                      setActiveStep(activeStep + 1)
+                    }}
                   >
                     {text.form.btnNextStep}
                   </button>
@@ -101,9 +164,9 @@ export const HireFormBlock = ({ className = '' }) => {
                   <label className="flex-1">
                     <span className="fz-14p fw-500 color-black">Details of Tutoring Request</span>
                     <textarea
-                      id=""
-                      name=""
                       className="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      value={details}
+                      onChange={(e) => setDetails(e.target.value)}
                     />
                   </label>
                 </div>
@@ -113,9 +176,9 @@ export const HireFormBlock = ({ className = '' }) => {
                       Frequency and Duration of Tuition
                     </span>
                     <textarea
-                      id=""
-                      name=""
                       className="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      value={frequencyDuration}
+                      onChange={(e) => setFrequencyDuration(e.target.value)}
                     />
                   </label>
                 </div>
@@ -134,7 +197,14 @@ export const HireFormBlock = ({ className = '' }) => {
                     <button
                       type="button"
                       className="btn btn-blue"
-                      onClick={() => setActiveStep(activeStep + 1)}
+                      onClick={() => {
+                        sendForm()
+                          .then((r) => {
+                            console.log(r)
+                            // setActiveStep(activeStep + 1)
+                          })
+                          .catch((e) => console.log(e))
+                      }}
                     >
                       {text.form.btnNextStep}
                     </button>
@@ -174,13 +244,13 @@ export const HireFormBlock = ({ className = '' }) => {
           <div className="links flex items-center justify-between mx-auto fz-20p fw-600">
             <a href={`mailto:${text.contacts.email}`} className="flex items-center">
               <Circle size={32} color={Color.Blue} classList="mr-1x">
-                <SVG content={email()} />
+                <SVG content={emailIcon()} />
               </Circle>
               {text.contacts.email}
             </a>
             <a href={`tel:${text.contacts.primaryPhone}`} className="flex items-center">
               <Circle size={32} color={Color.Blue} classList="mr-1x">
-                <SVG content={phone()} size={14} />
+                <SVG content={phoneIcon()} size={14} />
               </Circle>
               {text.contacts.primaryPhone}
             </a>

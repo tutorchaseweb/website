@@ -11,6 +11,7 @@ import blogPage from './documents/pages/blogPage'
 import post from './documents/post'
 import author from './documents/author'
 import category from './documents/category'
+import university from './documents/university'
 import tutor from './documents/tutor'
 import review from './documents/review'
 import subject from './documents/subject'
@@ -42,6 +43,7 @@ export default createSchema({
     review,
     subject,
     level,
+    university,
     hireForm,
     applyForm,
     logo,

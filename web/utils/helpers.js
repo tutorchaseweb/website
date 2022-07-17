@@ -56,3 +56,32 @@ export const myPortableTextComponents = {
     ),
   },
 }
+
+export const handleMutations = (mutations) => {
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v${process.env.NEXT_PUBLIC_SANITY_API_VERSION}/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SANITY_API_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          mutations,
+          returnIds: true,
+          // returnDocuments: true,
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        log('Sanity mutation result', result)
+        resolve(result)
+      })
+      .catch((error) => {
+        console.error(error)
+        reject(error)
+      })
+  })
+}
