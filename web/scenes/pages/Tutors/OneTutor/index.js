@@ -60,31 +60,16 @@ export const TutorPage = ({ tutor }) => {
               <h3 className="fz-20p fw-600 mb-4x">Qualifications</h3>
               {tutor.qualifications.map((qualification, i) => {
                 return (
-                  <div key={qualification._key} className={`card ${i !== 0 ? 'mt-3x' : ''}`}>
-                    <p className="mb-2x">
-                      <span className="fw-600 color-blue mr-1x">{qualification.university}:</span>
-                      {qualification.specialized}
-                    </p>
-                    <p className="mb-2x">
-                      <span className="fw-600 color-blue mr-1x">{qualification.levels.title}:</span>
-                      {qualification.levelList.map((item, i) => (
-                        <>
-                          {i !== 0 && <>,&nbsp;</>}
-                          <span>{item}</span>
-                        </>
-                      ))}
-                    </p>
-                    <p>
-                      <span className="fw-600 color-blue mr-1x">MAT:</span>
-                      {qualification.mat}
-                    </p>
-                  </div>
+                  <p key={qualification._key} className={`card ${i === 0 ? '' : 'mt-2x'}`}>
+                    <span className="fw-600 color-blue mr-1x">{qualification.title}:</span>
+                    {qualification.description}
+                  </p>
                 )
               })}
             </div>
             <div className={`w-1/2_lg pt-7x pb-8x pl-8x pr-8x ${styles.vettedTutor}`}>
-              <h3 className="fz-20p fw-600 color-blue flex items-center justify-between mb-6x">
-                <span>Qualifications</span>
+              <h3 className="fz-20p fw-600 color-blue flex items-center justify-between mb-5x">
+                <span>Vetted Tutor</span>
                 <SVG content={reviewsBlue()} size={24} />
               </h3>
               <p

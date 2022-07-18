@@ -1,5 +1,6 @@
 import imageUrlBuilder from '@sanity/image-url'
 import client from './sanity-client'
+import { monthsOfHheYear } from './constants'
 
 export const log = (groupName, ...values) => {
   if (process.env.NODE_ENV === 'development') {
@@ -84,4 +85,28 @@ export const handleMutations = (mutations) => {
         reject(error)
       })
   })
+}
+
+export const getReadableDate = (date) => {
+  return `${(new Date(date).getMonth() + 1).toString().padStart(2, '0')}.${new Date(date)
+    .getDate()
+    .toString()
+    .padStart(2, '0')}.${new Date(date).getFullYear()}`
+}
+
+export const getFullDate = (date) => {
+  return `${new Date(date).getDate().toString().padStart(2, '0')} ${
+    monthsOfHheYear[new Date(date).getMonth()]
+  } ${new Date(date).getFullYear()}`
+}
+
+export const getShortDate = (date) => {
+  return `${monthsOfHheYear[new Date(date).getMonth()].substring(0, 3)} ${new Date(date)
+    .getDate()
+    .toString()
+    .padStart(2, '0')}`
+}
+
+export const getInternationalDate = (date) => {
+  return new Date(date).toLocaleString().substr(0, 10)
 }
