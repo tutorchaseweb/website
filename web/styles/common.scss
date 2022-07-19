@@ -28,7 +28,12 @@ ul, ol {
   list-style: none;
 }
 strong {
-  color: $color-blue
+  font-weight: 600;
+  color: $color-blue;
+}
+code {
+  font: inherit;
+  color: $color-blue;
 }
 
 html {

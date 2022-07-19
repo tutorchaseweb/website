@@ -38,6 +38,49 @@ export const TutorApplicationsPage = () => {
           </div>
         </div>
       </section>
+      <section className={`pt-18x`}>
+        <div className="container">
+          <div className="flex">
+            <div>
+              <img src="" alt="" />
+            </div>
+            <div>
+              <h2>Flexibility</h2>
+              <p>
+                TutorChase provides online tuition to students around the world. We operate by
+                maintaining a team of tutors whom we match students with.
+              </p>
+            </div>
+          </div>
+          <div className="flex">
+            <div>
+              <img src="" alt="" />
+            </div>
+            <div>
+              <h2>Convenient schedule</h2>
+              <p>
+                Tutors are free to take on as many students as they want, whether that be just one
+                or over a dozen. Tutoring jobs range from lasting for only a few lessons for
+                students who want short-term help, to over a year for students looking for long-term
+                support.
+              </p>
+            </div>
+          </div>
+          <div className="flex">
+            <div>
+              <img src="" alt="" />
+            </div>
+            <div>
+              <h2>Qualifications</h2>
+              <p>
+                We are currently recruiting tutors for all subjects and admissions tests, and in
+                particular tutors who can teach UK and US curriculums and assist with university
+                applications and admissions tests.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

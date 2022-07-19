@@ -7,7 +7,10 @@ export default {
       title: 'Block',
       type: 'block',
       marks: {
-        decorators: [{ title: 'Strong', value: 'strong' }],
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Code', value: 'code' },
+        ],
         annotations: [
           {
             title: 'URL',
