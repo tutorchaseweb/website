@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SVG from '~/components/SVG'
 import { handleMutations, log } from '~/utils/helpers'
 import { checkValidateFullName, checkValidateEmail, checkValidatePhone } from '~/utils/validators'
@@ -24,28 +24,30 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const [details, setDetails] = useState('')
   const [frequencyDuration, setFrequencyDuration] = useState('')
 
-  const checkAllFields = () => {
-    setFullNameErrors(checkValidateFullName(fullName))
-    return !fullNameErrors.length
-  }
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
-    if (!checkValidateFullName(fullName).length) {
+    setPhoneErrors(checkValidatePhone(phone))
+    setEmailErrors(checkValidateEmail(email))
+    if (
+      !checkValidateFullName(fullName).length &&
+      !checkValidatePhone(phone).length &&
+      !checkValidateEmail(email).length
+    ) {
       setActiveStep(activeStep + 1)
     } else {
       event.preventDefault()
       return false
     }
   }
-  const checkMandatoryFields_step2 = () => {
-    setFullNameErrors(checkValidateFullName(fullName))
-    if (!checkValidateFullName(fullName).length) {
-      setActiveStep(activeStep + 1)
-    } else {
-      event.preventDefault()
-      return false
-    }
-  }
+  // const checkMandatoryFields_step2 = () => {
+  //   setFullNameErrors(checkValidateFullName(fullName))
+  //   if (!checkValidateFullName(fullName).length) {
+  //     setActiveStep(activeStep + 1)
+  //   } else {
+  //     event.preventDefault()
+  //     return false
+  //   }
+  // }
 
   const clearAllFields = () => {
     setPosition('not selected')
@@ -77,7 +79,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     ]
     return handleMutations(mutations)
   }
-  // useEffect(() => checkAllFields(), [])
 
   return (
     <section className={`block ${className}`}>
@@ -131,16 +132,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       setErrors={setFullNameErrors}
                       checkValidateValue={checkValidateFullName}
                     />
-                    {/*<label className="flex-1 fz-14p">*/}
-                    {/*  <span className="fw-500 color-black">Full name</span>*/}
-                    {/*  <input*/}
-                    {/*    type="text"*/}
-                    {/*    placeholder="Enter your name here"*/}
-                    {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
-                    {/*    value={fullName}*/}
-                    {/*    onChange={(e) => setFullName(e.target.value)}*/}
-                    {/*  />*/}
-                    {/*</label>*/}
                     <label className="flex-1 fz-14p">
                       <span className="fw-500 color-black">Country</span>
                       <select
@@ -175,16 +166,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       setErrors={setPhoneErrors}
                       checkValidateValue={checkValidatePhone}
                     />
-                    {/*<label className="flex-1 fz-14p">*/}
-                    {/*  <span className="fw-500 color-black">Your phone</span>*/}
-                    {/*  <input*/}
-                    {/*    type="tel"*/}
-                    {/*    placeholder="Select method"*/}
-                    {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
-                    {/*    value={phone}*/}
-                    {/*    onChange={(e) => setPhone(e.target.value)}*/}
-                    {/*  />*/}
-                    {/*</label>*/}
                     <Input
                       id="email"
                       inputName="Your email"
@@ -197,16 +178,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       setErrors={setEmailErrors}
                       checkValidateValue={checkValidateEmail}
                     />
-                    {/*<label className="flex-1 fz-14p">*/}
-                    {/*  <span className="fw-500 color-black">Your email</span>*/}
-                    {/*  <input*/}
-                    {/*    type="email"*/}
-                    {/*    placeholder="Enter your email"*/}
-                    {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
-                    {/*    value={email}*/}
-                    {/*    onChange={(e) => setEmail(e.target.value)}*/}
-                    {/*  />*/}
-                    {/*</label>*/}
                   </div>
                   {typeof window !== 'undefined' && (
                     <label>
@@ -219,8 +190,11 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                     </span>
                     <button
                       type="button"
-                      className={`btn btn-blue ${fullNameErrors.length ? 'disabled' : ''}`}
-                      // disabled={!fullNameErrors.length}
+                      className={`btn btn-blue ${
+                        fullNameErrors.length || phoneErrors.length || emailErrors.length
+                          ? 'disabled'
+                          : ''
+                      }`}
                       onClick={() => {
                         typeof window !== 'undefined' && setSource(window.location.href)
                         checkMandatoryFields_step1()
