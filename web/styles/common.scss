@@ -87,6 +87,10 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   cursor: pointer;
 }
+.btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
 .btn:hover {
   text-decoration: none;
 }
@@ -104,6 +108,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn.btn-blue {
   background-color: $color-blue;
   color: $color-white;
+}
+.btn.btn-blue:hover {
+  background-color: #4053B0;
 }
 .btn.btn-white {
   background-color: $color-white;
@@ -163,4 +170,37 @@ h1, h2, h3, h4, h5, h6 {
       margin-right: 2rem;
     }
   }
+}
+
+input:focus {
+  outline: $color-blue;
+  border-color: $color-blue;
+}
+label.error input {
+  border-color: #F57C40;
+}
+label.error .error-wrap {
+  top: 2.5rem;
+  right: 0.5rem;
+}
+label.error .error-wrap .svg-wrap {
+  cursor: pointer;
+}
+
+label.error .error-wrap .errors {
+  display: none;
+  background: #FFF1EC;
+  box-shadow: 3px 4px 20px rgba(180, 111, 78, 0.08);
+  border-radius: 4px;
+  min-width: min-content;
+  width: 165px;
+  max-width: 165px;
+  padding: 1em;
+  color: #F57C40;
+  top: 100%;
+  right: 0;
+  z-index: 2;
+}
+label.error .error-wrap:hover .errors {
+  display: block;
 }

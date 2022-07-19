@@ -1,11 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "tutorchase-studio"
-  },
-  "api": {
-    "projectId": "8q6kwhxs",
-    "dataset": "production"
+    "name": "TutorChase"
   },
   "plugins": [
     "@sanity/base",
@@ -17,10 +13,7 @@
     "development": {
       "plugins": [
         "@sanity/vision"
-      ],
-      "api": {
-        "dataset": "develop"
-      }
+      ]
     }
   },
   "parts": [

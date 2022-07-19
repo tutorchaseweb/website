@@ -19,6 +19,7 @@
     "@sanity/image-url": "^0.140.22",
     "@sanity/ui": "^0.37.12",
     "graphql": "^16.5.0",
+    "libphonenumber-js": "^1.10.8",
     "next": "12.1.6",
     "next-sanity": "^0.5.2",
     "next-sanity-image": "^3.2.1",

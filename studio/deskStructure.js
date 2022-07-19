@@ -8,6 +8,7 @@ import {
   BsGear,
   BsJournalBookmark,
   BsStarHalf,
+  FaUniversity,
   FaWpforms,
   GiTeacher,
   IoAppsOutline,
@@ -30,6 +31,7 @@ const hiddenDocTypes = (listItem) =>
     'level',
     'hireForm',
     'applyForm',
+    'university',
   ].includes(listItem.getId())
 
 export default () =>
@@ -95,6 +97,11 @@ export default () =>
         .icon(BsBarChart)
         .schemaType('level')
         .child(S.documentTypeList('level').title('Level')),
+      S.listItem()
+        .title('Universities')
+        .icon(FaUniversity)
+        .schemaType('university')
+        .child(S.documentTypeList('university').title('University')),
       S.listItem()
         .title('Categories')
         .icon(IoAppsOutline)
