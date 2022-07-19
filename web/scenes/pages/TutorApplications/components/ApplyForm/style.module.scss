@@ -1,1 +1,15 @@
 @import 'styles/variables';
+
+.card {
+  max-width: 35rem;
+
+  :global {
+    .form {
+      min-height: 26rem;
+    }
+    .form .btn-gray {
+      min-width: 46px;
+      line-height: 1;
+    }
+  }
+}

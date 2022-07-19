@@ -35,6 +35,9 @@ code {
   font: inherit;
   color: $color-blue;
 }
+input, textarea, select, button {
+  font: inherit;
+}
 
 html {
   box-sizing: border-box;
@@ -154,7 +157,8 @@ h1, h2, h3, h4, h5, h6 {
   li {
     counter-increment: index;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    line-height: 1.4;
 
     + li {
       margin-top: 1.5rem;
@@ -172,7 +176,15 @@ h1, h2, h3, h4, h5, h6 {
       text-align: center;
       letter-spacing: 0.03em;
       color: #F57C40;
-      margin-right: 2rem;
+      margin-right: 1.5rem;
+    }
+  }
+  &.blue {
+    li {
+      &::before {
+        background: rgba(0, 26, 150, 0.1);
+        color: #001A96;
+      }
     }
   }
 }
