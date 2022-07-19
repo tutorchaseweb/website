@@ -135,7 +135,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                     <label className="flex-1 fz-14p">
                       <span className="fw-500 color-black">Country</span>
                       <select
-                        id=""
+                        id="country"
                         name="country"
                         className="p-2x border-light l-height-1 w-full rounded-xSmall"
                         onChange={(e) => setCountry(e.target.value)}
@@ -155,7 +155,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                   </div>
                   <div className="flex gap-4 mb-4x flex-1">
                     <Input
-                      id="email"
+                      id="phone"
                       inputName="Your phone"
                       placeholder="Enter your phone"
                       className="flex-1 fz-14p"
@@ -285,7 +285,11 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
           </div>
         </div>
       )}
-      <div className={`contacts pb-15x ${styles.contacts}`}>
+      <div
+        className={`contacts ${onlyContacts ? 'pt-13x pb-13x' : 'pt-20x pb-15x'} ${
+          styles.contacts
+        }`}
+      >
         <div className="container">
           <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">
             Still have questions? Let’s get in touch.
