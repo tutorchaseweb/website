@@ -3,9 +3,10 @@
 .dropdown {
   :global {
     .current {
-      border-bottom: 1px solid rgba(75, 74, 91, 0.2);
+      //border-bottom: 1px solid rgba(75, 74, 91, 0.2);
+      line-height: 16px;
       &::after {
-        content: url('/icons/chevron-down.svg');
+        //content: url('/icons/chevron-down.svg');
         position: absolute;
         right: 0;
         top: 0.5rem;
@@ -43,7 +44,7 @@
           margin-right: 0.5rem;
           line-height: 1;
           path {
-            fill: $color-darkgray;
+            //fill: $color-darkgray;
             transition: all 0.2s linear;
           }
         }
@@ -52,10 +53,10 @@
           opacity: 0.7;
         }
         &:hover {
-          color: $color-red;
+          //color: $color-red;
           svg {
             path {
-              fill: $color-red;
+              //fill: $color-red;
             }
           }
         }

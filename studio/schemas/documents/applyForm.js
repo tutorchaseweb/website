@@ -62,6 +62,18 @@ export default {
       title: 'Uploaded CV',
     },
     {
+      name: 'source',
+      type: 'string',
+      title: 'The page from which the form was submitted',
+      readOnly: true,
+    },
+    {
+      name: 'time',
+      type: 'string',
+      title: 'Date and time of the application (local time of the sender)',
+      readOnly: true,
+    },
+    {
       name: 'processed',
       type: 'boolean',
       title: 'Processed',
