@@ -31,23 +31,18 @@ export const Footer = () => {
                   </Link>
                   <ul className="flex-1 mb-2x">
                     <li>
-                      <Link href="/">
+                      <Link href="/privacy-policy">
                         <a>{text.menu.PrivacyPolicy}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/terms-and-conditions">
                         <a>{text.menu.TermsAndConditions}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/safeguarding">
                         <a>{text.menu.Safeguarding}</a>
-                      </Link>
-                    </li>
-                    <li className="mt-2x">
-                      <Link href="/">
-                        <a>Referrals</a>
                       </Link>
                     </li>
                   </ul>
@@ -56,29 +51,19 @@ export const Footer = () => {
                 <div className="link-group">
                   <h4 className="fz-20p fw-600 mb-3x">{text.static.CompanyInformation}</h4>
                   <ul>
-                    <li>
-                      <Link href="/tutors">
-                        <a>{text.menu.OurTutors}</a>
-                      </Link>
-                    </li>
-                    <li className="mt-2x">
-                      <Link href="/">
-                        <a>{text.menu.Company}</a>
-                      </Link>
-                    </li>
                     <li className="mt-2x">
                       <Link href="/blog">
                         <a>{text.menu.Blog}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
-                        <a>{text.menu.HowItWorks}</a>
+                      <Link href="/tutor-applications">
+                        <a>{text.menu.TutorApplications}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/tutor-applications">
-                        <a>{text.menu.TutorApplications}</a>
+                      <Link href="/referrals">
+                        <a>Referrals</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
@@ -97,38 +82,43 @@ export const Footer = () => {
                   <h4 className="fz-20p fw-600 mb-3x">{text.static.CoursesInformation}</h4>
                   <ul>
                     <li>
-                      <Link href="/">
+                      <Link href="/gcse">
                         <a>{text.menu.GCSE}</a>
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/igcse">
+                        <a>IGCSE</a>
+                      </Link>
+                    </li>
                     <li className="mt-2x">
-                      <Link href="/a-lvl">
+                      <Link href="/a-level">
                         <a>{text.menu.ALevel}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/ib">
                         <a>{text.menu.IB}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
+                      <Link href="/ap">
                         <a>{text.menu.AP}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/">
-                        <a>{text.menu.AdmissionsTests}</a>
+                      <Link href="/sat">
+                        <a>SAT</a>
                       </Link>
                     </li>
-                    <li className="mt-2x">
-                      <Link href="/">
-                        <a>{text.menu.Oxbridge}</a>
+                    <li>
+                      <Link href="/oxbridge">
+                        <a>Oxbridge</a>
                       </Link>
                     </li>
-                    <li className="mt-2x">
-                      <Link href="/">
-                        <a>{text.menu.University}</a>
+                    <li>
+                      <Link href="/us-admissions">
+                        <a>US Admissions</a>
                       </Link>
                     </li>
                   </ul>

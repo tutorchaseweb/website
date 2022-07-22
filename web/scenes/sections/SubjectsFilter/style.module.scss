@@ -1,0 +1,27 @@
+.filter {
+  background-color: #F9FAFB;
+
+  :global {
+    select {
+      padding: 15px;
+      min-width: 14rem;
+      background-color: #FFFFFF;
+      border: 1px solid #EEEFF7;
+      border-radius: 4px;
+    }
+    input, select, textarea {
+      font: inherit;
+      line-height: 2;
+      padding: 0.5rem;
+      min-height: 46px;
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+    .label-blue {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+  }
+}

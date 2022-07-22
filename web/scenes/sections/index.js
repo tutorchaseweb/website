@@ -6,6 +6,8 @@ import { OurServiceBlock } from './OurServiceBlock'
 import { RatedBlock } from './RatedBlock'
 import { ReviewBlock } from './ReviewBlock'
 import { InteractiveBlock } from './InteractiveBlock'
+import { BasedReviews } from './BasedReviews'
+import { SubjectsFilter } from './SubjectsFilter'
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   RatedBlock,
   ReviewBlock,
   InteractiveBlock,
+  BasedReviews,
+  SubjectsFilter,
 }

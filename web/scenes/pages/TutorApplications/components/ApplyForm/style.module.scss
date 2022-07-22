@@ -6,10 +6,13 @@
   :global {
     .form {
       min-height: 26rem;
-    }
-    .form .btn-gray {
-      min-width: 46px;
-      line-height: 1;
+      .btn-gray {
+        min-width: 46px;
+        line-height: 1;
+      }
+      .file-wrapper {
+        border-style: dashed;
+      }
     }
   }
 }

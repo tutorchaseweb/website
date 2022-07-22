@@ -1,37 +1,63 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+import { useDropzone } from 'react-dropzone'
+import client from '~/utils/sanity-client'
 import SVG from '~/components/SVG'
-import { handleMutations } from '~/utils/helpers'
+import { handleMutations, log } from '~/utils/helpers'
 import { checkValidateFullName, checkValidateEmail, checkValidatePhone } from '~/utils/validators'
 import { Circle } from '~/components/Circle'
-import { Input } from '~/components/Form/Input'
+import { Input, Textarea, Select } from '~/components/Form'
 import { arrowLeft, doneCheck } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
-import countries from '~/assets/text-content/en/countries.json'
+import countriesRaw from '~/assets/text-content/en/countries.json'
+import fileIcon from '~/assets/images/icons/data-file.jpg'
 import styles from './style.module.scss'
+
+const defaultCountry = {
+  title: 'Select your country',
+  value: 'not selected',
+}
 
 export const ApplyForm = ({ className = '' }) => {
   const [activeStep, setActiveStep] = useState(0)
   const [source, setSource] = useState(process.env.NEXT_PUBLIC_BASE_URL)
-  const [position, setPosition] = useState('not selected')
   const [fullName, setFullName] = useState('')
   const [fullNameErrors, setFullNameErrors] = useState([])
   const [phone, setPhone] = useState('')
   const [phoneErrors, setPhoneErrors] = useState([])
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
-  const [country, setCountry] = useState('not selected')
-  const [details, setDetails] = useState('')
-  const [frequencyDuration, setFrequencyDuration] = useState('')
+  const [country, setCountry] = useState(defaultCountry)
+  const [countryErrors, setCountryErrors] = useState([])
+  const [hearAboutUs, setHearAboutUs] = useState('')
+  const [hearAboutUsErrors, setHearAboutUsErrors] = useState([])
+  const [qualifications, setQualifications] = useState('')
+  const [tutoringExperience, setTutoringExperience] = useState('')
+  const [tutoringOffered, setTutoringOffered] = useState('')
+  const [linkedInUrl, setLinkedInUrl] = useState('')
+  const [referrer, setReferrer] = useState('')
+  const [files, setFiles] = useState([])
+
+  const countries = [
+    defaultCountry,
+    ...countriesRaw.map((country) => ({ title: country.name, value: country.code })),
+  ]
+  const onDrop = useCallback((acceptedFiles) => {
+    setFiles(acceptedFiles)
+  }, [])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    multiple: false,
+    onDrop,
+  })
 
   const checkMandatoryFields_step1 = () => {
-    setFullNameErrors(checkValidateFullName(fullName))
-    setPhoneErrors(checkValidatePhone(phone))
-    setEmailErrors(checkValidateEmail(email))
+    // setFullNameErrors(checkValidateFullName(fullName))
+    // setPhoneErrors(checkValidatePhone(phone))
+    // setEmailErrors(checkValidateEmail(email))
     if (
-      !checkValidateFullName(fullName).length &&
-      !checkValidatePhone(phone).length &&
-      !checkValidateEmail(email).length
+      !checkValidateFullName(fullName).length
+      // !checkValidatePhone(phone).length &&
+      // !checkValidateEmail(email).length
     ) {
       setActiveStep(activeStep + 1)
     } else {
@@ -73,35 +99,61 @@ export const ApplyForm = ({ className = '' }) => {
   }
 
   const clearAllFields = () => {
-    setPosition('not selected')
     setCountry('not selected')
     setFullName('')
     setPhone('')
     setEmail('')
-    setDetails('')
-    setFrequencyDuration('')
   }
 
-  // const sendForm = () => {
-  //   const mutations = [
-  //     {
-  //       create: {
-  //         _type: 'applyForm',
-  //         position,
-  //         fullName,
-  //         country,
-  //         phone,
-  //         email,
-  //         details,
-  //         frequencyDuration,
-  //         source,
-  //         time: new Date().toString(),
-  //         processed: false,
-  //       },
-  //     },
-  //   ]
-  //   return handleMutations(mutations)
-  // }
+  const sendForm = (file = {}) => {
+    console.log(file)
+    console.log('file')
+    const mutations = [
+      {
+        create: {
+          _type: 'applyForm',
+          fullName,
+          email,
+          country: country.title === 'Select your country' ? 'not selected' : country.title,
+          phone,
+          hearAboutUs,
+          qualifications,
+          tutoringExperience,
+          tutoringOffered,
+          linkedInUrl,
+          referrer,
+          tutorCv: {
+            _type: 'file',
+            asset: {
+              _type: 'reference',
+              _ref: file._id,
+            },
+          },
+          source,
+          time: new Date().toString(),
+          processed: false,
+        },
+      },
+    ]
+    return handleMutations(mutations)
+  }
+
+  const sendData = () => {
+    const file = files[0]
+    if (file) {
+      client.assets
+        .upload('file', file, {
+          filename: file.name,
+        })
+        .then((file) => {
+          return sendForm(file)
+        })
+        // .then((result) => log(result))
+        .catch(console.error)
+    } else {
+      return sendForm()
+    }
+  }
 
   const empty = <span>&nbsp;</span>
 
@@ -139,26 +191,34 @@ export const ApplyForm = ({ className = '' }) => {
               />
             </div>
             <div className="flex gap-8 mb-2x">
-              <label className="flex-1 fz-14p">
-                <span className="fw-500 color-black">Country</span>
-                <select
-                  id="country"
-                  name="country"
-                  className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                  onChange={(e) => setCountry(e.target.value)}
-                >
-                  <option value="not selected" selected disabled>
-                    Select your country
-                  </option>
-                  {countries.map((country) => {
-                    return (
-                      <option key={country.code} id={country.code} value={country.name}>
-                        {country.name}
-                      </option>
-                    )
-                  })}
-                </select>
-              </label>
+              <Select
+                id={'country'}
+                list={countries}
+                selected={country}
+                inputName={'Country'}
+                setValue={setCountry}
+                className="flex-1 fz-14p"
+              />
+              {/*<label className="flex-1 fz-14p">*/}
+              {/*  <span className="fw-500 color-black">Country</span>*/}
+              {/*  <select*/}
+              {/*    id="country"*/}
+              {/*    name="country"*/}
+              {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
+              {/*    onChange={(e) => setCountry(e.target.value)}*/}
+              {/*  >*/}
+              {/*    <option value="not selected" selected disabled>*/}
+              {/*      Select your country*/}
+              {/*    </option>*/}
+              {/*    {countries.map((country) => {*/}
+              {/*      return (*/}
+              {/*        <option key={country.code} id={country.code} value={country.name}>*/}
+              {/*          {country.name}*/}
+              {/*        </option>*/}
+              {/*      )*/}
+              {/*    })}*/}
+              {/*  </select>*/}
+              {/*</label>*/}
               <Input
                 id="phone"
                 inputName="Your phone"
@@ -173,22 +233,30 @@ export const ApplyForm = ({ className = '' }) => {
               />
             </div>
             <div className="flex mb-2x flex-1">
-              <label className="flex-1 fz-14p">
-                <span className="fw-500 color-black">How did you hear about us?</span>
-                <select
-                  id="country"
-                  name="country"
-                  className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                  onChange={(e) => setCountry(e.target.value)}
-                >
-                  <option value="not selected" selected disabled>
-                    Select an option
-                  </option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
-              </label>
+              <Input
+                id="hearAboutUs"
+                inputName="How did you hear about us?"
+                placeholder="Select an option"
+                className="flex-1 fz-14p"
+                value={hearAboutUs}
+                setValue={setHearAboutUs}
+              />
+              {/*<label className="flex-1 fz-14p">*/}
+              {/*  <span className="fw-500 color-black">How did you hear about us?</span>*/}
+              {/*  <select*/}
+              {/*    id="country"*/}
+              {/*    name="country"*/}
+              {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
+              {/*    onChange={(e) => setCountry(e.target.value)}*/}
+              {/*  >*/}
+              {/*    <option value="not selected" selected disabled>*/}
+              {/*      Select an option*/}
+              {/*    </option>*/}
+              {/*    <option value="option1">Option 1</option>*/}
+              {/*    <option value="option2">Option 2</option>*/}
+              {/*    <option value="option3">Option 3</option>*/}
+              {/*  </select>*/}
+              {/*</label>*/}
             </div>
             {typeof window !== 'undefined' && (
               <label>
@@ -303,13 +371,32 @@ export const ApplyForm = ({ className = '' }) => {
                 checkValidateValue={checkValidateFullName}
               />
             </div>
+            <span className="fz-14p fw-500 color-black">Upload a CV</span>
             <div className="flex mb-2x flex-1">
-              <label className="flex-1 relative">
-                <input type="file" name="CV" className="absolute" />
-                <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
-                  Drop file here <span className="color-blue">browse</span>
-                </span>
-              </label>
+              <div
+                className="file-wrapper flex items-center justify-center w-full rounded-xSmall border-light"
+                {...getRootProps()}
+              >
+                <input {...getInputProps()} />
+                {isDragActive ? (
+                  <p>Drop the files here ...</p>
+                ) : files.length ? (
+                  <p className="flex items-center">
+                    <img src={fileIcon.src} alt="file" width="50" className="mr-1x" />
+                    <span className="fz-18p fw-600">{files[0].name}</span>
+                  </p>
+                ) : (
+                  <p>
+                    Drop file here{' '}
+                    <span
+                      className="color-blue fw-500 pointer"
+                      style={{ textDecorationLine: 'underline' }}
+                    >
+                      browse
+                    </span>
+                  </p>
+                )}
+              </div>
             </div>
             <div className="flex gap-4 items-center justify-between">
               <span>
@@ -319,7 +406,10 @@ export const ApplyForm = ({ className = '' }) => {
                 <button
                   type="button"
                   className="btn small btn-gray flex items-center justify-center"
-                  onClick={() => setActiveStep(activeStep - 1)}
+                  onClick={() => {
+                    // sendData()
+                    setActiveStep(activeStep - 1)
+                  }}
                 >
                   <SVG content={arrowLeft()} size={20} />
                 </button>
@@ -328,7 +418,9 @@ export const ApplyForm = ({ className = '' }) => {
                   className="btn small btn-blue"
                   onClick={() => {
                     clearAllFields()
-                    checkMandatoryFields_step3()
+                    sendData()
+                    setActiveStep(activeStep + 1)
+                    // checkMandatoryFields_step3()
                   }}
                 >
                   {text.form.btnNextStep}

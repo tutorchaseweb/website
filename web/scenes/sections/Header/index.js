@@ -30,18 +30,18 @@ export const Header = () => {
               <nav className="flex-1 flex justify-center fw-600">
                 <ul className="flex items-center gap-8">
                   <li>
-                    <Link href="/">
+                    <Link href="/tutors">
                       <a>{text.menu.OnlineTutoring}</a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
-                      <a>{text.menu.UniversityAdmissions}</a>
+                    <Link href="/oxbridge">
+                      <a>Oxbridge</a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
-                      <a>{text.menu.AboutUs}</a>
+                    <Link href="/us-admissions">
+                      <a>US Admissions</a>
                     </Link>
                   </li>
                   <li>
@@ -57,7 +57,9 @@ export const Header = () => {
                 </Circle>
                 {primaryPhone}
               </a>
-              <button className="btn btn-gray small">{text.form.btnHireTutor}</button>
+              <Link href="/tutors">
+                <a className="btn btn-gray small">{text.form.btnHireTutor}</a>
+              </Link>
             </div>
           </header>
         )

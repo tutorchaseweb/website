@@ -1,0 +1,36 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: #FFF1EC url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+  //background-image: url("/images/lines.png"),  url('/images/bg-gradient-medium.jpg'), linear-gradient(130.77deg, #FFFFFF 18.52%, #ECECEC 86.63%);
+  //background-repeat: no-repeat;
+  //background-size: contain, cover, cover;
+  //background-position: right center, center, center;
+
+  :global {
+    .left-card {
+      max-width: 15.25rem;
+      align-items: flex-end;
+      left: -5rem;
+      bottom: 8rem;
+      z-index: 1;
+    }
+    .right-card {
+      top: 10rem;
+      right: -2rem;
+    }
+  }
+}
+
+.content {
+  :global {
+    .video-block {
+      .text {
+        border-radius: 16px 0 0 16px;
+      }
+      .video {
+        border-radius: 0 16px 16px 0;
+      }
+    }
+  }
+}
