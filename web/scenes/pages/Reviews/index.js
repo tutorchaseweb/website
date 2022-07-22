@@ -26,7 +26,14 @@ export const ReviewsPage = () => {
           <p className="fz-20p fw-500 l-height-1/4 mx-auto mb-4x" style={{ maxWidth: '50rem' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elite
           </p>
-          <button className="btn btn-blue">Keep Reading</button>
+          <a
+            href="https://www.reviews.co.uk/company-reviews/store/tutorchase"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="btn btn-blue"
+          >
+            Keep Reading
+          </a>
           <div className="right-card bg-white">
             <Circle size={56} color={'#A7B4F0'} classList="circle absolute">
               <SVG content={thumbUp()} size={24} />

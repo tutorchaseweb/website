@@ -7,10 +7,10 @@ import {
   HireFormBlock,
   RatedBlock,
   InteractiveBlock,
+  BasedReviews,
 } from '~/scenes/sections'
 import SVG from '~/components/SVG'
 import {
-  star,
   bookFull,
   openedBook,
   arrowTopRight,
@@ -60,28 +60,11 @@ export const HomePage = ({ page }) => {
               </h1>
               <p className="description mb-5x mb-7x_lg">{firstScreen.description}</p>
               <div className="flex items-center">
-                <a href="#" className="btn btn-blue mr-5x">
-                  Hire a Tutor
-                </a>
+                <Link href="/tutors">
+                  <a className="btn btn-blue mr-5x">Hire a Tutor</a>
+                </Link>
                 <div className="rating">
-                  <p className="stars">
-                    <SVG content={star()} size={20} />
-                    <SVG content={star()} size={20} />
-                    <SVG content={star()} size={20} />
-                    <SVG content={star()} size={20} />
-                    <SVG content={star()} size={20} />
-                  </p>
-                  <p>
-                    4.92/5 based on{' '}
-                    <a
-                      href="https://www.reviews.co.uk/company-reviews/store/tutorchase"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      className="fw-600"
-                    >
-                      214 reviews
-                    </a>
-                  </p>
+                  <BasedReviews />
                 </div>
               </div>
             </div>

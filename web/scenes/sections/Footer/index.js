@@ -86,7 +86,7 @@ export const Footer = () => {
                         <a>{text.menu.GCSE}</a>
                       </Link>
                     </li>
-                    <li>
+                    <li className="mt-2x">
                       <Link href="/igcse">
                         <a>IGCSE</a>
                       </Link>
