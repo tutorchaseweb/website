@@ -30,7 +30,9 @@
 .grid-columns-3 {
   grid-template-columns: repeat(3, 1fr);
 }
-
+.gap-2 {
+  gap: 0.5rem;
+}
 .gap-4 {
   gap: 1rem;
 }
