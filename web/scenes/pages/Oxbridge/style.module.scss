@@ -34,3 +34,30 @@
     }
   }
 }
+
+
+.tutorsList {
+  :global {
+    .description {
+      max-width: 51rem;
+    }
+    .tutor-card {
+      .actions {
+        border-left: 1px solid #E6E7ED;
+        min-width: 16rem;
+
+        .teach {
+          display: inline-block;
+          color: $color-blue;
+          line-height: 1.2;
+          background-color: rgba(216, 218, 229, 0.4);
+          border-radius: 4px;
+          padding: 0.25rem 0.5rem;
+        }
+        .btn-white {
+          border-top: 1px solid #E6E7ED;
+        }
+      }
+    }
+  }
+}
