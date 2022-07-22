@@ -13,6 +13,11 @@ import countriesRaw from '~/assets/text-content/en/countries.json'
 import fileIcon from '~/assets/images/icons/data-file.jpg'
 import styles from './style.module.scss'
 
+const defaultCountry = {
+  title: 'Select your country',
+  value: 'not selected',
+}
+
 export const ApplyForm = ({ className = '' }) => {
   const [activeStep, setActiveStep] = useState(0)
   const [source, setSource] = useState(process.env.NEXT_PUBLIC_BASE_URL)
@@ -22,10 +27,7 @@ export const ApplyForm = ({ className = '' }) => {
   const [phoneErrors, setPhoneErrors] = useState([])
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
-  const [country, setCountry] = useState({
-    title: 'Select your country',
-    value: 'not selected',
-  })
+  const [country, setCountry] = useState(defaultCountry)
   const [countryErrors, setCountryErrors] = useState([])
   const [hearAboutUs, setHearAboutUs] = useState('')
   const [hearAboutUsErrors, setHearAboutUsErrors] = useState([])
@@ -37,10 +39,7 @@ export const ApplyForm = ({ className = '' }) => {
   const [files, setFiles] = useState([])
 
   const countries = [
-    {
-      title: 'Select your country',
-      value: 'not selected',
-    },
+    defaultCountry,
     ...countriesRaw.map((country) => ({ title: country.name, value: country.code })),
   ]
   const onDrop = useCallback((acceptedFiles) => {
@@ -126,26 +125,9 @@ export const ApplyForm = ({ className = '' }) => {
           tutorCv: {
             _type: 'file',
             asset: {
-              ...file,
-              source: {
-                id: '',
-                name: '',
-                url: '',
-              },
+              _type: 'reference',
+              _ref: file._id,
             },
-            // asset: {
-            //   _type: 'sanity.fileAsset',
-            //   _id: file._id,
-            //   assetId: file.assetId,
-            //   extension: file.extension,
-            //   mimeType: file.mimeType,
-            //   originalFilename: file.originalFilename,
-            //   path: file.path,
-            //   sha1hash: file.sha1hash,
-            //   size: file.size,
-            //   uploadId: file.uploadId,
-            //   url: file.url,
-            // },
           },
           source,
           time: new Date().toString(),

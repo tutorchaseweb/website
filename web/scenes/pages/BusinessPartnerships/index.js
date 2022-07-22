@@ -1,9 +1,8 @@
-import Link from 'next/link'
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
-import { star, globe, studyHat, email, phone, academy, handshake } from '~/utils/svgImages'
+import { globe, studyHat, email, phone, academy, handshake } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
-import { BlueCardBlock } from '~/scenes/sections'
+import { BasedReviews, BlueCardBlock } from '~/scenes/sections'
 import illustration2 from '~/assets/images/illustration-2.png'
 import illustration3 from '~/assets/images/illustration-3.png'
 import text from '~/assets/text-content/en/static.json'
@@ -20,19 +19,7 @@ export const BusinessPartnershipsPage = () => {
               We cooperate with the best <b>universities and schools</b>
             </p>
           </div>
-          <p className="rating flex items-center justify-center mb-4x">
-            <span className="stars l-height-1 mr-1x">
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-            </span>
-            4.92/5 based on
-            <Link href={'/reviews'}>
-              <a className="fw-600 ml-1x">214 reviews</a>
-            </Link>
-          </p>
+          <BasedReviews />
           <h1 className="fz-64p fw-700 l-height-1 mb-3x">
             Business <strong>Partnerships</strong>
           </h1>

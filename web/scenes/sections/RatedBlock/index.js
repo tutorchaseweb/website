@@ -38,9 +38,14 @@ export const RatedBlock = ({ className }) => {
           </p>
           <h2 className="fz-48p fw-600 mb-3x l-height-1">Rated 4.92/5 based on 214 reviews</h2>
           <p className="fz-20p l-height-1/4 mb-6x">Trusted globally by students and parents</p>
-          <Link href={'/'}>
-            <a className="btn btn-blue">Read our verified reviews</a>
-          </Link>
+          <a
+            href="https://www.reviews.co.uk/company-reviews/store/tutorchase"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="btn btn-blue"
+          >
+            Read our verified reviews
+          </a>
         </div>
         <div className="reviews flex gap-8">
           <Swiper

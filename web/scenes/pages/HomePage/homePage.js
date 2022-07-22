@@ -73,9 +73,14 @@ export const HomePage = ({ page }) => {
                   </p>
                   <p>
                     4.92/5 based on{' '}
-                    <Link href={'/reviews'}>
-                      <a className="fw-600">214 reviews</a>
-                    </Link>
+                    <a
+                      href="https://www.reviews.co.uk/company-reviews/store/tutorchase"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      className="fw-600"
+                    >
+                      214 reviews
+                    </a>
                   </p>
                 </div>
               </div>

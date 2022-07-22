@@ -1,9 +1,8 @@
-import Link from 'next/link'
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
-import { star, paid, studyHat, email, phone, volunteerActivism, videoCam } from '~/utils/svgImages'
+import { paid, studyHat, email, phone, volunteerActivism, videoCam } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
-import { BlueCardBlock } from '~/scenes/sections'
+import { BasedReviews, BlueCardBlock } from '~/scenes/sections'
 import illustration4 from '~/assets/images/illustration-4.png'
 import illustration5 from '~/assets/images/illustration-5.png'
 import illustration6 from '~/assets/images/illustration-6.png'
@@ -22,19 +21,7 @@ export const AccessProgrammePage = () => {
               As part of the Access programme, we provide <b>free tuition in Tutorchase</b>
             </p>
           </div>
-          <p className="rating flex items-center justify-center mb-4x">
-            <span className="stars l-height-1 mr-1x">
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-              <SVG content={star()} size={20} />
-            </span>
-            4.92/5 based on
-            <Link href={'/reviews'}>
-              <a className="fw-600 ml-1x">214 reviews</a>
-            </Link>
-          </p>
+          <BasedReviews />
           <h1 className="fz-64p fw-700 l-height-1 mb-3x">
             TutorChase <strong>Access</strong>
           </h1>

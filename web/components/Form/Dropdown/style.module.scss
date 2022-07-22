@@ -30,6 +30,7 @@
       border-radius: 0.25rem;
       overflow: hidden;
       padding: 0;
+      z-index: 3;
       &.visible {
         box-shadow: 0 2px 60px rgba(109, 66, 27, 0.06);
         max-height: 50vh;

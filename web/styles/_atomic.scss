@@ -99,10 +99,15 @@
 .l-height-1 {
   line-height: 1;
 }
+.l-height-1\/1 {
+  line-height: 1.1;
+}
+.l-height-1\/2 {
+  line-height: 1.2;
+}
 .l-height-1\/4 {
   line-height: 1.4;
 }
-
 .l-height-1\/5 {
   line-height: 1.5;
 }
@@ -135,9 +140,8 @@
 .bg-orange {
   background-color: $color-orange;
 }
-.bg-blue {
-  background-color: $color-blue;
-  color: $color-white;
+.bg-lightBlue {
+  background-color: #EDF0FF;
 }
 
 
@@ -197,6 +201,12 @@
 }
 .border-round {
   border-radius: 50%;
+}
+.shadow-light {
+  box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+}
+.shadow-medium {
+  box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
 }
 .pointer {
   cursor: pointer;
