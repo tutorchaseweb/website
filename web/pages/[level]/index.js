@@ -33,14 +33,14 @@ export const Level = ({ level, subjects }) => {
   )
 }
 
-export async function getStaticPaths() {
-  const paths = await client.fetch(`*[_type == 'level' && defined(slug.current)][].slug.current`)
-
-  return {
-    paths: paths.map((level) => ({ params: { level } })),
-    fallback: true,
-  }
-}
+// export async function getStaticPaths() {
+//   const paths = await client.fetch(`*[_type == 'level' && defined(slug.current)][].slug.current`)
+//
+//   return {
+//     paths: paths.map((level) => ({ params: { level } })),
+//     fallback: true,
+//   }
+// }
 
 export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
