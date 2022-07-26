@@ -1,9 +1,42 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
+import { useRouter } from 'next/router'
 
 export const Tutors = (props) => {
+  const router = useRouter()
+  const [data, setData] = useState([])
+  // console.log(router.query)
+  // console.log(router.query.level)
+  // console.log(router.query.subject)
+  // console.log(props.tutors)
+
+  const query = `
+    *[_type  in ['level', 'subject', 'tutor']] {
+      _type == 'level' && slug.current == $level => {
+        ...,
+      },
+      _type == 'subject' && slug.current == $subject => {
+        ...,
+      },
+      _type == 'tutor' => {
+        ...,
+      },
+    }
+  `
+  // const query = `*[_type == 'tutor'] { ..., }`
+  const params = { level: router.query.level, subject: router.query.subject }
+  console.log(params)
+  client.fetch(query, params).then((data) => {
+    console.log(data)
+    return data
+  })
+  // console.log(data)
+  // data.then(console.log())
+  console.log('data')
+
   return (
     <Layout>
       <div className="container pt-20x">
@@ -24,7 +57,7 @@ export const Tutors = (props) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const QUERY = groq`
     *[_type in ['level', 'subject', 'tutor', 'review']] {
       _type == 'level' => {

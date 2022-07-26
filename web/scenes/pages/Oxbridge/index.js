@@ -12,6 +12,7 @@ import {
   OurServiceBlock,
   ReviewBlock,
   BlueCardBlock,
+  TutorsList,
 } from '~/scenes/sections'
 import tutors from '~/scenes/pages/aLevel/data.json'
 import girl from '~/assets/images/girl-2.png'
@@ -163,6 +164,7 @@ export const OxbridgePage = () => {
           </div>
         </div>
       </section>
+      {/*<TutorsList tutors={tutors} />*/}
       <section className={`tutors-list pt-11x pb-19x ${styles.tutorsList}`}>
         <div className="container">
           <h2 className="fz-36p fw-600 l-height-1/4 mb-2x">A-Level Maths Tutor Spotlight</h2>

@@ -88,10 +88,10 @@ export const handleMutations = (mutations) => {
 }
 
 export const getReadableDate = (date) => {
-  return `${(new Date(date).getMonth() + 1).toString().padStart(2, '0')}.${new Date(date)
+  return `${(new Date(date).getMonth() + 1).toString().padStart(2, '0')}/${new Date(date)
     .getDate()
     .toString()
-    .padStart(2, '0')}.${new Date(date).getFullYear()}`
+    .padStart(2, '0')}/${new Date(date).getFullYear()}`
 }
 
 export const getFullDate = (date) => {

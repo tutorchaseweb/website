@@ -1,0 +1,32 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: #FFF1EC url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .left-card {
+      position: absolute;
+      bottom: 50%;
+      right: calc(100% + 2rem);
+    }
+    .right-card {
+      position: absolute;
+      top: 1rem;
+      left: calc(100% + 1rem);
+    }
+    .wrapper {
+      max-width: max-content;
+      .title  {
+        max-width: max-content;
+      }
+    }
+  }
+}
+
+.content {
+  :global {
+    p:empty {
+      height: 1.5rem;
+    }
+  }
+}

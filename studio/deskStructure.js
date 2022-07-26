@@ -14,6 +14,7 @@ import {
   IoAppsOutline,
   IoNewspaperOutline,
   IoSchoolOutline,
+  MdOutlinePolicy,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -85,6 +86,12 @@ export default () =>
                 .title('Blog page')
                 .icon(IoNewspaperOutline)
                 .child(S.document().schemaType('blog-page').documentId('blog-page')),
+              S.listItem()
+                .title('Terms and conditions')
+                .icon(MdOutlinePolicy)
+                .child(
+                  S.document().schemaType('termAndConditions').documentId('termAndConditions')
+                ),
             ])
         ),
       S.listItem()

@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { level = '', subject = '' } = context.params
   const data = await client.fetch(

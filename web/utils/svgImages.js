@@ -257,3 +257,31 @@ export const error = (color = Color.Orange) =>
       <path fill="${color}" d="M8.00016 1.33325C4.32016 1.33325 1.3335 4.31992 1.3335 7.99992C1.3335 11.6799 4.32016 14.6666 8.00016 14.6666C11.6802 14.6666 14.6668 11.6799 14.6668 7.99992C14.6668 4.31992 11.6802 1.33325 8.00016 1.33325ZM8.66683 11.3333H7.3335V9.99992H8.66683V11.3333ZM8.66683 8.66658H7.3335V4.66658H8.66683V8.66658Z"/>
     </svg>
   `
+
+export const verifiedUser = (color = Color.LightBlue) =>
+  `
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_1166_26936)">
+        <path fill="${color}" d="M23.3082 5.71117L10.4147 8.20162L8.61102 15.9956C6.94259 23.2051 10.3706 31.1013 16.6946 34.2892C23.7763 34.2037 30.3246 28.6162 31.9931 21.4067L33.7968 13.6127L23.3082 5.71117ZM15.9003 25.894L11.9068 19.4955L14.1623 18.0878L16.7511 22.2178L27.2926 15.6384L28.6973 17.9069L15.9003 25.894Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1166_26936">
+          <rect width="32" height="32" fill="white" transform="translate(8.01953 0.804688) rotate(13.0301)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  `
+
+export const starRotate = (color = Color.Orange) =>
+  `
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_1166_26941)">
+        <path fill="${color}" d="M20.3961 25.8868L29.4589 29.1268L25.4564 20.3734L31.3407 12.748L21.7832 13.8525L16.3574 5.93134L14.4388 15.3389L5.20392 18.0377L13.5903 22.7749L13.3064 32.3958L20.3961 25.8868Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1166_26941">
+          <rect width="32" height="32" fill="${Color.White}" transform="translate(0.144531 6.4917) rotate(-11.4412)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  `
