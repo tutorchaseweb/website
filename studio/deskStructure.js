@@ -35,6 +35,7 @@ const hiddenDocTypes = (listItem) =>
     'university',
     'termAndConditions',
     'privacyPolicy',
+    'safeguardingPolicy',
   ].includes(listItem.getId())
 
 export default () =>
@@ -98,6 +99,12 @@ export default () =>
                 .title('Privacy policy')
                 .icon(MdOutlinePolicy)
                 .child(S.document().schemaType('privacyPolicy').documentId('privacyPolicy')),
+              S.listItem()
+                .title('Safeguarding policy')
+                .icon(MdOutlinePolicy)
+                .child(
+                  S.document().schemaType('safeguardingPolicy').documentId('safeguardingPolicy')
+                ),
             ])
         ),
       S.listItem()
