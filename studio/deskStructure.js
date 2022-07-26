@@ -33,6 +33,8 @@ const hiddenDocTypes = (listItem) =>
     'hireForm',
     'applyForm',
     'university',
+    'termAndConditions',
+    'privacyPolicy',
   ].includes(listItem.getId())
 
 export default () =>
@@ -92,6 +94,10 @@ export default () =>
                 .child(
                   S.document().schemaType('termAndConditions').documentId('termAndConditions')
                 ),
+              S.listItem()
+                .title('Privacy policy')
+                .icon(MdOutlinePolicy)
+                .child(S.document().schemaType('privacyPolicy').documentId('privacyPolicy')),
             ])
         ),
       S.listItem()
