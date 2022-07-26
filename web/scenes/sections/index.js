@@ -8,6 +8,7 @@ import { ReviewBlock } from './ReviewBlock'
 import { InteractiveBlock } from './InteractiveBlock'
 import { BasedReviews } from './BasedReviews'
 import { SubjectsFilter } from './SubjectsFilter'
+import { TutorsList } from './TutorsList'
 import { FAQ } from './FAQ'
 
 export {
@@ -21,5 +22,6 @@ export {
   InteractiveBlock,
   BasedReviews,
   SubjectsFilter,
+  TutorsList,
   FAQ,
 }

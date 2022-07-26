@@ -7,7 +7,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu",
     "avatar": "/images/avatar-1.jpg",
     "profile": "/",
-    "teaches": ["Maths", "Physics", "Chemistry", "Oxbridge"]
+    "teaches": ["Maths", "Physics", "Chemistry", "Oxbridge", "Maths", "Physics", "Chemistry", "Oxbridge"]
   },
   {
     "id": "2",

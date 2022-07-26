@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import siteConfig from './documents/siteConfig'
 import homePage from './documents/pages/homePage'
 import blogPage from './documents/pages/blogPage'
+import termAndConditions from './documents/pages/termsConditionsPage'
 import post from './documents/post'
 import author from './documents/author'
 import category from './documents/category'
@@ -39,6 +40,7 @@ export default createSchema({
     siteConfig,
     homePage,
     blogPage,
+    termAndConditions,
     tutor,
     review,
     subject,

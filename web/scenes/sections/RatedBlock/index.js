@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import client from '~/utils/sanity-client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import SVG from '~/components/SVG'
@@ -25,7 +25,12 @@ const getReviewCard = (review) => {
 }
 
 export const RatedBlock = ({ className }) => {
+  const query = `*[_type == 'review'] { ..., }`
+  const allReviews = client.fetch(query).then((reviews) => reviews)
+  console.log(allReviews)
+
   return (
+    // Boolean(allReviews?.length) && (
     <section className={`rated ${styles.rated} ${className}`}>
       <div className="wrapper flex">
         <div className="content flex flex-col justify-center pt-20x pb-20x mr-19x">
@@ -99,5 +104,8 @@ export const RatedBlock = ({ className }) => {
         </div>
       </div>
     </section>
+    // )
   )
 }
+
+export default RatedBlock
