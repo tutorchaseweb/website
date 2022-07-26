@@ -24,9 +24,29 @@
 }
 
 .content {
+  font-size: 20px;
+
   :global {
+    strong {
+      color: inherit;
+    }
+    h1 {
+      font-size: 1rem;
+    }
+    h2 {
+      font-size: 48px;
+    }
+    h3 {
+      font-size: 32px;
+    }
+    h4 {
+      font-size: 20px;
+    }
     p:empty {
       height: 1.5rem;
+    }
+    a {
+      color: $color-blue;
     }
   }
 }
