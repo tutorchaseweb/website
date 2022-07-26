@@ -9,6 +9,7 @@ import siteConfig from './documents/siteConfig'
 import homePage from './documents/pages/homePage'
 import blogPage from './documents/pages/blogPage'
 import termAndConditions from './documents/pages/termsConditionsPage'
+import privacyPolicy from './documents/pages/privacyPolicyPage'
 import post from './documents/post'
 import author from './documents/author'
 import category from './documents/category'
@@ -41,6 +42,7 @@ export default createSchema({
     homePage,
     blogPage,
     termAndConditions,
+    privacyPolicy,
     tutor,
     review,
     subject,

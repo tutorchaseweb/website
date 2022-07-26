@@ -8,7 +8,7 @@ export default {
       name: 'title',
       type: 'simpleContent',
       title: 'Page title',
-      description: "Title for your site (highlight text as code <> so it's blue).",
+      description: "Title on page head (highlight text as code <> so it's blue).",
     },
     {
       name: 'content',
