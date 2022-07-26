@@ -1,12 +1,9 @@
 import Head from 'next/head'
+import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { PolicyPage } from '~/scenes/pages/PolicyPage'
-import client from '~/utils/sanity-client'
-import React from 'react'
 
 export const TermsAndConditions = ({ page }) => {
-  console.log(page)
-
   return (
     <Layout>
       <Head>

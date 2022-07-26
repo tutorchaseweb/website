@@ -1,19 +1,27 @@
 import Head from 'next/head'
+import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
+import { PolicyPage } from '~/scenes/pages/PolicyPage'
 
-export const PrivacyPolicy = () => {
+export const PrivacyPolicy = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>Privacy Policy</title>
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
       </Head>
-      <section className="pt-20x">
-        <div className="container">
-          <h1>Privacy Policy page</h1>
-        </div>
-      </section>
+      <PolicyPage page={page} />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  const page = await client.fetch(`*[_type == 'privacyPolicy'][0]`)
+  return {
+    props: {
+      page,
+    },
+  }
 }
 
 export default PrivacyPolicy
