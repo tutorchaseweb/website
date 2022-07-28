@@ -12,7 +12,7 @@ export const PolicyPage = ({ page }) => {
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
         <div className="container narrow text-center">
           <p className="date fz-20p fw-500 l-height-1/4 mx-auto mb-4x">
-            Last Update: {getReadableDate(page._updatedAt)}
+            Last Update: {getReadableDate(page?._updatedAt ? page._updatedAt : new Date())}
           </p>
           <div className="wrapper relative mx-auto">
             <div className="left-card">
@@ -21,7 +21,7 @@ export const PolicyPage = ({ page }) => {
               </Circle>
             </div>
             <h1 className="title fz-64p fw-700 l-height-1 mb-3x mx-auto">
-              <PortableText value={page.title} />
+              {page?.title ? <PortableText value={page.title} /> : 'Page not loaded'}
             </h1>
             <div className="right-card">
               <Circle size={72} color={Color.White} classList="circle shadow-medium">
@@ -33,7 +33,7 @@ export const PolicyPage = ({ page }) => {
       </section>
       <section className={`content pt-12x pb-18x ${styles.content}`}>
         <div className="container narrow">
-          <PortableText value={page.content} />
+          {page?.content && <PortableText value={page.content} />}
         </div>
       </section>
     </>

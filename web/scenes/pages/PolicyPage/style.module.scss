@@ -50,5 +50,55 @@
       font-weight: 500;
       color: $color-blue;
     }
+    ul, ol {
+      list-style: none;
+      li {
+        padding-left: 1.5rem;
+        position: relative;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 0.5rem;
+          height: 0.5rem;
+          border-radius: 50%;
+          position: absolute;
+          left: 0;
+          top: 0.5rem;
+          background-color: $color-orange;
+        }
+
+        + li, li {
+          margin-top: 1.5rem;
+        }
+
+        li {
+          padding-left: 2rem;
+
+          &::before {
+            width: 1rem;
+            height: 2px;
+            top: 0.75rem;
+          }
+        }
+      }
+    }
+    blockquote {
+      background-color: #F9FAFB;
+      padding: 0.5rem 2rem;
+
+      &:first-of-type {
+        padding-top: 2rem;
+        border-radius: 1rem 1rem 0 0;
+        strong {
+          font-size: 2rem;
+        }
+      }
+
+      &:last-of-type {
+        padding-bottom: 2rem;
+        border-radius: 0 0 1rem 1rem;
+      }
+    }
   }
 }

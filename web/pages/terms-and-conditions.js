@@ -7,8 +7,11 @@ export const TermsAndConditions = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>{page.seoTitle}</title>
-        <meta name="description" content={page.seoDescription} />
+        <title>{page?.seoTitle ? page.seoTitle : 'Terms and Conditions'}</title>
+        <meta
+          name="description"
+          content={page?.seoDescription ? page.seoDescription : 'Terms and Conditions'}
+        />
       </Head>
       <PolicyPage page={page} />
     </Layout>
