@@ -19,7 +19,7 @@ export const BusinessPartnershipsPage = () => {
               We cooperate with the best <b>universities and schools</b>
             </p>
           </div>
-          <BasedReviews />
+          <BasedReviews center={true} />
           <h1 className="fz-64p fw-700 l-height-1 mb-3x">
             Business <strong>Partnerships</strong>
           </h1>

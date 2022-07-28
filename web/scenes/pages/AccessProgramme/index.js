@@ -21,7 +21,7 @@ export const AccessProgrammePage = () => {
               As part of the Access programme, we provide <b>free tuition in Tutorchase</b>
             </p>
           </div>
-          <BasedReviews />
+          <BasedReviews center={true} />
           <h1 className="fz-64p fw-700 l-height-1 mb-3x">
             TutorChase <strong>Access</strong>
           </h1>

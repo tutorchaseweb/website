@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { Circle } from '~/components/Circle'
 import { Color } from '~/utils/constants'
+import { useGlobalState } from '~/utils/state'
 import SVG from '~/components/SVG'
-import { awesomeStar, studyHat } from '~/utils/svgImages'
+import { studyHat } from '~/utils/svgImages'
 import {
   BasedReviews,
   SubjectsFilter,
@@ -14,7 +15,7 @@ import {
   BlueCardBlock,
   TutorsList,
 } from '~/scenes/sections'
-import tutors from '~/scenes/pages/aLevel/data.json'
+
 import girl from '~/assets/images/girl-2.png'
 import oxford from '~/assets/images/oxford_logo2.png'
 import illustration11 from '~/assets/images/illustration-11.png'
@@ -23,7 +24,10 @@ import illustration13 from '~/assets/images/illustration-13.png'
 import illustration14 from '~/assets/images/illustration-14.png'
 import styles from './style.module.scss'
 
-export const OxbridgePage = () => {
+export const OxbridgePage = ({ tutors }) => {
+  const [levelQuery] = useGlobalState('levelQuery', false)
+  const [subjectQuery] = useGlobalState('subjectQuery', false)
+
   return (
     <>
       <section className={`pt-16x ${styles.firstScreen}`}>
@@ -164,50 +168,24 @@ export const OxbridgePage = () => {
           </div>
         </div>
       </section>
-      {/*<TutorsList tutors={tutors} />*/}
+
       <section className={`tutors-list pt-11x pb-19x ${styles.tutorsList}`}>
         <div className="container">
-          <h2 className="fz-36p fw-600 l-height-1/4 mb-2x">A-Level Maths Tutor Spotlight</h2>
+          <h2 className="fz-36p fw-600 l-height-1/4 mb-2x">
+            {`${levelQuery?.title ? levelQuery.title : ''} ${
+              subjectQuery?.title ? subjectQuery.title : ''
+            } Tutor Spotlight`}
+          </h2>
           <p className="description fz-18p mb-3x">
-            Our A-Level Maths tutors have all studied at the UK's top universities, achieved A*
-            grades, and have extensive tutoring experience.{' '}
+            Our{' '}
+            {`${levelQuery?.title ? levelQuery.title : ''} ${
+              subjectQuery?.title ? subjectQuery.title : ''
+            }`}{' '}
+            tutors have all studied at the UK's top universities, achieved A* grades, and have
+            extensive tutoring experience.{' '}
             <strong>We'll find the perfect tutor for you based on your requirements!</strong>
           </p>
-          <div className="flex flex-wrap gap-8">
-            {tutors.map((tutor) => {
-              return (
-                <div key={tutor.id} className="tutor-card flex w-full border-light rounded-small">
-                  <img src={tutor.avatar} alt={tutor.name} className="block" />
-                  <div className="content p-4x">
-                    <p className="flex items-center mb-4x">
-                      <span className="fz-22p fw-600 mr-3x">{tutor.name}</span>
-                      <SVG content={awesomeStar()} size={24} />
-                      <span className="fz-14p fw-500 ml-1x">{tutor.position}</span>
-                    </p>
-                    <p className="flex items-center fw-500 mb-2x">
-                      <SVG content={studyHat()} size={24} className="mr-1x" />
-                      {tutor.education}
-                    </p>
-                    <p className="l-height-1/5">{tutor.description}</p>
-                  </div>
-                  <div className="actions">
-                    <p className="fz-14p fw-600 l-height-1/4 pt-4x pb-4x pl-3x pr-3x">
-                      <span className="mr-1x">Teaches:</span>
-                      {tutor.teaches.map((teach) => (
-                        <span className="teach mr-1x mb-1x">{teach}</span>
-                      ))}
-                    </p>
-                    <a href="" className="btn btn-white w-full">
-                      View profile
-                    </a>
-                    <a href="" className="btn btn-blue w-full">
-                      Hire a tutor
-                    </a>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+          <TutorsList tutors={tutors} />
         </div>
       </section>
       <section className="pb-15x">

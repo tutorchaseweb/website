@@ -82,41 +82,41 @@ export const Footer = () => {
                   <h4 className="fz-20p fw-600 mb-3x">{text.static.CoursesInformation}</h4>
                   <ul>
                     <li>
-                      <Link href="/gcse">
+                      <Link href="/tutors">
                         <a>{text.menu.GCSE}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/igcse">
+                      <Link href="/tutors">
                         <a>IGCSE</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/a-level">
+                      <Link href="/tutors">
                         <a>{text.menu.ALevel}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/ib">
+                      <Link href="/tutors">
                         <a>{text.menu.IB}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/ap">
+                      <Link href="/tutors">
                         <a>{text.menu.AP}</a>
                       </Link>
                     </li>
                     <li className="mt-2x">
-                      <Link href="/sat">
+                      <Link href="/tutors">
                         <a>SAT</a>
                       </Link>
                     </li>
-                    <li>
+                    <li className="mt-2x">
                       <Link href="/oxbridge">
                         <a>Oxbridge</a>
                       </Link>
                     </li>
-                    <li>
+                    <li className="mt-2x">
                       <Link href="/us-admissions">
                         <a>US Admissions</a>
                       </Link>
