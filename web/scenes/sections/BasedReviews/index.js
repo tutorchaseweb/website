@@ -1,9 +1,9 @@
 import SVG from '~/components/SVG'
 import { star } from '~/utils/svgImages'
 
-export const BasedReviews = () => {
+export const BasedReviews = ({ center = false }) => {
   return (
-    <p className="rating flex flex-wrap items-center gap-4" style={{ gap: '0.5rem' }}>
+    <p className={`rating flex flex-wrap items-center gap-2 ${center ? 'justify-center' : ''}`}>
       <span className="stars l-height-1">
         <SVG content={star()} size={20} />
         <SVG content={star()} size={20} />

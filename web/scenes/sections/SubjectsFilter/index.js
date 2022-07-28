@@ -23,10 +23,8 @@ export const SubjectsFilter = () => {
     client.fetch(query).then((data) => {
       const subjects = data.filter((item) => item._type === 'subject')
       setSubjectsList(subjects)
-      console.log(subjects)
       const levels = data.filter((item) => item._type === 'level')
       setLevelsList(levels)
-      console.log(levels)
     })
   }, [])
 

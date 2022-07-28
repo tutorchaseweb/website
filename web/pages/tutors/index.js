@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Head from 'next/head'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
-import { SubjectsFilter } from '~/scenes/sections'
 import { useGlobalState } from '~/utils/state'
+import { TutorsPage } from '~/scenes/pages/Tutors'
 
 export const Tutors = () => {
   const [tutors, setTutors] = useState([])
@@ -56,23 +56,10 @@ export const Tutors = () => {
 
   return (
     <Layout>
-      <div className="container pt-20x">
-        <h1>{`Online ${levelQuery?.title ? levelQuery.title : ''} ${
-          subjectQuery?.title ? subjectQuery.title : ''
-        } Tutors`}</h1>
-        <SubjectsFilter />
-        <ul>
-          {tutors.map((tutor) => {
-            return (
-              <li key={tutor._id} className="fz-18p fw-500">
-                <Link href={`/tutors/${tutor.slug.current}`}>
-                  <a>{tutor.name}</a>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
+      <Head>
+        <title>Online Tutors</title>
+      </Head>
+      <TutorsPage tutors={tutors} />
     </Layout>
   )
 }
