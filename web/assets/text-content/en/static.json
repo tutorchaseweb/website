@@ -9,7 +9,7 @@
   },
   "menu": {
     "OnlineTutoring": "Online Tutoring",
-    "UniversityAdmissions": "University Admissions",
+    "USAdmissions": "US Admissions",
     "AboutUs": "About Us",
     "Reviews": "Reviews",
     "PrivacyPolicy": "Privacy Policy",
@@ -38,6 +38,7 @@
   },
   "static": {
     "CompanyInformation": "Company Information",
-    "CoursesInformation": "Courses Information"
+    "CoursesInformation": "Courses Information",
+    "WeAreHereToHelp": "We’re Here to Help"
   }
 }

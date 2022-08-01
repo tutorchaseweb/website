@@ -6,21 +6,58 @@
 
   :global {
     .wrapper {
+      flex-wrap: wrap;
       @media (min-width: $lg) {
-          transform: translate(calc((100vw - 80rem) / 2), 0);
+        flex-wrap: nowrap;
+        transform: translate(calc((100vw - 80rem) / 2), 0);
       }
     }
     .content {
-      min-height: 100vh;
-      max-width: 18.5rem;
-      //padding-bottom: 215px;
+      max-width: 100%;
+      align-items: center;
+      @media (min-width: $lg) {
+        align-items: initial;
+        min-height: 100vh;
+        max-width: 18.5rem;
+      }
+    }
+    .section-title {
+      text-align: center;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      @media (min-width: $lg) {
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .description {
+      text-align: center;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      @media (min-width: $lg) {
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .btn {
+      @media (min-width: $lg) {
+
+      }
+    }
+    .swiper:not(.swiper-vertical) .swiper-slide {
+      max-width: max-content;
     }
     .swiper.swiper-vertical {
       height: 100%;
     }
     .card {
-      max-width: 350px;
+      max-width: 250px;
       border-radius: 4px;
+      @media (min-width: $lg) {
+        max-width: 350px;
+      }
     }
   }
 }

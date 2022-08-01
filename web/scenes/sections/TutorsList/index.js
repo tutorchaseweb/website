@@ -37,8 +37,8 @@ export const TutorsList = ({ tutors }) => {
               </p>
               <p className="l-height-1/5">{tutor.description}</p>
             </div>
-            <div className="actions">
-              <p className="fz-14p fw-600 l-height-1/4 pt-4x pb-4x pl-3x pr-3x">
+            <div className="actions flex flex-col">
+              <p className="fz-14p fw-600 l-height-1/4 pt-4x pb-4x pl-3x pr-3x flex-1">
                 <span className="mr-1x">Teaches:</span>
                 {tutor.teaches.map((teach) => (
                   <span key={teach._id} className="teach mr-1x mb-1x">

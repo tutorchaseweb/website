@@ -55,7 +55,7 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="text-wrapper">
-              <h1 className="main-title fw-700 fz-40p mb-3x">
+              <h1 className="main-title home fw-700 fz-40p mb-3x">
                 Elite Online <span className="color-blue">Tutoring</span>
               </h1>
               <p className="description mb-5x mb-7x_lg">{firstScreen.description}</p>
