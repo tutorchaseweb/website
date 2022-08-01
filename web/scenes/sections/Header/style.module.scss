@@ -1,0 +1,119 @@
+@import 'styles/variables';
+
+.header {
+  z-index: 10;
+
+  :global {
+    .gap-8 {
+      gap: 1.5rem;
+      @media (min-width: $xl) {
+        gap: 2rem;
+      }
+
+    }
+    .logo {
+      z-index: 5;
+      max-width: 8.5rem;
+      @media (min-width: $lg) {
+        max-width: 10rem;
+      }
+      @media (min-width: $xl) {
+        max-width: 13rem;
+      }
+    }
+    .burger {
+      display: block;
+      width: 24px;
+      height: 24px;
+      z-index: 5;
+      @media (min-width: $lg) {
+        display: none;
+      }
+
+      span {
+        display: inline-block;
+        width: 18px;
+        height: 2px;
+        background-color: $default-text-color;
+        position: absolute;
+        left: 3px;
+        transition: all .3s linear;
+        opacity: 1;
+      }
+      span:first-child {
+        top: 4px;
+      }
+      span:nth-child(2),
+      span:nth-child(3) {
+        top: 11px;
+      }
+      span:last-child {
+        top: 18px;
+      }
+
+      &.active {
+        span:first-child {
+          top: -4px;
+          opacity: 0;
+        }
+        span:nth-child(2) {
+          transform: rotate(-45deg);
+        }
+        span:nth-child(3) {
+          transform: rotate(45deg);
+        }
+        span:last-child {
+          top: 28px;
+          opacity: 0;
+        }
+      }
+    }
+    .mobile-wrap {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      position: fixed;
+      inset: 0;
+      background-color: $color-white;
+      padding: 8rem 1rem 1.5rem 1rem;
+      &.active {
+        display: flex;
+      }
+      @media (min-width: $lg) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: static;
+        background-color: transparent;
+        padding: 0;
+      }
+    }
+    .nav-menu {
+      flex-direction: column;
+      align-items: flex-start;
+      @media (min-width: $lg) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    .email, .phone {
+      font-size: 20px;
+      @media (min-width: $lg) {
+        font-size: inherit;
+      }
+    }
+    .email {
+      @media (min-width: $lg) {
+        display: none;
+      }
+    }
+    .btn {
+      width: 100%;
+      @media (min-width: $lg) {
+        width: initial;
+      }
+    }
+  }
+}
+
+.wrapper {}

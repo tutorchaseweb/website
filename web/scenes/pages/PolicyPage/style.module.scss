@@ -5,27 +5,41 @@
 
   :global {
     .left-card {
-      position: absolute;
-      bottom: 50%;
-      right: calc(100% + 2rem);
+      bottom: calc(100% + 0.5rem);
+      left: 0.5rem;
     }
     .right-card {
-      position: absolute;
-      top: 1rem;
-      left: calc(100% + 1rem);
+      top: calc(100% + 0.5rem);
+      right: 0.5rem;
     }
-    .wrapper {
-      max-width: max-content;
-      .title  {
+    @media (min-width: $lg) {
+      .wrapper {
         max-width: max-content;
+        .main-title  {
+          max-width: max-content;
+        }
+      }
+    }
+    @media (min-width: $lg) {
+      .left-card {
+        bottom: 50%;
+        right: calc(100% + 2rem);
+        left: initial;
+      }
+      .right-card {
+        top: 1rem;
+        left: calc(100% + 1rem);
+        right: initial;
       }
     }
   }
 }
 
 .content {
-  font-size: 20px;
   line-height: 1.4;
+  @media (min-width: $lg) {
+    font-size: 18px;
+  }
 
   :global {
     strong {
@@ -35,19 +49,28 @@
       font-size: 1rem;
     }
     h2 {
-      font-size: 48px;
+      font-size: 32px;
+      @media (min-width: $lg) {
+        font-size: 48px;
+      }
     }
     h3 {
-      font-size: 32px;
+      font-size: 26px;
+      @media (min-width: $lg) {
+        font-size: 32px;
+      }
     }
     h4 {
-      font-size: 20px;
+      font-size: 18px;
+      @media (min-width: $lg) {
+        font-size: 20px;
+      }
     }
     p:empty {
       height: 1.5rem;
     }
     p:not(:empty), h4 {
-      + p, + ul, + ol {
+      + p:not(:empty), + ul, + ol {
         margin-top: 1rem;
       }
     }
@@ -58,51 +81,82 @@
     ul, ol {
       list-style: none;
       li {
-        padding-left: 1.5rem;
+        padding-left: 1rem;
         position: relative;
+        @media (min-width: $lg) {
+          padding-left: 1.5rem;
+        }
 
         &::before {
           content: '';
           display: block;
-          width: 0.5rem;
-          height: 0.5rem;
+          width: 0.25rem;
+          height: 0.25rem;
           border-radius: 50%;
           position: absolute;
           left: 0;
           top: 0.5rem;
           background-color: $color-orange;
+          @media (min-width: $lg) {
+            width: 0.5rem;
+            height: 0.5rem;
+          }
         }
 
         + li, li {
-          margin-top: 1.5rem;
+          margin-top: 1rem;
+          @media (min-width: $lg) {
+            margin-top: 1.5rem;
+          }
         }
 
         li {
-          padding-left: 2rem;
+          padding-left: 1.5rem;
+          @media (min-width: $lg) {
+            padding-left: 2rem;
+          }
 
           &::before {
-            width: 1rem;
+            width: 0.75rem;
             height: 2px;
             top: 0.75rem;
+            @media (min-width: $lg) {
+              width: 1rem;
+            }
           }
         }
       }
     }
     blockquote {
       background-color: #F9FAFB;
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 1.5rem;
+      font-size: 14px;
+      @media (min-width: $lg) {
+        font-size: 18px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
 
       &:first-of-type {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         border-radius: 1rem 1rem 0 0;
+        @media (min-width: $lg) {
+          padding-top: 2rem;
+        }
         strong {
-          font-size: 2rem;
+          font-size: 26px;
+          @media (min-width: $lg) {
+            font-size: 32px;
+          }
         }
       }
 
       &:last-of-type {
         padding-bottom: 2rem;
         border-radius: 0 0 1rem 1rem;
+        @media (min-width: $lg) {
+          padding-bottom: 1.5rem;
+        }
       }
     }
   }

@@ -1,0 +1,51 @@
+@import 'styles/variables';
+
+.footer {
+  :global {
+    .logo {
+      max-width: 12rem;
+    }
+    .link-group-wrapper {
+      flex-direction: column;
+      @media (min-width: $lg) {
+        flex-direction: row;
+      }
+    }
+    .group-title {
+      cursor: pointer;
+      padding-right: 2rem;
+      position: relative;
+      &::after {
+        content: url("/images/arrow_down_blue.svg");
+        position: absolute;
+        top: 0.5rem;
+        right: 0;
+        transition: all 0.2s linear;
+        line-height: 0.3;
+      }
+      &.active {
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+      @media (min-width: $lg) {
+        cursor: initial;
+        padding-right: 0;
+        &::after {
+          display: none;
+        }
+      }
+    }
+    .group-list {
+      overflow: hidden;
+      max-height: 0;
+      transition: all 0.2s linear;
+      &.open {
+        max-height: 100vh;
+      }
+      @media (min-width: $lg) {
+        max-height: initial;
+      }
+    }
+  }
+}
