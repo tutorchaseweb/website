@@ -81,20 +81,20 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   }
 
   return (
-    <section className={`block ${className}`}>
+    <section id="hireFormBlock" className={`block ${className}`}>
       {!onlyContacts && (
         <div className="container narrow">
           <div
-            className={`card rounded-rem bg-blue pt-10x pb-11x pl-4x pr-4x mx-auto ${styles.card}`}
+            className={`card rounded-rem bg-blue pt-8x pb-8x pl-2x pr-2x pt-10x_lg pb-11x_lg pl-4x_lg pr-4x_lg ${styles.card}`}
           >
-            <h2 className="fz-48p fw-600 l-height-1 mb-2x text-center">Hire a tutor</h2>
-            <p className="fz-22p l-height-1/5 mb-4x text-center">
+            <h2 className="section-title fw-600 l-height-1 mb-2x text-center">Hire a tutor</h2>
+            <p className="description fz-22p l-height-1/5 mb-6x mb-4x_lg text-center">
               Please fill out the form and we'll find a tutor for you
             </p>
-            <form className="form mx-auto flex flex-col bg-white rounded-small pt-5x pr-5x pb-4x pl-5x">
+            <form className="form mx-auto flex flex-col bg-white rounded-small pr-3x pl-3x pt-4x pb-4x pt-5x_lg pr-5x_lg pl-5x_lg">
               {activeStep === 0 && (
                 <>
-                  <div className="flex gap-4 mb-3x">
+                  <div className="flex flex-wrap gap-4 mb-3x">
                     <label className="flex-1 relative">
                       <input
                         type="radio"
@@ -120,7 +120,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       </span>
                     </label>
                   </div>
-                  <div className="flex gap-4 mb-2x">
+                  <div className="flex flex-wrap gap-4 mb-2x">
                     <Input
                       id="fullName"
                       inputName="Full name"
@@ -139,8 +139,9 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                         name="country"
                         className="p-2x border-light l-height-1 w-full rounded-xSmall"
                         onChange={(e) => setCountry(e.target.value)}
+                        defaultValue="not selected"
                       >
-                        <option value="not selected" selected disabled>
+                        <option value="not selected" disabled>
                           Select your country
                         </option>
                         {countries.map((country) => {
@@ -153,7 +154,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       </select>
                     </label>
                   </div>
-                  <div className="flex gap-4 mb-4x flex-1">
+                  <div className="flex flex-wrap gap-4 mb-4x flex-1">
                     <Input
                       id="phone"
                       inputName="Your phone"
@@ -184,24 +185,26 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       <input type="hidden" name="source" value={window.location.href} />
                     </label>
                   )}
-                  <div className="flex gap-4 items-center justify-between">
-                    <span>
+                  <div className="flex flex-wrap gap-4 items-center justify-between">
+                    <label className="flex-1 fz-14p">
                       <b>1</b>/2 About yourself
-                    </span>
-                    <button
-                      type="button"
-                      className={`btn btn-blue ${
-                        fullNameErrors.length || phoneErrors.length || emailErrors.length
-                          ? 'disabled'
-                          : ''
-                      }`}
-                      onClick={() => {
-                        typeof window !== 'undefined' && setSource(window.location.href)
-                        checkMandatoryFields_step1()
-                      }}
-                    >
-                      {text.form.btnNextStep}
-                    </button>
+                    </label>
+                    <label>
+                      <button
+                        type="button"
+                        className={`btn btn-blue ${
+                          fullNameErrors.length || phoneErrors.length || emailErrors.length
+                            ? 'disabled'
+                            : ''
+                        }`}
+                        onClick={() => {
+                          typeof window !== 'undefined' && setSource(window.location.href)
+                          checkMandatoryFields_step1()
+                        }}
+                      >
+                        {text.form.btnNextStep}
+                      </button>
+                    </label>
                   </div>
                 </>
               )}
@@ -229,11 +232,11 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       />
                     </label>
                   </div>
-                  <div className="flex gap-4 items-center justify-between">
-                    <span>
+                  <div className="flex flex-wrap gap-4 items-center justify-between">
+                    <label className="flex-1">
                       <b>2</b>/2 About yourself
-                    </span>
-                    <div className="flex items-center gap-4">
+                    </label>
+                    <label className="flex items-center gap-4">
                       <button
                         type="button"
                         className="btn btn-gray flex items-center justify-center"
@@ -256,7 +259,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       >
                         {text.form.btnNextStep}
                       </button>
-                    </div>
+                    </label>
                   </div>
                 </>
               )}
@@ -291,10 +294,10 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
         }`}
       >
         <div className="container">
-          <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">
+          <h3 className="medium-title fw-600 mx-auto mb-4x">
             Still have questions? Let’s get in touch.
           </h3>
-          <div className="links flex items-center justify-between mx-auto fz-20p fw-600">
+          <div className="links flex flex-wrap items-center justify-between gap-4 mx-auto fz-20p fw-600">
             <a href={`mailto:${text.contacts.email}`} className="flex items-center">
               <Circle size={32} color={Color.Blue} classList="mr-1x">
                 <SVG content={emailIcon()} />

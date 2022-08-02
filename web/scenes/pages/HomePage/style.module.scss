@@ -10,6 +10,20 @@
     :global {
         .text-wrapper {
             max-width: 30rem;
+            .buttons {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                @media (min-width: $xl) {
+                    flex-wrap: nowrap;
+                    gap: 2.5rem;
+                }
+            }
+        }
+        .image-wrapper {
+            display: none;
+            @media (min-width: $xl) {
+                display: block;
+            }
         }
         .description {
             font-size: 1rem;
@@ -64,10 +78,20 @@
 
 .universities {
     :global {
-        p {
-            max-width: 21rem;
+        .intro {
+            text-align: center;
             strong {
                 color: $color-blue;
+            }
+            @media (min-width: $lg) {
+                max-width: 21rem;
+                text-align: left;
+            }
+        }
+        .logos {
+            gap: 1.5rem;
+            @media (min-width: $lg) {
+                gap: 2rem;
             }
         }
     }
@@ -80,6 +104,29 @@
     :global {
         .cards-wrapper {
             margin-top: 148px;
+            overflow-x: auto;
+            scrollbar-color: $color-blue rgba(23, 29, 35, 0.1);
+            scrollbar-width: thin;
+            /* width */
+            &::-webkit-scrollbar {
+                width: 2px;
+                height: 2px;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: rgba(23, 29, 35, 0.1);
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $color-blue;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $color-blue;
+            }
         }
         .card-1 {
             flex: 4;

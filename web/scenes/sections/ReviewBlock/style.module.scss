@@ -16,6 +16,9 @@
 
   :global {
     .pseudo {
+      @media (min-width: $lg) {
+        font-size: 22px;
+      }
       &::before {
         content: '“';
       }

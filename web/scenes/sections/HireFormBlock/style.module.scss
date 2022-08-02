@@ -3,12 +3,30 @@
 .card {
   background: url('/images/bg-form.jpg') no-repeat center/cover;
   transform: translate(0, 5.5rem);
+  margin-left: -1rem;
+  margin-right: -1rem;
+  @media (min-width: $lg) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   :global {
+    .description {
+      font-size: 20px;
+      @media (min-width: $lg) {
+        font-size: 22px;
+      }
+    }
     .form {
       max-width: 34rem;
       min-height: 26rem;
       color: $default-text-color;
+      label {
+        flex-basis: 100%;
+        @media (min-width: $sm) {
+          flex-basis: 0;
+        }
+      }
       select {
         padding: 15px;
       }
@@ -65,9 +83,15 @@
   :global {
     .title {
       max-width: 25rem;
+      @media (min-width: $lg) {
+        text-align: center;
+      }
     }
     .links {
       max-width: 34rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      @media (min-width: $lg) {}
     }
   }
 }

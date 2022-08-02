@@ -40,9 +40,15 @@ export const CopyFragment = ({ title }) => {
 const MenuItem = ({ item, index }) => {
   return (
     <li className={index === 0 ? '' : 'mt-2x'}>
-      <Link href={item.link}>
-        <a>{item.title}</a>
-      </Link>
+      {item.link.includes('http') ? (
+        <a href={item.link} target="_blank" rel="nofollow noopener">
+          {item.title}
+        </a>
+      ) : (
+        <Link href={item.link}>
+          <a>{item.title}</a>
+        </Link>
+      )}
     </li>
   )
 }

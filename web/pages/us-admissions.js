@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { Layout } from '~/components/Layout'
-import { RatedBlock } from '~/scenes/sections'
 
 export const US_Admissions = () => {
   return (
@@ -12,7 +11,6 @@ export const US_Admissions = () => {
         <div className="container">
           <h1 className="main-title mb-10x">US Admissions page</h1>
         </div>
-        <RatedBlock />
       </section>
     </Layout>
   )

@@ -12,10 +12,6 @@
 
 @include keyframes(rotate){
   0% { transform: rotate(0deg) }
-  //40% { transform: rotate(135deg) }
-  //50% { transform: rotate(180deg) }
-  //60% { transform: rotate(225deg) }
-  //60% { transform: rotate(270deg) }
   100% { transform: rotate(360deg) }
 }
 
@@ -24,6 +20,14 @@
     .card {
       background-color: #F8F9FE;
       box-shadow: 0 0 15px -10px rgba(215, 229, 255, 1);
+      flex-basis: auto;
+      @media (min-width: $sm) {
+        max-width: calc(50% - 1rem);
+      }
+      @media (min-width: $xl) {
+        flex-basis: 0;
+        max-width: initial;
+      }
       &:hover {
         transform: scale(1.01);
         box-shadow: 0 0 15px -5px rgba(215, 229, 255, 1);

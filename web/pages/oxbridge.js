@@ -50,7 +50,7 @@ export const Oxbridge = () => {
   useEffect(() => {
     client.fetch(query, params).then((data) => {
       setTutors(data)
-      console.log(data)
+      // console.log(data)
     })
   }, [levelQuery, subjectQuery])
 

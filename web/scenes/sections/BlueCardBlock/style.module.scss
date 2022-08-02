@@ -10,6 +10,9 @@
     }
     .content {
       max-width: 30rem;
+      @media (min-width: $lg) {
+        font-size: 20px;
+      }
     }
     .btn {
       padding-top: 0.75rem;

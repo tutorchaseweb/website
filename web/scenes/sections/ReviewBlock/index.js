@@ -6,10 +6,10 @@ export const ReviewBlock = ({ content = '', author = '', position = '', classNam
   return (
     <section className={`reviews relative pt-9x ${styles.reviews} ${className}`}>
       <div className="container narrow">
-        <div className="card bg-white rounded-small p-8x mx-auto">
+        <div className="card bg-white rounded-small pt-5x pb-5x pl-2x pr-2x p-8x_lg mx-auto">
           <div className="content text-center mx-auto">
             <div
-              className="pseudo fz-22p l-height-1/5 mb-4x"
+              className="pseudo l-height-1/5 mb-4x"
               dangerouslySetInnerHTML={{ __html: content }}
             />
             <p className="mb-2x">

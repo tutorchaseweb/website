@@ -1,4 +1,8 @@
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import client from '~/utils/sanity-client'
+import { getImageUrl } from '~/utils/helpers'
 import { PortableText } from '@portabletext/react'
 import {
   ReviewBlock,
@@ -25,19 +29,9 @@ import styles from './style.module.scss'
 import employerImg from '~/assets/images/girl.png'
 import tutorImg from '~/assets/images/frame_48095504.png'
 import tutor2Img from '~/assets/images/frame_480955042.png'
-import stanfordLogo from '~/assets/images/stanford.png'
-import oxfordLogo from '~/assets/images/oxford.png'
-import harvardLogo from '~/assets/images/harvard.png'
-import cambridgeLogo from '~/assets/images/cambridge.png'
-import massachusettsLogo from '~/assets/images/massachusetts.png'
 import videoImg from '~/assets/images/video.png'
 import avatarsImg from '~/assets/images/avatars.png'
 import oxfordSmallLogo from '~/assets/images/oxford_logo.png'
-import tutor1avatar from '~/assets/images/tutor_1.jpg'
-import tutor2avatar from '~/assets/images/tutor_2.jpg'
-import tutor3avatar from '~/assets/images/tutor_3.jpg'
-import tutor4avatar from '~/assets/images/tutor_4.jpg'
-import tutor5avatar from '~/assets/images/tutor_5.jpg'
 import premiumTutor from '~/assets/images/premium_tutor.png'
 import image_591 from '~/assets/images/image_591.png'
 import image_592 from '~/assets/images/image_592.png'
@@ -46,7 +40,62 @@ import image_811 from '~/assets/images/image_811.png'
 import image_812 from '~/assets/images/image_812.png'
 import image_813 from '~/assets/images/image_813.png'
 
+const TutorCard = ({ tutor }) => {
+  const university = tutor.universities[0]
+
+  return (
+    <Link key={tutor._id} href={`/tutors/${tutor.slug.current}`}>
+      <a className="card block relative transition flex-1 border-light pt-6x pb-6x pl-3x pr-3x">
+        <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
+          <SVG content={arrowTopRight()} size={20} />
+        </span>
+        <p className="avatar color-blue border border-round relative mx-auto overflow-hidden p-1x">
+          <span className="relative block w-full h-full border-round overflow-hidden">
+            <Image
+              src={`${getImageUrl(tutor.image.asset._ref).width(300).height(300)}`}
+              alt={tutor.name}
+              className="block"
+              layout="fill"
+              objectFit="cover"
+            />
+          </span>
+        </p>
+        <p className="fz-18p fw-700 mb-1x">{tutor.name}</p>
+        <p className="mb-3x l-height-1">{tutor.position}</p>
+        <img
+          src={`${getImageUrl(university.logo.asset._ref)}`}
+          alt={university.title}
+          style={{ height: '24px' }}
+          className="mx-auto"
+        />
+      </a>
+    </Link>
+  )
+}
+
 export const HomePage = ({ page }) => {
+  const [tutors, setTutors] = useState([])
+  const [universities, setUniversities] = useState([])
+  const getElectedTutors = `
+      *[_type == 'tutor' && elected==true] {
+        ...,
+        universities[]->
+      }
+    `
+  const getUniversities = `
+      *[_type == 'university'] {
+        ...,
+      }
+    `
+  useEffect(() => {
+    client.fetch(getElectedTutors).then((tutors) => {
+      setTutors(tutors)
+    })
+    client.fetch(getUniversities).then((universities) => {
+      setUniversities(universities)
+    })
+  }, [])
+
   const firstScreen = page.firstScreen
 
   return (
@@ -54,21 +103,21 @@ export const HomePage = ({ page }) => {
       <section className={`first-screen ${styles.firstScreen}`}>
         <div className="container">
           <div className="flex items-center justify-between">
-            <div className="text-wrapper">
+            <div className="text-wrapper pb-9x pb-0x_xl">
               <h1 className="main-title home fw-700 fz-40p mb-3x">
                 Elite Online <span className="color-blue">Tutoring</span>
               </h1>
               <p className="description mb-5x mb-7x_lg">{firstScreen.description}</p>
-              <div className="flex items-center">
+              <div className="buttons flex items-center">
                 <Link href="/tutors">
-                  <a className="btn btn-blue mr-5x">Hire a Tutor</a>
+                  <a className="btn btn-blue">Hire a Tutor</a>
                 </Link>
                 <div className="rating">
                   <BasedReviews />
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="image-wrapper relative">
               <div className="blue-book absolute round bg-white flex items-center justify-center">
                 <SVG content={bookFull()} size={32} />
               </div>
@@ -95,19 +144,26 @@ export const HomePage = ({ page }) => {
           </div>
         </div>
       </section>
-      <section className="bg-lightGray pt-5x pb-5x">
+      <section className={`universities bg-lightGray pt-5x pb-5x ${styles.universities}`}>
         <div className="container">
-          <div className="partners-line flex gap-8 items-center">
-            <div
-              className={`universities flex-1 uppercase color-lightGray fw-500 ${styles.universities}`}
-            >
+          <div className="partners-line flex flex-wrap gap-8 items-center justify-between">
+            <div className="intro uppercase color-lightGray fw-500">
               <PortableText value={firstScreen.universities} />
             </div>
-            <img src={stanfordLogo.src} alt="Stanford" />
-            <img src={oxfordLogo.src} alt="Oxford" />
-            <img src={harvardLogo.src} alt="Harvard" />
-            <img src={cambridgeLogo.src} alt="Cambridge" />
-            <img src={massachusettsLogo.src} alt="Massachusetts" />
+            <div className="logos flex flex-wrap items-center justify-center">
+              {Boolean(universities.length) &&
+                universities.map((university) => {
+                  return (
+                    <img
+                      key={university._id}
+                      src={`${getImageUrl(university.logo.asset._ref)}`}
+                      alt={university.title}
+                      style={{ height: '35px' }}
+                      className="mx-auto"
+                    />
+                  )
+                })}
+            </div>
           </div>
         </div>
       </section>
@@ -190,96 +246,8 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">The World's Best Tutors</p>
           <h2 className="fz-48p fw-600 mb-6x">Tutor Spotlight</h2>
-          <div className="flex">
-            <Link href={'/'}>
-              <a className="card block relative transition flex-1 border-light pt-6x pb-6x pl-3x pr-3x">
-                <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
-                  <SVG content={arrowTopRight()} size={20} />
-                </span>
-                <p className="avatar color-blue border border-round relative mx-auto">
-                  <img
-                    src={tutor1avatar.src}
-                    alt="Mally"
-                    className="absolute inset-0 w-full h-full border-round p-1x"
-                  />
-                </p>
-                <p className="fz-18p fw-700 mb-1x">Mally</p>
-                <p className="mb-3x">English Tutor</p>
-                <img src={stanfordLogo.src} alt="Stanford Logo" style={{ height: '24px' }} />
-              </a>
-            </Link>
-            <Link href={'/'}>
-              <a className="card block relative transition flex-1 border-light pt-6x pb-6x pl-3x pr-3x">
-                <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
-                  <SVG content={arrowTopRight()} size={20} />
-                </span>
-                <p className="avatar color-blue border border-round relative mx-auto">
-                  <img
-                    src={tutor2avatar.src}
-                    alt="Mally"
-                    className="absolute inset-0 w-full h-full border-round p-1x"
-                  />
-                </p>
-                <p className="fz-18p fw-700 mb-1x">Mally</p>
-                <p className="mb-3x">English Tutor</p>
-                <img src={oxfordLogo.src} alt="Oxford Logo" style={{ height: '24px' }} />
-              </a>
-            </Link>
-            <Link href={'/'}>
-              <a className="card block relative transition flex-1 border-light pt-6x pb-6x pl-3x pr-3x">
-                <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
-                  <SVG content={arrowTopRight()} size={20} />
-                </span>
-                <p className="avatar color-blue border border-round relative mx-auto">
-                  <img
-                    src={tutor3avatar.src}
-                    alt="Matthew"
-                    className="absolute inset-0 w-full h-full border-round p-1x"
-                  />
-                </p>
-                <p className="fz-18p fw-700 mb-1x">Matthew</p>
-                <p className="mb-3x">English Tutor</p>
-                <img src={harvardLogo.src} alt="Harvard Logo" style={{ height: '24px' }} />
-              </a>
-            </Link>
-            <Link href={'/'}>
-              <a className="card block relative transition flex-1 border-light pt-6x pb-6x pl-3x pr-3x">
-                <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
-                  <SVG content={arrowTopRight()} size={20} />
-                </span>
-                <p className="avatar color-blue border border-round relative mx-auto">
-                  <img
-                    src={tutor4avatar.src}
-                    alt="Matthew"
-                    className="absolute inset-0 w-full h-full border-round p-1x"
-                  />
-                </p>
-                <p className="fz-18p fw-700 mb-1x">Matthew</p>
-                <p className="mb-3x">English Tutor</p>
-                <img src={cambridgeLogo.src} alt="Cambridge Logo" style={{ height: '24px' }} />
-              </a>
-            </Link>
-            <Link href={'/'}>
-              <a className="card block relative transition flex-1 border-light pt-6x pb-6x pl-3x pr-3x">
-                <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
-                  <SVG content={arrowTopRight()} size={20} />
-                </span>
-                <p className="avatar color-blue border border-round relative mx-auto">
-                  <img
-                    src={tutor5avatar.src}
-                    alt="Matthew"
-                    className="absolute inset-0 border-round p-1x"
-                  />
-                </p>
-                <p className="fz-18p fw-700 mb-1x">Matthew</p>
-                <p className="mb-3x">English Tutor</p>
-                <img
-                  src={massachusettsLogo.src}
-                  alt="Massachusetts Logo"
-                  style={{ height: '24px' }}
-                />
-              </a>
-            </Link>
+          <div className="flex flex-wrap">
+            {Boolean(tutors.length) && tutors.map((tutor) => <TutorCard tutor={tutor} />)}
           </div>
         </div>
       </section>
