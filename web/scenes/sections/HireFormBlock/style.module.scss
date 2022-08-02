@@ -81,7 +81,7 @@
   background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
 
   :global {
-    .title {
+    .medium-title {
       max-width: 25rem;
       @media (min-width: $lg) {
         text-align: center;

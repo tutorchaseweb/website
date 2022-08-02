@@ -2,12 +2,6 @@ export default {
   name: 'tutor',
   type: 'document',
   title: 'Tutor',
-  fieldsets: [
-    { name: 'vettedTutor', title: 'Vetted Tutor' },
-    { name: 'tutoringExperience', title: 'Tutoring Experience' },
-    { name: 'tutoringApproach', title: 'Tutoring Approach' },
-    { name: 'extracurricularActivities', title: 'Extracurricular Activities' },
-  ],
   fields: [
     {
       name: 'name',
@@ -71,34 +65,24 @@ export default {
       of: [{ type: 'qualification' }],
     },
     {
-      name: 'vettedTitle',
-      type: 'string',
-      title: 'Title',
-      fieldset: 'vettedTutor',
-    },
-    {
       name: 'vettedDescription',
       type: 'simpleContent',
-      title: 'Description',
-      fieldset: 'vettedTutor',
+      title: 'Vetted tutor description',
     },
     {
       name: 'tutoringExperience',
       type: 'simpleContent',
       title: 'Tutoring Experience',
-      fieldset: 'tutoringExperience',
     },
     {
       name: 'tutoringApproach',
       type: 'simpleContent',
       title: 'Tutoring Approach',
-      fieldset: 'tutoringApproach',
     },
     {
       name: 'extracurricularActivities',
       type: 'array',
       title: 'Extracurricular Activities',
-      fieldset: 'extracurricularActivities',
       of: [{ type: 'string' }],
       options: {
         layout: 'tags',
