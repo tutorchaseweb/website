@@ -1,4 +1,4 @@
-import client from '~/utils/sanity-client'
+// import client from '~/utils/sanity-client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import SVG from '~/components/SVG'
@@ -101,9 +101,9 @@ const DesktopReviews = ({ reviews }) => {
 }
 
 export const RatedBlock = ({ className }) => {
-  const query = `*[_type == 'review'] { ..., }`
-  const allReviews = client.fetch(query).then((reviews) => reviews)
-  console.log(allReviews)
+  // const query = `*[_type == 'review'] { ..., }`
+  // const allReviews = client.fetch(query).then((reviews) => reviews)
+  // console.log(allReviews)
 
   const window = useWindowSize()
 

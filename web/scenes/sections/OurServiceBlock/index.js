@@ -4,15 +4,15 @@ import styles from './style.module.scss'
 
 export const OurServiceBlock = ({ className = '' }) => {
   return (
-    <section className={`service pt-15x pb-4x ${styles.service} ${className}`}>
+    <section className={`service pt-8x pt-15x_lg pb-4x ${styles.service} ${className}`}>
       <div className="container text-center">
-        <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">Our Service</p>
-        <h2 className="title fz-48p fw-600 mb-6x mx-auto">How it Works?</h2>
-        <div className="flex gap-8">
+        <p className="before-title fw-600 uppercase color-lightGray mb-3x">Our Service</p>
+        <h2 className="section-title fw-600 mb-6x mx-auto">How it Works?</h2>
+        <div className="flex flex-wrap gap-8 justify-center">
           <div className="card flex-1 rounded-small transition pt-8x pb-6x pl-5x pr-5x">
             <div className="circle round flex items-center justify-center bg-blue relative mx-auto mb-4x">
               <div
-                className={`point transition absolute inset-0 w-full h-full ${styles.point}  ${styles.point1}`}
+                className={`point transition absolute inset-0 w-full h-full ${styles.point} ${styles.point1}`}
               />
               <SVG content={sendBack()} size={24} />
             </div>
