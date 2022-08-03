@@ -27,7 +27,7 @@ export const TutorPage = ({ tutor }) => {
               </div>
               <div className="content flex-1 pl-6x">
                 <div className="flex items-center justify-between mb-3x">
-                  <h1>{tutor.name}</h1>
+                  <h1 className="fz-36p fw-600 color-blue">{tutor.name}</h1>
                   <p className="rating flex items-center justify-center">
                     <span className="stars l-height-1 mr-1x">
                       <SVG content={star()} size={20} />
