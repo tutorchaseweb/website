@@ -1,12 +1,18 @@
 export default {
-  name: 'blueCard',
+  name: 'sectionHead',
   type: 'object',
   title: 'Head of any section',
   fields: [
     {
-      name: 'Title',
+      name: 'preTitle',
       type: 'string',
-      title: 'Title for blue card',
+      title: 'Small text before title',
+      description: '(optional)',
+    },
+    {
+      name: 'title',
+      type: 'string',
+      title: 'Section title',
       description: '(is required)',
       validation: (Rule) => Rule.error('The title is required').required(),
     },
@@ -15,13 +21,6 @@ export default {
       type: 'simpleContent',
       title: 'Description',
       description: '(optional)',
-    },
-    {
-      name: 'withButton',
-      type: 'boolean',
-      title: 'Enable button',
-      description: 'Enable this option to display the button on the card',
-      initialValue: false,
     },
   ],
 }

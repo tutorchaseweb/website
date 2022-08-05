@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import client from '~/utils/sanity-client'
-import { getImageUrl } from '~/utils/helpers'
+import { getImageUrl, useWindowSize } from '~/utils/helpers'
+import { MOBILE_BREAKPOINT } from '~/utils/constants'
 import { PortableText } from '@portabletext/react'
 import {
   ReviewBlock,
   BlueCardBlock,
   OurServiceBlock,
+  PartOfSection,
   HireFormBlock,
   RatedBlock,
   InteractiveBlock,
@@ -23,13 +25,12 @@ import {
   videoCam,
 } from '~/utils/svgImages'
 
+import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
 // all used images
-import employerImg from '~/assets/images/girl.png'
 import tutorImg from '~/assets/images/frame_48095504.png'
 import tutor2Img from '~/assets/images/frame_480955042.png'
-import videoImg from '~/assets/images/video.png'
 import avatarsImg from '~/assets/images/avatars.png'
 import oxfordSmallLogo from '~/assets/images/oxford_logo.png'
 import premiumTutor from '~/assets/images/premium_tutor.png'
@@ -96,7 +97,32 @@ export const HomePage = ({ page }) => {
     })
   }, [])
 
-  const firstScreen = page.firstScreen
+  const window = useWindowSize()
+
+  const {
+    firstScreen,
+    secondScreen,
+    studyCards,
+    reviewBlockFirst,
+    tutorsList,
+    fourthScreen,
+    reviewBlockSecond,
+    globallyTutoring,
+    blueCard,
+    seventhScreen,
+    allReviewsBlock,
+    servicesBlock,
+  } = page
+
+  // console.log(reviewBlockFirst)
+  // console.log(tutorsList)
+  // console.log(fourthScreen)
+  // console.log(reviewBlockSecond)
+  // console.log(globallyTutoring)
+  // console.log(blueCard)
+  // console.log(seventhScreen)
+  // console.log(allReviewsBlock)
+  // console.log(servicesBlock)
 
   return (
     <>
@@ -104,13 +130,19 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="text-wrapper pb-9x pb-0x_xl">
-              <h1 className="main-title home fw-700 fz-40p mb-3x">
-                Elite Online <span className="color-blue">Tutoring</span>
-              </h1>
-              <p className="description mb-5x mb-7x_lg">{firstScreen.description}</p>
+              {Boolean(firstScreen.title) && (
+                <h1 className="main-title home fw-700 fz-40p mb-3x">
+                  <PortableText value={firstScreen.title} />
+                </h1>
+              )}
+              {Boolean(firstScreen.description) && (
+                <div className="description mb-5x mb-7x_lg">
+                  <PortableText value={firstScreen.description} />
+                </div>
+              )}
               <div className="buttons flex items-center">
                 <Link href="/tutors">
-                  <a className="btn btn-blue">Hire a Tutor</a>
+                  <a className="btn btn-blue">{text.form.btnHireTutor}</a>
                 </Link>
                 <div className="rating">
                   <BasedReviews />
@@ -139,7 +171,17 @@ export const HomePage = ({ page }) => {
                 </span>
                 <span className="fz-14p fw-800 ml-1x">A/A+</span>
               </div>
-              <img src={employerImg.src} alt="employer" className="block" />
+              {Boolean(firstScreen.image) && (
+                <img
+                  src={`${getImageUrl(firstScreen.image.asset._ref)}`}
+                  alt="Elite Online Tutoring"
+                  className="block"
+                  style={{
+                    maxWidth: '550px',
+                    maxHeight: '650px',
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -169,49 +211,26 @@ export const HomePage = ({ page }) => {
       </section>
       <section className={`study ${styles.study}`}>
         <div className="container">
-          <div className="flex items-center">
-            <div className="w-full w-1/2_lg">
-              <img src={videoImg.src} alt="video" className="block" />
-            </div>
-            <div className="w-full w-1/2_lg">
-              <div className="text-wrapper ml-12x">
-                <p className="fz-18p fw-600 color-lightGray uppercase mb-2x">
-                  Study With Our Tutors
-                </p>
-                <h2 className="fz-48p fw-600 mb-4x">Experienced and highly qualified tutors</h2>
-                <p className="fz-18p mb-7x">
-                  We help students gain top grades in exams and achieve admission into the UK and
-                  US's top universities including Oxbridge and Ivy League.
-                </p>
-                <a href="#" className="btn btn-blue">
-                  How it works?
-                </a>
-              </div>
-            </div>
-          </div>
+          <PartOfSection section={secondScreen} />
           <div className="cards-wrapper flex gap-8">
             <div className="card card-1 bg-blue rounded-small p-4x">
               <div className="flex items-center justify-between mb-4x">
-                <p className="fw-600 uppercase">Internationally Trusted</p>
-                <SVG content={globe()} size={28} />
+                <p className="preTitle fw-600 uppercase">{studyCards.firstTitle}</p>
+                <SVG content={globe()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
               </div>
-              <h4 className="title fz-32p fw-600 mb-5x">
-                Trusted by students and parents around the world
-              </h4>
-              <p className="flex items-center">
-                <img src={avatarsImg.src} alt="avatars" className="block mr-2x" /> 1000+ Satisfied
-                Students
+              <h4 className="title fw-600 mb-5x">{studyCards.firstDescription}</h4>
+              <p className="foot flex flex-wrap items-center">
+                <img src={avatarsImg.src} alt="avatars" className="block mr-2x" />
+                1000+ Satisfied Students
               </p>
             </div>
             <div className="card card-2 bg-lightGray rounded-small p-4x flex flex-col">
               <div className="flex items-center justify-between mb-4x">
-                <p className="fw-600 uppercase">Prestigious Partners</p>
-                <SVG content={checkCircle()} size={28} />
+                <p className="preTitle fw-600 uppercase">{studyCards.secondTitle}</p>
+                <SVG content={checkCircle()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
               </div>
-              <div className="flex justify-between flex-1">
-                <h4 className="title fz-24p fw-600">
-                  Trusted by Oxford University and elite schools as a tutoring partner
-                </h4>
+              <div className="flex flex-col center justify-between flex-1">
+                <h4 className="title fw-600">{studyCards.secondDescription}</h4>
                 <p className="logo">
                   <img src={oxfordSmallLogo.src} alt="Oxford Logo" className="block" width="68" />
                 </p>
@@ -219,41 +238,36 @@ export const HomePage = ({ page }) => {
             </div>
             <div className="card card-3 bg-white rounded-small p-4x border-light">
               <div className="flex items-center justify-between mb-4x">
-                <p className="fw-600 uppercase">Premium Tutors</p>
-                <SVG content={openedBook()} size={28} />
+                <p className="preTitle fw-600 uppercase">{studyCards.thirdTitle}</p>
+                <SVG content={openedBook()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
               </div>
-              <h4 className="title fz-24p fw-600 mb-3x">Exam and Admissions Experts</h4>
+              <h4 className="title fw-600 mb-3x">{studyCards.thirdDescription}</h4>
               <p className="color-blue fz-14p fw-600">
-                <span className="tag">GCSE</span>
-                <span className="tag">IGCSE</span>
-                <span className="tag">IB</span>
-                <span className="tag">UK / Oxbridge Admissions</span>
-                <span className="tag">AP</span>
-                <span className="tag">US / Ivy League Admissions</span>
-                <span className="tag">A-Level</span>
+                {studyCards.thirdCardTags.map((tag) => (
+                  <span className="tag">{tag}</span>
+                ))}
               </p>
             </div>
           </div>
         </div>
       </section>
-      <ReviewBlock
-        content={`I received a great tutor who had a fantastic way of teaching the content, <b>
-          allowing me to gain an understanding far beyond that I gained in the classroom.</b>`}
-        author={'Elizabeth'}
-        position={'Parent of English student'}
-      />
+      <ReviewBlock {...reviewBlockFirst} />
       <section className={`tutors pt-15x pb-15x text-center ${styles.tutors}`}>
         <div className="container">
-          <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">The World's Best Tutors</p>
-          <h2 className="fz-48p fw-600 mb-6x">Tutor Spotlight</h2>
+          <p className="before-title fw-600 uppercase color-lightGray mb-3x">
+            {tutorsList.preTitle}
+          </p>
+          <h2 className="section-title fw-600 mb-6x">{tutorsList.title}</h2>
           <div className="flex flex-wrap">
-            {Boolean(tutors.length) && tutors.map((tutor) => <TutorCard tutor={tutor} />)}
+            {Boolean(tutors.length) &&
+              tutors.map((tutor) => <TutorCard key={tutor._id} tutor={tutor} />)}
           </div>
         </div>
       </section>
       <section className={`premium pt-5x pb-18x ${styles.premium}`}>
         <div className="container">
-          <div className="flex items-center">
+          {/*<PartOfSection section={fourthScreen} />*/}
+          <div className="wrapper flex flex-wrap items-center">
             <div className="w-full w-1/2_lg relative">
               <div className="card absolute bg-white rounded-small p-3x">
                 <SVG content={videoCam()} size={32} className="mb-2x" />
@@ -266,15 +280,15 @@ export const HomePage = ({ page }) => {
                 <SVG content={checkCircle()} size={28} />
               </div>
             </div>
-            <div className="w-full w-1/2_lg pl-10x">
+            <div className="text-wrap w-full w-1/2_lg mt-6x mt-0x_lg pl-10x_lg">
               <div className="flex items-center justify-between mb-6x">
-                <h2 className="fz-32p fw-600">Premium UK and US Tutors</h2>
+                <h2 className="medium-title fw-600">Premium UK and US Tutors</h2>
                 <a href="#" className="btn btn-blue ml-5x">
                   Hire a Tutor
                 </a>
               </div>
 
-              <ul>
+              <ul className="ordered-list">
                 <li>
                   We personally interview all our tutors to ensure they deliver the highest quality
                   tuition.
@@ -291,23 +305,15 @@ export const HomePage = ({ page }) => {
           </div>
         </div>
       </section>
-      <ReviewBlock
-        content={`My Son had an excellent tutor who helped him in preparing for his STEP exam. Her
-          teaching style was very good, allowing him to solve the Maths problem by himself
-          with a little hint, rather than helping him with the answer. <b> Highly recommend 
-          Tutor Chase, they helped me to find the right Tutor within our Budget and the tutor 
-          was a Cambridge Mathematics Graduate, which we were looking for.</b>`}
-        author={'Elizabeth'}
-        position={'Parent of English student'}
-      />
+      <ReviewBlock {...reviewBlockSecond} />
       <section className={`globally pt-15x ${styles.globally}`}>
         <div className="container text-center">
-          <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">Trusted Globally</p>
-          <h2 className="title fz-48p fw-600 mb-6x mx-auto">
-            Tutoring delivered in the UK, US, and Internationally
-          </h2>
+          <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
+            {globallyTutoring.preTitle}
+          </p>
+          <h2 className="title fz-48p fw-600 mb-6x mx-auto">{globallyTutoring.title}</h2>
         </div>
-        <div className="map flex pt-6x pb-15x">
+        <div className="map flex pt-2x pt-6x_lg pb-2x pb-15x_lg">
           <div className="container relative">
             <p className="avatar logo_1 border border-round absolute mx-auto">
               <img
@@ -361,7 +367,7 @@ export const HomePage = ({ page }) => {
             </p>
             <p className={`card_2 absolute rounded-small bg-white p-2x flex items-center`}>
               <div className="play bg-white round relative mx-auto flex items-center justify-center mb-1x" />
-              <span className="ml-2x l-height-1/4">
+              <span className="text ml-2x l-height-1/4">
                 <span className="block fw-700">Lesson 2</span>
                 <span className="block fz-14p">1h 30m</span>
               </span>

@@ -49,7 +49,9 @@ export const TutorPage = ({ tutor }) => {
                 <p>
                   <span className="fz-18p fw-600">Teaches:</span>
                   {tutor.teaches.map((teach) => (
-                    <span className="teach fz-14p color-blue ml-1x mb-1x">{teach.title}</span>
+                    <span className="teach fz-14p fw-500 color-blue ml-1x mb-1x">
+                      {teach.title}
+                    </span>
                   ))}
                 </p>
               </div>
@@ -145,9 +147,9 @@ export const TutorPage = ({ tutor }) => {
                 Study With Our Tutors
               </p>
               <h2 className="fz-36p fw-600 l-height-1 mb-7x">Find a tutor like {tutor.name}</h2>
-              <a href="#" className="btn btn-blue">
-                Go Explore
-              </a>
+              <Link href="/tutors">
+                <a className="btn btn-blue">Go Explore</a>
+              </Link>
             </div>
           </div>
         </div>

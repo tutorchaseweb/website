@@ -5,11 +5,11 @@ export const InteractiveBlock = ({ className }) => {
   return (
     <section className={`interactive pt-18x pb-18x ${styles.interactive} ${className}`}>
       <div className="container">
-        <div className="flex items-center">
+        <div className="flex flex-wrap items-center">
           <div className="w-full w-1/2_lg relative">
             <img src={illustrationImg.src} alt="Illustration" />
           </div>
-          <div className="w-full w-1/2_lg pl-11x">
+          <div className="w-full w-1/2_lg mt-6x mt-0x_lg pl-11x_lg">
             <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
               Interactive Tutoring Platform
             </p>

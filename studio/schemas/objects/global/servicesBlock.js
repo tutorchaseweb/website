@@ -1,0 +1,63 @@
+export default {
+  name: 'servicesBlock',
+  type: 'object',
+  title: 'Services block',
+  fields: [
+    {
+      name: 'preTitle',
+      type: 'string',
+      title: 'Small text before title',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The field is required').required(),
+    },
+    {
+      name: 'title',
+      type: 'string',
+      title: 'Section title',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'firstTitle',
+      type: 'string',
+      title: 'Title for first card',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'firstDescription',
+      type: 'text',
+      title: 'Description for first card',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The description is required').required(),
+    },
+    {
+      name: 'secondTitle',
+      type: 'string',
+      title: 'Title for second card',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'secondDescription',
+      type: 'text',
+      title: 'Description for second card',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The description is required').required(),
+    },
+    {
+      name: 'thirdTitle',
+      type: 'string',
+      title: 'Title for third card',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'thirdDescription',
+      type: 'text',
+      title: 'Description for third card',
+      description: '(is required)',
+      validation: (Rule) => Rule.error('The description is required').required(),
+    },
+  ],
+}
