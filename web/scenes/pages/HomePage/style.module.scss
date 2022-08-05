@@ -107,6 +107,10 @@
             overflow-x: auto;
             scrollbar-color: $color-blue rgba(23, 29, 35, 0.1);
             scrollbar-width: thin;
+            padding-bottom: 1.5rem;
+            @media (min-width: $lg) {
+                padding-bottom: 0;
+            }
             /* width */
             &::-webkit-scrollbar {
                 width: 2px;
@@ -127,26 +131,57 @@
             &::-webkit-scrollbar-thumb:hover {
                 background: $color-blue;
             }
+            .card {
+                min-width: 16.875rem;
+                .preTitle {
+                    font-size: 14px;
+                    @media (min-width: $lg) {
+                        font-size: 16px;
+                    }
+                }
+            }
         }
         .card-1 {
             flex: 4;
             .title {
                 max-width: 330px;
+                font-size: 24px;
+                @media (min-width: $lg) {
+                    font-size: 32px;
+                }
+            }
+            .foot {
+                @media (min-width: $lg) {
+                    flex-wrap: nowrap;
+                }
             }
         }
         .card-2 {
             flex: 3;
             .title {
                 max-width: 195px;
+                font-size: 20px;
+                @media (min-width: $lg) {
+                    font-size: 24px;
+                }
             }
             .logo {
                 align-self: flex-end;
+            }
+            .center {
+                @media (min-width: $lg) {
+                    flex-direction: row;
+                }
             }
         }
         .card-3 {
             flex: 3;
             .title {
                 max-width: 220px;
+                font-size: 20px;
+                @media (min-width: $lg) {
+                    font-size: 24px;
+                }
             }
             .tag {
                 display: inline-block;
@@ -195,10 +230,14 @@
 .premium {
     :global {
         .card {
+            display: none;
             max-width: 14.5rem;
             box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
             top: -2.5rem;
             right: 2rem;
+            @media (min-width: $lg) {
+                display: block;
+            }
         }
         .check-book {
             left: 2rem;
@@ -209,30 +248,30 @@
         .btn {
             min-width: 10rem;
         }
-        li {
-            counter-increment: index;
-            display: flex;
-            align-items: flex-start;
-
-            + li {
-                margin-top: 3rem;
-            }
-            &::before {
-                content: "0" counter(index);
-                display: block;
-                width: 44px;
-                min-width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                background: rgba(245, 124, 64, 0.12);
-                font-weight: 600;
-                line-height: 44px;
-                text-align: center;
-                letter-spacing: 0.03em;
-                color: #F57C40;
-                margin-right: 2rem;
-            }
-        }
+        //li {
+        //    counter-increment: index;
+        //    display: flex;
+        //    align-items: flex-start;
+        //
+        //    + li {
+        //        margin-top: 3rem;
+        //    }
+        //    &::before {
+        //        content: "0" counter(index);
+        //        display: block;
+        //        width: 44px;
+        //        min-width: 44px;
+        //        height: 44px;
+        //        border-radius: 50%;
+        //        background: rgba(245, 124, 64, 0.12);
+        //        font-weight: 600;
+        //        line-height: 44px;
+        //        text-align: center;
+        //        letter-spacing: 0.03em;
+        //        color: #F57C40;
+        //        margin-right: 2rem;
+        //    }
+        //}
     }
 }
 
@@ -242,61 +281,112 @@
             max-width: 40rem;
         }
         .map {
-            min-height: 37rem;
+            min-height: 20rem;
             background: url('/images/bg_map.png') no-repeat center/cover;
+            @media (min-width: $lg) {
+                min-height: 37rem;
+            }
         }
         .avatar {
-            width: 6.75rem;
-            height: 6.75rem;
+            width: 3rem;
+            height: 3rem;
             color: #046663;
             img {
                 padding: 0.25rem;
                 object-fit: cover;
             }
+            @media (min-width: $lg) {
+                width: 6.75rem;
+                height: 6.75rem;
+            }
         }
         .logo_1 {
-            top: 15%;
+            top: 0;
             left: 10%;
+            @media (min-width: $lg) {
+                top: 15%;
+            }
         }
         .logo_2 {
+            display: none;
             bottom: 4%;
             left: 27%;
+            @media (min-width: $lg) {
+                display: block;
+            }
         }
         .logo_3 {
-            top: 50%;
-            left: 47%;
+            //top: 55%;
+            //left: 55%;
+            right: 20%;
+            bottom: 20%;
+            @media (min-width: $lg) {
+                top: 50%;
+                left: 47%;
+                right: initial;
+                bottom: initial;
+            }
         }
         .logo_4 {
+            display: none;
             top: 0;
             right: 36%;
+            @media (min-width: $lg) {
+                display: block;
+            }
         }
         .logo_5 {
+            display: none;
             top: 40%;
             right: 20%;
+            @media (min-width: $lg) {
+                display: block;
+            }
         }
         .logo_6 {
             top: 3%;
             right: 9%;
+            @media (min-width: $lg) {}
         }
         .card_1 {
             max-width: 12.5rem;
             box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
-            top: 23%;
-            left: 31%;
+            bottom: 10%;
+            left: 8%;
+            @media (min-width: $lg) {
+                top: 23%;
+                left: 31%;
+                bottom: initial;
+            }
         }
         .card_2 {
             max-width: 10rem;
             background-color: #171D23;
             color: $color-white;
             box-shadow: 0 17px 17px -6px rgba(13, 19, 21, 0.08);
-            bottom: 10%;
-            left: 8%;
+            top: 25%;
+            left: 45%;
+            .text {
+                display: none;
+            }
+            @media (min-width: $lg) {
+                top: initial;
+                bottom: 10%;
+                left: 8%;
+                .text {
+                    display: block;
+                }
+            }
         }
         .card_3 {
+            display: none;
             max-width: 20rem;
             box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
             right: 8%;
             bottom: 0;
+            @media (min-width: $lg) {
+                display: block;
+            }
         }
         .play {
             width: 2.625rem;

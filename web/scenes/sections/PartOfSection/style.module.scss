@@ -1,0 +1,14 @@
+@import 'styles/variables';
+
+.section {
+  @media (min-width: $lg) {
+    flex-wrap: nowrap;
+  }
+  :global {
+    .description {
+      @media (min-width: $lg) {
+        font-size: 18px;
+      }
+    }
+  }
+}

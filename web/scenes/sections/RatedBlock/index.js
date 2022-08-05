@@ -128,7 +128,7 @@ export const RatedBlock = ({ className }) => {
             href="https://www.reviews.co.uk/company-reviews/store/tutorchase"
             rel="noopener noreferrer"
             target="_blank"
-            className="btn btn-blue mx-auto mt-5x mt-0x_xl"
+            className="btn btn-blue mx-auto ml-0x_xl mt-5x mt-0x_xl"
           >
             Read our verified reviews
           </a>
