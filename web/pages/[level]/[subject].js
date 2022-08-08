@@ -1,36 +1,47 @@
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
+import { useGlobalState } from '~/utils/state'
+import { getQueryForTutors } from '~/utils/helpers'
+import { TutorsPage } from '~/scenes/pages/Tutors'
+import Head from 'next/head'
 
 export const Subject = ({ level, subject }) => {
+  const router = useRouter()
+  const [tutors, setTutors] = useState([])
+  const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
+  const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
+
+  useEffect(() => {
+    !levelQuery && setLevelQuery(level)
+    !subjectQuery && setSubjectQuery(subject)
+    if (!level && !subject) {
+      typeof window !== 'undefined' && router.replace('/404')
+    }
+  }, [])
+
+  const query = getQueryForTutors(levelQuery, subjectQuery)
+  const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
+  useEffect(() => {
+    client.fetch(query, params).then((data) => {
+      setTutors(data)
+    })
+  }, [level, subject])
+
   return (
     <Layout>
-      <div className="container pt-20x">
-        <h1>Subject {subject?.title}</h1>
-        <h3>Level {level?.title}</h3>
-      </div>
+      <Head>
+        <title>
+          Online {level?.title} {subject?.title} Tutors
+        </title>
+      </Head>
+      <TutorsPage tutors={tutors} />
     </Layout>
   )
 }
 
-// export async function getStaticPaths() {
-//   const types = await client.fetch(`*[_type in ['level', 'subject']]`)
-//   const levels = types.filter((item) => item._type === 'level')
-//   const subjects = types.filter((item) => item._type === 'subject')
-//
-//   const paths = levels.map((level) => {
-//     return subjects.map((subject) => {
-//       return `/${level.slug.current}/${subject.slug.current}`
-//     })
-//   })
-//
-//   return {
-//     paths: paths.flat(),
-//     fallback: true,
-//   }
-// }
-
 export async function getServerSideProps(context) {
-  // It's important to default the slug so that it doesn't return "undefined"
   const { level = '', subject = '' } = context.params
   const data = await client.fetch(
     `

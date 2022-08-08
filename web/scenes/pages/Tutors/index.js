@@ -15,15 +15,17 @@ import {
 import styles from './style.module.scss'
 
 export const TutorsPage = ({ tutors }) => {
-  const [levelQuery] = useGlobalState('levelQuery', false)
-  const [subjectQuery] = useGlobalState('subjectQuery', false)
+  const [levelQuery] = useGlobalState('levelQuery', null)
+  const [subjectQuery] = useGlobalState('subjectQuery', null)
 
   return (
     <>
-      <section className={`first-screen text-center pt-20x pb-19x ${styles.firstScreen}`}>
+      <section
+        className={`first-screen text-center pt-12x pt-20x_lg pb-8x pb-19x_lg ${styles.firstScreen}`}
+      >
         <div className="container">
           <BasedReviews center={true} />
-          <h1 className="title fz-64p fw-700 l-height-1 mb-3x mx-auto">
+          <h1 className="main-title fw-700 l-height-1 mb-3x mx-auto">
             {`Online ${levelQuery?.title ? levelQuery.title : ''} ${
               subjectQuery?.title ? subjectQuery.title : ''
             } Tutors`}
@@ -45,7 +47,7 @@ export const TutorsPage = ({ tutors }) => {
       <SubjectsFilter />
       <section className={`tutors-list pt-11x pb-19x ${styles.tutorsList}`}>
         <div className="container medium">
-          <h2 className="fz-36p fw-600 l-height-1/4 mb-2x">
+          <h2 className="section-title fw-600 l-height-1/4 mb-2x">
             {`${levelQuery?.title ? levelQuery.title : ''} ${
               subjectQuery?.title ? subjectQuery.title : ''
             } Tutor Spotlight`}
@@ -59,7 +61,11 @@ export const TutorsPage = ({ tutors }) => {
             extensive tutoring experience.{' '}
             <strong>We'll find the perfect tutor for you based on your requirements!</strong>
           </p>
-          <TutorsList tutors={tutors} />
+          {Boolean(tutors.length) ? (
+            <TutorsList tutors={tutors} />
+          ) : (
+            <p className="medium-title fw-500">Tutors not found for this query</p>
+          )}
         </div>
       </section>
       <section>

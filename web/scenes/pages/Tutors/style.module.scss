@@ -1,13 +1,14 @@
 @import 'styles/variables';
 
 .firstScreen {
-  min-height: 33.75rem;
-  padding-top: 12rem;
-  /* eslint-disable-next-line */
+  @media (min-width: $lg) {
+    min-height: 33.75rem;
+    padding-top: 12rem;
+  }
   background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
 
   :global {
-    .title {
+    .main-title {
       max-width: 55rem;
     }
     .description {
@@ -17,6 +18,10 @@
       max-width: 8rem;
       left: 0;
       bottom: -25%;
+      display: none;
+      @media (min-width: $lg) {
+        display: block;
+      }
 
       .image {
         background: #EBEBF8 url('/images/diagramm.png') no-repeat center;
@@ -38,6 +43,10 @@
       background: $color-white url('/images/live-tutor.png') no-repeat center/cover;
       right: 0;
       bottom: 50%;
+      display: none;
+      @media (min-width: $lg) {
+        display: block;
+      }
 
       .live {
         top: 0.75rem;
@@ -57,108 +66,62 @@
   }
 }
 
-.filter {
-  background-color: #F9FAFB;
-
-  :global {
-    select {
-      padding: 15px;
-      min-width: 14rem;
-      background-color: #FFFFFF;
-      border: 1px solid #EEEFF7;
-      border-radius: 4px;
-    }
-    input, select, textarea {
-      font: inherit;
-      line-height: 2;
-      padding: 0.5rem;
-      min-height: 46px;
-      &::placeholder {
-        font-size: 14px;
-      }
-    }
-    .label-blue {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-  }
-}
-
 .tutorsList {
   :global {
     .description {
       max-width: 51rem;
     }
-    .tutor-card {
-      .actions {
-        border-left: 1px solid #E6E7ED;
-        min-width: 16rem;
-
-        .teach {
-          display: inline-block;
-          color: $color-blue;
-          line-height: 1.2;
-          background-color: rgba(216, 218, 229, 0.4);
-          border-radius: 4px;
-          padding: 0.25rem 0.5rem;
-        }
-        .btn-white {
-          border-top: 1px solid #E6E7ED;
-        }
-      }
-    }
   }
 }
 
-.faqBlock {
-  :global {
-    .description {
-      max-width: 26rem;
-    }
-    .accordion {
-      background-color: #F9FAFB;
-      border-radius: 8px;
-
-      .item + .item {
-        border-top: 1px solid #EEEFF5;
-      }
-      .question {
-        padding: 1.5rem;
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: 600;
-        color: #001A96;
-        position: relative;
-
-        &::after {
-          content: '';
-          display: block;
-          position: absolute;
-          right: 1.5rem;
-          top: 2rem;
-          width: 12px;
-          height: 12px;
-          background: url('/images/arrow_down_blue.svg') no-repeat center/contain;
-          transition: all 0.3s linear;
-        }
-        &.active {
-          &::after {
-            transform: rotate(180deg);
-          }
-        }
-      }
-      .answer {
-        padding: 0 1.5rem;
-        overflow: hidden;
-        max-height: 0;
-        transition: all 0.3s linear;
-
-        &.open {
-          padding-bottom: 1.5rem;
-          max-height: 100vh;
-        }
-      }
-    }
-  }
-}
+//.faqBlock {
+//  :global {
+//    .description {
+//      max-width: 26rem;
+//    }
+//    .accordion {
+//      background-color: #F9FAFB;
+//      border-radius: 8px;
+//
+//      .item + .item {
+//        border-top: 1px solid #EEEFF5;
+//      }
+//      .question {
+//        padding: 1.5rem;
+//        font-size: 20px;
+//        line-height: 28px;
+//        font-weight: 600;
+//        color: #001A96;
+//        position: relative;
+//
+//        &::after {
+//          content: '';
+//          display: block;
+//          position: absolute;
+//          right: 1.5rem;
+//          top: 2rem;
+//          width: 12px;
+//          height: 12px;
+//          background: url('/images/arrow_down_blue.svg') no-repeat center/contain;
+//          transition: all 0.3s linear;
+//        }
+//        &.active {
+//          &::after {
+//            transform: rotate(180deg);
+//          }
+//        }
+//      }
+//      .answer {
+//        padding: 0 1.5rem;
+//        overflow: hidden;
+//        max-height: 0;
+//        transition: all 0.3s linear;
+//
+//        &.open {
+//          padding-bottom: 1.5rem;
+//          max-height: 100vh;
+//        }
+//      }
+//    }
+//  }
+//}

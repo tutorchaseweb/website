@@ -2,8 +2,16 @@
 
 .faqBlock {
   :global {
+    .cover {
+      flex-direction: column;
+      @media (min-width: $lg) {
+        flex-direction: row;
+      }
+    }
     .description {
-      max-width: 26rem;
+      @media (min-width: $lg) {
+        max-width: 26rem;
+      }
     }
     .accordion {
       background-color: #F9FAFB;
@@ -13,7 +21,7 @@
         border-top: 1px solid #EEEFF5;
       }
       .question {
-        padding: 1.5rem;
+        padding: 1.5rem 3rem 1.5rem 1.5rem;
         font-size: 20px;
         line-height: 28px;
         font-weight: 600;

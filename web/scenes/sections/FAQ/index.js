@@ -4,13 +4,15 @@ export const FAQ = () => {
   return (
     <section className={`faq-block pt-18x pb-10x ${styles.faqBlock}`}>
       <div className="container narrow">
-        <div className="flex items-center">
-          <div className="text mr-8x">
-            <p className="fz-18p fw-600 l-height-1 uppercase color-lightGray mb-3x">Our Service</p>
-            <h2 className="fz-48p fw-600 mb-4x">FAQ</h2>
+        <div className="cover flex items-center">
+          <div className="text mb-4x mb-0x_lg mr-8x_lg">
+            <p className="before-title fw-600 l-height-1 uppercase color-lightGray mb-3x">
+              Our Service
+            </p>
+            <h2 className="section-title fw-600 mb-4x">FAQ</h2>
             <p className="description fz-18p l-height-1/5">
               Lessons are brought to life and students can interact with tutors by drawing diagrams,
-              solving equations, editing essays, and annotating work.{' '}
+              solving equations, editing essays, and annotating work.
             </p>
           </div>
           <div className="wrapper flex-1">
@@ -26,7 +28,9 @@ export const FAQ = () => {
                   General
                 </div>
                 <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis! Lorem
+                  ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis! Lorem ipsum
+                  dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                 </div>
               </div>
               <div className="item">
@@ -40,7 +44,8 @@ export const FAQ = () => {
                   Daily Check-in
                 </div>
                 <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis! Lorem
+                  ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
                 </div>
               </div>
               <div className="item">

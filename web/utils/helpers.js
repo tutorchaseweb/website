@@ -111,26 +111,65 @@ export const useWindowSize = () => {
   return windowSize
 }
 
-export const getReadableDate = (date) => {
+export const getReadableDate = (date, format = 'default') => {
+  if (format === 'full') {
+    return `${new Date(date).getDate().toString().padStart(2, '0')} ${
+      monthsOfHheYear[new Date(date).getMonth()]
+    } ${new Date(date).getFullYear()}`
+  }
+  if (format === 'short') {
+    return `${monthsOfHheYear[new Date(date).getMonth()].substring(0, 3)} ${new Date(date)
+      .getDate()
+      .toString()
+      .padStart(2, '0')}`
+  }
+  if (format === 'international') {
+    return new Date(date).toLocaleString().substr(0, 10)
+  }
   return `${(new Date(date).getMonth() + 1).toString().padStart(2, '0')}/${new Date(date)
     .getDate()
     .toString()
     .padStart(2, '0')}/${new Date(date).getFullYear()}`
 }
 
-export const getFullDate = (date) => {
-  return `${new Date(date).getDate().toString().padStart(2, '0')} ${
-    monthsOfHheYear[new Date(date).getMonth()]
-  } ${new Date(date).getFullYear()}`
-}
+export const getQueryForTutors = (levelQuery, subjectQuery) => {
+  let query = ''
 
-export const getShortDate = (date) => {
-  return `${monthsOfHheYear[new Date(date).getMonth()].substring(0, 3)} ${new Date(date)
-    .getDate()
-    .toString()
-    .padStart(2, '0')}`
-}
+  if (levelQuery && subjectQuery) {
+    query = `
+      *[_type == 'tutor' && references($level) && references($subject)] {
+        ...,
+        levels[]->,
+        teaches[]->,
+        universities[]->
+      }
+    `
+  } else if (levelQuery && !subjectQuery) {
+    query = `
+      *[_type == 'tutor' && references($level)] {
+        ...,
+        levels[]->,
+        teaches[]->,
+        universities[]->
+      }
+    `
+  } else if (subjectQuery && !levelQuery) {
+    query = `
+      *[_type == 'tutor' && references($subject)] {
+        ...,
+        levels[]->,
+        teaches[]->,
+        universities[]->
+      }
+    `
+  } else {
+    query = `*[_type == 'tutor'] {
+      ...,
+      levels[]->,
+      teaches[]->,
+      universities[]->
+    }`
+  }
 
-export const getInternationalDate = (date) => {
-  return new Date(date).toLocaleString().substr(0, 10)
+  return query
 }
