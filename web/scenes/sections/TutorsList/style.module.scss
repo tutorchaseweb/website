@@ -1,1 +1,58 @@
 @import 'styles/variables';
+
+.card {
+  :global {
+    .image-wrapper {
+      width: 50%;
+      @media (min-width: $xs) {
+        aspect-ratio: 1/1;
+      }
+      @media (min-width: $lg) {
+        aspect-ratio: initial;
+        width: 15rem;
+        min-width: 15rem;
+        max-width: 15rem;
+      }
+    }
+    .content {
+      width: 50%;
+      padding: 1rem;
+      border-bottom: 1px solid #E6E7ED;
+      @media (min-width: $lg) {
+        width: initial;
+        padding: 2rem;
+      }
+    }
+    .teach {
+      display: inline-block;
+      color: $color-blue;
+      line-height: 1.2;
+      background-color: rgba(216, 218, 229, 0.4);
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+    }
+    .actions {
+      width: 100%;
+      border-left: 1px solid #E6E7ED;
+      .btn-white {
+        border-top: 1px solid #E6E7ED;
+      }
+      .btn-blue {
+        border-radius: 0 0 4px 0;
+      }
+      .btn {
+        min-width: initial;
+        width: 50%;
+        @media (min-width: $lg) {
+          width: 100%;
+        }
+      }
+      @media (min-width: $lg) {
+        width: initial;
+        min-width: 16rem;
+        max-width: 16rem;
+        flex-direction: column;
+      }
+    }
+  }
+}

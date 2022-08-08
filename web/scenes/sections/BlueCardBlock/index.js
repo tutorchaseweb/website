@@ -1,6 +1,10 @@
 import styles from './style.module.scss'
+import { hireTutor } from '~/utils/helpers'
+import text from '~/assets/text-content/en/static.json'
 
 export const BlueCardBlock = ({ title = '', content = '', hireButton = true, className = '' }) => {
+  const handler = (event) => hireTutor(event)
+
   return (
     <div
       className={`card mx-auto text-center rounded-small pt-7x pb-7x pl-2x pr-2x ${styles.card} ${className}`}
@@ -11,16 +15,9 @@ export const BlueCardBlock = ({ title = '', content = '', hireButton = true, cla
         <a
           href="#hireFormBlock"
           className="mt-3x btn btn-white"
-          onClick={(e) => {
-            e.preventDefault()
-            const target = document.querySelector(e.target.hash)
-            window.scrollTo({
-              top: target.offsetTop,
-              behavior: 'smooth',
-            })
-          }}
+          onClick={(event) => handler(event)}
         >
-          Hire a Tutor
+          {text.form.btnHireTutor}
         </a>
       )}
     </div>
