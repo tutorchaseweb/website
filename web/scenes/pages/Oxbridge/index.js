@@ -1,6 +1,7 @@
-import Link from 'next/link'
+import { PortableText } from '@portabletext/react'
 import { Circle } from '~/components/Circle'
-import { Color } from '~/utils/constants'
+import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
+import { getImageUrl, hireTutor, useWindowSize } from '~/utils/helpers'
 import { useGlobalState } from '~/utils/state'
 import SVG from '~/components/SVG'
 import { studyHat } from '~/utils/svgImages'
@@ -16,17 +17,20 @@ import {
   TutorsList,
 } from '~/scenes/sections'
 
-import girl from '~/assets/images/girl-2.png'
 import oxford from '~/assets/images/oxford_logo2.png'
 import illustration11 from '~/assets/images/illustration-11.png'
 import illustration12 from '~/assets/images/illustration-12.png'
 import illustration13 from '~/assets/images/illustration-13.png'
 import illustration14 from '~/assets/images/illustration-14.png'
 import styles from './style.module.scss'
+import text from '~/assets/text-content/en/static.json'
 
-export const OxbridgePage = ({ tutors }) => {
-  const [levelQuery] = useGlobalState('levelQuery', false)
-  const [subjectQuery] = useGlobalState('subjectQuery', false)
+export const OxbridgePage = ({ page, tutors }) => {
+  const { firstScreen } = page
+
+  const [levelQuery] = useGlobalState('levelQuery', null)
+  const [subjectQuery] = useGlobalState('subjectQuery', null)
+  const window = useWindowSize()
 
   return (
     <>
@@ -35,15 +39,21 @@ export const OxbridgePage = ({ tutors }) => {
           <div className="flex items-center justify-between">
             <div className="text-wrapper mb-10x">
               <BasedReviews />
-              <h1 className="fz-64p fw-700 l-height-1 mt-3x mb-3x">
-                Online <strong>Oxbridge</strong> Tutoring
-              </h1>
-              <p className="fz-20p fw-500 l-height-1/4 mb-3x">
-                Delivered Globally by the UK's Best Tutors
-              </p>
-              <Link href="/tutors">
-                <a className="btn btn-blue">Hire a Tutor</a>
-              </Link>
+              {Boolean(firstScreen.title) && (
+                <h1 className="main-title fw-700 l-height-1 mt-3x mb-3x">
+                  <PortableText value={firstScreen.title} />
+                </h1>
+              )}
+              {Boolean(firstScreen.description) && (
+                <div className="fz-20p fw-500 l-height-1/4 mb-3x">
+                  <PortableText value={firstScreen.description} />
+                </div>
+              )}
+              {Boolean(firstScreen.withButton) && (
+                <a href="#hireFormBlock" className="btn btn-blue" onClick={hireTutor}>
+                  {text.form.btnHireTutor}
+                </a>
+              )}
             </div>
             <div className="image-wrapper relative">
               <div className="left-card absolute bg-white rounded-xSmall p-3x flex">
@@ -52,10 +62,28 @@ export const OxbridgePage = ({ tutors }) => {
                 </p>
                 <SVG content={studyHat()} size={28} />
               </div>
-              <img src={girl.src} alt="Employer" className="block" />
+              {Boolean(firstScreen.image) && window.width > MOBILE_BREAKPOINT && (
+                <img
+                  src={`${getImageUrl(firstScreen.image.asset._ref)}`}
+                  alt="Elite Online Tutoring"
+                  className="block"
+                  style={{
+                    maxWidth: '550px',
+                    maxHeight: '650px',
+                  }}
+                />
+              )}
               <div className="right-card absolute">
-                <Circle color={Color.White} size={88} classList="pt-1x">
-                  <img src={oxford.src} alt="Oxford logo" />
+                <Circle
+                  color={Color.White}
+                  size={window.width < MOBILE_BREAKPOINT ? 76 : 88}
+                  classList="pt-1x"
+                >
+                  <img
+                    src={oxford.src}
+                    alt="Oxford logo"
+                    width={window.width < MOBILE_BREAKPOINT ? 42 : 48}
+                  />
                 </Circle>
               </div>
             </div>
@@ -65,8 +93,8 @@ export const OxbridgePage = ({ tutors }) => {
       <SubjectsFilter />
       <section className={`bg-white pt-12x pb-18x ${styles.content}`}>
         <div className="container narrow">
-          <div className="video-block flex mb-15x">
-            <div className="text bg-lightBlue pl-8x pr-8x pt-10x pb-10x w-1/2">
+          <div className="video-block flex flex-wrap mb-15x overflow-hidden rounded-rem">
+            <div className="text bg-lightBlue pl-3x pl-8x_lg pr-3x pr-8x_lg pt-4x pt-10x_lg pb-4x pb-10x_lg w-1/2_lg">
               <h4>Lorem ipsum dolor</h4>
               <p className="l-height-1/4">
                 We provide online tutoring to support students applying to{' '}
@@ -78,7 +106,7 @@ export const OxbridgePage = ({ tutors }) => {
                 <span className="fw-600">applicant's chosen subject at Oxford or Cambridge.</span>
               </p>
             </div>
-            <div className="video w-1/2">
+            <div className="video w-1/2_lg">
               <img src={illustration11.src} alt="illustration" className="block" />
             </div>
           </div>
@@ -86,7 +114,7 @@ export const OxbridgePage = ({ tutors }) => {
             <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">Lorem ipsum</p>
             <h2 className="title fz-48p fw-600 mb-6x mx-auto">Flexibility</h2>
           </div>
-          <div className="flex items-center" style={{ gap: '6rem' }}>
+          <div className="flex flex-wrap items-center" style={{ gap: '6rem' }}>
             <img src={illustration12.src} alt="illustration" />
             <div className="flex-1">
               <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Premium UK and US Tutors</h4>
@@ -104,7 +132,7 @@ export const OxbridgePage = ({ tutors }) => {
             </div>
           </div>
           <div
-            className="flex items-center mt-15x"
+            className="flex flex-wrap items-center mt-15x"
             style={{ gap: '6rem', flexDirection: 'row-reverse' }}
           >
             <img src={illustration13.src} alt="illustration" />
@@ -125,7 +153,7 @@ export const OxbridgePage = ({ tutors }) => {
               </ul>
             </div>
           </div>
-          <div className="flex items-center mt-15x" style={{ gap: '6rem' }}>
+          <div className="flex flex-wrap items-center mt-15x" style={{ gap: '6rem' }}>
             <img src={illustration14.src} alt="illustration" />
             <div className="flex-1">
               <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Interview Preparation</h4>

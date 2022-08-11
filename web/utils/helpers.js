@@ -132,12 +132,25 @@ export const getReadableDate = (date, format = 'default') => {
     .padStart(2, '0')}/${new Date(date).getFullYear()}`
 }
 
+export const hireTutor = (event) => {
+  event.preventDefault()
+  const target = document.querySelector(event.target.hash)
+  if (target) {
+    window.scrollTo({
+      top: target.offsetTop,
+      behavior: 'smooth',
+    })
+  } else {
+    router.push('/tutors')
+  }
+}
+
 export const getQueryForTutors = (levelQuery, subjectQuery) => {
   let query = ''
 
   if (levelQuery && subjectQuery) {
     query = `
-      *[_type == 'tutor' && references($level) && references($subject)] {
+      *[_type == 'tutor' && !(_id in path("drafts.**")) && references($level) && references($subject)] {
         ...,
         levels[]->,
         teaches[]->,
@@ -146,7 +159,7 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
     `
   } else if (levelQuery && !subjectQuery) {
     query = `
-      *[_type == 'tutor' && references($level)] {
+      *[_type == 'tutor' && !(_id in path("drafts.**")) && references($level)] {
         ...,
         levels[]->,
         teaches[]->,
@@ -155,7 +168,7 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
     `
   } else if (subjectQuery && !levelQuery) {
     query = `
-      *[_type == 'tutor' && references($subject)] {
+      *[_type == 'tutor' && !(_id in path("drafts.**")) && references($subject)] {
         ...,
         levels[]->,
         teaches[]->,
@@ -163,7 +176,7 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
       }
     `
   } else {
-    query = `*[_type == 'tutor'] {
+    query = `*[_type == 'tutor' && !(_id in path("drafts.**"))] {
       ...,
       levels[]->,
       teaches[]->,

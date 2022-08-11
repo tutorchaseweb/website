@@ -18,7 +18,10 @@ export default {
       title: 'Slug',
       type: 'slug',
       options: {
-        source: ({ name, _rev }) => `${name.replace(' ', '-')}-${_rev}`,
+        source: ({ name }) => {
+          const index = Math.floor(Math.random() * 100000)
+          return `${name.replace(' ', '-')}-${index}`
+        },
         maxLength: 96,
       },
     },

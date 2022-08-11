@@ -12,6 +12,8 @@ import blueCard from './objects/global/blueCard'
 import sectionHead from './objects/global/sectionHead'
 import reviewBlock from './objects/global/reviewBlock'
 import servicesBlock from './objects/global/servicesBlock'
+import pageHead from './objects/global/pageHead'
+import pageHeadImage from './objects/global/pageHeadImage'
 import button from './objects/button'
 
 export default [
@@ -29,5 +31,7 @@ export default [
   sectionHead,
   reviewBlock,
   servicesBlock,
+  pageHead,
+  pageHeadImage,
   button,
 ]

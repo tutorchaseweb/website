@@ -14,14 +14,22 @@
 
 .content {
   :global {
+    @media (min-width: $lg) {
+      .reverse_lg {
+        flex-direction: row-reverse;
+      }
+    }
     .text-wrap {
       max-width: 31rem;
     }
     .tutor {
       padding: 1.25rem;
-      right: -2rem;
+      right: -0.5rem;
       bottom: 4rem;
       box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+      @media (min-width: $lg) {
+        right: -2rem;
+      }
 
       .line {
         display: inline-block;

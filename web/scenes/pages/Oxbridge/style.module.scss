@@ -2,22 +2,29 @@
 
 .firstScreen {
   background: #FFF1EC url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
-  //background-image: url("/images/lines.png"),  url('/images/bg-gradient-medium.jpg'), linear-gradient(130.77deg, #FFFFFF 18.52%, #ECECEC 86.63%);
-  //background-repeat: no-repeat;
-  //background-size: contain, cover, cover;
-  //background-position: right center, center, center;
 
   :global {
+    .image-wrapper {
+
+    }
     .left-card {
-      max-width: 15.25rem;
-      align-items: flex-end;
-      left: -5rem;
-      bottom: 8rem;
-      z-index: 1;
+      display: none;
+      @media (min-width: $lg) {
+        display: flex;
+        max-width: 15.25rem;
+        align-items: flex-end;
+        left: -5rem;
+        bottom: 8rem;
+        z-index: 1;
+      }
     }
     .right-card {
-      top: 10rem;
-      right: -2rem;
+      right: 1rem;
+      top: 1rem;
+      @media (min-width: $lg) {
+        top: 10rem;
+        right: -2rem;
+      }
     }
   }
 }
@@ -25,39 +32,19 @@
 .content {
   :global {
     .video-block {
-      .text {
-        border-radius: 16px 0 0 16px;
-      }
-      .video {
-        border-radius: 0 16px 16px 0;
-      }
+      //.text {
+      //  border-radius: 16px 16px 0 0;
+      //  @media (min-width: $lg) {
+      //    border-radius: 16px 0 0 16px;
+      //  }
+      //}
+      //.video {
+      //  border-radius: 0 0 16px 16px;
+      //  @media (min-width: $lg) {
+      //    border-radius: 0 16px 16px 0;
+      //  }
+      //}
     }
   }
 }
 
-
-.tutorsList {
-  :global {
-    .description {
-      max-width: 51rem;
-    }
-    .tutor-card {
-      .actions {
-        border-left: 1px solid #E6E7ED;
-        min-width: 16rem;
-
-        .teach {
-          display: inline-block;
-          color: $color-blue;
-          line-height: 1.2;
-          background-color: rgba(216, 218, 229, 0.4);
-          border-radius: 4px;
-          padding: 0.25rem 0.5rem;
-        }
-        .btn-white {
-          border-top: 1px solid #E6E7ED;
-        }
-      }
-    }
-  }
-}

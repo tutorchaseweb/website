@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { useWindowSize } from '~/utils/helpers'
+import { MOBILE_BREAKPOINT } from '~/utils/constants'
 import { ApplyForm } from './components/ApplyForm'
 import { HireFormBlock, BasedReviews } from '~/scenes/sections'
 import illustration7 from '~/assets/images/illustration-7.png'
@@ -7,6 +10,9 @@ import illustration9 from '~/assets/images/illustration-9.png'
 import styles from './style.module.scss'
 
 export const TutorApplicationsPage = () => {
+  const [activePopup, setActivePopup] = useState(false)
+  const window = useWindowSize()
+
   return (
     <>
       <section className={`pt-16x pb-6x ${styles.firstScreen}`}>
@@ -14,7 +20,7 @@ export const TutorApplicationsPage = () => {
           <div className="flex items-center justify-between">
             <div className="text-wrapper mb-6x">
               <BasedReviews />
-              <h1 className="fz-64p fw-700 l-height-1 mb-4x">
+              <h1 className="main-title fw-700 l-height-1 mb-4x">
                 Become an <strong>Online Tutor</strong>
               </h1>
               <ol className="ordered-list blue">
@@ -22,14 +28,15 @@ export const TutorApplicationsPage = () => {
                 <li>Flexible part-time tutoring</li>
                 <li>Tutor online from your own home</li>
               </ol>
+              <button className="btn btn-blue mt-5x hidden">Apply Now</button>
             </div>
-            <ApplyForm />
+            {window.width > MOBILE_BREAKPOINT && <ApplyForm />}
           </div>
         </div>
       </section>
-      <section className={`pt-18x pb-18x ${styles.content}`}>
+      <section className={`pt-10x pb-10x pt-18x_lg pb-18x_lg ${styles.content}`}>
         <div className="container narrow">
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex flex-wrap items-center justify-between gap-8">
             <div className="relative">
               <img src={illustration7.src} alt="illustration7" />
               <div className="tutor absolute bg-white rounded-small">
@@ -53,10 +60,7 @@ export const TutorApplicationsPage = () => {
               </p>
             </div>
           </div>
-          <div
-            className="flex items-center justify-between gap-8 mt-12x"
-            style={{ flexDirection: 'row-reverse' }}
-          >
+          <div className="flex flex-wrap items-center justify-between gap-8 mt-12x reverse_lg">
             <div>
               <img src={illustration8.src} alt="illustration8" />
             </div>
@@ -70,7 +74,7 @@ export const TutorApplicationsPage = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-between gap-8 mt-12x">
+          <div className="flex flex-wrap items-center justify-between gap-8 mt-12x">
             <div>
               <img src={illustration9.src} alt="illustration9" />
             </div>
@@ -86,6 +90,11 @@ export const TutorApplicationsPage = () => {
         </div>
       </section>
       <HireFormBlock onlyContacts={true} />
+      {window.width < MOBILE_BREAKPOINT && (
+        <div className={`popup-wrapper ${activePopup ? 'block' : 'hidden'}`}>
+          <ApplyForm />
+        </div>
+      )}
     </>
   )
 }
