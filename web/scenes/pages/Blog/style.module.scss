@@ -17,6 +17,7 @@
 
   :global {
     .search {
+      max-width: 50%;
       .svg-wrap {
         position: absolute;
         top: 0.25rem;
@@ -41,7 +42,15 @@
         border-color: rgba(23, 29, 35, 0.1);
       }
     }
-
+    .wrapper {
+      grid-template-columns: repeat(1, 1fr);
+      @media (min-width: $sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (min-width: $xl) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
     .pagination {
       .pagination-item {

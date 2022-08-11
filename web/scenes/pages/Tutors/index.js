@@ -61,11 +61,7 @@ export const TutorsPage = ({ tutors }) => {
             extensive tutoring experience.{' '}
             <strong>We'll find the perfect tutor for you based on your requirements!</strong>
           </p>
-          {Boolean(tutors.length) ? (
-            <TutorsList tutors={tutors} />
-          ) : (
-            <p className="medium-title fw-500">Tutors not found for this query</p>
-          )}
+          <TutorsList tutors={tutors} />
         </div>
       </section>
       <section>

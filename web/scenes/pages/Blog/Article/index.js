@@ -74,7 +74,7 @@ export const ArticlePage = ({ article }) => {
                 objectFit="cover"
                 objectPosition="center"
               />
-              <h1 className="article-title fz-64p fw-700 color-white l-height-1 mb-3x text-center mx-auto relative">
+              <h1 className="article-title main-title fw-700 color-white l-height-1 mb-3x text-center mx-auto relative">
                 {article.title}
               </h1>
               <div className="text-center relative">
@@ -111,7 +111,7 @@ export const ArticlePage = ({ article }) => {
       </article>
       <section className={`related pt-11x pb-15x ${styles.related}`}>
         <div className="container">
-          <h2 className="fz-48p fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
+          <h2 className="section-title fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
           <div className="wrapper grid grid-columns-3 gap-8">
             {posts.map((post) => {
               return <BlogCard key={post._id} article={post} />

@@ -15,19 +15,19 @@ export const AccessProgrammePage = () => {
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
         <div className="container text-center">
+          <BasedReviews center={true} />
+          <h1 className="main-title fw-700 l-height-1 mb-3x">
+            TutorChase <strong>Access</strong>
+          </h1>
+          <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
+            Widening educational support in the UK
+          </p>
           <div className="left-card bg-white">
             <SVG content={volunteerActivism()} size={24} />
             <p>
               As part of the Access programme, we provide <b>free tuition in Tutorchase</b>
             </p>
           </div>
-          <BasedReviews center={true} />
-          <h1 className="fz-64p fw-700 l-height-1 mb-3x">
-            TutorChase <strong>Access</strong>
-          </h1>
-          <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
-            Widening educational support in the UK
-          </p>
           <div className="lesson1 bg-white text-center absolute rounded-small">
             <div className="play bg-orange round relative mx-auto flex items-center justify-center mb-1x" />
             <p className="fw-700">Lesson 1</p>
@@ -41,7 +41,7 @@ export const AccessProgrammePage = () => {
             <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">Lorem ipsum</p>
             <h2 className="fz-48p fw-600 l-height-1 mb-10x">Our Access Programme</h2>
           </div>
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex flex-wrap items-center justify-between gap-8">
             <img src={illustration4.src} alt="illustration" />
             <div className="flex-1 limit">
               <span className="square flex items-center justify-center mb-3x">
@@ -56,10 +56,7 @@ export const AccessProgrammePage = () => {
               </p>
             </div>
           </div>
-          <div
-            className="flex items-center justify-between gap-8 mt-12x"
-            style={{ flexDirection: 'row-reverse' }}
-          >
+          <div className="flex flex-wrap items-center justify-between gap-8 mt-12x reverse_lg">
             <img src={illustration5.src} alt="illustration" />
             <div className="flex-1 limit">
               <span className="square flex items-center justify-center mb-3x">
@@ -78,7 +75,7 @@ export const AccessProgrammePage = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-between gap-8 mt-15x">
+          <div className="flex flex-wrap items-center justify-between gap-8 mt-15x">
             <img src={illustration6.src} alt="illustration" />
             <div className="flex-1 limit">
               <span className="square flex items-center justify-center mb-3x">
@@ -102,12 +99,12 @@ export const AccessProgrammePage = () => {
       </div>
       <section className={` ${styles.contacts}`}>
         <div className="container narrow">
-          <div className="flex items-center gap-8 justify-between mt-19x">
+          <div className="flex flex-wrap items-center gap-8 justify-between mt-19x">
             <div style={{ maxWidth: '450px' }}>
               <h3 className="fz-32p fw-600 l-height-1 mb-4x ">
                 General criteria for selecting students for the programme
               </h3>
-              <ul className="ordered-list">
+              <ul className="ordered-list mb-10x mb-0x_lg">
                 <li>Receive free school meals or have a household income of less than £21,000</li>
                 <li>Attend a non fee-paying state school in the UK</li>
                 <li>
@@ -131,7 +128,7 @@ export const AccessProgrammePage = () => {
             <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">
               Still have questions? Let’s get in touch.
             </h3>
-            <div className="links flex items-center justify-between mx-auto fz-20p fw-600">
+            <div className="links flex flex-wrap gap-4 items-center justify-between mx-auto fz-20p fw-600">
               <a href={`mailto:${text.contacts.email}`} className="flex items-center">
                 <Circle size={32} color={Color.Blue} classList="mr-1x">
                   <SVG content={email()} />

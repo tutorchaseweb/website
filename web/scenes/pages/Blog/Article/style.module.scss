@@ -5,8 +5,11 @@
 }
 .mainImageWrap {
   max-width: 1120px;
-  aspect-ratio: 2/1;
+  aspect-ratio: 2/3;
   border-radius: 16px;
+  @media (min-width: $sm) {
+    aspect-ratio: 2/1;
+  }
 
   :global {
     .article-title {
@@ -67,4 +70,15 @@
 
 .related {
   background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
+  :global {
+    .wrapper {
+      grid-template-columns: repeat(1, 1fr);
+      @media (min-width: $sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (min-width: $xl) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
 }
