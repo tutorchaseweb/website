@@ -1,9 +1,22 @@
+import { useState, useEffect } from 'react'
 import { groq } from 'next-sanity'
 import client from '../../utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { BlogPage } from '~/scenes/pages/Blog'
 
 export const Blog = ({ page, posts }) => {
+  console.log(posts[0])
+  const [postsLength, setPostsLength] = useState(0)
+
+  useEffect(() => {
+    const QUERY = groq`
+      *[_type == 'post' && !(_id in path("drafts.**"))] {
+        _id,
+      }
+    `
+    client.fetch(QUERY).then((posts) => setPostsLength(posts.length))
+  }, [])
+
   return (
     <Layout>
       <BlogPage page={page} posts={posts} />

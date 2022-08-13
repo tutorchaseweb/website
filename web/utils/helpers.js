@@ -186,3 +186,39 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
 
   return query
 }
+
+//
+// description: [{…}]
+// featured: true
+// mainImage: {_type: 'mainImage', alt: 'Lorem ipsum', asset: {…}, caption: 'Lorem ipsum'}
+// publishedAt: "2022-06-24T07:34:36.339Z"
+// reading: 10
+// slug: {_type: 'slug', current: '10-books-to-help-teens-get-through-exam-season'}
+// title: "10 books to help teens get through exam season"
+// _createdAt: "2022-06-24T07:43:41Z"
+// _id: "146dcbc8-5f3c-447d-9e9d-bf37faa7d8cf"
+// _rev: "Qz7SRkfQ45VACPYzP3Iaf5"
+// _type: "post"
+//
+
+export const getQueryForBlog = (order, length, start) => {
+  let query = ''
+
+  if (order && start) {
+    console.log(order)
+    console.log(start)
+  } else {
+    query = `*[_type == 'post' && !(_id in path("drafts.**"))] {
+      _id,
+      publishedAt,
+      slug,
+      mainImage,
+      title,
+      description,
+      featured,
+      reading,
+    }`
+  }
+
+  return query
+}

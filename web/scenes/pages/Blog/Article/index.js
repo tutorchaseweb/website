@@ -77,7 +77,7 @@ export const ArticlePage = ({ article }) => {
               <h1 className="article-title main-title fw-700 color-white l-height-1 mb-3x text-center mx-auto relative">
                 {article.title}
               </h1>
-              <div className="text-center relative">
+              <div className="wrap text-center relative">
                 {article.featured && (
                   <span className="featured rounded-xSmall bg-white mr-2x">Featured Article</span>
                 )}

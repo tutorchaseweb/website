@@ -78,7 +78,7 @@ export const HomePage = ({ page }) => {
   const [tutors, setTutors] = useState([])
   const [universities, setUniversities] = useState([])
   const getElectedTutors = `
-      *[_type == 'tutor' && elected==true] {
+      *[_type == 'tutor' && !(_id in path("drafts.**")) && elected==true] {
         ...,
         universities[]->
       }
@@ -88,13 +88,9 @@ export const HomePage = ({ page }) => {
         ...,
       }
     `
-  useEffect(() => {
-    client.fetch(getElectedTutors).then((tutors) => {
-      setTutors(tutors)
-    })
-    client.fetch(getUniversities).then((universities) => {
-      setUniversities(universities)
-    })
+  useEffect(async () => {
+    setTutors(await client.fetch(getElectedTutors))
+    setUniversities(await client.fetch(getUniversities))
   }, [])
 
   const window = useWindowSize()

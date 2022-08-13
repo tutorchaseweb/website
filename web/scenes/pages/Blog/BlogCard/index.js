@@ -14,9 +14,9 @@ export const BlogCard = ({ article }) => {
     <article
       className={`blog-article rounded-xSmall overflow-hidden w-full flex-1 flex flex-col ${styles.blogArticle}`}
     >
-      <div className="relative" style={{ aspectRatio: '2/1' }}>
+      <div className="image-wrap relative" style={{ aspectRatio: '2/1' }}>
         {article.featured && (
-          <span className="featured fz-14p fw-500 color-blue l-height-1 rounded-xSmall bg-white absolute">
+          <span className="featured fz-14p fw-500 color-blue l-height-1 rounded-xSmall bg-white absolute z-1">
             Featured Article
           </span>
         )}
