@@ -1,6 +1,6 @@
 import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
-import { Link } from '~/components/Link'
+import { ILink } from '~/components/Link'
 import styles from './style.module.scss'
 
 export const PartOfSection = ({ section, className = '' }) => {
@@ -37,7 +37,7 @@ export const PartOfSection = ({ section, className = '' }) => {
               ))}
             </ul>
           )}
-          {Boolean(section.button) && <Link link={section.button} className="btn btn-blue" />}
+          {Boolean(section.button) && <ILink link={section.button} className="btn btn-blue" />}
         </div>
       </div>
     </div>

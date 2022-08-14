@@ -2,32 +2,32 @@
   {
     "_id": 1,
     "title": "GCSE",
-    "link": "/tutors"
+    "link": "/gcse"
   },
   {
     "_id": 2,
     "title": "IGCSE",
-    "link": "/tutors"
+    "link": "/igcse"
   },
   {
     "_id": 3,
     "title": "A-Level",
-    "link": "/tutors"
+    "link": "/a-level"
   },
   {
     "_id": 4,
     "title": "IB",
-    "link": "/tutors"
+    "link": "/ib"
   },
   {
     "_id": 5,
     "title": "AP",
-    "link": "/tutors"
+    "link": "/ap"
   },
   {
     "_id": 6,
     "title": "SAT",
-    "link": "/tutors"
+    "link": "/sat"
   },
   {
     "_id": 7,

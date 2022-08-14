@@ -1,48 +1,30 @@
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { gql, useQuery } from '@apollo/client'
+import Image from 'next/image'
+import { groq } from 'next-sanity'
+import client from '~/utils/sanity-client'
 import { PortableText } from '@portabletext/react'
-import { Loader } from '~/components/Loader'
 import { getImageUrl } from '~/utils/helpers'
 import SVG from '~/components/SVG'
 import { smallArrowRight } from '~/utils/svgImages'
 import { myPortableTextComponents } from '~/utils/helpers'
-
-import styles from './style.module.scss'
 import { BlogCard } from '~/scenes/pages/Blog/BlogCard'
 
-export const ArticlePage = ({ article }) => {
-  const QUERY = gql`
-    query Config {
-      allPost {
-        _id
-        title
-        descriptionRaw
-        featured
-        reading
-        slug {
-          current
-        }
-        mainImage {
-          asset {
-            url
-          }
-          alt
-        }
-      }
-    }
-  `
-  const { data, loading, error } = useQuery(QUERY)
+import styles from './style.module.scss'
 
-  if (loading) {
-    return <Loader />
-  }
-  if (error) {
-    console.error(error)
-    return null
-  }
-  const { allPost } = data
-  const posts = allPost.slice(0, 3)
+export const ArticlePage = ({ article }) => {
+  const [allPosts, setAllPosts] = useState([])
+
+  useEffect(async () => {
+    const QUERY = groq`
+      *[_type == 'post' && !(_id in path("drafts.**"))] {
+        _id,
+      }
+    `
+    setAllPosts(await client.fetch(QUERY))
+  }, [])
+
+  const posts = allPosts.slice(0, 3)
 
   return (
     <>
@@ -113,9 +95,10 @@ export const ArticlePage = ({ article }) => {
         <div className="container">
           <h2 className="section-title fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
           <div className="wrapper grid grid-columns-3 gap-8">
-            {posts.map((post) => {
-              return <BlogCard key={post._id} article={post} />
-            })}
+            {Boolean(posts.length) &&
+              posts.map((post) => {
+                return <BlogCard key={post._id} article={post} />
+              })}
           </div>
         </div>
       </section>

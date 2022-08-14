@@ -207,7 +207,7 @@ export const HomePage = ({ page }) => {
       </section>
       <section className={`study ${styles.study}`}>
         <div className="container">
-          <PartOfSection section={secondScreen} />
+          {Boolean(secondScreen) && <PartOfSection section={secondScreen} />}
           <div className="cards-wrapper flex gap-8">
             <div className="card card-1 bg-blue rounded-small p-4x">
               <div className="flex items-center justify-between mb-4x">
@@ -239,8 +239,10 @@ export const HomePage = ({ page }) => {
               </div>
               <h4 className="title fw-600 mb-3x">{studyCards.thirdDescription}</h4>
               <p className="color-blue fz-14p fw-600">
-                {studyCards.thirdCardTags.map((tag) => (
-                  <span className="tag">{tag}</span>
+                {studyCards.thirdCardTags.map((tag, idx) => (
+                  <span key={idx} className="tag">
+                    {tag}
+                  </span>
                 ))}
               </p>
             </div>
@@ -362,7 +364,7 @@ export const HomePage = ({ page }) => {
               <SVG content={checkCircle()} size={24} />
             </p>
             <p className={`card_2 absolute rounded-small bg-white p-2x flex items-center`}>
-              <div className="play bg-white round relative mx-auto flex items-center justify-center mb-1x" />
+              <span className="play bg-white round relative mx-auto flex items-center justify-center mb-1x" />
               <span className="text ml-2x l-height-1/4">
                 <span className="block fw-700">Lesson 2</span>
                 <span className="block fz-14p">1h 30m</span>

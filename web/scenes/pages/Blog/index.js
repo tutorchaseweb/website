@@ -1,10 +1,33 @@
+import { useEffect, useState } from 'react'
+import { groq } from 'next-sanity'
+import client from '~/utils/sanity-client'
+import { getQueryForBlog } from '~/utils/helpers'
+import { useGlobalState } from '~/utils/state'
 import { HireFormBlock } from '~/scenes/sections'
 import { Search, Sorting, Pagination } from './components'
 import { BlogCard } from './BlogCard'
 
 import styles from './style.module.scss'
 
-export const BlogPage = ({ page, posts }) => {
+export const BlogPage = ({ page, start }) => {
+  const [currentPosts, setCurrentPosts] = useState(0)
+  const [postsLength, setPostsLength] = useState(0)
+  const [postsOrder] = useGlobalState('postsOrder', null)
+
+  useEffect(() => {
+    const QUERY = groq`
+      *[_type == 'post' && !(_id in path("drafts.**"))] {
+        _id,
+      }
+    `
+    client.fetch(QUERY).then((posts) => setPostsLength(posts.length))
+  }, [])
+
+  useEffect(async () => {
+    const query = getQueryForBlog(postsOrder, start, page.postsPerPage)
+    setCurrentPosts(await client.fetch(query))
+  }, [postsOrder, start])
+
   return (
     <>
       <section className={`firstScreen pt-19x ${styles.firstScreen}`}>
@@ -24,11 +47,16 @@ export const BlogPage = ({ page, posts }) => {
             <Sorting />
           </div>
           <div className="wrapper grid grid-columns-3 gap-8">
-            {posts.map((post) => {
-              return <BlogCard key={post._id} article={post} />
-            })}
+            {Boolean(currentPosts.length) &&
+              currentPosts.map((post) => {
+                return <BlogCard key={post._id} article={post} />
+              })}
           </div>
-          <Pagination />
+          {postsLength > page.postsPerPage && (
+            <div className="mt-7x">
+              <Pagination start={start} perPage={page.postsPerPage} length={postsLength} />
+            </div>
+          )}
         </div>
       </section>
       <HireFormBlock />

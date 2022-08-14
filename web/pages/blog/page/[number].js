@@ -1,14 +1,12 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
-import { useGlobalState } from '~/utils/state'
+import { useRouter } from 'next/router'
 import { Layout } from '~/components/Layout'
 import { BlogPage } from '~/scenes/pages/Blog'
 
-export const Blog = ({ page }) => {
-  const [postsStart, setPostsStart] = useGlobalState('postsStart', 0)
-  useEffect(() => setPostsStart(0), [])
+export const BlogNav = ({ page }) => {
+  const router = useRouter()
 
   return (
     <Layout>
@@ -21,7 +19,7 @@ export const Blog = ({ page }) => {
           <meta property="og:url" content={window.location.href} key="url" />
         )}
       </Head>
-      <BlogPage page={page} start={0} />
+      <BlogPage page={page} start={(router.query.number - 1) * page.postsPerPage} />
     </Layout>
   )
 }
@@ -41,4 +39,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default Blog
+export default BlogNav

@@ -2,9 +2,10 @@ import Link from 'next/link'
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
 import { ConfigContext } from '~/components/Layout'
+import { ILink } from '~/components/Link'
 import { facebook, twitter, linkedin } from '~/utils/svgImages'
 import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
-import { useWindowSize } from '~/utils/helpers'
+import { getImageUrl, useWindowSize } from '~/utils/helpers'
 import text from '~/assets/text-content/en/static.json'
 import CompanyInformation from './CompanyInformationMenu.json'
 import CoursesInformation from './CoursesInformationMenu.json'
@@ -38,17 +39,14 @@ export const CopyFragment = ({ title }) => {
 }
 
 const MenuItem = ({ item, index }) => {
+  const link = {
+    url: item.link,
+    text: item.title,
+  }
+
   return (
     <li className={index === 0 ? '' : 'mt-2x'}>
-      {item.link.includes('http') ? (
-        <a href={item.link} target="_blank" rel="nofollow noopener">
-          {item.title}
-        </a>
-      ) : (
-        <Link href={item.link}>
-          <a>{item.title}</a>
-        </Link>
-      )}
+      <ILink link={link} />
     </li>
   )
 }
@@ -76,7 +74,9 @@ export const Footer = () => {
                 <div className="link-group flex flex-col fz-14p">
                   <Link href="/">
                     <a className="logo mb-2x">
-                      {Boolean(logo) && <img src={logo.asset.url} alt={logo.alt} />}
+                      {Boolean(logo) && (
+                        <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
+                      )}
                     </a>
                   </Link>
                   {window.width > MOBILE_BREAKPOINT && <CopyFragment title={title} />}
