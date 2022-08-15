@@ -1,0 +1,20 @@
+@import 'styles/variables';
+
+.pagination {
+  :global {
+    .pagination-item {
+      &.disabled {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+      &:hover {
+        .circle {
+          background-color: $color-blue !important;
+        }
+        .svg-wrap svg path {
+          stroke: $color-white !important;
+        }
+      }
+    }
+  }
+}

@@ -186,3 +186,48 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
 
   return query
 }
+
+export const getQueryForBlog = (order, start, length) => {
+  let query = ''
+
+  if (Boolean(order) && typeof start === 'number' && typeof length === 'number') {
+    query = `
+    *[_type == 'post' && !(_id in path("drafts.**"))] | order(${order})[${start}...${
+      start + length
+    }] {
+      _id,
+      _createdAt,
+      slug,
+      mainImage,
+      title,
+      description,
+      featured,
+      reading,
+    }`
+  } else if (!Boolean(order) && typeof start === 'number' && typeof length === 'number') {
+    query = `
+    *[_type == 'post' && !(_id in path("drafts.**"))] [${start}...${start + length}] {
+      _id,
+      _createdAt,
+      slug,
+      mainImage,
+      title,
+      description,
+      featured,
+      reading,
+    }`
+  } else {
+    query = `*[_type == 'post' && !(_id in path("drafts.**"))] {
+      _id,
+      _createdAt,
+      slug,
+      mainImage,
+      title,
+      description,
+      featured,
+      reading,
+    }`
+  }
+
+  return query
+}

@@ -29,7 +29,7 @@ export const Oxbridge = ({ data }) => {
       <Head>
         <title>Oxbridge</title>
       </Head>
-      <OxbridgePage page={page} tutors={tutors} />
+      <OxbridgePage title={'Oxbridge'} page={page} tutors={tutors} />
     </Layout>
   )
 }

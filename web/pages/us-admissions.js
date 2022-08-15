@@ -29,14 +29,14 @@ export const US_Admissions = ({ data }) => {
       <Head>
         <title>US Admissions</title>
       </Head>
-      <OxbridgePage page={page} tutors={tutors} />
+      <OxbridgePage title={'US Admissions'} page={page} tutors={tutors} />
     </Layout>
   )
 }
 
 export async function getServerSideProps() {
   const QUERY = groq`
-    *[_type == 'us-admissions-page'] {
+    *[_type == 'oxbridge-page'] {
       ...,
     }
   `

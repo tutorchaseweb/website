@@ -10,11 +10,21 @@
   @media (min-width: $sm) {
     aspect-ratio: 2/1;
   }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.28);
+  }
 
   :global {
     .article-title {
       max-width: 660px;
       text-transform: capitalize;
+      z-index: 1;
+    }
+    .wrap {
       z-index: 1;
     }
     .featured {

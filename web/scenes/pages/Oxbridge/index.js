@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import { groq } from 'next-sanity'
+import client from '~/utils/sanity-client'
 import { PortableText } from '@portabletext/react'
 import { Circle } from '~/components/Circle'
 import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
@@ -24,13 +27,23 @@ import illustration13 from '~/assets/images/illustration-13.png'
 import illustration14 from '~/assets/images/illustration-14.png'
 import styles from './style.module.scss'
 import text from '~/assets/text-content/en/static.json'
+import Link from 'next/link'
 
-export const OxbridgePage = ({ page, tutors }) => {
+export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
   const { firstScreen } = page
 
   const [levelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery] = useGlobalState('subjectQuery', null)
   const window = useWindowSize()
+  const [tests, setTests] = useState([])
+  useEffect(async () => {
+    const QUERY = groq`
+        *[_type == 'test'] {
+          ...,
+        }
+      `
+    setTests(await client.fetch(QUERY))
+  }, [])
 
   return (
     <>
@@ -39,11 +52,9 @@ export const OxbridgePage = ({ page, tutors }) => {
           <div className="flex items-center justify-between">
             <div className="text-wrapper mb-10x">
               <BasedReviews />
-              {Boolean(firstScreen.title) && (
-                <h1 className="main-title fw-700 l-height-1 mt-3x mb-3x">
-                  <PortableText value={firstScreen.title} />
-                </h1>
-              )}
+              <h1 className="main-title fw-700 l-height-1 mt-3x mb-3x">
+                Online <span className="color-blue">{title}</span> Tutoring
+              </h1>
               {Boolean(firstScreen.description) && (
                 <div className="fz-20p fw-500 l-height-1/4 mb-3x">
                   <PortableText value={firstScreen.description} />
@@ -181,18 +192,29 @@ export const OxbridgePage = ({ page, tutors }) => {
             <p className="fz-18p mb-4x">
               We offer tuition for all the Oxford and Cambridge University admissions tests:
             </p>
-            <p className="flex flex-wrap gap-4 fw-500 l-height-1">
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">MAT</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">TSA</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">HAT</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">OLAT</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">PAT</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">ELAT</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">MLAT</span>
-              <span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">
-                Philosophy Test
-              </span>
-            </p>
+            {Boolean(tests.length) && (
+              <p className="flex flex-wrap gap-4 fw-500 l-height-1">
+                {tests.map((test) => {
+                  return (
+                    <Link key={test._id} href={test.slug.current}>
+                      <a className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">
+                        {test.title}
+                      </a>
+                    </Link>
+                  )
+                })}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">MAT</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">TSA</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">HAT</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">OLAT</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">PAT</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">ELAT</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">MLAT</span>*/}
+                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">*/}
+                {/*  Philosophy Test*/}
+                {/*</span>*/}
+              </p>
+            )}
           </div>
         </div>
       </section>

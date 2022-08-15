@@ -14,6 +14,7 @@ import {
   IoAppsOutline,
   IoNewspaperOutline,
   IoSchoolOutline,
+  MdOutlineFormatListNumbered,
   MdOutlinePolicy,
 } from 'react-icons/all'
 
@@ -32,6 +33,7 @@ const hiddenDocTypes = (listItem) =>
     'review',
     'subject',
     'level',
+    'test',
     'hireForm',
     'applyForm',
     'university',
@@ -92,12 +94,6 @@ export default () =>
                 .icon(FaUniversity)
                 .child(S.document().schemaType('oxbridge-page').documentId('oxbridge-page')),
               S.listItem()
-                .title('US Admissions page')
-                .icon(FaUniversity)
-                .child(
-                  S.document().schemaType('us-admissions-page').documentId('us-admissions-page')
-                ),
-              S.listItem()
                 .title('Blog page')
                 .icon(IoNewspaperOutline)
                 .child(S.document().schemaType('blog-page').documentId('blog-page')),
@@ -129,6 +125,11 @@ export default () =>
         .icon(BsBarChart)
         .schemaType('level')
         .child(S.documentTypeList('level').title('Level')),
+      S.listItem()
+        .title('Tests')
+        .icon(MdOutlineFormatListNumbered)
+        .schemaType('test')
+        .child(S.documentTypeList('test').title('Test')),
       S.listItem()
         .title('Universities')
         .icon(FaUniversity)
