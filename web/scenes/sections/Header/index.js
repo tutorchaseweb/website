@@ -63,7 +63,7 @@ export const Header = () => {
                         </Link>
                       </li>
                       <li className="menu-item">
-                        <Link href="/us-admissions">
+                        <Link href="/us-college-admissions">
                           <a>{text.menu.USAdmissions}</a>
                         </Link>
                       </li>

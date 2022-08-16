@@ -98,5 +98,14 @@ export default {
       description: 'Enable this option to display the tutor on the main page',
       initialValue: false,
     },
+    {
+      name: 'sortingRating',
+      title: 'Sorting rating',
+      description:
+        'Specify the rating of the teacher (from 1 to 100) to sort in the search results',
+      type: 'number',
+      initialValue: 1,
+      validation: (Rule) => Rule.error('Enter a number from 1 to 100').min(1).max(100),
+    },
   ],
 }
