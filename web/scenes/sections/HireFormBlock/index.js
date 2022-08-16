@@ -1,53 +1,67 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import SVG from '~/components/SVG'
 import { handleMutations, log } from '~/utils/helpers'
-import { checkValidateFullName, checkValidateEmail, checkValidatePhone } from '~/utils/validators'
+import { checkValidateFullName, checkValidateEmail, checkValidateMessage } from '~/utils/validators'
 import { Circle } from '~/components/Circle'
-import { Input } from '~/components/Form'
+import { Input, Select, Textarea } from '~/components/Form'
 import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
-import countries from '~/assets/text-content/en/countries.json'
+import countriesRaw from '~/assets/text-content/en/countries.json'
 import styles from './style.module.scss'
 
+const defaultCountry = {
+  title: 'Select your country',
+  value: 'not selected',
+}
+
+const countries = [
+  defaultCountry,
+  ...countriesRaw.map((country) => ({ title: country.name, value: country.code })),
+]
+
 export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
+  const router = useRouter()
   const [activeStep, setActiveStep] = useState(0)
   const [source, setSource] = useState(process.env.NEXT_PUBLIC_BASE_URL)
   const [position, setPosition] = useState('not selected')
   const [fullName, setFullName] = useState('')
   const [fullNameErrors, setFullNameErrors] = useState([])
   const [phone, setPhone] = useState('')
-  const [phoneErrors, setPhoneErrors] = useState([])
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
   const [country, setCountry] = useState('not selected')
   const [details, setDetails] = useState('')
+  const [detailsErrors, setDetailsErrors] = useState([])
   const [frequencyDuration, setFrequencyDuration] = useState('')
 
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
-    setPhoneErrors(checkValidatePhone(phone))
     setEmailErrors(checkValidateEmail(email))
-    if (
-      !checkValidateFullName(fullName).length &&
-      !checkValidatePhone(phone).length &&
-      !checkValidateEmail(email).length
-    ) {
+    if (!checkValidateFullName(fullName).length && !checkValidateEmail(email).length) {
       setActiveStep(activeStep + 1)
     } else {
       event.preventDefault()
       return false
     }
   }
-  // const checkMandatoryFields_step2 = () => {
-  //   setFullNameErrors(checkValidateFullName(fullName))
-  //   if (!checkValidateFullName(fullName).length) {
-  //     setActiveStep(activeStep + 1)
-  //   } else {
-  //     event.preventDefault()
-  //     return false
-  //   }
-  // }
+  const checkMandatoryFields_step2 = () => {
+    setDetailsErrors(checkValidateMessage(details))
+    if (!checkValidateMessage(details).length) {
+      sendForm()
+        .then((result) => {
+          log(result)
+          clearAllFields()
+          router.push('/form-submission')
+          // setActiveStep(activeStep + 1)
+        })
+        .catch((e) => console.log(e))
+    } else {
+      event.preventDefault()
+      return false
+    }
+  }
 
   const clearAllFields = () => {
     setPosition('not selected')
@@ -132,27 +146,14 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       setErrors={setFullNameErrors}
                       checkValidateValue={checkValidateFullName}
                     />
-                    <label className="flex-1 fz-14p">
-                      <span className="fw-500 color-black">Country</span>
-                      <select
-                        id="country"
-                        name="country"
-                        className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                        onChange={(e) => setCountry(e.target.value)}
-                        defaultValue="not selected"
-                      >
-                        <option value="not selected" disabled>
-                          Select your country
-                        </option>
-                        {countries.map((country) => {
-                          return (
-                            <option key={country.code} id={country.code} value={country.name}>
-                              {country.name}
-                            </option>
-                          )
-                        })}
-                      </select>
-                    </label>
+                    <Select
+                      id={'country'}
+                      list={countries}
+                      selected={country}
+                      inputName={'Country'}
+                      setValue={setCountry}
+                      className="flex-1 fz-14p"
+                    />
                   </div>
                   <div className="flex flex-wrap gap-4 mb-4x flex-1">
                     <Input
@@ -163,9 +164,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       type="tel"
                       value={phone}
                       setValue={setPhone}
-                      Errors={phoneErrors}
-                      setErrors={setPhoneErrors}
-                      checkValidateValue={checkValidatePhone}
                     />
                     <Input
                       id="email"
@@ -193,9 +191,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       <button
                         type="button"
                         className={`btn btn-blue ${
-                          fullNameErrors.length || phoneErrors.length || emailErrors.length
-                            ? 'disabled'
-                            : ''
+                          fullNameErrors.length || emailErrors.length ? 'disabled' : ''
                         }`}
                         onClick={() => {
                           typeof window !== 'undefined' && setSource(window.location.href)
@@ -210,15 +206,18 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
               )}
               {activeStep === 1 && (
                 <>
-                  <div className="flex mb-2x">
-                    <label className="flex-1">
-                      <span className="fz-14p fw-500 color-black">Details of Tutoring Request</span>
-                      <textarea
-                        className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                        value={details}
-                        onChange={(e) => setDetails(e.target.value)}
-                      />
-                    </label>
+                  <div className="flex fz-14p mb-2x">
+                    <Textarea
+                      id="Details"
+                      className="flex-1"
+                      fieldClassName="p-2x border-light l-height-1 w-full rounded-xSmall"
+                      inputName="Details of Tutoring Request"
+                      value={details}
+                      setValue={setDetails}
+                      Errors={detailsErrors}
+                      setErrors={setDetailsErrors}
+                      checkValidateValue={checkValidateMessage}
+                    />
                   </div>
                   <div className="flex mb-5x flex-1">
                     <label className="flex-1">
@@ -247,15 +246,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       <button
                         type="button"
                         className="btn btn-blue"
-                        onClick={() => {
-                          sendForm()
-                            .then((result) => {
-                              log(result)
-                              clearAllFields()
-                              setActiveStep(activeStep + 1)
-                            })
-                            .catch((e) => console.log(e))
-                        }}
+                        onClick={checkMandatoryFields_step2}
                       >
                         {text.form.btnNextStep}
                       </button>

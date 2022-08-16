@@ -2,10 +2,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
+import { Color } from '~/utils/constants'
 import SVG from '~/components/SVG'
 import { HireFormBlock } from '~/scenes/sections'
-import { star, reviewsBlue, studyHat, videoCam } from '~/utils/svgImages'
 
+import { star, reviewsBlue, studyHat, videoCam } from '~/utils/svgImages'
+import groupImg from '~/assets/images/group-427319714.png'
 import ControlPanel from '~/assets/images/Control_Panel.png'
 import styles from './style.module.scss'
 
@@ -125,9 +127,8 @@ export const TutorPage = ({ tutor }) => {
           <div className={`flex items-center justify-between gap-8 mb-8x ${styles.findTutor}`}>
             <div className="card bg-white rounded-small relative p-8x">
               <div className="avatar relative rounded-xSmall overflow-hidden">
-                <span className="live absolute bg-white color-blue fw-700 l-height-1">Live</span>
                 <Image
-                  src={`${getImageUrl(tutor.image.asset._ref)}`}
+                  src={groupImg.src}
                   alt={tutor.name}
                   layout="fill"
                   objectFit="cover"
@@ -135,7 +136,7 @@ export const TutorPage = ({ tutor }) => {
                 />
               </div>
               <div className="flexible absolute pt-2x pb-2x pl-3x pr-3x rounded-small bg-white">
-                <SVG content={videoCam()} size={28} />
+                <SVG content={videoCam(Color.Orange)} size={28} />
                 <p className="mt-2x">
                   Flexible online tutoring to fit <b>around your schedule</b>
                 </p>

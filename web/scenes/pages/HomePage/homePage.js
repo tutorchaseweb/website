@@ -78,7 +78,7 @@ export const HomePage = ({ page }) => {
   const [tutors, setTutors] = useState([])
   const [universities, setUniversities] = useState([])
   const getElectedTutors = `
-      *[_type == 'tutor' && !(_id in path("drafts.**")) && elected==true] {
+      *[_type == 'tutor' && !(_id in path("drafts.**")) && elected==true][0...5] {
         ...,
         universities[]->
       }
@@ -109,16 +109,6 @@ export const HomePage = ({ page }) => {
     allReviewsBlock,
     servicesBlock,
   } = page
-
-  // console.log(reviewBlockFirst)
-  // console.log(tutorsList)
-  // console.log(fourthScreen)
-  // console.log(reviewBlockSecond)
-  // console.log(globallyTutoring)
-  // console.log(blueCard)
-  // console.log(seventhScreen)
-  // console.log(allReviewsBlock)
-  // console.log(servicesBlock)
 
   return (
     <>

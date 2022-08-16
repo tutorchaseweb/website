@@ -245,7 +245,7 @@ input:focus {
   outline: $color-blue;
   border-color: $color-blue;
 }
-label.error input {
+label.error input, label.error textarea {
   border-color: #F57C40;
 }
 label.error .error-wrap {

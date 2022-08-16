@@ -1,17 +1,21 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import SVG from '~/components/SVG'
 import { awesomeStar, studyHat } from '~/utils/svgImages'
 import { getImageUrl, useWindowSize } from '~/utils/helpers'
-import { MOBILE_BREAKPOINT } from '~/utils/constants'
+import { MOBILE_BREAKPOINT, TUTORS_LIST_STEP } from '~/utils/constants'
 import styles from './style.module.scss'
 import { useRouter } from 'next/router'
 
 import text from '~/assets/text-content/en/static.json'
 
 export const TutorsList = ({ tutors }) => {
+  const [tutorsLimit, setTutorsLimit] = useState(5)
   const view = useWindowSize()
   const router = useRouter()
+  const orderedTutors = tutors.sort((first, second) => second.sortingRating - first.sortingRating)
+  console.log(router)
 
   const hireTutor = (event) => {
     event.preventDefault()
@@ -29,7 +33,7 @@ export const TutorsList = ({ tutors }) => {
   return (
     <div className="flex flex-wrap gap-8">
       {Boolean(tutors.length) ? (
-        tutors.map((tutor) => {
+        orderedTutors.slice(0, tutorsLimit).map((tutor) => {
           return (
             <div
               key={tutor._id}
@@ -108,6 +112,20 @@ export const TutorsList = ({ tutors }) => {
         })
       ) : (
         <p className="medium-title fw-500">Tutors not found for this query</p>
+      )}
+      {tutors.length > tutorsLimit ? (
+        <button
+          className="btn btn-blue"
+          onClick={() => setTutorsLimit(tutorsLimit + TUTORS_LIST_STEP)}
+        >
+          Show more
+        </button>
+      ) : (
+        router.route !== '/tutors' && (
+          <Link href="/tutors">
+            <a className="btn btn-blue">All tutors</a>
+          </Link>
+        )
       )}
     </div>
   )

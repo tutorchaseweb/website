@@ -81,15 +81,6 @@
     .avatar {
       max-width: 13rem;
       aspect-ratio: 3/4;
-
-      .live {
-        top: 1rem;
-        left: 1rem;
-        display: inline-block;
-        padding: 0.25rem 0.5rem;
-        z-index: 3;
-        border-radius: 4px;
-      }
     }
     .card {
       background-image: url('/images/graph.png');
