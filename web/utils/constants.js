@@ -38,3 +38,5 @@ export const MOBILE_BREAKPOINT = 992
 export const REVIEWS_BREAKPOINT = 1200
 
 export const TUTORS_LIST_STEP = 5
+
+export const TUTOR_REVIEW_ITEMS = 3

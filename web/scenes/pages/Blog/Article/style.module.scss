@@ -37,6 +37,11 @@
   max-width: 58rem;
   margin-left: auto;
   margin-right: auto;
+  :global {
+    .description {
+      text-transform: capitalize;
+    }
+  }
 }
 
 .articleContent {
@@ -76,6 +81,13 @@
 .afterContent {
   background-color: #F3F5FF;
   border-radius: 16px;
+  :global {
+    .title {
+      font-size: 32px;
+      color: $color-blue;
+      margin-top: 0;
+    }
+  }
 }
 
 .related {

@@ -53,6 +53,7 @@
     .title {
       span {
         text-decoration: underline;
+        font-weight: 800;
       }
     }
     strong {
@@ -71,6 +72,18 @@
 
       + .activity {
         margin-left: 1rem;
+      }
+    }
+  }
+}
+
+.reviews {
+  :global {
+    .reviewsLink {
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid $color-blue;
+      &:hover {
+        text-decoration: none;
       }
     }
   }

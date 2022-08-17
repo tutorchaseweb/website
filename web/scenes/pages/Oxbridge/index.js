@@ -18,6 +18,7 @@ import {
   ReviewBlock,
   BlueCardBlock,
   TutorsList,
+  InteractiveBlock,
 } from '~/scenes/sections'
 
 import oxford from '~/assets/images/oxford_logo2.png'
@@ -203,16 +204,6 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
                     </Link>
                   )
                 })}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">MAT</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">TSA</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">HAT</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">OLAT</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">PAT</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">ELAT</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">MLAT</span>*/}
-                {/*<span className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">*/}
-                {/*  Philosophy Test*/}
-                {/*</span>*/}
               </p>
             )}
           </div>
@@ -238,7 +229,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
           <TutorsList tutors={tutors} />
         </div>
       </section>
-      <section className="pb-15x">
+      <section>
         <div className="container narrow">
           <BlueCardBlock
             title="Our academic consultants will find the perfect tutor for you!"
@@ -246,12 +237,30 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
           />
         </div>
       </section>
+      <InteractiveBlock className="bg-lightGray" />
       <ReviewBlock
-        content={`My Son had an excellent tutor who helped him in preparing for his STEP exam. Her
-          teaching style was very good, allowing him to solve the Maths problem by himself
-          with a little hint, rather than helping him with the answer. <b> Highly recommend 
-          Tutor Chase, they helped me to find the right Tutor within our Budget and the tutor 
-          was a Cambridge Mathematics Graduate, which we were looking for.</b>`}
+        content={[
+          {
+            children: [
+              {
+                _key: '732f73c272500',
+                _type: 'span',
+                marks: [],
+                text: '“My Son had an excellent tutor who helped him in preparing for his STEP exam. Her teaching style was very good, allowing him to solve the Maths problem by himself with a little hint, rather than helping him with the answer. ',
+              },
+              {
+                _key: '6d7c9623776d',
+                _type: 'span',
+                marks: ['strong'],
+                text: 'Highly recommend Tutor Chase, they helped me to find the right Tutor within our Budget and the tutor was a Cambridge Mathematics Graduate, which we were looking for."',
+              },
+            ],
+            markDefs: [],
+            style: 'normal',
+            _key: '76caeeb6a572',
+            _type: 'block',
+          },
+        ]}
         author={'Elizabeth'}
         position={'Parent of English student'}
       />

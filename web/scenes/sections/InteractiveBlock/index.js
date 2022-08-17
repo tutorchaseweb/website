@@ -1,7 +1,7 @@
 import styles from './style.module.scss'
 import illustrationImg from '~/assets/images/illustration.png'
 
-export const InteractiveBlock = ({ className }) => {
+export const InteractiveBlock = ({ className = '' }) => {
   return (
     <section className={`interactive pt-18x pb-18x ${styles.interactive} ${className}`}>
       <div className="container">
