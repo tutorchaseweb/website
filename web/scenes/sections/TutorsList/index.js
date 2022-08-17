@@ -11,11 +11,10 @@ import { useRouter } from 'next/router'
 import text from '~/assets/text-content/en/static.json'
 
 export const TutorsList = ({ tutors }) => {
-  const [tutorsLimit, setTutorsLimit] = useState(5)
+  const [tutorsLimit, setTutorsLimit] = useState(TUTORS_LIST_STEP)
   const view = useWindowSize()
   const router = useRouter()
   const orderedTutors = tutors.sort((first, second) => second.sortingRating - first.sortingRating)
-  console.log(router)
 
   const hireTutor = (event) => {
     event.preventDefault()

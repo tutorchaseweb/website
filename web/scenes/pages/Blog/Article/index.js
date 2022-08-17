@@ -17,14 +17,12 @@ export const ArticlePage = ({ article }) => {
 
   useEffect(async () => {
     const QUERY = groq`
-      *[_type == 'post' && !(_id in path("drafts.**"))] {
-        _id,
+      *[_type == 'post' && !(_id in path("drafts.**"))][0...3] {
+        ...,
       }
     `
     setAllPosts(await client.fetch(QUERY))
   }, [])
-
-  const posts = allPosts.slice(0, 3)
 
   return (
     <>
@@ -32,10 +30,10 @@ export const ArticlePage = ({ article }) => {
         <section className={`first-screen pt-16x pb-10x ${styles.firstScreen}`}>
           <div className="container mb-7x">
             <nav aria-label="breadcrumbs">
-              <ol className="breadcrumb flex">
+              <ol className="breadcrumb flex fw-600">
                 <li>
                   <Link href="/blog">
-                    <a>Blog</a>
+                    <a className="color-blue">Blog</a>
                   </Link>
                 </li>
                 <li>
@@ -50,7 +48,7 @@ export const ArticlePage = ({ article }) => {
               className={`main-image-wrap relative bg-lightGray flex flex-col items-center justify-center p-4x overflow-hidden mx-auto mb-7x ${styles.mainImageWrap}`}
             >
               <Image
-                src={`${getImageUrl(article.mainImage.asset._ref)}`}
+                src={`${getImageUrl(article.mainImage?.asset?._ref)}`}
                 alt={article.mainImage?.alt}
                 layout="fill"
                 objectFit="cover"
@@ -61,13 +59,15 @@ export const ArticlePage = ({ article }) => {
               </h1>
               <div className="wrap text-center relative">
                 {article.featured && (
-                  <span className="featured rounded-xSmall bg-white mr-2x">Featured Article</span>
+                  <span className="featured rounded-xSmall bg-white color-blue mr-2x">
+                    Featured Article
+                  </span>
                 )}
                 <span className="color-white">{article.reading} min Read</span>
               </div>
             </div>
             <div className={styles.textContentWrapper}>
-              <div className="description fz-20p fw-500 l-height-1/4">
+              <div className="description text-center fz-20p fw-500 l-height-1/4">
                 <PortableText value={article.description} />
               </div>
             </div>
@@ -80,7 +80,7 @@ export const ArticlePage = ({ article }) => {
                 <PortableText value={article.body} components={myPortableTextComponents} />
               </div>
               <div className={`after-content p-4x mt-11x mb-20x ${styles.afterContent}`}>
-                <h3 className="fz-32p fw-600 l-height-1/4 color-blue mb-2x">
+                <h3 className="title fz-32p fw-600 l-height-1/4 color-blue mb-2x">
                   {article.additionalTitle}
                 </h3>
                 <div className="fz-18p l-height-1/5">
@@ -95,8 +95,8 @@ export const ArticlePage = ({ article }) => {
         <div className="container">
           <h2 className="section-title fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
           <div className="wrapper grid grid-columns-3 gap-8">
-            {Boolean(posts.length) &&
-              posts.map((post) => {
+            {Boolean(allPosts.length) &&
+              allPosts.map((post) => {
                 return <BlogCard key={post._id} article={post} />
               })}
           </div>

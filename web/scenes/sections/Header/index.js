@@ -27,15 +27,11 @@ export const Header = () => {
           <header className={`w-full ${styles.header} ${activeMenu ? 'fixed' : 'absolute'}`}>
             <div className="container wide">
               <div className="wrapper pt-3x pb-3x flex justify-between items-center gap-8">
-                {route === '/' ? (
-                  <img className="logo" src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
-                ) : (
-                  <Link href="/">
-                    <a className="logo">
-                      <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
-                    </a>
-                  </Link>
-                )}
+                <Link href="/">
+                  <a className="logo">
+                    <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
+                  </a>
+                </Link>
                 <div
                   className={`burger pointer relative ${activeMenu ? 'active' : ''}`}
                   onClick={() => setActiveMenu(!activeMenu)}

@@ -4,6 +4,7 @@
   :global {
     .logo {
       max-width: 12rem;
+      transform: translateY(-0.5rem);
     }
     .link-group-wrapper {
       flex-direction: column;
@@ -45,6 +46,12 @@
       }
       @media (min-width: $lg) {
         max-height: initial;
+      }
+    }
+    .circle {
+      transition: all 0.2s linear;
+      &:hover {
+        background-color: #4053B0 !important;
       }
     }
   }

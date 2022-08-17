@@ -161,7 +161,6 @@ export const ApplyForm = ({ className = '' }) => {
         .then((file) => {
           return sendForm(file)
         })
-        // .then((result) => log(result))
         .catch(console.error)
     } else {
       return sendForm()
@@ -396,7 +395,6 @@ export const ApplyForm = ({ className = '' }) => {
                   type="button"
                   className="btn small btn-gray flex items-center justify-center"
                   onClick={() => {
-                    // sendData()
                     setActiveStep(activeStep - 1)
                   }}
                 >

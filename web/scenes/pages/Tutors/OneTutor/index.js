@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
-import { Color } from '~/utils/constants'
+import { Color, TUTOR_REVIEW_ITEMS } from '~/utils/constants'
 import SVG from '~/components/SVG'
 import { HireFormBlock } from '~/scenes/sections'
 
@@ -98,9 +98,9 @@ export const TutorPage = ({ tutor }) => {
               </span>
             ))}
           </div>
-          <div className="bg-white pt-7x pb-4x pl-8x pr-8x mb-15x rounded-rem">
-            <h2 className="fz-36p fw-600 ">Tutor reviews</h2>
-            {tutor.reviews.map((review, idx) => {
+          <div className={`bg-white pt-7x pb-4x pl-8x pr-8x mb-15x rounded-rem ${styles.reviews}`}>
+            <h2 className="fz-36p fw-600 ">Tutor Reviews</h2>
+            {tutor.reviews.slice(0, TUTOR_REVIEW_ITEMS).map((review, idx) => {
               return (
                 <div
                   key={review._id}
@@ -123,6 +123,11 @@ export const TutorPage = ({ tutor }) => {
                 </div>
               )
             })}
+            {tutor.reviews.length > TUTOR_REVIEW_ITEMS && (
+              <Link href="/reviews">
+                <a className="reviewsLink color-blue fz-18p fw-600">Show more reviews</a>
+              </Link>
+            )}
           </div>
           <div className={`flex items-center justify-between gap-8 mb-8x ${styles.findTutor}`}>
             <div className="card bg-white rounded-small relative p-8x">

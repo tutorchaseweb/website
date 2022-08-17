@@ -20,7 +20,7 @@ export const BlogCard = ({ article }) => {
             Featured Article
           </span>
         )}
-        {article.mainImage.asset._ref ? (
+        {article.mainImage?.asset?._ref ? (
           <Image
             src={`${getImageUrl(article.mainImage.asset._ref).width(400).height(200)}`}
             alt={article.mainImage?.alt}
@@ -30,7 +30,7 @@ export const BlogCard = ({ article }) => {
           />
         ) : (
           <img
-            src={`${article.mainImage.asset.url}`}
+            src={`${article.mainImage?.asset?.url}`}
             alt={article.mainImage?.alt}
             className="absolute inset-0 w-full h-full"
             style={{ objectFit: 'cover' }}

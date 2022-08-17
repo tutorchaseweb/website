@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import client from '~/utils/sanity-client'
-import { getImageUrl, useWindowSize } from '~/utils/helpers'
+import { getImageUrl, hireTutor, useWindowSize } from '~/utils/helpers'
 import { MOBILE_BREAKPOINT } from '~/utils/constants'
 import { PortableText } from '@portabletext/react'
 import {
@@ -109,6 +109,8 @@ export const HomePage = ({ page }) => {
     allReviewsBlock,
     servicesBlock,
   } = page
+
+  console.log(reviewBlockFirst)
 
   return (
     <>
@@ -271,8 +273,8 @@ export const HomePage = ({ page }) => {
             <div className="text-wrap w-full w-1/2_lg mt-6x mt-0x_lg pl-10x_lg">
               <div className="flex items-center justify-between mb-6x">
                 <h2 className="medium-title fw-600">Premium UK and US Tutors</h2>
-                <a href="#" className="btn btn-blue ml-5x">
-                  Hire a Tutor
+                <a href="#hireFormBlock" className="btn btn-blue ml-5x" onClick={hireTutor}>
+                  {text.form.btnHireTutor}
                 </a>
               </div>
 
