@@ -64,13 +64,13 @@ export async function getServerSideProps(context) {
   const data = await client.fetch(
     `
     *[_type in ['level', 'subject', 'test']] {
-      _type == 'level' => {
+      _type == 'level' && !(_id in path("drafts.**")) => {
         ...,
       },
-      _type == 'subject' => {
+      _type == 'subject' && !(_id in path("drafts.**")) => {
         ...,
       },
-      _type == 'test' => {
+      _type == 'test' && !(_id in path("drafts.**")) => {
         ...,
       }
     }

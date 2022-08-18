@@ -113,6 +113,11 @@ export default () =>
                 .child(
                   S.document().schemaType('safeguardingPolicy').documentId('safeguardingPolicy')
                 ),
+              S.listItem()
+                .title('Custom pages')
+                .icon(BsBook)
+                .schemaType('custom-page')
+                .child(S.documentTypeList('custom-page').title('Custom page')),
             ])
         ),
       S.listItem()

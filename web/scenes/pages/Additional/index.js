@@ -30,7 +30,7 @@ import illustration14 from '~/assets/images/illustration-14.png'
 import styles from './style.module.scss'
 import text from '~/assets/text-content/en/static.json'
 
-export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
+export const AdditionalPage = ({ title = 'Oxbridge', page, tutors }) => {
   const { firstScreen } = page
 
   const [levelQuery] = useGlobalState('levelQuery', null)
@@ -271,4 +271,4 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
     </>
   )
 }
-export default OxbridgePage
+export default AdditionalPage

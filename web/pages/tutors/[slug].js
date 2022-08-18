@@ -14,17 +14,7 @@ export const Post = ({ tutor }) => {
   )
 }
 
-// export async function getStaticPaths() {
-//   const paths = await client.fetch(`*[_type == 'tutor' && defined(slug.current)][].slug.current`)
-//
-//   return {
-//     paths: paths.map((slug) => ({ params: { slug } })),
-//     fallback: true,
-//   }
-// }
-
 export async function getServerSideProps(context) {
-  // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params
   const tutor = await client.fetch(
     `
