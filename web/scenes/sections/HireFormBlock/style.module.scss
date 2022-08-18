@@ -30,6 +30,9 @@
       select {
         padding: 15px;
       }
+      #country:invalid {
+        //border-color: #F57C40;
+      }
       input, select, textarea {
         font: inherit;
         line-height: 2;
@@ -43,7 +46,7 @@
         height: 72px;
         resize: none;
       }
-      input:focus {
+      input:focus, select:focus {
         outline-width: 1px;
         outline-color: $color-blue;
       }

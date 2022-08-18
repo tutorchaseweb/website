@@ -4,6 +4,7 @@ import { error } from '~/utils/svgImages'
 export const Textarea = ({
   placeholder = '',
   className = '',
+  fieldClassName = '',
   id = '',
   inputName = 'name',
   value,
@@ -22,6 +23,7 @@ export const Textarea = ({
         value={value}
         name={inputName}
         placeholder={placeholder}
+        className={fieldClassName}
         title={title}
         onChange={(e) => {
           setValue(e.target.value)

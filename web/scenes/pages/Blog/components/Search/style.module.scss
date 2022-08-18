@@ -1,0 +1,45 @@
+@import 'styles/variables';
+
+.wrapper {
+  position: relative;
+
+  :global {
+    .search {
+      max-width: 50%;
+      .svg-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      input {
+        padding: 0.5rem 2rem;
+        background-color: transparent;
+        border: none;
+        outline: none;
+
+        &:focus {
+          outline: none;
+          border-bottom: 1px solid rgba(23, 29, 35, 0.1);
+        }
+      }
+    }
+    .result {
+      max-width: 100%;
+      top: 100%;
+      left: 0;
+      z-index: 3;
+      padding: 0.25rem 0;
+      max-height: 350px;
+      overflow-y: auto;
+      li {
+        padding: 0.25rem 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        + li {
+          border-top: 1px solid #E6E7ED;
+        }
+      }
+    }
+  }
+}

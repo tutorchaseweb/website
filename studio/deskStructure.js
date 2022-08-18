@@ -14,6 +14,7 @@ import {
   IoAppsOutline,
   IoNewspaperOutline,
   IoSchoolOutline,
+  MdOutlineFormatListNumbered,
   MdOutlinePolicy,
 } from 'react-icons/all'
 
@@ -22,6 +23,8 @@ const hiddenDocTypes = (listItem) =>
   ![
     'site-config',
     'home-page',
+    'oxbridge-page',
+    'us-admissions-page',
     'blog-page',
     'category',
     'author',
@@ -30,6 +33,7 @@ const hiddenDocTypes = (listItem) =>
     'review',
     'subject',
     'level',
+    'test',
     'hireForm',
     'applyForm',
     'university',
@@ -86,6 +90,10 @@ export default () =>
                 .icon(AiOutlineHome)
                 .child(S.document().schemaType('home-page').documentId('home-page')),
               S.listItem()
+                .title('Oxbridge page')
+                .icon(FaUniversity)
+                .child(S.document().schemaType('oxbridge-page').documentId('oxbridge-page')),
+              S.listItem()
                 .title('Blog page')
                 .icon(IoNewspaperOutline)
                 .child(S.document().schemaType('blog-page').documentId('blog-page')),
@@ -105,6 +113,11 @@ export default () =>
                 .child(
                   S.document().schemaType('safeguardingPolicy').documentId('safeguardingPolicy')
                 ),
+              S.listItem()
+                .title('Custom pages')
+                .icon(BsBook)
+                .schemaType('custom-page')
+                .child(S.documentTypeList('custom-page').title('Custom page')),
             ])
         ),
       S.listItem()
@@ -117,6 +130,11 @@ export default () =>
         .icon(BsBarChart)
         .schemaType('level')
         .child(S.documentTypeList('level').title('Level')),
+      S.listItem()
+        .title('Tests')
+        .icon(MdOutlineFormatListNumbered)
+        .schemaType('test')
+        .child(S.documentTypeList('test').title('Test')),
       S.listItem()
         .title('Universities')
         .icon(FaUniversity)

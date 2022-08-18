@@ -1,0 +1,15 @@
+@import 'styles/variables';
+
+.wrapper {
+  position: relative;
+
+  :global {
+    .sorting {
+      select {
+        min-width: 160px;
+        background-color: transparent;
+        border-color: rgba(23, 29, 35, 0.1);
+      }
+    }
+  }
+}

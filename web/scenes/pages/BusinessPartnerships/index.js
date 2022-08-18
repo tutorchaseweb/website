@@ -13,19 +13,19 @@ export const BusinessPartnershipsPage = () => {
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
         <div className="container text-center">
+          <BasedReviews center={true} />
+          <h1 className="main-title fw-700 l-height-1 mb-3x">
+            Business <strong>Partnerships</strong>
+          </h1>
+          <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
+            Elite online tutoring delivered globally by expert A-Level Maths tutors.
+          </p>
           <div className="left-card bg-white">
             <SVG content={academy()} size={24} />
             <p>
               We cooperate with the best <b>universities and schools</b>
             </p>
           </div>
-          <BasedReviews center={true} />
-          <h1 className="fz-64p fw-700 l-height-1 mb-3x">
-            Business <strong>Partnerships</strong>
-          </h1>
-          <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
-            Elite online tutoring delivered globally by expert A-Level Maths tutors.
-          </p>
           <div className="right-card bg-white">
             <Circle size={56} color={Color.LightBlue} classList="circle absolute">
               <SVG content={handshake()} size={24} />
@@ -45,7 +45,7 @@ export const BusinessPartnershipsPage = () => {
             <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">Lorem ipsum</p>
             <h2 className="fz-48p fw-600 l-height-1 mb-10x">Flexibility</h2>
           </div>
-          <div className="flex items-center" style={{ gap: '6rem' }}>
+          <div className="flex flex-wrap items-center" style={{ gap: '6rem' }}>
             <img src={illustration2.src} alt="illustration" />
             <div className="flex-1">
               <span className="square flex items-center justify-center mb-3x">
@@ -59,10 +59,7 @@ export const BusinessPartnershipsPage = () => {
               </p>
             </div>
           </div>
-          <div
-            className="flex items-center mt-12x"
-            style={{ gap: '6rem', flexDirection: 'row-reverse' }}
-          >
+          <div className="flex flex-wrap items-center mt-12x reverse_lg" style={{ gap: '6rem' }}>
             <img src={illustration3.src} alt="illustration" />
             <div className="flex-1">
               <span className="square flex items-center justify-center mb-3x">
@@ -89,7 +86,7 @@ export const BusinessPartnershipsPage = () => {
             <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">
               Still have questions? Let’s get in touch.
             </h3>
-            <div className="links flex items-center justify-between mx-auto fz-20p fw-600">
+            <div className="links flex flex-wrap gap-4 items-center justify-between mx-auto fz-20p fw-600">
               <a href={`mailto:${text.contacts.email}`} className="flex items-center">
                 <Circle size={32} color={Color.Blue} classList="mr-1x">
                   <SVG content={email()} />

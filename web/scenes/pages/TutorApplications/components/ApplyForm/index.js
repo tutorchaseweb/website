@@ -1,9 +1,16 @@
 import { useState, useCallback } from 'react'
+import { useRouter } from 'next/router'
 import { useDropzone } from 'react-dropzone'
 import client from '~/utils/sanity-client'
 import SVG from '~/components/SVG'
 import { handleMutations, log } from '~/utils/helpers'
-import { checkValidateFullName, checkValidateEmail, checkValidatePhone } from '~/utils/validators'
+import {
+  checkValidateFullName,
+  checkValidateEmail,
+  checkValidatePhone,
+  checkValidateText,
+  checkValidateMessage,
+} from '~/utils/validators'
 import { Circle } from '~/components/Circle'
 import { Input, Textarea, Select } from '~/components/Form'
 import { arrowLeft, doneCheck } from '~/utils/svgImages'
@@ -19,6 +26,7 @@ const defaultCountry = {
 }
 
 export const ApplyForm = ({ className = '' }) => {
+  const router = useRouter()
   const [activeStep, setActiveStep] = useState(0)
   const [source, setSource] = useState(process.env.NEXT_PUBLIC_BASE_URL)
   const [fullName, setFullName] = useState('')
@@ -32,8 +40,11 @@ export const ApplyForm = ({ className = '' }) => {
   const [hearAboutUs, setHearAboutUs] = useState('')
   const [hearAboutUsErrors, setHearAboutUsErrors] = useState([])
   const [qualifications, setQualifications] = useState('')
+  const [qualificationsErrors, setQualificationsErrors] = useState([])
   const [tutoringExperience, setTutoringExperience] = useState('')
+  const [tutoringExperienceErrors, setTutoringExperienceErrors] = useState([])
   const [tutoringOffered, setTutoringOffered] = useState('')
+  const [tutoringOfferedErrors, setTutoringOfferedErrors] = useState([])
   const [linkedInUrl, setLinkedInUrl] = useState('')
   const [referrer, setReferrer] = useState('')
   const [files, setFiles] = useState([])
@@ -51,13 +62,15 @@ export const ApplyForm = ({ className = '' }) => {
   })
 
   const checkMandatoryFields_step1 = () => {
-    // setFullNameErrors(checkValidateFullName(fullName))
-    // setPhoneErrors(checkValidatePhone(phone))
-    // setEmailErrors(checkValidateEmail(email))
+    setFullNameErrors(checkValidateFullName(fullName))
+    setPhoneErrors(checkValidatePhone(phone))
+    setEmailErrors(checkValidateEmail(email))
+    setHearAboutUsErrors(checkValidateText(hearAboutUs))
     if (
-      !checkValidateFullName(fullName).length
-      // !checkValidatePhone(phone).length &&
-      // !checkValidateEmail(email).length
+      !checkValidateFullName(fullName).length &&
+      !checkValidatePhone(phone).length &&
+      !checkValidateEmail(email).length &&
+      !checkValidateText(hearAboutUs).length
     ) {
       setActiveStep(activeStep + 1)
     } else {
@@ -67,13 +80,13 @@ export const ApplyForm = ({ className = '' }) => {
   }
 
   const checkMandatoryFields_step2 = () => {
-    // setFullNameErrors(checkValidateFullName(fullName))
-    // setPhoneErrors(checkValidatePhone(phone))
-    // setEmailErrors(checkValidateEmail(email))
+    setQualificationsErrors(checkValidateMessage(qualifications))
+    setTutoringExperienceErrors(checkValidateMessage(tutoringExperience))
+    setTutoringOfferedErrors(checkValidateMessage(tutoringOffered))
     if (
-      // !checkValidateFullName(fullName).length &&
-      // !checkValidatePhone(phone).length &&
-      !checkValidateEmail(email).length
+      !checkValidateMessage(qualifications).length &&
+      !checkValidateMessage(tutoringExperience).length &&
+      !checkValidateMessage(tutoringOffered).length
     ) {
       setActiveStep(activeStep + 1)
     } else {
@@ -83,19 +96,14 @@ export const ApplyForm = ({ className = '' }) => {
   }
 
   const checkMandatoryFields_step3 = () => {
-    // setFullNameErrors(checkValidateFullName(fullName))
-    // setPhoneErrors(checkValidatePhone(phone))
-    // setEmailErrors(checkValidateEmail(email))
-    if (
-      // !checkValidateFullName(fullName).length &&
-      // !checkValidatePhone(phone).length &&
-      !checkValidateEmail(email).length
-    ) {
-      setActiveStep(activeStep + 1)
-    } else {
-      event.preventDefault()
-      return false
-    }
+    event.preventDefault()
+    sendData()
+      .then((result) => {
+        log(result)
+        clearAllFields()
+        router.push('/tutor-submission')
+      })
+      .catch((e) => console.log(e))
   }
 
   const clearAllFields = () => {
@@ -103,11 +111,16 @@ export const ApplyForm = ({ className = '' }) => {
     setFullName('')
     setPhone('')
     setEmail('')
+    setHearAboutUs('')
+    setQualifications('')
+    setTutoringExperience('')
+    setTutoringOffered('')
+    setLinkedInUrl('')
+    setReferrer('')
+    setFiles([])
   }
 
   const sendForm = (file = {}) => {
-    console.log(file)
-    console.log('file')
     const mutations = [
       {
         create: {
@@ -148,7 +161,6 @@ export const ApplyForm = ({ className = '' }) => {
         .then((file) => {
           return sendForm(file)
         })
-        // .then((result) => log(result))
         .catch(console.error)
     } else {
       return sendForm()
@@ -199,26 +211,6 @@ export const ApplyForm = ({ className = '' }) => {
                 setValue={setCountry}
                 className="flex-1 fz-14p"
               />
-              {/*<label className="flex-1 fz-14p">*/}
-              {/*  <span className="fw-500 color-black">Country</span>*/}
-              {/*  <select*/}
-              {/*    id="country"*/}
-              {/*    name="country"*/}
-              {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
-              {/*    onChange={(e) => setCountry(e.target.value)}*/}
-              {/*  >*/}
-              {/*    <option value="not selected" selected disabled>*/}
-              {/*      Select your country*/}
-              {/*    </option>*/}
-              {/*    {countries.map((country) => {*/}
-              {/*      return (*/}
-              {/*        <option key={country.code} id={country.code} value={country.name}>*/}
-              {/*          {country.name}*/}
-              {/*        </option>*/}
-              {/*      )*/}
-              {/*    })}*/}
-              {/*  </select>*/}
-              {/*</label>*/}
               <Input
                 id="phone"
                 inputName="Your phone"
@@ -240,23 +232,10 @@ export const ApplyForm = ({ className = '' }) => {
                 className="flex-1 fz-14p"
                 value={hearAboutUs}
                 setValue={setHearAboutUs}
+                Errors={hearAboutUsErrors}
+                setErrors={setHearAboutUsErrors}
+                checkValidateValue={checkValidateText}
               />
-              {/*<label className="flex-1 fz-14p">*/}
-              {/*  <span className="fw-500 color-black">How did you hear about us?</span>*/}
-              {/*  <select*/}
-              {/*    id="country"*/}
-              {/*    name="country"*/}
-              {/*    className="p-2x border-light l-height-1 w-full rounded-xSmall"*/}
-              {/*    onChange={(e) => setCountry(e.target.value)}*/}
-              {/*  >*/}
-              {/*    <option value="not selected" selected disabled>*/}
-              {/*      Select an option*/}
-              {/*    </option>*/}
-              {/*    <option value="option1">Option 1</option>*/}
-              {/*    <option value="option2">Option 2</option>*/}
-              {/*    <option value="option3">Option 3</option>*/}
-              {/*  </select>*/}
-              {/*</label>*/}
             </div>
             {typeof window !== 'undefined' && (
               <label>
@@ -287,37 +266,46 @@ export const ApplyForm = ({ className = '' }) => {
         {activeStep === 1 && (
           <>
             <div className="flex mb-2x">
-              <label className="flex-1">
-                <span className="fz-14p fw-500 color-black">Qualifications</span>
-                <textarea
-                  placeholder="Describe your qualifications"
-                  className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                  value={''}
-                  onChange={(e) => null}
-                />
-              </label>
+              <Textarea
+                id="Qualifications"
+                className="flex-1 fz-14p"
+                fieldClassName="p-2x border-light l-height-1 w-full rounded-xSmall"
+                inputName="Qualifications"
+                placeholder="Describe your qualifications"
+                value={qualifications}
+                setValue={setQualifications}
+                Errors={qualificationsErrors}
+                setErrors={setQualificationsErrors}
+                checkValidateValue={checkValidateMessage}
+              />
             </div>
             <div className="flex mb-2x">
-              <label className="flex-1">
-                <span className="fz-14p fw-500 color-black">Tutoring Experience</span>
-                <textarea
-                  placeholder="Describe your tutoring experience"
-                  className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                  value={''}
-                  onChange={(e) => null}
-                />
-              </label>
+              <Textarea
+                id="Experience"
+                className="flex-1 fz-14p"
+                fieldClassName="p-2x border-light l-height-1 w-full rounded-xSmall"
+                inputName="Tutoring Experience"
+                placeholder="Describe your tutoring experience"
+                value={tutoringExperience}
+                setValue={setTutoringExperience}
+                Errors={tutoringExperienceErrors}
+                setErrors={setTutoringExperienceErrors}
+                checkValidateValue={checkValidateMessage}
+              />
             </div>
             <div className="flex mb-2x flex-1">
-              <label className="flex-1">
-                <span className="fz-14p fw-500 color-black">Tutoring Offered</span>
-                <textarea
-                  placeholder="Describe your tutoring offered"
-                  className="p-2x border-light l-height-1 w-full rounded-xSmall"
-                  value={''}
-                  onChange={(e) => null}
-                />
-              </label>
+              <Textarea
+                id="Offered"
+                className="flex-1"
+                fieldClassName="p-2x border-light l-height-1 w-full rounded-xSmall"
+                inputName="Tutoring Offered"
+                placeholder="Describe your tutoring offered"
+                value={tutoringOffered}
+                setValue={setTutoringOffered}
+                Errors={tutoringOfferedErrors}
+                setErrors={setTutoringOfferedErrors}
+                checkValidateValue={checkValidateMessage}
+              />
             </div>
             <div className="flex gap-4 items-center justify-between">
               <span>
@@ -407,7 +395,6 @@ export const ApplyForm = ({ className = '' }) => {
                   type="button"
                   className="btn small btn-gray flex items-center justify-center"
                   onClick={() => {
-                    // sendData()
                     setActiveStep(activeStep - 1)
                   }}
                 >
@@ -416,12 +403,7 @@ export const ApplyForm = ({ className = '' }) => {
                 <button
                   type="button"
                   className="btn small btn-blue"
-                  onClick={() => {
-                    clearAllFields()
-                    sendData()
-                    setActiveStep(activeStep + 1)
-                    // checkMandatoryFields_step3()
-                  }}
+                  onClick={checkMandatoryFields_step3}
                 >
                   {text.form.btnNextStep}
                 </button>

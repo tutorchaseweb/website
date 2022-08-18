@@ -53,6 +53,7 @@
     .title {
       span {
         text-decoration: underline;
+        font-weight: 800;
       }
     }
     strong {
@@ -76,20 +77,23 @@
   }
 }
 
+.reviews {
+  :global {
+    .reviewsLink {
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid $color-blue;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 .findTutor {
   :global {
     .avatar {
       max-width: 13rem;
       aspect-ratio: 3/4;
-
-      .live {
-        top: 1rem;
-        left: 1rem;
-        display: inline-block;
-        padding: 0.25rem 0.5rem;
-        z-index: 3;
-        border-radius: 4px;
-      }
     }
     .card {
       background-image: url('/images/graph.png');

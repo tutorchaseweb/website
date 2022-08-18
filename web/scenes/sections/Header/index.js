@@ -2,10 +2,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ConfigContext } from '~/components/Layout'
+import { getImageUrl } from '~/utils/helpers'
+import { Color } from '~/utils/constants'
 import { Circle } from '~/components/Circle'
 import SVG from '~/components/SVG'
 import { email as emailIcon, phone as phoneIcon } from '~/utils/svgImages'
-import { Color } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
@@ -26,15 +27,11 @@ export const Header = () => {
           <header className={`w-full ${styles.header} ${activeMenu ? 'fixed' : 'absolute'}`}>
             <div className="container wide">
               <div className="wrapper pt-3x pb-3x flex justify-between items-center gap-8">
-                {route === '/' ? (
-                  <img className="logo" src={logo.asset.url} alt={logo.alt} />
-                ) : (
-                  <Link href="/">
-                    <a className="logo">
-                      <img src={logo.asset.url} alt={logo.alt} />
-                    </a>
-                  </Link>
-                )}
+                <Link href="/">
+                  <a className="logo">
+                    <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
+                  </a>
+                </Link>
                 <div
                   className={`burger pointer relative ${activeMenu ? 'active' : ''}`}
                   onClick={() => setActiveMenu(!activeMenu)}
@@ -62,7 +59,7 @@ export const Header = () => {
                         </Link>
                       </li>
                       <li className="menu-item">
-                        <Link href="/us-admissions">
+                        <Link href="/us-college-admissions">
                           <a>{text.menu.USAdmissions}</a>
                         </Link>
                       </li>

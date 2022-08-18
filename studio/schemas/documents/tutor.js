@@ -18,7 +18,10 @@ export default {
       title: 'Slug',
       type: 'slug',
       options: {
-        source: ({ name, _rev }) => `${name.replace(' ', '-')}-${_rev}`,
+        source: ({ name }) => {
+          const index = Math.floor(Math.random() * 100000)
+          return `${name.replace(' ', '-')}-${index}`
+        },
         maxLength: 96,
       },
     },
@@ -94,6 +97,15 @@ export default {
       title: 'Elected',
       description: 'Enable this option to display the tutor on the main page',
       initialValue: false,
+    },
+    {
+      name: 'sortingRating',
+      title: 'Sorting rating',
+      description:
+        'Specify the rating of the teacher (from 1 to 100) to sort in the search results',
+      type: 'number',
+      initialValue: 1,
+      validation: (Rule) => Rule.error('Enter a number from 1 to 100').min(1).max(100),
     },
   ],
 }

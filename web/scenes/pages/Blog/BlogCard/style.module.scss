@@ -14,6 +14,15 @@
   }
 
   :global {
+    .image-wrap {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+    }
     .circle, svg path {
       transition: all 0.2s linear;
     }

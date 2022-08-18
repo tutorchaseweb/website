@@ -132,6 +132,9 @@ h4, h5, h6 {
   background-color: #D8DAE5;
   color: $default-text-color;
 }
+.btn.btn-gray:hover {
+  background-color: rgba(216, 218, 229, 0.8);
+}
 .btn.btn-blue {
   background-color: $color-blue;
   color: $color-white;
@@ -245,7 +248,7 @@ input:focus {
   outline: $color-blue;
   border-color: $color-blue;
 }
-label.error input {
+label.error input, label.error textarea {
   border-color: #F57C40;
 }
 label.error .error-wrap {

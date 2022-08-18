@@ -6,7 +6,10 @@ export const Circle = ({ size = 24, color = '#FFFFFF', classList = '', children 
     backgroundColor: color,
   }
   return (
-    <span className={`flex items-center justify-center border-round ${classList}`} style={styles}>
+    <span
+      className={`circle flex items-center justify-center border-round ${classList}`}
+      style={styles}
+    >
       {children}
     </span>
   )

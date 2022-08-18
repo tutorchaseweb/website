@@ -33,9 +33,13 @@
     }
     .actions {
       width: 100%;
-      border-left: 1px solid #E6E7ED;
+      @media (min-width: $lg) {
+        border-left: 1px solid #E6E7ED;
+      }
       .btn-white {
         border-top: 1px solid #E6E7ED;
+        color: #171D23;
+        border-radius: 0;
       }
       .btn-blue {
         border-radius: 0 0 4px 0;

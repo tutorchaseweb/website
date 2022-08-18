@@ -46,7 +46,6 @@
             padding: 1.5rem 1.25rem 1.125rem 1.25rem;
             .play {
                 width: 3.25rem;
-                cursor: pointer;
                 &::after {
                     content: '';
                     display: block;
@@ -390,7 +389,6 @@
         }
         .play {
             width: 2.625rem;
-            cursor: pointer;
             &::after {
                 content: "";
                 display: block;

@@ -5,13 +5,26 @@
 }
 .mainImageWrap {
   max-width: 1120px;
-  aspect-ratio: 2/1;
+  aspect-ratio: 2/3;
   border-radius: 16px;
+  @media (min-width: $sm) {
+    aspect-ratio: 2/1;
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.28);
+  }
 
   :global {
     .article-title {
       max-width: 660px;
       text-transform: capitalize;
+      z-index: 1;
+    }
+    .wrap {
       z-index: 1;
     }
     .featured {
@@ -24,6 +37,11 @@
   max-width: 58rem;
   margin-left: auto;
   margin-right: auto;
+  :global {
+    .description {
+      text-transform: capitalize;
+    }
+  }
 }
 
 .articleContent {
@@ -63,8 +81,26 @@
 .afterContent {
   background-color: #F3F5FF;
   border-radius: 16px;
+  :global {
+    .title {
+      font-size: 32px;
+      color: $color-blue;
+      margin-top: 0;
+    }
+  }
 }
 
 .related {
   background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
+  :global {
+    .wrapper {
+      grid-template-columns: repeat(1, 1fr);
+      @media (min-width: $sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (min-width: $xl) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
 }
