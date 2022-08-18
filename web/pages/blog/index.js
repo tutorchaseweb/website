@@ -7,7 +7,7 @@ import { Layout } from '~/components/Layout'
 import { BlogPage } from '~/scenes/pages/Blog'
 
 export const Blog = ({ page }) => {
-  const [postsStart, setPostsStart] = useGlobalState('postsStart', 0)
+  const [, setPostsStart] = useGlobalState('postsStart', 0)
   useEffect(() => setPostsStart(0), [])
 
   return (

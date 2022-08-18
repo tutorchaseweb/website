@@ -1,11 +1,11 @@
-// import client from '~/utils/sanity-client'
+import { useState, useEffect } from 'react'
+import client from '~/utils/sanity-client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import SVG from '~/components/SVG'
 import { shuffleArray, splitArray, useWindowSize } from '~/utils/helpers'
 import { REVIEWS_BREAKPOINT } from '~/utils/constants'
 import { star } from '~/utils/svgImages'
-import reviews from './data.json'
 import styles from './style.module.scss'
 
 const getReviewCard = (review) => {
@@ -101,14 +101,15 @@ const DesktopReviews = ({ reviews }) => {
 }
 
 export const RatedBlock = ({ className }) => {
-  // const query = `*[_type == 'review'] { ..., }`
-  // const allReviews = client.fetch(query).then((reviews) => reviews)
-  // console.log(allReviews)
+  const [allReviews, setAllReviews] = useState([])
+  useEffect(async () => {
+    const query = `*[_type == 'review' && !(_id in path("drafts.**"))] { ..., }`
+    setAllReviews(await client.fetch(query))
+  }, [])
 
   const window = useWindowSize()
 
-  return (
-    // Boolean(allReviews?.length) && (
+  return Boolean(allReviews?.length) ? (
     <section className={`rated ${styles.rated} ${className}`}>
       <div className="wrapper flex">
         <div className="content flex flex-col justify-center pt-7x pt-20x_xl pb-8x pb-20x_xl mr-19x_xl">
@@ -123,7 +124,7 @@ export const RatedBlock = ({ className }) => {
             Rated 4.92/5 based on 214 reviews
           </h2>
           <p className="description l-height-1/4 mb-6x">Trusted globally by students and parents</p>
-          {window.width < REVIEWS_BREAKPOINT && <MobileReviews reviews={reviews} />}
+          {window.width < REVIEWS_BREAKPOINT && <MobileReviews reviews={allReviews} />}
           <a
             href="https://www.reviews.co.uk/company-reviews/store/tutorchase"
             rel="noopener noreferrer"
@@ -133,10 +134,11 @@ export const RatedBlock = ({ className }) => {
             Read our verified reviews
           </a>
         </div>
-        {window.width > REVIEWS_BREAKPOINT && <DesktopReviews reviews={reviews} />}
+        {window.width > REVIEWS_BREAKPOINT && <DesktopReviews reviews={allReviews} />}
       </div>
     </section>
-    // )
+  ) : (
+    <></>
   )
 }
 

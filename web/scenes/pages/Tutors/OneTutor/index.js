@@ -98,37 +98,40 @@ export const TutorPage = ({ tutor }) => {
               </span>
             ))}
           </div>
-          <div className={`bg-white pt-7x pb-4x pl-8x pr-8x mb-15x rounded-rem ${styles.reviews}`}>
-            <h2 className="fz-36p fw-600 ">Tutor Reviews</h2>
-            {tutor.reviews.slice(0, TUTOR_REVIEW_ITEMS).map((review, idx) => {
-              return (
-                <div
-                  key={review._id}
-                  className="pt-4x pb-4x"
-                  style={{ borderTop: `1px solid ${idx !== 0 ? '#E1E7ED' : 'transparent'}` }}
-                >
-                  <p className="fz-18p mb-3x">{review.content}</p>
-                  <p className="flex items-center">
-                    <span className="fw-700">{review.author}</span>
-                    <span className="ml-1x mr-1x">|</span>
-                    {review.position}
-                    <span className="stars l-height-1 ml-2x">
-                      <SVG content={star()} size={20} />
-                      <SVG content={star()} size={20} />
-                      <SVG content={star()} size={20} />
-                      <SVG content={star()} size={20} />
-                      <SVG content={star()} size={20} />
-                    </span>
-                  </p>
-                </div>
-              )
-            })}
-            {tutor.reviews.length > TUTOR_REVIEW_ITEMS && (
-              <Link href="/reviews">
-                <a className="reviewsLink color-blue fz-18p fw-600">Show more reviews</a>
-              </Link>
-            )}
-          </div>
+          {Boolean(tutor.reviews.length) && (
+            <div className={`bg-white pt-7x pb-4x pl-8x pr-8x rounded-rem ${styles.reviews}`}>
+              <h2 className="fz-36p fw-600 ">Tutor Reviews</h2>
+              {tutor.reviews.slice(0, TUTOR_REVIEW_ITEMS).map((review, idx) => {
+                return (
+                  <div
+                    key={review._id}
+                    className="pt-4x pb-4x"
+                    style={{ borderTop: `1px solid ${idx !== 0 ? '#E1E7ED' : 'transparent'}` }}
+                  >
+                    <p className="fz-18p mb-3x">{review.content}</p>
+                    <p className="flex items-center">
+                      <span className="fw-700">{review.author}</span>
+                      <span className="ml-1x mr-1x">|</span>
+                      {review.position}
+                      <span className="stars l-height-1 ml-2x">
+                        <SVG content={star()} size={20} />
+                        <SVG content={star()} size={20} />
+                        <SVG content={star()} size={20} />
+                        <SVG content={star()} size={20} />
+                        <SVG content={star()} size={20} />
+                      </span>
+                    </p>
+                  </div>
+                )
+              })}
+              {tutor.reviews.length > TUTOR_REVIEW_ITEMS && (
+                <Link href="/reviews">
+                  <a className="reviewsLink color-blue fz-18p fw-600">Show more reviews</a>
+                </Link>
+              )}
+            </div>
+          )}
+          <div className="mb-8x mb-15x_lg" />
           <div className={`flex items-center justify-between gap-8 mb-8x ${styles.findTutor}`}>
             <div className="card bg-white rounded-small relative p-8x">
               <div className="avatar relative rounded-xSmall overflow-hidden">

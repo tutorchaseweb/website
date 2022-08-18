@@ -51,7 +51,7 @@ const MenuItem = ({ item, index }) => {
   )
 }
 
-export const Footer = () => {
+export const Footer = ({ pages = [] }) => {
   const window = useWindowSize()
 
   return (
@@ -95,6 +95,14 @@ export const Footer = () => {
                     {CompanyInformation.map((item, idx) => (
                       <MenuItem key={item._id} item={item} index={idx} />
                     ))}
+                    {Boolean(pages.length) &&
+                      pages.map((page, idx) => {
+                        const item = {
+                          link: `/page/${page.slug.current}`,
+                          title: page.title,
+                        }
+                        return <MenuItem key={item._id} item={item} index={idx + 1} />
+                      })}
                   </ul>
                 </div>
                 <div className="link-group">
