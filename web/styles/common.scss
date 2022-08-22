@@ -51,6 +51,9 @@ html {
     font-size: $large-font-size;
   }
 }
+body.openMenu {
+  overflow: hidden;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
@@ -113,6 +116,7 @@ h4, h5, h6 {
   text-align: center;
   border: none;
   cursor: pointer;
+  transition: all 0.2s linear;
 }
 .btn.disabled {
   opacity: 0.3;
@@ -145,6 +149,9 @@ h4, h5, h6 {
 .btn.btn-white {
   background-color: $color-white;
   color: $color-blue;
+}
+.btn.btn-white:hover {
+  color: $color-orange;
 }
 
 

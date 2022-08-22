@@ -3,6 +3,25 @@
 .interactive {
   position: relative;
   :global {
+    .lessons {
+      display: none;
+      @media (min-width: $lg) {
+        display: block;
+        max-width: 42%;
+        top: 0;
+        right: 0;
+        transform: translate(25%, 15%);
+      }
+    }
+    .control {
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 50%);
+      max-width: 10rem;
 
+      @media (min-width: $lg) {
+        max-width: 12rem;
+      }
+    }
   }
 }

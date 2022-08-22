@@ -4,6 +4,14 @@
   :global {
     .wrapper {
       gap: 1.5rem;
+      .text {
+        display: inline-block;
+        margin-right: 0.5rem;
+        @media (min-width: $sm) {
+          padding-right: 0.5rem;
+          border-right: 1px solid;
+        }
+      }
     }
     .form {
       @media (min-width: $sm) {

@@ -26,5 +26,14 @@
     .content {
       max-width: 54rem;
     }
+    .author {
+      display: block;
+      @media (min-width: $lg) {
+        display: inline-block;
+        padding-right: 1rem;
+        margin-right: 1rem;
+        border-right: 1px solid #000000AA;
+      }
+    }
   }
 }

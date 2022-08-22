@@ -58,6 +58,7 @@ export const ApplyForm = ({ className = '' }) => {
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     multiple: false,
+    maxSize: 10485760,
     onDrop,
   })
 

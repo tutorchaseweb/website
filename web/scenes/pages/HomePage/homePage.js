@@ -33,7 +33,6 @@ import tutorImg from '~/assets/images/frame_48095504.png'
 import tutor2Img from '~/assets/images/frame_480955042.png'
 import avatarsImg from '~/assets/images/avatars.png'
 import oxfordSmallLogo from '~/assets/images/oxford_logo.png'
-import premiumTutor from '~/assets/images/premium_tutor.png'
 import image_591 from '~/assets/images/image_591.png'
 import image_592 from '~/assets/images/image_592.png'
 import image_810 from '~/assets/images/image_810.png'
@@ -50,7 +49,7 @@ const TutorCard = ({ tutor }) => {
         <span className="arrow absolute transition top-0 right-0 flex items-center justify-center border-light">
           <SVG content={arrowTopRight()} size={20} />
         </span>
-        <p className="avatar color-blue border border-round relative mx-auto overflow-hidden p-1x">
+        <p className="avatar color-blue border border-round relative mx-auto overflow-hidden">
           <span className="relative block w-full h-full border-round overflow-hidden">
             <Image
               src={`${getImageUrl(tutor.image.asset._ref).width(300).height(300)}`}
@@ -110,11 +109,11 @@ export const HomePage = ({ page }) => {
     servicesBlock,
   } = page
 
-  console.log(reviewBlockFirst)
+  console.log(blueCard)
 
   return (
     <>
-      <section className={`first-screen ${styles.firstScreen}`}>
+      <section className={`first-screen pt-13x pt-19x_lg ${styles.firstScreen}`}>
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="text-wrapper pb-9x pb-0x_xl">
@@ -203,10 +202,16 @@ export const HomePage = ({ page }) => {
           <div className="cards-wrapper flex gap-8">
             <div className="card card-1 bg-blue rounded-small p-4x">
               <div className="flex items-center justify-between mb-4x">
-                <p className="preTitle fw-600 uppercase">{studyCards.firstTitle}</p>
-                <SVG content={globe()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
+                {Boolean(studyCards?.firstTitle) && (
+                  <>
+                    <p className="preTitle fw-600 uppercase">{studyCards.firstTitle}</p>
+                    <SVG content={globe()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
+                  </>
+                )}
               </div>
-              <h4 className="title fw-600 mb-5x">{studyCards.firstDescription}</h4>
+              {Boolean(studyCards?.firstDescription) && (
+                <h4 className="title fw-600 mb-5x">{studyCards.firstDescription}</h4>
+              )}
               <p className="foot flex flex-wrap items-center">
                 <img src={avatarsImg.src} alt="avatars" className="block mr-2x" />
                 1000+ Satisfied Students
@@ -214,49 +219,75 @@ export const HomePage = ({ page }) => {
             </div>
             <div className="card card-2 bg-lightGray rounded-small p-4x flex flex-col">
               <div className="flex items-center justify-between mb-4x">
-                <p className="preTitle fw-600 uppercase">{studyCards.secondTitle}</p>
-                <SVG content={checkCircle()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
+                {Boolean(studyCards?.secondTitle) && (
+                  <>
+                    <p className="preTitle fw-600 uppercase">{studyCards.secondTitle}</p>
+                    <SVG
+                      content={checkCircle()}
+                      size={window.width < MOBILE_BREAKPOINT ? 20 : 28}
+                    />
+                  </>
+                )}
               </div>
               <div className="flex flex-col center justify-between flex-1">
-                <h4 className="title fw-600">{studyCards.secondDescription}</h4>
-                <p className="logo">
-                  <img src={oxfordSmallLogo.src} alt="Oxford Logo" className="block" width="68" />
-                </p>
+                {Boolean(studyCards?.secondDescription) && (
+                  <>
+                    <h4 className="title fw-600">{studyCards.secondDescription}</h4>
+                    <p className="logo">
+                      <img
+                        src={oxfordSmallLogo.src}
+                        alt="Oxford Logo"
+                        className="block"
+                        width="68"
+                      />
+                    </p>
+                  </>
+                )}
               </div>
             </div>
             <div className="card card-3 bg-white rounded-small p-4x border-light">
               <div className="flex items-center justify-between mb-4x">
-                <p className="preTitle fw-600 uppercase">{studyCards.thirdTitle}</p>
-                <SVG content={openedBook()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
+                {Boolean(studyCards?.thirdTitle) && (
+                  <>
+                    <p className="preTitle fw-600 uppercase">{studyCards.thirdTitle}</p>
+                    <SVG content={openedBook()} size={window.width < MOBILE_BREAKPOINT ? 20 : 28} />
+                  </>
+                )}
               </div>
-              <h4 className="title fw-600 mb-3x">{studyCards.thirdDescription}</h4>
+              {Boolean(studyCards?.thirdDescription) && (
+                <h4 className="title fw-600 mb-3x">{studyCards.thirdDescription}</h4>
+              )}
               <p className="color-blue fz-14p fw-600">
-                {studyCards.thirdCardTags.map((tag, idx) => (
-                  <span key={idx} className="tag">
-                    {tag}
-                  </span>
-                ))}
+                {Boolean(studyCards?.thirdCardTags?.length) &&
+                  studyCards.thirdCardTags.map((tag, idx) => (
+                    <span key={idx} className="tag">
+                      {tag}
+                    </span>
+                  ))}
               </p>
             </div>
           </div>
         </div>
       </section>
       <ReviewBlock {...reviewBlockFirst} />
-      <section className={`tutors pt-15x pb-15x text-center ${styles.tutors}`}>
+      <section className={`tutors pt-5x pt-15x_lg pb-5x pb-15x_lg text-center ${styles.tutors}`}>
         <div className="container">
-          <p className="before-title fw-600 uppercase color-lightGray mb-3x">
-            {tutorsList.preTitle}
-          </p>
-          <h2 className="section-title fw-600 mb-6x">{tutorsList.title}</h2>
+          {Boolean(tutorsList?.preTitle) && (
+            <p className="before-title fw-600 uppercase color-lightGray mb-3x">
+              {tutorsList.preTitle}
+            </p>
+          )}
+          {Boolean(tutorsList?.title) && (
+            <h2 className="section-title fw-600 mb-6x">{tutorsList.title}</h2>
+          )}
           <div className="flex flex-wrap">
             {Boolean(tutors.length) &&
               tutors.map((tutor) => <TutorCard key={tutor._id} tutor={tutor} />)}
           </div>
         </div>
       </section>
-      <section className={`premium pt-5x pb-18x ${styles.premium}`}>
+      <section className={`premium pt-5x pb-10x pb-18x_lg ${styles.premium}`}>
         <div className="container">
-          {/*<PartOfSection section={fourthScreen} />*/}
           <div className="wrapper flex flex-wrap items-center">
             <div className="w-full w-1/2_lg relative">
               <div className="card absolute bg-white rounded-small p-3x">
@@ -265,45 +296,55 @@ export const HomePage = ({ page }) => {
                   Flexible online tutoring to fit <b>around your schedule</b>
                 </p>
               </div>
-              <img src={premiumTutor.src} alt="Premium Tutor" className="block" />
+              <img
+                src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
+                alt="Premium Tutor"
+                className="block"
+              />
               <div className="check-book absolute round bg-white flex items-center justify-center">
                 <SVG content={checkCircle()} size={28} />
               </div>
             </div>
             <div className="text-wrap w-full w-1/2_lg mt-6x mt-0x_lg pl-10x_lg">
               <div className="flex items-center justify-between mb-6x">
-                <h2 className="medium-title fw-600">Premium UK and US Tutors</h2>
-                <a href="#hireFormBlock" className="btn btn-blue ml-5x" onClick={hireTutor}>
+                {Boolean(fourthScreen?.title) && (
+                  <h2 className="medium-title fw-600">{fourthScreen.title}</h2>
+                )}
+                {window.width > MOBILE_BREAKPOINT && (
+                  <a href="#hireFormBlock" className="btn btn-blue ml-5x" onClick={hireTutor}>
+                    {text.form.btnHireTutor}
+                  </a>
+                )}
+              </div>
+              {Boolean(fourthScreen?.list.length) && (
+                <ul className="ordered-list">
+                  {fourthScreen.list.map((text, idx) => (
+                    <li key={idx}>{text}</li>
+                  ))}
+                </ul>
+              )}
+              {window.width < MOBILE_BREAKPOINT && (
+                <a href="#hireFormBlock" className="btn btn-blue mt-5x" onClick={hireTutor}>
                   {text.form.btnHireTutor}
                 </a>
-              </div>
-
-              <ul className="ordered-list">
-                <li>
-                  We personally interview all our tutors to ensure they deliver the highest quality
-                  tuition.
-                </li>
-                <li>
-                  Tutors act as mentors who have successfully navigated exams and the university
-                  application process themselves
-                </li>
-                <li>
-                  They each have extensive experience helping students achieve their academic goals
-                </li>
-              </ul>
+              )}
             </div>
           </div>
         </div>
       </section>
       <ReviewBlock {...reviewBlockSecond} />
-      <section className={`globally pt-15x ${styles.globally}`}>
+      <section className={`globally pt-6x pt-15x_lg ${styles.globally}`}>
         <div className="container text-center">
-          <p className="fz-18p fw-600 uppercase color-lightGray mb-3x">
-            {globallyTutoring.preTitle}
-          </p>
-          <h2 className="title fz-48p fw-600 mb-6x mx-auto">{globallyTutoring.title}</h2>
+          {Boolean(globallyTutoring?.preTitle) && (
+            <p className="before-title fw-600 uppercase color-lightGray mb-3x">
+              {globallyTutoring.preTitle}
+            </p>
+          )}
+          {Boolean(globallyTutoring?.title) && (
+            <h2 className="section-title fw-600 mb-6x mx-auto">{globallyTutoring.title}</h2>
+          )}
         </div>
-        <div className="map flex pt-2x pt-6x_lg pb-2x pb-15x_lg">
+        <div className="map flex pt-2x pt-6x_lg pb-2x pb-15x_lg mb-7x mb-10x_lg">
           <div className="container relative">
             <p className="avatar logo_1 border border-round absolute mx-auto">
               <img
@@ -347,23 +388,20 @@ export const HomePage = ({ page }) => {
                 className="absolute inset-0 w-full h-full border-round"
               />
             </p>
-            <p
-              className={`card_1 absolute rounded-small bg-white flex items-center pt-2x pb-2x pl-3x pr-3x`}
-            >
+            <p className="card_1 absolute rounded-small bg-white flex items-center">
               <span className="fz-18p fw-600 l-height-1/4 flex-1 pr-2x">
                 Students in 70+ countries
               </span>
               <SVG content={checkCircle()} size={24} />
             </p>
-            <p className={`card_2 absolute rounded-small bg-white p-2x flex items-center`}>
-              <span className="play bg-white round relative mx-auto flex items-center justify-center mb-1x" />
+            <p className="card_2 absolute rounded-small bg-white p-2x flex items-center">
+              <span className="play bg-white round relative mx-auto flex items-center justify-center" />
               <span className="text ml-2x l-height-1/4">
                 <span className="block fw-700">Lesson 2</span>
                 <span className="block fz-14p">1h 30m</span>
               </span>
             </p>
-
-            <p className={`card_3 absolute rounded-small bg-white flex items-center p-2x`}>
+            <p className="card_3 absolute rounded-small bg-white flex items-center p-2x">
               <img src={tutor2Img.src} alt="Tutor" />
               <span className="ml-2x fz-18p l-height-1/4">
                 <span className="block fw-600">Tutors fit to your schedule</span>
@@ -373,7 +411,11 @@ export const HomePage = ({ page }) => {
           </div>
         </div>
         <div className="container narrow">
-          <BlueCardBlock title={'98% of Students Recommend Us'} content={'Get in Touch Now'} />
+          <BlueCardBlock
+            title={blueCard.title}
+            content={blueCard.description}
+            hireButton={blueCard.withButton}
+          />
         </div>
       </section>
       <InteractiveBlock />

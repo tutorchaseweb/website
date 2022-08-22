@@ -20,7 +20,7 @@ export const ReviewBlock = ({ content = [], author = '', position = '', classNam
               <SVG content={star()} size={24} />
             </p>
             <p>
-              <span className="fw-600">{author}</span> | {position}
+              <span className="author fw-600">{author}</span> {position}
             </p>
           </div>
         </div>

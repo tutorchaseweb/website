@@ -113,8 +113,8 @@ export const SubjectsFilter = () => {
             </label>
           </form>
           <p className="fz-18p">
-            Fully flexible pay-as-you-go tutoring |
-            <span className="label-blue fz-20p l-height-1 fw-700 bg-blue color-white ml-1x">
+            <span className="text">Fully flexible pay-as-you-go tutoring</span>
+            <span className="label-blue fz-20p l-height-1 fw-700 bg-blue color-white">
               From £49/Hour
             </span>
           </p>
