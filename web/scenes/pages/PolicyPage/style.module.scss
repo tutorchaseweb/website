@@ -78,6 +78,9 @@
       font-weight: 500;
       color: $color-blue;
     }
+    strong a, a strong {
+      font-weight: 600;
+    }
     ul, ol {
       list-style: none;
       li {

@@ -16,6 +16,10 @@ export const Level = ({ current }) => {
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
 
+  if (!current) {
+    typeof window !== 'undefined' && router.replace('/404')
+  }
+
   useEffect(async () => {
     if (current._type === 'level') {
       !levelQuery && setLevelQuery(current)
@@ -48,11 +52,11 @@ export const Level = ({ current }) => {
   return (
     <Layout>
       <Head>
-        <title>Online {current.title} Tutors</title>
+        <title>Online {current ? current.title : ''} Tutors</title>
       </Head>
-      {current._type === 'level' && <TutorsPage tutors={tutors} />}
-      {current._type === 'subject' && <TutorsPage tutors={tutors} />}
-      {current._type === 'test' && Boolean(page) && (
+      {current && current._type === 'level' && <TutorsPage tutors={tutors} />}
+      {current && current._type === 'subject' && <TutorsPage tutors={tutors} />}
+      {current && current._type === 'test' && Boolean(page) && (
         <OxbridgePage title={current.title} page={page} tutors={tutors} />
       )}
     </Layout>
@@ -80,9 +84,11 @@ export async function getServerSideProps(context) {
 
   const current = data.filter((item) => item.slug && item.slug.current === level)[0]
 
+  console.log(current)
+
   return {
     props: {
-      current,
+      current: current ? current : null,
     },
   }
 }

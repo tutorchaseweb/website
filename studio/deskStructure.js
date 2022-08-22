@@ -22,6 +22,7 @@ import {
 const hiddenDocTypes = (listItem) =>
   ![
     'site-config',
+    'custom-page',
     'home-page',
     'oxbridge-page',
     'us-admissions-page',
