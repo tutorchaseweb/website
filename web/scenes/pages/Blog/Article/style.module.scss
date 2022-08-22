@@ -23,9 +23,17 @@
       max-width: 660px;
       text-transform: capitalize;
       z-index: 1;
+      font-size: 32px;
+      @media (min-width: $lg) {
+        font-size: 64px;
+      }
     }
     .wrap {
       z-index: 1;
+      flex-direction: column;
+      @media (min-width: $sm) {
+        flex-direction: row;
+      }
     }
     .featured {
       padding: 0.25rem 0.5rem;
@@ -67,6 +75,17 @@
         content: '\00A0';
       }
     }
+    a {
+      color: $color-blue;
+    }
+    img:not([class*='float']) {
+      aspect-ratio: 5/4;
+      object-fit: cover;
+      @media (min-width: $lg) {
+        aspect-ratio: initial;
+        object-fit: initial;
+      }
+    }
 
     .body {
       &::after {
@@ -82,10 +101,13 @@
   background-color: #F3F5FF;
   border-radius: 16px;
   :global {
-    .title {
-      font-size: 32px;
+    .medium-title {
+      font-size: 26px;
       color: $color-blue;
       margin-top: 0;
+      @media (min-width: $lg) {
+        font-size: 32px;
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ export const Sorting = () => {
         <select
           name="sorting"
           defaultValue="DEFAULT"
-          className="p-1x border-light l-height-1 w-full rounded-xSmall"
+          className="p-1x border-light fw-600 l-height-1 w-full rounded-xSmall"
           onChange={(event) => {
             setPostsOrder(event.target.value === 'DEFAULT' ? null : event.target.value)
           }}

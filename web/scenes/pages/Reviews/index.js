@@ -21,7 +21,7 @@ export const ReviewsPage = () => {
             </p>
           </div>
           <h1 className="main-title fw-700 l-height-1 mb-3x mx-auto" style={{ maxWidth: '50rem' }}>
-            Our Verified Reviews from <strong>Students and Parents</strong>
+            Our Verified Reviews from <code>Students and Parents</code>
           </h1>
           <p className="fz-20p fw-500 l-height-1/4 mx-auto mb-4x" style={{ maxWidth: '50rem' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elite

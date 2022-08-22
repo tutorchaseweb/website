@@ -35,7 +35,7 @@ export const Search = () => {
       <form className="form">
         <label className="search relative">
           <SVG content={magnifier()} size={24} />
-          <input type="search" placeholder="Search" onChange={handler} />
+          <input type="search" placeholder="Search" className="w-full" onChange={handler} />
         </label>
       </form>
       {Boolean(searchResult.length) && (

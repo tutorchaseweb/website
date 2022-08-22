@@ -3,6 +3,7 @@ import { Circle } from '~/components/Circle'
 import { globe, studyHat, email, phone, academy, handshake } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import { BasedReviews, BlueCardBlock } from '~/scenes/sections'
+
 import illustration2 from '~/assets/images/illustration-2.png'
 import illustration3 from '~/assets/images/illustration-3.png'
 import text from '~/assets/text-content/en/static.json'
@@ -13,9 +14,11 @@ export const BusinessPartnershipsPage = () => {
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
         <div className="container text-center">
-          <BasedReviews center={true} />
+          <div className="mb-3x mb-4x_lg">
+            <BasedReviews center={true} />
+          </div>
           <h1 className="main-title fw-700 l-height-1 mb-3x">
-            Business <strong>Partnerships</strong>
+            Business <code>Partnerships</code>
           </h1>
           <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
             Elite online tutoring delivered globally by expert A-Level Maths tutors.
@@ -37,6 +40,9 @@ export const BusinessPartnershipsPage = () => {
               trust us
             </p>
           </div>
+          <Circle size={56} color={Color.LightBlue} classList="circle absolute handshake">
+            <SVG content={handshake()} size={24} />
+          </Circle>
         </div>
       </section>
       <section className={`pt-13x pb-10x bg-white ${styles.flexibility}`}>

@@ -17,7 +17,7 @@ export const AccessProgrammePage = () => {
         <div className="container text-center">
           <BasedReviews center={true} />
           <h1 className="main-title fw-700 l-height-1 mb-3x">
-            TutorChase <strong>Access</strong>
+            TutorChase <code>Access</code>
           </h1>
           <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
             Widening educational support in the UK
