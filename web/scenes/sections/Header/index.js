@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { ConfigContext } from '~/components/Layout'
 import { getImageUrl } from '~/utils/helpers'
@@ -10,6 +11,7 @@ import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
 export const Header = () => {
+  const { route } = useRouter()
   const [activeMenu, setActiveMenu] = useState(false)
 
   const handler = () => {
@@ -19,6 +21,11 @@ export const Header = () => {
       setActiveMenu(!activeMenu)
     }
   }
+
+  useEffect(() => {
+    const body = document.querySelector('body')
+    body.classList.remove('openMenu')
+  }, [route])
 
   return (
     <ConfigContext.Consumer>

@@ -57,9 +57,9 @@ export const ArticlePage = ({ article }) => {
               <h1 className="article-title main-title fw-700 color-white l-height-1 mb-3x text-center mx-auto relative">
                 {article.title}
               </h1>
-              <div className="wrap text-center relative">
+              <div className="wrap flex gap-4 items-center justify-center relative">
                 {article.featured && (
-                  <span className="featured rounded-xSmall bg-white color-blue mr-2x">
+                  <span className="featured rounded-xSmall bg-white color-blue fw-500">
                     Featured Article
                   </span>
                 )}
@@ -79,8 +79,8 @@ export const ArticlePage = ({ article }) => {
               <div className="body pt-4x">
                 <PortableText value={article.body} components={myPortableTextComponents} />
               </div>
-              <div className={`after-content p-4x mt-11x mb-20x ${styles.afterContent}`}>
-                <h3 className="title fz-32p fw-600 l-height-1/4 color-blue mb-2x">
+              <div className={`after-content p-3x p-4x_lg mt-11x mb-20x ${styles.afterContent}`}>
+                <h3 className="medium-title fw-600 l-height-1/4 color-blue mb-2x">
                   {article.additionalTitle}
                 </h3>
                 <div className="fz-18p l-height-1/5">
