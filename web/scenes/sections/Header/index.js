@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { ConfigContext } from '~/components/Layout'
 import { getImageUrl } from '~/utils/helpers'
 import { Color } from '~/utils/constants'
@@ -11,8 +10,15 @@ import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
 export const Header = () => {
-  const { route } = useRouter()
   const [activeMenu, setActiveMenu] = useState(false)
+
+  const handler = () => {
+    if (typeof window !== 'undefined') {
+      const body = document.querySelector('body')
+      activeMenu ? body.classList.remove('openMenu') : body.classList.add('openMenu')
+      setActiveMenu(!activeMenu)
+    }
+  }
 
   return (
     <ConfigContext.Consumer>
@@ -34,12 +40,12 @@ export const Header = () => {
                 </Link>
                 <div
                   className={`burger pointer relative ${activeMenu ? 'active' : ''}`}
-                  onClick={() => setActiveMenu(!activeMenu)}
+                  onClick={handler}
                 >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                  <span style={{ display: 'none' }} />
+                  <span />
+                  <span />
+                  <span />
                 </div>
                 <div
                   className={`mobile-wrap flex items-center justify-between flex-1 gap-8 ${

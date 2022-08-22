@@ -4,7 +4,7 @@ export default {
   title: 'Head of any section',
   fields: [
     {
-      name: 'Title',
+      name: 'title',
       type: 'string',
       title: 'Title for blue card',
       description: '(is required)',
