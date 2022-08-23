@@ -9,7 +9,10 @@ import illustration3 from '~/assets/images/illustration-3.png'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
-export const BusinessPartnershipsPage = () => {
+export const BusinessPartnershipsPage = ({ page }) => {
+  const { blueCard } = page
+  console.log(page)
+
   return (
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
@@ -84,9 +87,9 @@ export const BusinessPartnershipsPage = () => {
       <section className={`pt-9x ${styles.contacts}`}>
         <div className="container narrow">
           <BlueCardBlock
-            title={'Over 50 partners trust us'}
-            content={`If you would like to find out more about partnership opportunities, please email <a href="mailto:${text.contacts.email}">${text.contacts.email}</a>.`}
-            hireButton={false}
+            title={blueCard.title}
+            content={blueCard.description}
+            hireButton={blueCard.withButton}
           />
           <div className="mt-15x mb-15x">
             <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">

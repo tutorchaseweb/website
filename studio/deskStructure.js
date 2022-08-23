@@ -23,8 +23,11 @@ const hiddenDocTypes = (listItem) =>
   ![
     'site-config',
     'custom-page',
+    'access-page',
     'home-page',
     'oxbridge-page',
+    'partnerships-page',
+    'tutors-page',
     'us-admissions-page',
     'blog-page',
     'category',
@@ -94,6 +97,20 @@ export default () =>
                 .title('Oxbridge page')
                 .icon(FaUniversity)
                 .child(S.document().schemaType('oxbridge-page').documentId('oxbridge-page')),
+              S.listItem()
+                .title('Tutors page')
+                .icon(BsBook)
+                .child(S.document().schemaType('tutors-page').documentId('tutors-page')),
+              S.listItem()
+                .title('Access page')
+                .icon(BsBook)
+                .child(S.document().schemaType('access-page').documentId('access-page')),
+              S.listItem()
+                .title('Partnerships page')
+                .icon(BsBook)
+                .child(
+                  S.document().schemaType('partnerships-page').documentId('partnerships-page')
+                ),
               S.listItem()
                 .title('Blog page')
                 .icon(IoNewspaperOutline)

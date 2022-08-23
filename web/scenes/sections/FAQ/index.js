@@ -1,8 +1,10 @@
 import styles from './style.module.scss'
 
-export const FAQ = () => {
+export const FAQ = ({ className = '' }) => {
   return (
-    <section className={`faq-block pt-10x pt-18x_lg pb-2x pb-10x_lg ${styles.faqBlock}`}>
+    <section
+      className={`faq-block pt-10x pt-18x_lg pb-2x pb-10x_lg ${styles.faqBlock} ${className}`}
+    >
       <div className="container narrow">
         <div className="cover flex items-center">
           <div className="text mb-4x mb-0x_lg mr-8x_lg">

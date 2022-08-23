@@ -10,7 +10,7 @@ import lgk_I8kY from '~/assets/images/lgk_I8kY_3.png'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
-export const AccessProgrammePage = () => {
+export const AccessProgrammePage = ({ page }) => {
   return (
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
@@ -24,9 +24,10 @@ export const AccessProgrammePage = () => {
           </p>
           <div className="left-card bg-white">
             <SVG content={volunteerActivism()} size={24} />
-            <p>
+            <p className="l-height-1/4">
               As part of the Access programme, we provide <b>free tuition in Tutorchase</b>
             </p>
+            <div className="play bg-orange round relative mx-auto flex items-center justify-center mb-1x" />
           </div>
           <div className="lesson1 bg-white text-center absolute rounded-small">
             <div className="play bg-orange round relative mx-auto flex items-center justify-center mb-1x" />

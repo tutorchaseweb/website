@@ -67,7 +67,7 @@ export const ArticlePage = ({ article }) => {
               </div>
             </div>
             <div className={styles.textContentWrapper}>
-              <div className="description text-center fz-20p fw-500 l-height-1/4">
+              <div className="description text-center fz-20p fw-600 l-height-1/4">
                 <PortableText value={article.description} />
               </div>
             </div>

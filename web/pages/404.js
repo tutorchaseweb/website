@@ -20,7 +20,7 @@ export const Custom404 = () => {
         style={styles}
       >
         <div className="container">
-          <h1 className="fz-64p fw-700 l-height-1 mb-3x">
+          <h1 className="main-title fw-700 l-height-1 mb-3x">
             <span className="block mb-1x color-blue">404</span>
             Something gone missing
           </h1>

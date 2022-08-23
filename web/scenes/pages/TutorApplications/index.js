@@ -11,7 +11,15 @@ import styles from './style.module.scss'
 
 export const TutorApplicationsPage = () => {
   const [activePopup, setActivePopup] = useState(false)
-  const window = useWindowSize()
+  const page = useWindowSize()
+
+  const handler = () => {
+    if (typeof window !== 'undefined') {
+      const body = document.querySelector('body')
+      activePopup ? body.classList.remove('openMenu') : body.classList.add('openMenu')
+      setActivePopup(!activePopup)
+    }
+  }
 
   return (
     <>
@@ -28,9 +36,13 @@ export const TutorApplicationsPage = () => {
                 <li>Flexible part-time tutoring</li>
                 <li>Tutor online from your own home</li>
               </ol>
-              <button className="btn btn-blue mt-5x hidden">Apply Now</button>
+              {page.width < MOBILE_BREAKPOINT && (
+                <button className="btn btn-blue mt-5x" onClick={handler}>
+                  Apply Now
+                </button>
+              )}
             </div>
-            {window.width > MOBILE_BREAKPOINT && <ApplyForm />}
+            {page.width > MOBILE_BREAKPOINT && <ApplyForm />}
           </div>
         </div>
       </section>
@@ -94,8 +106,11 @@ export const TutorApplicationsPage = () => {
         </div>
       </section>
       <HireFormBlock onlyContacts={true} />
-      {window.width < MOBILE_BREAKPOINT && (
-        <div className={`popup-wrapper ${activePopup ? 'block' : 'hidden'}`}>
+      {page.width < MOBILE_BREAKPOINT && (
+        <div className={`popup-wrapper ${activePopup ? 'block' : 'hidden'} ${styles.popupWrapper}`}>
+          <span className="close" onClick={handler}>
+            &times;
+          </span>
           <ApplyForm />
         </div>
       )}

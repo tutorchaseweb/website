@@ -420,7 +420,7 @@ export const HomePage = ({ page }) => {
       </section>
       <InteractiveBlock />
       <RatedBlock />
-      <OurServiceBlock />
+      <OurServiceBlock className="pt-8x pt-15x_lg pb-4x_lg" />
       <HireFormBlock />
     </>
   )

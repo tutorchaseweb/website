@@ -32,7 +32,7 @@ export const TutorPage = ({ tutor }) => {
         </div>
         <div className="container narrow">
           <div className={`bg-white rounded-rem flex items-center mb-4x ${styles.mainInfo}`}>
-            <div className="avatar relative">
+            <div className="avatar relative overflow-hidden rounded-small">
               <Image
                 src={`${getImageUrl(tutor.image.asset._ref)}`}
                 alt={tutor.name}
@@ -42,7 +42,7 @@ export const TutorPage = ({ tutor }) => {
               />
             </div>
             <div className="content flex-1">
-              <div className="wrap flex justify-between mb-3x">
+              <div className="wrap flex justify-between mb-3x pt-2x_lg">
                 <h1 className="name fw-600 color-blue mb-1x mb-0x_lg">{tutor.name}</h1>
                 <p className="rating flex items-center">
                   <span className="stars l-height-1 mr-1x">

@@ -21,13 +21,13 @@ export const Level = ({ current }) => {
   }
 
   useEffect(async () => {
-    if (current._type === 'level') {
+    if (current && current._type === 'level') {
       !levelQuery && setLevelQuery(current)
       setSubjectQuery(null)
-    } else if (current._type === 'subject') {
+    } else if (current && current._type === 'subject') {
       !subjectQuery && setSubjectQuery(current)
       setLevelQuery(null)
-    } else if (current._type === 'test') {
+    } else if (current && current._type === 'test') {
       setLevelQuery(null)
       setSubjectQuery(null)
       const QUERY = groq`
@@ -83,8 +83,6 @@ export async function getServerSideProps(context) {
   )
 
   const current = data.filter((item) => item.slug && item.slug.current === level)[0]
-
-  console.log(current)
 
   return {
     props: {
