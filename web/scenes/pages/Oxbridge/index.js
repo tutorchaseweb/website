@@ -188,7 +188,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
       </section>
       <section>
         <div className="container narrow">
-          <div className="card bg-lightBlue p-8x rounded-small">
+          <div className="card bg-lightBlue pt-4x pb-4x pl-3x pr-3x p-8x_lg rounded-small">
             <h4 className="mb-2x">Admissions Tests</h4>
             <p className="fz-18p mb-4x">
               We offer tuition for all the Oxford and Cambridge University admissions tests:
@@ -264,7 +264,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
         author={'Elizabeth'}
         position={'Parent of English student'}
       />
-      <OurServiceBlock />
+      <OurServiceBlock className="pt-8x pt-15x_lg pb-8x pb-18x_lg" />
       <RatedBlock />
       <FAQ />
       <HireFormBlock />

@@ -46,7 +46,7 @@ export const Dropdown = ({ items, selected, handler }) => {
       <ul
         className={`${
           isOpen ? 'visible' : ''
-        } select-list transition absolute w-100 bg-white index-1`}
+        } select-list transition absolute w-full bg-white index-1`}
       >
         {items.map((item, index) => {
           const [image, setImage] = useState('')

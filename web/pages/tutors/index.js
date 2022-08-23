@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
+import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { getQueryForTutors } from '~/utils/helpers'
 import { TutorsPage } from '~/scenes/pages/Tutors'
 
-export const Tutors = () => {
+export const Tutors = ({ page }) => {
   const [tutors, setTutors] = useState([])
   const [, setLevelQuery] = useGlobalState('levelQuery', null)
   const [, setSubjectQuery] = useGlobalState('subjectQuery', null)
@@ -28,9 +29,24 @@ export const Tutors = () => {
       <Head>
         <title>Online Tutors</title>
       </Head>
-      <TutorsPage tutors={tutors} />
+      <TutorsPage page={page} tutors={tutors} />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  const QUERY = groq`
+    *[_type == 'tutors-page'][0] {
+      ...,
+    }
+  `
+  const page = await client.fetch(QUERY)
+
+  return {
+    props: {
+      page,
+    },
+  }
 }
 
 export default Tutors

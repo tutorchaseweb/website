@@ -264,7 +264,7 @@ export const AdditionalPage = ({ title = 'Oxbridge', page, tutors }) => {
         author={'Elizabeth'}
         position={'Parent of English student'}
       />
-      <OurServiceBlock />
+      <OurServiceBlock className="pt-8x pt-15x_lg pb-8x pb-18x_lg" />
       <RatedBlock />
       <FAQ />
       <HireFormBlock />

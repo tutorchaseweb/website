@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useDropzone } from 'react-dropzone'
 import client from '~/utils/sanity-client'
 import SVG from '~/components/SVG'
-import { handleMutations, log } from '~/utils/helpers'
+import { handleMutations, log, useWindowSize } from '~/utils/helpers'
 import {
   checkValidateFullName,
   checkValidateEmail,
@@ -14,7 +14,7 @@ import {
 import { Circle } from '~/components/Circle'
 import { Input, Textarea, Select } from '~/components/Form'
 import { arrowLeft, doneCheck } from '~/utils/svgImages'
-import { Color } from '~/utils/constants'
+import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
 import fileIcon from '~/assets/images/icons/data-file.jpg'
@@ -27,6 +27,7 @@ const defaultCountry = {
 
 export const ApplyForm = ({ className = '' }) => {
   const router = useRouter()
+  const page = useWindowSize()
   const [activeStep, setActiveStep] = useState(0)
   const [source, setSource] = useState(process.env.NEXT_PUBLIC_BASE_URL)
   const [fullName, setFullName] = useState('')
@@ -171,7 +172,9 @@ export const ApplyForm = ({ className = '' }) => {
   const empty = <span>&nbsp;</span>
 
   return (
-    <div className={`apply-form bg-white rounded-rem p-6x w-full ${styles.card} ${className}`}>
+    <div
+      className={`apply-form bg-white rounded-rem pt-4x pb-4x pl-3x pr-3x p-6x_lg w-full ${styles.card} ${className}`}
+    >
       <h2 className="fz-24p fw-600 l-height-1 mb-4x">{activeStep === 3 ? empty : 'Apply Now'}</h2>
       <form className="form flex flex-col">
         {activeStep === 0 && (
@@ -203,28 +206,57 @@ export const ApplyForm = ({ className = '' }) => {
                 checkValidateValue={checkValidateEmail}
               />
             </div>
-            <div className="flex gap-8 mb-2x">
-              <Select
-                id={'country'}
-                list={countries}
-                selected={country}
-                inputName={'Country'}
-                setValue={setCountry}
-                className="flex-1 fz-14p"
-              />
-              <Input
-                id="phone"
-                inputName="Your phone"
-                placeholder="Enter your phone"
-                className="flex-1 fz-14p"
-                type="tel"
-                value={phone}
-                setValue={setPhone}
-                Errors={phoneErrors}
-                setErrors={setPhoneErrors}
-                checkValidateValue={checkValidatePhone}
-              />
-            </div>
+            {page.width < MOBILE_BREAKPOINT ? (
+              <>
+                <div className="flex gap-8 mb-2x">
+                  <Select
+                    id={'country'}
+                    list={countries}
+                    selected={country}
+                    inputName={'Country'}
+                    setValue={setCountry}
+                    className="flex-1 fz-14p"
+                  />
+                </div>
+                <div className="flex mb-2x">
+                  <Input
+                    id="phone"
+                    inputName="Your phone"
+                    placeholder="Enter your phone"
+                    className="flex-1 fz-14p"
+                    type="tel"
+                    value={phone}
+                    setValue={setPhone}
+                    Errors={phoneErrors}
+                    setErrors={setPhoneErrors}
+                    checkValidateValue={checkValidatePhone}
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="flex gap-8 mb-2x">
+                <Select
+                  id={'country'}
+                  list={countries}
+                  selected={country}
+                  inputName={'Country'}
+                  setValue={setCountry}
+                  className="flex-1 fz-14p"
+                />
+                <Input
+                  id="phone"
+                  inputName="Your phone"
+                  placeholder="Enter your phone"
+                  className="flex-1 fz-14p"
+                  type="tel"
+                  value={phone}
+                  setValue={setPhone}
+                  Errors={phoneErrors}
+                  setErrors={setPhoneErrors}
+                  checkValidateValue={checkValidatePhone}
+                />
+              </div>
+            )}
             <div className="flex mb-2x flex-1">
               <Input
                 id="hearAboutUs"
