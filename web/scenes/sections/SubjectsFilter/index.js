@@ -12,10 +12,10 @@ export const SubjectsFilter = () => {
   const [subjectsList, setSubjectsList] = useState([])
   const query = `
     *[_type in ['level', 'subject']] {
-      _type == 'level' => {
+      _type == 'level' && !(_id in path("drafts.**")) => {
         ...,
       },
-      _type == 'subject' => {
+      _type == 'subject' && !(_id in path("drafts.**")) => {
         ...,
       },
     }
