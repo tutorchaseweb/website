@@ -11,6 +11,7 @@ import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
 export const AccessProgrammePage = ({ page }) => {
+  const { blueCard } = page
   return (
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
@@ -93,9 +94,9 @@ export const AccessProgrammePage = ({ page }) => {
       </section>
       <div className="container narrow pt-9x">
         <BlueCardBlock
-          title={'Over 50 partners trust us'}
-          content={`If you would like to find out more about partnership opportunities, please email <a href="mailto:${text.contacts.email}">${text.contacts.email}</a>.`}
-          hireButton={false}
+          title={blueCard.title}
+          content={blueCard.description}
+          hireButton={blueCard.withButton}
         />
       </div>
       <section className={` ${styles.contacts}`}>
