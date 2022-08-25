@@ -23,5 +23,15 @@ export default {
       type: 'pageHeadImage',
       title: 'First section on oxbridge page',
     },
+    {
+      name: 'blueCard',
+      type: 'blueCard',
+      title: 'Blue card on access page',
+    },
+    {
+      name: 'reviewBlock',
+      type: 'reviewBlock',
+      title: 'Review block (one review)',
+    },
   ],
 }

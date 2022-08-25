@@ -148,7 +148,8 @@ h4, h5, h6 {
 }
 .btn.btn-white {
   background-color: $color-white;
-  color: $color-blue;
+  color: $default-text-color;
+  //color: $color-blue;
 }
 .btn.btn-white:hover {
   color: $color-orange;

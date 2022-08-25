@@ -38,7 +38,7 @@ export const Dropdown = ({ items, selected, handler }) => {
       <div
         className={`${isOpen ? 'visible' : ''} ${
           isOpacity ? 'opacity-80' : ''
-        } pointer current transition p-2x border-light l-height-1 w-full rounded-xSmall`}
+        } pointer current transition p-1x border-light l-height-2 w-full rounded-xSmall`}
         onClick={() => setIsOpen(!isOpen)}
       >
         {selected.title}

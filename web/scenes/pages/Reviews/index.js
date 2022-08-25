@@ -6,7 +6,7 @@ import styles from './style.module.scss'
 
 export const ReviewsPage = () => {
   return (
-    <>
+    <div className="bg-lightGray">
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
         <div className="container text-center">
           <div className="left-card bg-white">
@@ -57,7 +57,7 @@ export const ReviewsPage = () => {
         </div>
       </section>
       <HireFormBlock />
-    </>
+    </div>
   )
 }
 

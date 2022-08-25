@@ -11,7 +11,6 @@ import styles from './style.module.scss'
 
 export const BusinessPartnershipsPage = ({ page }) => {
   const { blueCard } = page
-  console.log(page)
 
   return (
     <>
@@ -43,7 +42,7 @@ export const BusinessPartnershipsPage = ({ page }) => {
               trust us
             </p>
           </div>
-          <Circle size={56} color={Color.LightBlue} classList="circle absolute handshake">
+          <Circle size={72} color={Color.LightBlue} classList="circle absolute handshake">
             <SVG content={handshake()} size={24} />
           </Circle>
         </div>

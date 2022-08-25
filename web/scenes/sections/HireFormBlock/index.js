@@ -31,7 +31,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
-  const [country, setCountry] = useState('not selected')
+  const [country, setCountry] = useState(countries[0])
   const [details, setDetails] = useState('')
   const [detailsErrors, setDetailsErrors] = useState([])
   const [frequencyDuration, setFrequencyDuration] = useState('')
