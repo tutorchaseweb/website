@@ -44,7 +44,7 @@ export const Input = ({
             setValue(e.target.value.trim())
           }
         }}
-        className="p-2x border-light l-height-1 w-full rounded-xSmall"
+        className="p-1x border-light l-height-2 w-full rounded-xSmall"
       />
       {Errors.length !== 0 && (
         <span className="error-wrap absolute">

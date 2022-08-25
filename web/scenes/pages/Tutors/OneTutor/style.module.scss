@@ -158,6 +158,10 @@
     .text {
       width: 100%;
       max-width: 20.5rem;
+      text-align: center;
+      @media (min-width: $lg) {
+        text-align: left;
+      }
     }
     .flexible {
       top: -2rem;
