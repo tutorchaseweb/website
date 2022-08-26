@@ -18,7 +18,6 @@ export const TutorsPage = ({ page, tutors }) => {
   const { blueCard, reviewBlock } = page
   const [levelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery] = useGlobalState('subjectQuery', null)
-  console.log(page)
 
   return (
     <>
