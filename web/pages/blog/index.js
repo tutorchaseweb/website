@@ -4,7 +4,7 @@ import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { useGlobalState } from '~/utils/state'
 import { Layout } from '~/components/Layout'
-import { BlogPage } from '~/scenes/pages/Blog'
+import { BlogPage } from '~/scenes/pages'
 
 export const Blog = ({ page }) => {
   const [, setPostsStart] = useGlobalState('postsStart', 0)
