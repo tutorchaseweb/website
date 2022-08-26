@@ -61,7 +61,7 @@ const TutorCard = ({ tutor }) => {
           </span>
         </p>
         <p className="fz-18p fw-700 mb-1x">{tutor.name}</p>
-        <p className="mb-3x l-height-1">{tutor.position}</p>
+        <p className="fw-600 l-height-1 color-lightGray mb-3x">{tutor.position}</p>
         <img
           src={`${getImageUrl(university.logo.asset._ref)}`}
           alt={university.title}
@@ -83,7 +83,7 @@ export const HomePage = ({ page }) => {
       }
     `
   const getUniversities = `
-      *[_type == 'university'] {
+      *[_type == 'university' && !(_id in path("drafts.**"))] {
         ...,
       }
     `
