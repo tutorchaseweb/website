@@ -11,7 +11,7 @@ import styles from './style.module.scss'
 const getReviewCard = (review) => {
   return (
     <div className="card bg-white pt-3x pb-3x pl-2x pr-2x pt-4x_xl pb-4x_xl pl-3x_xl pr-3x_xl">
-      <p className="l-height-1/5 mb-3x">{review.content}</p>
+      <p className="reviewContent l-height-1/5 mb-3x overflow-hidden">{review.content}</p>
       <p className="l-height-1 mb-2x">
         <SVG content={star()} size={18} />
         <SVG content={star()} size={18} />
@@ -59,8 +59,8 @@ const DesktopReviews = ({ reviews }) => {
         speed={12000}
         modules={[Autoplay]}
       >
-        {reviews.reverse().map((review, idx) => {
-          return <SwiperSlide key={idx}>{getReviewCard(review)}</SwiperSlide>
+        {shuffleArray(reviews).map((review, idx) => {
+          return <SwiperSlide key={`${review._id}-${idx}`}>{getReviewCard(review)}</SwiperSlide>
         })}
       </Swiper>
       <Swiper
@@ -78,7 +78,7 @@ const DesktopReviews = ({ reviews }) => {
         modules={[Autoplay]}
       >
         {shuffleArray(reviews).map((review, idx) => {
-          return <SwiperSlide key={idx}>{getReviewCard(review)}</SwiperSlide>
+          return <SwiperSlide key={`${review._id}-${idx}`}>{getReviewCard(review)}</SwiperSlide>
         })}
       </Swiper>
       <Swiper
@@ -92,8 +92,8 @@ const DesktopReviews = ({ reviews }) => {
         speed={8000}
         modules={[Autoplay]}
       >
-        {splitArray(reviews, 3)[2].map((review, idx) => {
-          return <SwiperSlide key={idx}>{getReviewCard(review)}</SwiperSlide>
+        {shuffleArray(reviews).map((review, idx) => {
+          return <SwiperSlide key={`${review._id}-${idx}`}>{getReviewCard(review)}</SwiperSlide>
         })}
       </Swiper>
     </div>

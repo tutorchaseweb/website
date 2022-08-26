@@ -47,7 +47,7 @@ export const TutorsPage = ({ page, tutors }) => {
         </div>
       </section>
       <SubjectsFilter />
-      <section className={`tutors-list pt-11x pb-19x ${styles.tutorsList}`}>
+      <section className={`tutors-list pt-5x pt-11x_lg pb-10x pb-19x_lg ${styles.tutorsList}`}>
         <div className="container medium">
           <h2 className="section-title fw-600 l-height-1/4 mb-2x">
             {`${levelQuery?.title ? levelQuery.title : ''} ${
