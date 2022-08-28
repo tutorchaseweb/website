@@ -17,14 +17,7 @@ import {
   BasedReviews,
 } from '~/scenes/sections'
 import { FlexibleCard } from '~/scenes/elements'
-import {
-  bookFull,
-  openedBook,
-  arrowTopRight,
-  checkCircle,
-  globe,
-  videoCam,
-} from '~/utils/svgImages'
+import { bookFull, openedBook, arrowTopRight, checkCircle, globe } from '~/utils/svgImages'
 
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
@@ -118,12 +111,12 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="text-wrapper pb-9x pb-0x_xl">
-              {Boolean(firstScreen.title) && (
+              {Boolean(firstScreen?.title) && (
                 <h1 className="main-title home fw-700 fz-40p mb-3x">
                   <PortableText value={firstScreen.title} />
                 </h1>
               )}
-              {Boolean(firstScreen.description) && (
+              {Boolean(firstScreen?.description) && (
                 <div className="description mb-5x mb-7x_lg">
                   <PortableText value={firstScreen.description} />
                 </div>
@@ -159,7 +152,7 @@ export const HomePage = ({ page }) => {
                 </span>
                 <span className="fz-14p fw-800 ml-1x">A/A+</span>
               </div>
-              {Boolean(firstScreen.image) && (
+              {Boolean(firstScreen?.image) && (
                 <img
                   src={`${getImageUrl(firstScreen.image.asset._ref)}`}
                   alt="Elite Online Tutoring"
@@ -178,7 +171,7 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <div className="partners-line flex flex-wrap gap-8 items-center justify-between">
             <div className="intro uppercase color-lightGray fw-500">
-              {Boolean(firstScreen.universities) && (
+              {Boolean(firstScreen?.universities) && (
                 <PortableText value={firstScreen.universities} />
               )}
             </div>

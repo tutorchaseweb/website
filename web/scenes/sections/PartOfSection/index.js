@@ -32,8 +32,8 @@ export const PartOfSection = ({ section, className = '' }) => {
           )}
           {Boolean(section.list) && (
             <ul className="ordered-list">
-              {section.list.map((item) => (
-                <li>{item}</li>
+              {section.list.map((item, idx) => (
+                <li key={idx}>{item}</li>
               ))}
             </ul>
           )}

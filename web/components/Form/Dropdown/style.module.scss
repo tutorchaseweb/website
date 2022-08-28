@@ -4,11 +4,16 @@
 .dropdown {
   :global {
     .current {
+      &.error {
+        &::after {
+          content: '';
+        }
+      }
       &::after {
         content: url('/images/arrow_down_blue.svg');
         position: absolute;
         right: 0.5rem;
-        top: 1.25rem;
+        top: 1.15rem;
         transition: all 0.2s linear;
         line-height: 0.5rem;
       }

@@ -72,6 +72,10 @@
       }
       .btn-blue {
         min-width: 11rem;
+        width: 100%;
+        @media (min-width: $lg) {
+          width: initial;
+        }
       }
       .round {
         width: 4rem;

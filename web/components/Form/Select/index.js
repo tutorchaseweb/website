@@ -14,6 +14,8 @@ export const Select = ({
   Errors = [],
   setErrors = () => null,
   setValue = () => null,
+  title = '',
+  style = {},
 }) => {
   const inputRef = useRef()
 
@@ -25,6 +27,7 @@ export const Select = ({
   return (
     <label
       className={`label relative${half ? ' w50' : ''}${Errors.length ? ' error' : ''} ${className}`}
+      style={style}
     >
       <input
         ref={inputRef}
@@ -35,7 +38,12 @@ export const Select = ({
         style={{ display: 'none' }}
       />
       <span className="fw-500 color-black">{inputName}</span>
-      <Dropdown items={list} selected={selected} handler={changeCurrentItem} />
+      <Dropdown
+        items={list}
+        selected={selected}
+        handler={changeCurrentItem}
+        className={Errors.length ? ' error' : ''}
+      />
       {Errors.length !== 0 && (
         <span className="error-wrap absolute">
           <SVG content={error()} size={16} />

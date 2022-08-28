@@ -16,6 +16,8 @@ import {
   IoSchoolOutline,
   MdOutlineFormatListNumbered,
   MdOutlinePolicy,
+  BiCodeBlock,
+  FaQuestionCircle,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -44,6 +46,7 @@ const hiddenDocTypes = (listItem) =>
     'termAndConditions',
     'privacyPolicy',
     'safeguardingPolicy',
+    'faq',
   ].includes(listItem.getId())
 
 export default () =>
@@ -136,6 +139,19 @@ export default () =>
                 .icon(BsBook)
                 .schemaType('custom-page')
                 .child(S.documentTypeList('custom-page').title('Custom page')),
+            ])
+        ),
+      S.listItem()
+        .title('Sections')
+        .icon(BiCodeBlock)
+        .child(
+          S.list()
+            .title('Site sections')
+            .items([
+              S.listItem()
+                .title('FAQ section')
+                .icon(FaQuestionCircle)
+                .child(S.document().schemaType('faq').documentId('faq')),
             ])
         ),
       S.listItem()

@@ -14,6 +14,7 @@ import reviewBlock from './objects/global/reviewBlock'
 import servicesBlock from './objects/global/servicesBlock'
 import pageHead from './objects/global/pageHead'
 import pageHeadImage from './objects/global/pageHeadImage'
+import faqGroup from './objects/global/faqGroup'
 import button from './objects/button'
 
 export default [
@@ -33,5 +34,6 @@ export default [
   servicesBlock,
   pageHead,
   pageHeadImage,
+  faqGroup,
   button,
 ]
