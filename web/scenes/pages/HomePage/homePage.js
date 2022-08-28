@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { PortableText } from '@portabletext/react'
 import client from '~/utils/sanity-client'
 import { getImageUrl, hireTutor, useWindowSize } from '~/utils/helpers'
 import { MOBILE_BREAKPOINT } from '~/utils/constants'
-import { PortableText } from '@portabletext/react'
+import SVG from '~/components/SVG'
 import {
   ReviewBlock,
   BlueCardBlock,
@@ -15,7 +16,7 @@ import {
   InteractiveBlock,
   BasedReviews,
 } from '~/scenes/sections'
-import SVG from '~/components/SVG'
+import { FlexibleCard } from '~/scenes/elements'
 import {
   bookFull,
   openedBook,
@@ -177,7 +178,9 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <div className="partners-line flex flex-wrap gap-8 items-center justify-between">
             <div className="intro uppercase color-lightGray fw-500">
-              <PortableText value={firstScreen.universities} />
+              {Boolean(firstScreen.universities) && (
+                <PortableText value={firstScreen.universities} />
+              )}
             </div>
             <div className="logos flex flex-wrap items-center justify-center">
               {Boolean(universities.length) &&
@@ -273,12 +276,12 @@ export const HomePage = ({ page }) => {
       <section className={`tutors pt-5x pt-15x_lg pb-5x pb-15x_lg text-center ${styles.tutors}`}>
         <div className="container">
           {Boolean(tutorsList?.preTitle) && (
-            <p className="before-title fw-600 uppercase color-lightGray mb-3x">
+            <p className="before-title fw-600 uppercase color-lightGray mb-2x mb-3x_lg">
               {tutorsList.preTitle}
             </p>
           )}
           {Boolean(tutorsList?.title) && (
-            <h2 className="section-title fw-600 mb-6x">{tutorsList.title}</h2>
+            <h2 className="section-title fw-600 mb-4x mb-6x_lg">{tutorsList.title}</h2>
           )}
           <div className="flex flex-wrap">
             {Boolean(tutors.length) &&
@@ -290,17 +293,20 @@ export const HomePage = ({ page }) => {
         <div className="container">
           <div className="wrapper flex flex-wrap items-center">
             <div className="w-full w-1/2_lg relative">
-              <div className="card absolute bg-white rounded-small p-3x">
-                <SVG content={videoCam()} size={32} className="mb-2x" />
-                <p className="fz-18p">
-                  Flexible online tutoring to fit <b>around your schedule</b>
-                </p>
-              </div>
-              <img
-                src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
-                alt="Premium Tutor"
-                className="block"
-              />
+              <FlexibleCard />
+              {/*<div className="card absolute bg-white rounded-small p-3x">*/}
+              {/*  <SVG content={videoCam()} size={32} className="mb-2x" />*/}
+              {/*  <p className="fz-18p">*/}
+              {/*    Flexible online tutoring to fit <b>around your schedule</b>*/}
+              {/*  </p>*/}
+              {/*</div>*/}
+              {Boolean(fourthScreen.image) && (
+                <img
+                  src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
+                  alt="Premium Tutor"
+                  className="block"
+                />
+              )}
               <div className="check-book absolute round bg-white flex items-center justify-center">
                 <SVG content={checkCircle()} size={28} />
               </div>

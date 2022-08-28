@@ -7,8 +7,7 @@ import { useGlobalState } from '~/utils/state'
 import { getQueryForTutors } from '~/utils/helpers'
 import { OxbridgePage } from '~/scenes/pages/Oxbridge'
 
-export const Oxbridge = ({ data }) => {
-  const [page] = data
+export const Oxbridge = ({ page }) => {
   const [tutors, setTutors] = useState([])
   const [, setLevelQuery] = useGlobalState('levelQuery', null)
   const [, setSubjectQuery] = useGlobalState('subjectQuery', null)
@@ -36,15 +35,15 @@ export const Oxbridge = ({ data }) => {
 
 export async function getServerSideProps() {
   const QUERY = groq`
-    *[_type == 'oxbridge-page'] {
+    *[_type == 'oxbridge-page'][0] {
       ...,
     }
   `
-  const data = await client.fetch(QUERY)
+  const page = await client.fetch(QUERY)
 
   return {
     props: {
-      data,
+      page,
     },
   }
 }

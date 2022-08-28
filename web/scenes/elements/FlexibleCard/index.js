@@ -4,7 +4,7 @@ import { Color } from '~/utils/constants'
 
 import styles from './style.module.scss'
 
-export const FlexibleCard = (color = Color.LightBlue) => {
+export const FlexibleCard = ({ color = Color.LightBlue }) => {
   return (
     <div className={`card bg-white absolute ${styles.card}`}>
       <SVG content={videoCam(color)} size={28} className="mb-1x" />
