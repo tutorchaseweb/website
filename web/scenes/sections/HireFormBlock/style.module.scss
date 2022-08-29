@@ -72,6 +72,10 @@
       }
       .btn-blue {
         min-width: 11rem;
+        width: 100%;
+        @media (min-width: $lg) {
+          width: initial;
+        }
       }
       .round {
         width: 4rem;
@@ -86,7 +90,7 @@
   :global {
     .medium-title {
       max-width: 25rem;
-      @media (min-width: $lg) {
+      @media (min-width: $sm) {
         text-align: center;
       }
     }

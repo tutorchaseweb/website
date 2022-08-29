@@ -64,8 +64,10 @@ export const TutorPage = ({ tutor }) => {
               <p className="description mb-4x">{tutor.description}</p>
               <p>
                 <span className="fz-18p fw-600">Teaches:</span>
-                {tutor.teaches.map((teach) => (
-                  <span className="teach fz-14p fw-500 color-blue ml-1x mb-1x">{teach.title}</span>
+                {tutor.teaches.map((teach, idx) => (
+                  <span key={idx} className="teach fz-14p fw-500 color-blue ml-1x mb-1x">
+                    {teach.title}
+                  </span>
                 ))}
               </p>
             </div>
@@ -108,8 +110,8 @@ export const TutorPage = ({ tutor }) => {
           >
             <h3 className="fz-20p fw-600 mb-3x">Extracurricular Activities</h3>
             <div className="flex flex-wrap gap-2">
-              {tutor.extracurricularActivities.map((activity) => (
-                <span className="activity bg-white fw-500 l-height-1/4 rounded-xSmall">
+              {tutor.extracurricularActivities.map((activity, idx) => (
+                <span key={idx} className="activity bg-white fw-500 l-height-1/4 rounded-xSmall">
                   {activity}
                 </span>
               ))}

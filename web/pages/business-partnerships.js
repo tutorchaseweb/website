@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
-import { BusinessPartnershipsPage } from '~/scenes/pages/BusinessPartnerships'
+import { BusinessPartnershipsPage } from '~/scenes/pages'
 
 export const BusinessPartnerships = ({ page }) => {
   return (

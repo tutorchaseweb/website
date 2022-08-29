@@ -28,6 +28,24 @@
 
 .content {
   :global {
+    .section-row {
+      > * {
+        width: 100%;
+        @media (min-width: $lg) {
+          width: initial;
+        }
+      }
+      .image-wrap {
+        max-width: max-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .text-wrap {
+        @media (min-width: $lg) {
+          flex: 1;
+        }
+      }
+    }
     .exams {
       top: -2rem;
       left: 1.5rem;

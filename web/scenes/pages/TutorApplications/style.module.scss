@@ -25,7 +25,9 @@
       }
     }
     .text-wrap {
-      max-width: 31rem;
+      @media (min-width: $lg) {
+        max-width: 31rem;
+      }
     }
     .tutor {
       padding: 0.5rem;

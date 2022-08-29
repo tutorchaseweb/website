@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
-import { PolicyPage } from '~/scenes/pages/PolicyPage'
+import { PolicyPage } from '~/scenes/pages'
 
 export const Safeguarding = ({ page }) => {
   return (

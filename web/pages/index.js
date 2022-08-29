@@ -1,13 +1,10 @@
-import React from 'react'
 import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
-import { HomePage } from '~/scenes/pages/HomePage'
+import { HomePage } from '~/scenes/pages'
 
-export const Home = ({ data }) => {
-  const [page] = data
-
+export const Home = ({ page }) => {
   return (
     <Layout>
       <Head>
@@ -26,15 +23,15 @@ export const Home = ({ data }) => {
 
 export async function getServerSideProps() {
   const QUERY = groq`
-    *[_type == 'home-page'] {
+    *[_type == 'home-page'][0] {
       ...,
     }
   `
-  const data = await client.fetch(QUERY)
+  const page = await client.fetch(QUERY)
 
   return {
     props: {
-      data,
+      page,
     },
   }
 }

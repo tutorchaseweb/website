@@ -10,6 +10,7 @@ import {
   checkValidatePhone,
   checkValidateText,
   checkValidateMessage,
+  checkValidateSelect,
 } from '~/utils/validators'
 import { Circle } from '~/components/Circle'
 import { Input, Textarea, Select } from '~/components/Form'
@@ -68,11 +69,13 @@ export const ApplyForm = ({ className = '' }) => {
     setPhoneErrors(checkValidatePhone(phone))
     setEmailErrors(checkValidateEmail(email))
     setHearAboutUsErrors(checkValidateText(hearAboutUs))
+    setCountryErrors(checkValidateSelect(country, countries[0]))
     if (
       !checkValidateFullName(fullName).length &&
       !checkValidatePhone(phone).length &&
       !checkValidateEmail(email).length &&
-      !checkValidateText(hearAboutUs).length
+      !checkValidateText(hearAboutUs).length &&
+      !checkValidateSelect(country, countries[0]).length
     ) {
       setActiveStep(activeStep + 1)
     } else {
@@ -216,6 +219,9 @@ export const ApplyForm = ({ className = '' }) => {
                     inputName={'Country'}
                     setValue={setCountry}
                     className="flex-1 fz-14p"
+                    Errors={countryErrors}
+                    setErrors={setCountryErrors}
+                    checkValidateValue={checkValidateSelect}
                   />
                 </div>
                 <div className="flex mb-2x">
@@ -242,6 +248,9 @@ export const ApplyForm = ({ className = '' }) => {
                   inputName={'Country'}
                   setValue={setCountry}
                   className="flex-1 fz-14p"
+                  Errors={countryErrors}
+                  setErrors={setCountryErrors}
+                  checkValidateValue={checkValidateSelect}
                 />
                 <Input
                   id="phone"
@@ -372,11 +381,8 @@ export const ApplyForm = ({ className = '' }) => {
                 placeholder="Enter URL"
                 className="flex-1 fz-14p"
                 type="url"
-                value={''}
-                setValue={setFullName}
-                Errors={fullNameErrors}
-                setErrors={setFullNameErrors}
-                checkValidateValue={checkValidateFullName}
+                value={linkedInUrl}
+                setValue={setLinkedInUrl}
               />
             </div>
             <div className="flex mb-2x">
@@ -385,17 +391,14 @@ export const ApplyForm = ({ className = '' }) => {
                 inputName="Referrer"
                 placeholder="Enter referrer"
                 className="flex-1 fz-14p"
-                value={''}
-                setValue={setFullName}
-                Errors={fullNameErrors}
-                setErrors={setFullNameErrors}
-                checkValidateValue={checkValidateFullName}
+                value={referrer}
+                setValue={setReferrer}
               />
             </div>
             <span className="fz-14p fw-500 color-black">Upload a CV</span>
             <div className="flex mb-2x flex-1">
               <div
-                className="file-wrapper flex items-center justify-center w-full rounded-xSmall border-light"
+                className="file-wrapper relative flex items-center justify-center w-full rounded-xSmall border-light p-3x"
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
@@ -405,6 +408,12 @@ export const ApplyForm = ({ className = '' }) => {
                   <p className="flex items-center">
                     <img src={fileIcon.src} alt="file" width="50" className="mr-1x" />
                     <span className="fz-18p fw-600">{files[0].name}</span>
+                    <span
+                      className="close color-blue fz-32p fw-600 l-height-1 absolute pointer"
+                      onClick={() => setFiles([])}
+                    >
+                      &times;
+                    </span>
                   </p>
                 ) : (
                   <p>

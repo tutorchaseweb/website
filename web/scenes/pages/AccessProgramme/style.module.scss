@@ -81,7 +81,9 @@
       border-radius: 8px;
     }
     .limit {
-      max-width: 30rem;
+      @media (min-width: $lg) {
+        max-width: 30rem;
+      }
     }
   }
 }
@@ -110,6 +112,11 @@
         font-size: 16px;
         right: 2rem;
         max-width: 14.375rem;
+      }
+    }
+    .text-wrap {
+      @media (min-width: $lg) {
+        max-width: 450px;
       }
     }
   }

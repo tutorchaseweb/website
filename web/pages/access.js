@@ -2,14 +2,13 @@ import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
-import { AccessProgrammePage } from '~/scenes/pages/AccessProgramme'
-import React from 'react'
+import { AccessProgrammePage } from '~/scenes/pages'
 
 export const AccessProgramme = ({ page }) => {
   return (
     <Layout>
       <Head>
-        {Boolean(page?.seoTitle) && <title>{page.seoTitle}</title>}
+        <title>{page?.seoTitle ? page.seoTitle : 'Acces sProgramme'}</title>
         {Boolean(page?.seoDescription) && <meta name="description" content={page.seoDescription} />}
         {Boolean(page?.seoTitle) && (
           <meta property="og:title" content={page.seoTitle} key="title" />

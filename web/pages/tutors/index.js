@@ -5,7 +5,7 @@ import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { getQueryForTutors } from '~/utils/helpers'
-import { TutorsPage } from '~/scenes/pages/Tutors'
+import { TutorsPage } from '~/scenes/pages'
 
 export const Tutors = ({ page }) => {
   const [tutors, setTutors] = useState([])

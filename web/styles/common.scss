@@ -36,6 +36,7 @@ code {
 }
 input, textarea, select, button {
   font: inherit;
+  resize: none;
 }
 
 html {
@@ -256,7 +257,9 @@ input:focus {
   outline: $color-blue;
   border-color: $color-blue;
 }
-label.error input, label.error textarea {
+label.error input,
+label.error textarea,
+label.error .dropdown .current {
   border-color: #F57C40;
 }
 label.error .error-wrap {
@@ -283,4 +286,23 @@ label.error .error-wrap .errors {
 }
 label.error .error-wrap:hover .errors {
   display: block;
+}
+
+.section-row {
+  > * {
+    width: 100%;
+    @media (min-width: $lg) {
+      width: initial;
+    }
+  }
+  .image-wrap {
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .text-wrap {
+    @media (min-width: $lg) {
+      flex: 1;
+    }
+  }
 }

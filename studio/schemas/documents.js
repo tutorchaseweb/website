@@ -18,6 +18,7 @@ import review from './documents/review'
 import subject from './documents/subject'
 import level from './documents/level'
 import test from './documents/test'
+import faq from './documents/faq'
 import hireForm from './documents/hireForm'
 import applyForm from './documents/applyForm'
 
@@ -42,6 +43,7 @@ export default [
   subject,
   level,
   test,
+  faq,
   hireForm,
   applyForm,
 ]
