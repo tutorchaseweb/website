@@ -118,7 +118,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
                 <span className="fw-600">applicant's chosen subject at Oxford or Cambridge.</span>
               </p>
             </div>
-            <div className="video w-1/2_lg">
+            <div className="video w-1/2_lg mx-auto">
               <img src={illustration11.src} alt="illustration" className="block" />
             </div>
           </div>
@@ -126,8 +126,8 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
             <p className="before-title fw-600 uppercase color-lightGray mb-3x">Lorem ipsum</p>
             <h2 className="section-title fw-600 mb-6x mx-auto">Flexibility</h2>
           </div>
-          <div className="flex flex-wrap items-center" style={{ gap: '6rem' }}>
-            <div className="relative">
+          <div className="section-row flex flex-wrap items-center" style={{ gap: '6rem' }}>
+            <div className="image-wrap relative">
               <div className="absolute bg-white p-2x flex gap-4 items-center rounded-xSmall exams">
                 <span className="fz-18p fw-600 l-height-1/2">
                   School <br />
@@ -153,7 +153,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
               </div>
               <img src={illustration12.src} alt="illustration" />
             </div>
-            <div className="flex-1">
+            <div className="text-wrap">
               <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Premium UK and US Tutors</h4>
               <ul className="ordered-list fz-18p">
                 <li>
@@ -169,10 +169,10 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
             </div>
           </div>
           <div
-            className="flex flex-wrap items-center mt-15x"
+            className="section-row flex flex-wrap items-center mt-15x"
             style={{ gap: '6rem', flexDirection: 'row-reverse' }}
           >
-            <div className="relative">
+            <div className="image-wrap relative">
               <div className="literature absolute bg-white rounded-xSmall px-3x py-2x">
                 <SVG content={bookFull()} size={24} />
                 <span className="block fw-600 l-height-1/2 mt-1x_lg">
@@ -189,7 +189,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
               </div>
               <img src={illustration13.src} alt="illustration" />
             </div>
-            <div className="flex-1">
+            <div className="text-wrap">
               <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Personal Statement Guidance</h4>
               <ul className="ordered-list fz-18p">
                 <li>
@@ -206,8 +206,8 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
               </ul>
             </div>
           </div>
-          <div className="flex flex-wrap items-center mt-15x" style={{ gap: '6rem' }}>
-            <div className="relative">
+          <div className="section-row flex flex-wrap items-center mt-15x" style={{ gap: '6rem' }}>
+            <div className="image-wrap relative">
               <Circle
                 color={'#B1BFFF'}
                 size={window.width < MOBILE_BREAKPOINT ? 56 : 96}
@@ -226,7 +226,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
               </div>
               <img src={illustration14.src} alt="illustration" />
             </div>
-            <div className="flex-1">
+            <div className="text-wrap">
               <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Interview Preparation</h4>
               <ul className="ordered-list fz-18p">
                 <li>

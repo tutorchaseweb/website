@@ -90,7 +90,7 @@
   :global {
     .medium-title {
       max-width: 25rem;
-      @media (min-width: $lg) {
+      @media (min-width: $sm) {
         text-align: center;
       }
     }

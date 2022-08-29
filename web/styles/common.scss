@@ -287,3 +287,22 @@ label.error .error-wrap .errors {
 label.error .error-wrap:hover .errors {
   display: block;
 }
+
+.section-row {
+  > * {
+    width: 100%;
+    @media (min-width: $lg) {
+      width: initial;
+    }
+  }
+  .image-wrap {
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .text-wrap {
+    @media (min-width: $lg) {
+      flex: 1;
+    }
+  }
+}

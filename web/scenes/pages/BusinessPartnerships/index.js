@@ -53,9 +53,11 @@ export const BusinessPartnershipsPage = ({ page }) => {
             <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">Lorem ipsum</p>
             <h2 className="fz-48p fw-600 l-height-1 mb-10x">Flexibility</h2>
           </div>
-          <div className="flex flex-wrap items-center" style={{ gap: '6rem' }}>
-            <img src={illustration2.src} alt="illustration" />
-            <div className="flex-1">
+          <div className="section-row flex flex-wrap items-center" style={{ gap: '6rem' }}>
+            <div className="image-wrap">
+              <img src={illustration2.src} alt="illustration" />
+            </div>
+            <div className="text-wrap">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={globe(Color.Orange)} size={28} />
               </span>
@@ -67,9 +69,14 @@ export const BusinessPartnershipsPage = ({ page }) => {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap items-center mt-12x reverse_lg" style={{ gap: '6rem' }}>
-            <img src={illustration3.src} alt="illustration" />
-            <div className="flex-1">
+          <div
+            className="section-row flex flex-wrap items-center mt-12x reverse_lg"
+            style={{ gap: '6rem' }}
+          >
+            <div className="image-wrap">
+              <img src={illustration3.src} alt="illustration" />
+            </div>
+            <div className="text-wrap">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={studyHat(Color.Orange)} size={28} />
               </span>
