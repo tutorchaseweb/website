@@ -56,12 +56,14 @@ const TutorCard = ({ tutor }) => {
         </p>
         <p className="fz-18p fw-700 mb-1x">{tutor.name}</p>
         <p className="fw-600 l-height-1 color-lightGray mb-3x">{tutor.position}</p>
-        <img
-          src={`${getImageUrl(university.logo.asset._ref)}`}
-          alt={university.title}
-          style={{ height: '24px' }}
-          className="mx-auto"
-        />
+        {Boolean(university?.logo) && (
+          <img
+            src={`${getImageUrl(university.logo.asset._ref)}`}
+            alt={university.title}
+            style={{ height: '24px' }}
+            className="mx-auto"
+          />
+        )}
       </a>
     </Link>
   )
@@ -287,13 +289,7 @@ export const HomePage = ({ page }) => {
           <div className="wrapper flex flex-wrap items-center">
             <div className="w-full w-1/2_lg relative">
               <FlexibleCard />
-              {/*<div className="card absolute bg-white rounded-small p-3x">*/}
-              {/*  <SVG content={videoCam()} size={32} className="mb-2x" />*/}
-              {/*  <p className="fz-18p">*/}
-              {/*    Flexible online tutoring to fit <b>around your schedule</b>*/}
-              {/*  </p>*/}
-              {/*</div>*/}
-              {Boolean(fourthScreen.image) && (
+              {Boolean(fourthScreen.image?.asset) && (
                 <img
                   src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
                   alt="Premium Tutor"

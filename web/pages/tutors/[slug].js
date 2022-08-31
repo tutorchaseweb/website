@@ -20,13 +20,13 @@ export async function getServerSideProps(context) {
     `
     *[_type == 'tutor' && slug.current == $slug][0] {
       ...,
-      levels[]->,
-      teaches[]->,
-      qualifications[] {
-        ...,
-        levels->
+      'teaches': *[_type == 'subject' && references(^._id)] {
+        _id,
+        _createdAt,
+        title,
+        slug,
       },
-      'reviews': *[_type == 'review' && references(^._id)]
+      'reviews': *[_type == 'review' && references(^._id)],
     }
   `,
     { slug }

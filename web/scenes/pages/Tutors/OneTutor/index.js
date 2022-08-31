@@ -64,8 +64,8 @@ export const TutorPage = ({ tutor }) => {
               <p className="description mb-4x">{tutor.description}</p>
               <p>
                 <span className="fz-18p fw-600">Teaches:</span>
-                {tutor.teaches.map((teach, idx) => (
-                  <span key={idx} className="teach fz-14p fw-500 color-blue ml-1x mb-1x">
+                {tutor.teaches.map((teach) => (
+                  <span key={teach._id} className="teach fz-14p fw-500 color-blue ml-1x mb-1x">
                     {teach.title}
                   </span>
                 ))}

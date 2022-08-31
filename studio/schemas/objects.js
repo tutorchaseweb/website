@@ -7,6 +7,8 @@ import link from './objects/link'
 import firstScreen from './objects/homePage/firstScreen'
 import studyCards from './objects/homePage/studyCards'
 import qualification from './objects/tutor/qualification'
+import subjectLevel from './objects/tutor/subjectLevel'
+import tutorLevel from './objects/tutor/tutorLevel'
 import partOfSection from './objects/global/partOfSection'
 import blueCard from './objects/global/blueCard'
 import sectionHead from './objects/global/sectionHead'
@@ -27,6 +29,8 @@ export default [
   firstScreen,
   studyCards,
   qualification,
+  subjectLevel,
+  tutorLevel,
   partOfSection,
   blueCard,
   sectionHead,
