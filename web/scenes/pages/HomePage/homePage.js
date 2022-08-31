@@ -105,8 +105,6 @@ export const HomePage = ({ page }) => {
     servicesBlock,
   } = page
 
-  console.log(blueCard)
-
   return (
     <>
       <section className={`first-screen pt-13x pt-19x_lg ${styles.firstScreen}`}>
