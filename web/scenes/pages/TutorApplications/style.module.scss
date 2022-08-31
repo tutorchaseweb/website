@@ -8,7 +8,12 @@
   background-position: right center, center, center;
 
   :global {
-
+    .main-title {
+      max-width: 20rem;
+      @media (min-width: $sm) {
+        max-width: initial;
+      }
+    }
   }
 }
 
@@ -20,24 +25,46 @@
       }
     }
     .text-wrap {
-      max-width: 31rem;
+      @media (min-width: $lg) {
+        max-width: 31rem;
+      }
     }
     .tutor {
-      padding: 1.25rem;
+      padding: 0.5rem;
       right: -0.5rem;
       bottom: 4rem;
       box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
       @media (min-width: $lg) {
-        right: -2rem;
+        padding: 1.25rem;
+        right: -1rem;
       }
 
       .line {
         display: inline-block;
-        width: 32px;
+        width: 16px;
         height: 4px;
         border-radius: 2px;
         margin-right: 4px;
+        @media (min-width: $lg) {
+          width: 26px;
+        }
       }
+    }
+  }
+}
+
+.popupWrapper {
+  position: fixed;
+  z-index: 15;
+  inset: 0;
+  background-color: #FFFFFF;
+
+  :global {
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
     }
   }
 }

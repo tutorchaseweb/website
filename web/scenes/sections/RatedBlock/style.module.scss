@@ -58,6 +58,12 @@
       @media (min-width: $lg) {
         max-width: 350px;
       }
+      .reviewContent {
+        height: 9rem;
+        @media (min-width: $lg) {
+          height: initial;
+        }
+      }
     }
   }
 }

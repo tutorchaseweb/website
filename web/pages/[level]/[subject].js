@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { getQueryForTutors } from '~/utils/helpers'
-import { TutorsPage } from '~/scenes/pages/Tutors'
-import Head from 'next/head'
+import { TutorsPage } from '~/scenes/pages'
 
 export const Subject = ({ level, subject }) => {
   const router = useRouter()
   const [tutors, setTutors] = useState([])
+  const [tutorsPage, setTutorsPage] = useState(null)
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
 
@@ -29,6 +31,15 @@ export const Subject = ({ level, subject }) => {
     })
   }, [level, subject])
 
+  useEffect(async () => {
+    const TutorsQUERY = groq`
+        *[_type == 'tutors-page'][0] {
+          ...,
+        }
+      `
+    setTutorsPage(await client.fetch(TutorsQUERY))
+  }, [])
+
   return (
     <Layout>
       <Head>
@@ -36,7 +47,7 @@ export const Subject = ({ level, subject }) => {
           Online {level?.title} {subject?.title} Tutors
         </title>
       </Head>
-      <TutorsPage tutors={tutors} />
+      {Boolean(tutorsPage) && <TutorsPage page={tutorsPage} tutors={tutors} />}
     </Layout>
   )
 }

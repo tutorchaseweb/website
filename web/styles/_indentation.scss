@@ -42,6 +42,14 @@
   .pl-#{$i}x {
     padding-left: $basic-space * $i;
   }
+  .px-#{$i}x {
+    padding-left: $basic-space * $i;
+    padding-right: $basic-space * $i;
+  }
+  .py-#{$i}x {
+    padding-top: $basic-space * $i;
+    padding-bottom: $basic-space * $i;
+  }
 }
 
 // xs-breakpoint 425px

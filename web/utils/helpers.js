@@ -17,16 +17,7 @@ export const getImageUrl = (source) => {
 }
 
 export const shuffleArray = (array = []) => {
-  let currentIndex = array.length,
-    randomIndex
-
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex--
-    ;[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
-  }
-
-  return array
+  return array.sort(() => Math.random() - 0.5)
 }
 
 export const splitArray = (array = [], parts = 2) => {

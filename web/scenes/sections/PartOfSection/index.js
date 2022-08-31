@@ -7,7 +7,7 @@ export const PartOfSection = ({ section, className = '' }) => {
   return (
     <div className={`page-part flex flex-wrap gap-4 items-center ${className} ${styles.section}`}>
       <div className="w-full w-1/2_lg">
-        {Boolean(section.image) && (
+        {Boolean(section.image?.asset) && (
           <img
             src={`${getImageUrl(section.image.asset._ref).width(650).height(450)}`}
             alt={section.title}
@@ -32,8 +32,8 @@ export const PartOfSection = ({ section, className = '' }) => {
           )}
           {Boolean(section.list) && (
             <ul className="ordered-list">
-              {section.list.map((item) => (
-                <li>{item}</li>
+              {section.list.map((item, idx) => (
+                <li key={idx}>{item}</li>
               ))}
             </ul>
           )}

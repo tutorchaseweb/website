@@ -1,15 +1,19 @@
-@import '../../../styles/variables';
+//@import '../../../styles/variables';
+//@import 'styles/variables';
 
 .dropdown {
   :global {
     .current {
-      //border-bottom: 1px solid rgba(75, 74, 91, 0.2);
-      line-height: 16px;
+      &.error {
+        &::after {
+          content: '';
+        }
+      }
       &::after {
         content: url('/images/arrow_down_blue.svg');
         position: absolute;
         right: 0.5rem;
-        top: 1.25rem;
+        top: 1.15rem;
         transition: all 0.2s linear;
         line-height: 0.5rem;
       }
@@ -33,7 +37,7 @@
       z-index: 3;
       &.visible {
         box-shadow: 0 2px 60px rgba(109, 66, 27, 0.06);
-        max-height: 50vh;
+        max-height: 26vh;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         overflow: auto;

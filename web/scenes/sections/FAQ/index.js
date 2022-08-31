@@ -1,99 +1,71 @@
+import { useState, useEffect } from 'react'
+import { groq } from 'next-sanity'
+import client from '~/utils/sanity-client'
+import { PortableText } from '@portabletext/react'
+
 import styles from './style.module.scss'
 
-export const FAQ = () => {
+const FaqItem = ({ item }) => {
+  const [active, setActive] = useState(false)
+
   return (
-    <section className={`faq-block pt-10x pt-18x_lg pb-2x pb-10x_lg ${styles.faqBlock}`}>
-      <div className="container narrow">
-        <div className="cover flex items-center">
-          <div className="text mb-4x mb-0x_lg mr-8x_lg">
-            <p className="before-title fw-600 l-height-1 uppercase color-lightGray mb-3x">
-              Our Service
-            </p>
-            <h2 className="section-title fw-600 mb-4x">FAQ</h2>
-            <p className="description fz-18p l-height-1/5">
-              Lessons are brought to life and students can interact with tutors by drawing diagrams,
-              solving equations, editing essays, and annotating work.
-            </p>
-          </div>
-          <div className="wrapper flex-1">
-            <div className="accordion">
-              <div className="item">
-                <div
-                  className="question pointer"
-                  onClick={(e) => {
-                    e.target.classList.toggle('active')
-                    e.target.nextElementSibling.classList.toggle('open')
-                  }}
-                >
-                  General
+    <div className="item">
+      <div
+        className={`question pointer ${active ? 'active' : ''}`}
+        onClick={() => setActive(!active)}
+      >
+        {item.question}
+      </div>
+      <div className={`answer ${active ? 'open' : ''}`}>
+        <PortableText value={item.answer} />
+      </div>
+    </div>
+  )
+}
+
+export const FAQ = ({ className = '' }) => {
+  const [faq, setFaq] = useState(null)
+  useEffect(async () => {
+    const query = groq`
+      *[_type == 'faq'][0] {
+        ...,
+      }
+    `
+    setFaq(await client.fetch(query))
+  }, [])
+
+  useEffect(() => console.log(faq), [faq])
+  return (
+    <section
+      className={`faq-block pt-10x pt-18x_lg pb-2x pb-10x_lg ${styles.faqBlock} ${className}`}
+    >
+      {Boolean(faq) && (
+        <div className="container narrow">
+          <div className="cover flex items-center">
+            <div className="text mb-4x mb-0x_lg mr-8x_lg">
+              {Boolean(faq.sectionHead?.preTitle) && (
+                <p className="before-title fw-600 l-height-1 uppercase color-lightGray mb-3x">
+                  {faq.sectionHead.preTitle}
+                </p>
+              )}
+              {Boolean(faq.sectionHead?.title) && (
+                <h2 className="section-title fw-600 mb-4x">{faq.sectionHead.title}</h2>
+              )}
+              {Boolean(faq.sectionHead?.description) && (
+                <div className="description fz-18p l-height-1/5">
+                  <PortableText value={faq.sectionHead.description} />
                 </div>
-                <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis! Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis! Lorem ipsum
-                  dolor sit amet, consectetur adipisicing elit. Minima, officiis!
-                </div>
-              </div>
-              <div className="item">
-                <div
-                  className="question pointer"
-                  onClick={(e) => {
-                    e.target.classList.toggle('active')
-                    e.target.nextElementSibling.classList.toggle('open')
-                  }}
-                >
-                  Daily Check-in
-                </div>
-                <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis! Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
-                </div>
-              </div>
-              <div className="item">
-                <div
-                  className="question pointer"
-                  onClick={(e) => {
-                    e.target.classList.toggle('active')
-                    e.target.nextElementSibling.classList.toggle('open')
-                  }}
-                >
-                  How to hire a tutor who is the best fit for me?
-                </div>
-                <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
-                </div>
-              </div>
-              <div className="item">
-                <div
-                  className="question pointer"
-                  onClick={(e) => {
-                    e.target.classList.toggle('active')
-                    e.target.nextElementSibling.classList.toggle('open')
-                  }}
-                >
-                  Paying for classes
-                </div>
-                <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
-                </div>
-              </div>
-              <div className="item">
-                <div
-                  className="question pointer"
-                  onClick={(e) => {
-                    e.target.classList.toggle('active')
-                    e.target.nextElementSibling.classList.toggle('open')
-                  }}
-                >
-                  How is the platform related to tutors?
-                </div>
-                <div className="answer">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis!
-                </div>
+              )}
+            </div>
+            <div className="wrapper flex-1">
+              <div className="accordion">
+                {Boolean(faq.questions.length) &&
+                  faq.questions.map((item) => <FaqItem key={item._id} item={item} />)}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }

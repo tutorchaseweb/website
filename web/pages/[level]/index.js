@@ -6,12 +6,12 @@ import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { getQueryForTutors } from '~/utils/helpers'
-import { TutorsPage } from '~/scenes/pages/Tutors'
-import { OxbridgePage } from '~/scenes/pages/Oxbridge'
+import { TutorsPage, OxbridgePage } from '~/scenes/pages'
 
 export const Level = ({ current }) => {
   const router = useRouter()
-  const [page, setPage] = useState(null)
+  const [oxbridgePage, setOxbridgePage] = useState(null)
+  const [tutorsPage, setTutorsPage] = useState(null)
   const [tutors, setTutors] = useState([])
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
@@ -21,21 +21,35 @@ export const Level = ({ current }) => {
   }
 
   useEffect(async () => {
-    if (current._type === 'level') {
+    if (current && current._type === 'level') {
       !levelQuery && setLevelQuery(current)
       setSubjectQuery(null)
-    } else if (current._type === 'subject') {
+
+      const TutorsQUERY = groq`
+        *[_type == 'tutors-page'][0] {
+          ...,
+        }
+      `
+      setTutorsPage(await client.fetch(TutorsQUERY))
+    } else if (current && current._type === 'subject') {
       !subjectQuery && setSubjectQuery(current)
       setLevelQuery(null)
-    } else if (current._type === 'test') {
+
+      const TutorsQUERY = groq`
+        *[_type == 'tutors-page'][0] {
+          ...,
+        }
+      `
+      setTutorsPage(await client.fetch(TutorsQUERY))
+    } else if (current && current._type === 'test') {
       setLevelQuery(null)
       setSubjectQuery(null)
-      const QUERY = groq`
+      const OxbridgeQUERY = groq`
         *[_type == 'oxbridge-page'][0] {
           ...,
         }
       `
-      setPage(await client.fetch(QUERY))
+      setOxbridgePage(await client.fetch(OxbridgeQUERY))
     } else {
       typeof window !== 'undefined' && router.replace('/404')
     }
@@ -54,10 +68,14 @@ export const Level = ({ current }) => {
       <Head>
         <title>Online {current ? current.title : ''} Tutors</title>
       </Head>
-      {current && current._type === 'level' && <TutorsPage tutors={tutors} />}
-      {current && current._type === 'subject' && <TutorsPage tutors={tutors} />}
-      {current && current._type === 'test' && Boolean(page) && (
-        <OxbridgePage title={current.title} page={page} tutors={tutors} />
+      {current && current._type === 'level' && Boolean(tutorsPage) && (
+        <TutorsPage page={tutorsPage} tutors={tutors} />
+      )}
+      {current && current._type === 'subject' && Boolean(tutorsPage) && (
+        <TutorsPage page={tutorsPage} tutors={tutors} />
+      )}
+      {current && current._type === 'test' && Boolean(oxbridgePage) && (
+        <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
       )}
     </Layout>
   )
@@ -83,8 +101,6 @@ export async function getServerSideProps(context) {
   )
 
   const current = data.filter((item) => item.slug && item.slug.current === level)[0]
-
-  console.log(current)
 
   return {
     props: {

@@ -9,7 +9,7 @@
       box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.04);
       border-radius: 8px;
       padding: 1.5rem 1rem 1rem 1.5rem;
-      //position: absolute;
+      position: relative;
       top: 50%;
       left: 0;
       text-align: left;
@@ -17,6 +17,27 @@
       @media (min-width: $lg) {
         position: absolute;
         margin: initial;
+      }
+      .play {
+        width: 3.25rem;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(50%, -50%);
+
+        &:after {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-left: 10px solid #fff;
+          border-bottom: 5px solid transparent;
+        }
+        @media (min-width: $lg) {
+          display: none;
+        }
       }
     }
     .lesson1 {
@@ -60,7 +81,9 @@
       border-radius: 8px;
     }
     .limit {
-      max-width: 30rem;
+      @media (min-width: $lg) {
+        max-width: 30rem;
+      }
     }
   }
 }
@@ -89,6 +112,11 @@
         font-size: 16px;
         right: 2rem;
         max-width: 14.375rem;
+      }
+    }
+    .text-wrap {
+      @media (min-width: $lg) {
+        max-width: 450px;
       }
     }
   }

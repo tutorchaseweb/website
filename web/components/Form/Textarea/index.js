@@ -34,6 +34,7 @@ export const Textarea = ({
             ? setErrors(checkValidateValue(e.target.value.trim()))
             : setValue(e.target.value.trim())
         }}
+        maxLength={1000}
       />
       {Errors.length !== 0 && (
         <span className="error-wrap absolute">

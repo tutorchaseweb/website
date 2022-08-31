@@ -3,7 +3,7 @@ import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { useRouter } from 'next/router'
 import { Layout } from '~/components/Layout'
-import { BlogPage } from '~/scenes/pages/Blog'
+import { BlogPage } from '~/scenes/pages'
 
 export const BlogNav = ({ page }) => {
   const router = useRouter()

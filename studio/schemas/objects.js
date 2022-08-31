@@ -7,6 +7,8 @@ import link from './objects/link'
 import firstScreen from './objects/homePage/firstScreen'
 import studyCards from './objects/homePage/studyCards'
 import qualification from './objects/tutor/qualification'
+import subjectLevel from './objects/tutor/subjectLevel'
+import tutorLevel from './objects/tutor/tutorLevel'
 import partOfSection from './objects/global/partOfSection'
 import blueCard from './objects/global/blueCard'
 import sectionHead from './objects/global/sectionHead'
@@ -14,6 +16,7 @@ import reviewBlock from './objects/global/reviewBlock'
 import servicesBlock from './objects/global/servicesBlock'
 import pageHead from './objects/global/pageHead'
 import pageHeadImage from './objects/global/pageHeadImage'
+import faqGroup from './objects/global/faqGroup'
 import button from './objects/button'
 
 export default [
@@ -26,6 +29,8 @@ export default [
   firstScreen,
   studyCards,
   qualification,
+  subjectLevel,
+  tutorLevel,
   partOfSection,
   blueCard,
   sectionHead,
@@ -33,5 +38,6 @@ export default [
   servicesBlock,
   pageHead,
   pageHeadImage,
+  faqGroup,
   button,
 ]

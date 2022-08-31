@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Layout } from '~/components/Layout'
 import client from '~/utils/sanity-client'
-import { OxbridgePage } from '~/scenes/pages/Oxbridge'
+import { OxbridgePage } from '~/scenes/pages'
 import { getQueryForTutors } from '~/utils/helpers'
 import { useGlobalState } from '~/utils/state'
 

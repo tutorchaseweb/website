@@ -33,6 +33,8 @@ export const monthsOfHheYear = [
   'December',
 ]
 
+export const TABLET_BREAKPOINT = 640
+
 export const MOBILE_BREAKPOINT = 992
 
 export const REVIEWS_BREAKPOINT = 1200

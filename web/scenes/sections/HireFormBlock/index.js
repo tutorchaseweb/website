@@ -2,7 +2,12 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import SVG from '~/components/SVG'
 import { handleMutations, log } from '~/utils/helpers'
-import { checkValidateFullName, checkValidateEmail, checkValidateMessage } from '~/utils/validators'
+import {
+  checkValidateFullName,
+  checkValidateEmail,
+  checkValidateMessage,
+  checkValidateSelect,
+} from '~/utils/validators'
 import { Circle } from '~/components/Circle'
 import { Input, Select, Textarea } from '~/components/Form'
 import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/utils/svgImages'
@@ -31,7 +36,8 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
-  const [country, setCountry] = useState('not selected')
+  const [country, setCountry] = useState(countries[0])
+  const [countryErrors, setCountryErrors] = useState([])
   const [details, setDetails] = useState('')
   const [detailsErrors, setDetailsErrors] = useState([])
   const [frequencyDuration, setFrequencyDuration] = useState('')
@@ -39,7 +45,12 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
     setEmailErrors(checkValidateEmail(email))
-    if (!checkValidateFullName(fullName).length && !checkValidateEmail(email).length) {
+    setCountryErrors(checkValidateSelect(country, countries[0]))
+    if (
+      !checkValidateFullName(fullName).length &&
+      !checkValidateEmail(email).length &&
+      !checkValidateSelect(country, countries[0]).length
+    ) {
       setActiveStep(activeStep + 1)
     } else {
       event.preventDefault()
@@ -153,6 +164,9 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       inputName={'Country'}
                       setValue={setCountry}
                       className="flex-1 fz-14p"
+                      Errors={countryErrors}
+                      setErrors={setCountryErrors}
+                      checkValidateValue={checkValidateSelect}
                     />
                   </div>
                   <div className="flex flex-wrap gap-4 mb-4x flex-1">
@@ -185,7 +199,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                   )}
                   <div className="flex flex-wrap gap-4 items-center justify-between">
                     <label className="flex-1 fz-14p">
-                      <b>1</b>/2 About yourself
+                      <b>1</b>/2 <span className="fw-500">About yourself</span>
                     </label>
                     <label>
                       <button

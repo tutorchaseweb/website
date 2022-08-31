@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { useRouter } from 'next/router'
+import { getImageUrl } from '~/utils/helpers'
 import { Header, Footer } from '~/scenes/sections'
 import { Loader } from '~/components/Loader'
 
@@ -40,7 +41,11 @@ export const Layout = ({ children }) => {
         <meta name="description" content={siteConfig.description} />
         <meta property="og:title" content={siteConfig.title} key="title" />
         <meta property="og:description" content={siteConfig.description} key="description" />
-        <meta property="og:image" content={siteConfig.logo.asset.url} key="image" />
+        <meta
+          property="og:image"
+          content={`${getImageUrl(siteConfig.logo.asset._ref)}`}
+          key="image"
+        />
         <meta property="og:site_name" content={siteConfig.title} />
         <meta property="og:url" content={siteConfig.url} key="url" />
         <link rel="icon" href="/favicon.ico" />

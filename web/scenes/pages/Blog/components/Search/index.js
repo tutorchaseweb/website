@@ -40,9 +40,9 @@ export const Search = () => {
       </form>
       {Boolean(searchResult.length) && (
         <ul className="absolute result bg-white shadow-light">
-          {searchResult.map((post) => {
+          {searchResult.map((post, idx) => {
             return (
-              <li>
+              <li key={idx}>
                 <Link href={`/blog/${post.slug.current}`}>
                   <a>{post.title}</a>
                 </Link>

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 import styles from './style.module.scss'
 
-export const Dropdown = ({ items, selected, handler }) => {
+export const Dropdown = ({ items, selected, handler, className }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpacity, setIsOpacity] = useState(false)
   const wrapperRef = useRef(null)
@@ -38,7 +38,7 @@ export const Dropdown = ({ items, selected, handler }) => {
       <div
         className={`${isOpen ? 'visible' : ''} ${
           isOpacity ? 'opacity-80' : ''
-        } pointer current transition p-2x border-light l-height-1 w-full rounded-xSmall`}
+        } pointer current transition p-1x border-light l-height-2 w-full rounded-xSmall ${className}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         {selected.title}
@@ -46,7 +46,7 @@ export const Dropdown = ({ items, selected, handler }) => {
       <ul
         className={`${
           isOpen ? 'visible' : ''
-        } select-list transition absolute w-100 bg-white index-1`}
+        } select-list transition absolute w-full bg-white index-1`}
       >
         {items.map((item, index) => {
           const [image, setImage] = useState('')

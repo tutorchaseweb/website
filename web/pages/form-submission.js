@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Layout } from '~/components/Layout'
-import { FormSubmissionPage } from '~/scenes/pages/FormSubmission'
+import { FormSubmissionPage } from '~/scenes/pages'
 
 export const FormSubmission = () => {
   return (

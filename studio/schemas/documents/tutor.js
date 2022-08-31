@@ -35,20 +35,27 @@ export default {
       type: 'text',
       title: 'Intro description for preview and cards',
     },
-    {
-      name: 'teaches',
-      type: 'array',
-      title: 'Teaches',
-      description: 'Add subjects taught by the tutor.',
-      of: [{ type: 'reference', to: { type: 'subject' } }],
-    },
-    {
-      name: 'levels',
-      type: 'array',
-      title: 'Levels',
-      description: 'Add level of the tutor.',
-      of: [{ type: 'reference', to: { type: 'level' } }],
-    },
+    // {
+    //   name: 'teaches',
+    //   type: 'array',
+    //   title: 'Teaches',
+    //   description: 'Add subjects taught by the tutor.',
+    //   of: [{ type: 'subjectLevel' }],
+    // },
+    // {
+    //   name: 'teaches',
+    //   type: 'array',
+    //   title: 'Teaches',
+    //   description: 'Add subjects taught by the tutor.',
+    //   of: [{ type: 'reference', to: { type: 'subject' } }],
+    // },
+    // {
+    //   name: 'levels',
+    //   type: 'array',
+    //   title: 'Levels',
+    //   description: 'Add level of the tutor.',
+    //   of: [{ type: 'reference', to: { type: 'level' } }],
+    // },
     {
       name: 'universities',
       type: 'array',
@@ -98,14 +105,14 @@ export default {
       description: 'Enable this option to display the tutor on the main page',
       initialValue: false,
     },
-    {
-      name: 'sortingRating',
-      title: 'Sorting rating',
-      description:
-        'Specify the rating of the teacher (from 1 to 100) to sort in the search results',
-      type: 'number',
-      initialValue: 1,
-      validation: (Rule) => Rule.error('Enter a number from 1 to 100').min(1).max(100),
-    },
+    // {
+    //   name: 'sortingRating',
+    //   title: 'Sorting rating',
+    //   description:
+    //     'Specify the rating of the teacher (from 1 to 100) to sort in the search results',
+    //   type: 'number',
+    //   initialValue: 1,
+    //   validation: (Rule) => Rule.error('Enter a number from 1 to 100').min(1).max(100),
+    // },
   ],
 }

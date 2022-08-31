@@ -1,7 +1,7 @@
 export default {
-  name: 'oxbridge-page',
+  name: 'tutors-page',
   type: 'document',
-  title: 'Oxbridge page',
+  title: 'Tutors page',
   fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
   fields: [
     {
@@ -20,13 +20,13 @@ export default {
     },
     {
       name: 'firstScreen',
-      type: 'pageHeadImage',
-      title: 'First section on oxbridge page',
+      type: 'pageHead',
+      title: 'First section on tutors page',
     },
     {
       name: 'blueCard',
       type: 'blueCard',
-      title: 'Blue card on access page',
+      title: 'Blue card on tutors page',
     },
     {
       name: 'reviewBlock',

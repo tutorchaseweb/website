@@ -1,6 +1,9 @@
 import siteConfig from './documents/siteConfig'
+import accessPage from './documents/pages/accessProgrammePage'
 import homePage from './documents/pages/homePage'
 import oxbridgePage from './documents/pages/oxbridgePage'
+import businessPartnershipsPage from './documents/pages/businessPartnershipsPage'
+import tutorsPage from './documents/pages/tutorsPage'
 import blogPage from './documents/pages/blogPage'
 import termAndConditions from './documents/pages/termsConditionsPage'
 import privacyPolicy from './documents/pages/privacyPolicyPage'
@@ -15,13 +18,17 @@ import review from './documents/review'
 import subject from './documents/subject'
 import level from './documents/level'
 import test from './documents/test'
+import faq from './documents/faq'
 import hireForm from './documents/hireForm'
 import applyForm from './documents/applyForm'
 
 export default [
   siteConfig,
+  accessPage,
   homePage,
   oxbridgePage,
+  businessPartnershipsPage,
+  tutorsPage,
   blogPage,
   termAndConditions,
   privacyPolicy,
@@ -36,6 +43,7 @@ export default [
   subject,
   level,
   test,
+  faq,
   hireForm,
   applyForm,
 ]

@@ -14,7 +14,8 @@ import {
 
 import styles from './style.module.scss'
 
-export const TutorsPage = ({ tutors }) => {
+export const TutorsPage = ({ page, tutors }) => {
+  const { blueCard, reviewBlock } = page
   const [levelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery] = useGlobalState('subjectQuery', null)
 
@@ -45,7 +46,7 @@ export const TutorsPage = ({ tutors }) => {
         </div>
       </section>
       <SubjectsFilter />
-      <section className={`tutors-list pt-11x pb-19x ${styles.tutorsList}`}>
+      <section className={`tutors-list pt-5x pt-11x_lg pb-10x pb-19x_lg ${styles.tutorsList}`}>
         <div className="container medium">
           <h2 className="section-title fw-600 l-height-1/4 mb-2x">
             {`${levelQuery?.title ? levelQuery.title : ''} ${
@@ -67,23 +68,15 @@ export const TutorsPage = ({ tutors }) => {
       <section>
         <div className="container medium">
           <BlueCardBlock
-            title={'Our academic consultants will find the perfect tutor for you!'}
-            content={
-              "Looking for something specific? Get in touch with us now and we'll find the best tutor for you."
-            }
+            title={blueCard.title}
+            content={blueCard.description}
+            hireButton={blueCard.withButton}
           />
         </div>
       </section>
       <InteractiveBlock />
-      <ReviewBlock
-        content={
-          'My Son had an excellent tutor who helped him in preparing for his STEP exam. Her teaching style was very good, allowing him to solve the Maths problem by himself with a little hint, rather than helping him with the answer. Highly recommend Tutor Chase, they helped me to find the right Tutor within our Budget and the tutor was a Cambridge Mathematics Graduate, which we were looking for.'
-        }
-        author={'Elizabeth'}
-        position={'Parent of English student'}
-      />
-      <OurServiceBlock />
-      <div className="pt-15x"></div>
+      <ReviewBlock {...reviewBlock} />
+      <OurServiceBlock className="pt-8x pt-15x_lg pb-8x pb-19x_lg" />
       <RatedBlock />
       <FAQ />
       <HireFormBlock />

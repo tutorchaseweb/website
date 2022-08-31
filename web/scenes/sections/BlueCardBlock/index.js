@@ -3,7 +3,7 @@ import { hireTutor } from '~/utils/helpers'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
-export const BlueCardBlock = ({ title = '', content = [], hireButton = true, className = '' }) => {
+export const BlueCardBlock = ({ title = '', content = [], hireButton = false, className = '' }) => {
   return (
     <div
       className={`card mx-auto text-center rounded-small pt-7x pb-7x pl-2x pr-2x ${styles.card} ${className}`}

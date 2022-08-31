@@ -32,7 +32,7 @@ export const TutorPage = ({ tutor }) => {
         </div>
         <div className="container narrow">
           <div className={`bg-white rounded-rem flex items-center mb-4x ${styles.mainInfo}`}>
-            <div className="avatar relative">
+            <div className="avatar relative overflow-hidden rounded-small">
               <Image
                 src={`${getImageUrl(tutor.image.asset._ref)}`}
                 alt={tutor.name}
@@ -42,7 +42,7 @@ export const TutorPage = ({ tutor }) => {
               />
             </div>
             <div className="content flex-1">
-              <div className="wrap flex justify-between mb-3x">
+              <div className="wrap flex justify-between mb-3x pt-2x_lg">
                 <h1 className="name fw-600 color-blue mb-1x mb-0x_lg">{tutor.name}</h1>
                 <p className="rating flex items-center">
                   <span className="stars l-height-1 mr-1x">
@@ -65,7 +65,9 @@ export const TutorPage = ({ tutor }) => {
               <p>
                 <span className="fz-18p fw-600">Teaches:</span>
                 {tutor.teaches.map((teach) => (
-                  <span className="teach fz-14p fw-500 color-blue ml-1x mb-1x">{teach.title}</span>
+                  <span key={teach._id} className="teach fz-14p fw-500 color-blue ml-1x mb-1x">
+                    {teach.title}
+                  </span>
                 ))}
               </p>
             </div>
@@ -108,8 +110,8 @@ export const TutorPage = ({ tutor }) => {
           >
             <h3 className="fz-20p fw-600 mb-3x">Extracurricular Activities</h3>
             <div className="flex flex-wrap gap-2">
-              {tutor.extracurricularActivities.map((activity) => (
-                <span className="activity bg-white fw-500 l-height-1/4 rounded-xSmall">
+              {tutor.extracurricularActivities.map((activity, idx) => (
+                <span key={idx} className="activity bg-white fw-500 l-height-1/4 rounded-xSmall">
                   {activity}
                 </span>
               ))}

@@ -16,6 +16,8 @@ import {
   IoSchoolOutline,
   MdOutlineFormatListNumbered,
   MdOutlinePolicy,
+  BiCodeBlock,
+  FaQuestionCircle,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -23,8 +25,11 @@ const hiddenDocTypes = (listItem) =>
   ![
     'site-config',
     'custom-page',
+    'access-page',
     'home-page',
     'oxbridge-page',
+    'partnerships-page',
+    'tutors-page',
     'us-admissions-page',
     'blog-page',
     'category',
@@ -41,6 +46,7 @@ const hiddenDocTypes = (listItem) =>
     'termAndConditions',
     'privacyPolicy',
     'safeguardingPolicy',
+    'faq',
   ].includes(listItem.getId())
 
 export default () =>
@@ -95,6 +101,20 @@ export default () =>
                 .icon(FaUniversity)
                 .child(S.document().schemaType('oxbridge-page').documentId('oxbridge-page')),
               S.listItem()
+                .title('Tutors page')
+                .icon(BsBook)
+                .child(S.document().schemaType('tutors-page').documentId('tutors-page')),
+              S.listItem()
+                .title('Access page')
+                .icon(BsBook)
+                .child(S.document().schemaType('access-page').documentId('access-page')),
+              S.listItem()
+                .title('Partnerships page')
+                .icon(BsBook)
+                .child(
+                  S.document().schemaType('partnerships-page').documentId('partnerships-page')
+                ),
+              S.listItem()
                 .title('Blog page')
                 .icon(IoNewspaperOutline)
                 .child(S.document().schemaType('blog-page').documentId('blog-page')),
@@ -119,6 +139,19 @@ export default () =>
                 .icon(BsBook)
                 .schemaType('custom-page')
                 .child(S.documentTypeList('custom-page').title('Custom page')),
+            ])
+        ),
+      S.listItem()
+        .title('Sections')
+        .icon(BiCodeBlock)
+        .child(
+          S.list()
+            .title('Site sections')
+            .items([
+              S.listItem()
+                .title('FAQ section')
+                .icon(FaQuestionCircle)
+                .child(S.document().schemaType('faq').documentId('faq')),
             ])
         ),
       S.listItem()

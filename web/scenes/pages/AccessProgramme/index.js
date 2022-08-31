@@ -10,7 +10,8 @@ import lgk_I8kY from '~/assets/images/lgk_I8kY_3.png'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
-export const AccessProgrammePage = () => {
+export const AccessProgrammePage = ({ page }) => {
+  const { blueCard } = page
   return (
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
@@ -24,9 +25,10 @@ export const AccessProgrammePage = () => {
           </p>
           <div className="left-card bg-white">
             <SVG content={volunteerActivism()} size={24} />
-            <p>
+            <p className="l-height-1/4">
               As part of the Access programme, we provide <b>free tuition in Tutorchase</b>
             </p>
+            <div className="play bg-orange round relative mx-auto flex items-center justify-center mb-1x" />
           </div>
           <div className="lesson1 bg-white text-center absolute rounded-small">
             <div className="play bg-orange round relative mx-auto flex items-center justify-center mb-1x" />
@@ -41,9 +43,11 @@ export const AccessProgrammePage = () => {
             <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">Lorem ipsum</p>
             <h2 className="fz-48p fw-600 l-height-1 mb-10x">Our Access Programme</h2>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-8">
-            <img src={illustration4.src} alt="illustration" />
-            <div className="flex-1 limit">
+          <div className="section-row flex flex-wrap items-center justify-between gap-8">
+            <div className="image-wrap">
+              <img src={illustration4.src} alt="illustration" />
+            </div>
+            <div className="text-wrap limit">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={volunteerActivism(Color.Orange)} size={28} />
               </span>
@@ -56,9 +60,11 @@ export const AccessProgrammePage = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-8 mt-12x reverse_lg">
-            <img src={illustration5.src} alt="illustration" />
-            <div className="flex-1 limit">
+          <div className="section-row flex flex-wrap items-center justify-between gap-8 mt-12x reverse_lg">
+            <div className="image-wrap">
+              <img src={illustration5.src} alt="illustration" />
+            </div>
+            <div className="text-wrap limit">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={studyHat(Color.Orange)} size={28} />
               </span>
@@ -75,9 +81,11 @@ export const AccessProgrammePage = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-8 mt-15x">
-            <img src={illustration6.src} alt="illustration" />
-            <div className="flex-1 limit">
+          <div className="section-row flex flex-wrap items-center justify-between gap-8 mt-15x">
+            <div className="image-wrap">
+              <img src={illustration6.src} alt="illustration" />
+            </div>
+            <div className="text-wrap limit">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={paid(Color.Orange)} size={28} />
               </span>
@@ -92,15 +100,24 @@ export const AccessProgrammePage = () => {
       </section>
       <div className="container narrow pt-9x">
         <BlueCardBlock
-          title={'Over 50 partners trust us'}
-          content={`If you would like to find out more about partnership opportunities, please email <a href="mailto:${text.contacts.email}">${text.contacts.email}</a>.`}
-          hireButton={false}
+          title={blueCard.title}
+          content={blueCard.description}
+          hireButton={blueCard.withButton}
         />
       </div>
       <section className={` ${styles.contacts}`}>
         <div className="container narrow">
-          <div className="flex flex-wrap items-center gap-8 justify-between mt-19x">
-            <div style={{ maxWidth: '450px' }}>
+          <div className="flex flex-wrap items-center gap-8 justify-between mt-19x reverse_lg">
+            <div className="relative">
+              <div className="card bg-white absolute">
+                <SVG content={videoCam(Color.LightBlue)} size={28} className="mb-1x" />
+                <p className="l-height-1/4">
+                  Flexible online tutoring to fit <b>around your schedule</b>
+                </p>
+              </div>
+              <img src={lgk_I8kY.src} alt="image" />
+            </div>
+            <div className="text-wrap">
               <h3 className="fz-32p fw-600 l-height-1 mb-4x ">
                 General criteria for selecting students for the programme
               </h3>
@@ -113,15 +130,6 @@ export const AccessProgrammePage = () => {
                 <li>Have a written letter or recommendation stating the student’s potential</li>
                 <li>Be a UK resident</li>
               </ul>
-            </div>
-            <div className="relative">
-              <div className="card bg-white absolute">
-                <SVG content={videoCam(Color.LightBlue)} size={28} className="mb-1x" />
-                <p className="l-height-1/4">
-                  Flexible online tutoring to fit <b>around your schedule</b>
-                </p>
-              </div>
-              <img src={lgk_I8kY.src} alt="image" />
             </div>
           </div>
           <div className="mt-15x mb-15x">

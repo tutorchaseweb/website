@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
-import { getQueryForBlog } from '~/utils/helpers'
+import { getQueryForBlog, useWindowSize } from '~/utils/helpers'
+import { MOBILE_BREAKPOINT } from '~/utils/constants'
 import { useGlobalState } from '~/utils/state'
 import { HireFormBlock } from '~/scenes/sections'
-import { Search, Sorting, Pagination } from './components'
-import { BlogCard } from './BlogCard'
+import { Search, Sorting, Pagination, BlogCard } from './components'
+import SVG from '~/components/SVG'
+import { arrowDown } from '~/utils/svgImages'
 
 import styles from './style.module.scss'
 
 export const BlogPage = ({ page, start }) => {
-  const [currentPosts, setCurrentPosts] = useState(0)
+  const [currentPosts, setCurrentPosts] = useState([])
   const [postsLength, setPostsLength] = useState(0)
+  const [postsLimit, setPostsLimit] = useState(page.postsPerPage)
   const [postsOrder] = useGlobalState('postsOrder', null)
+  const window = useWindowSize()
 
   useEffect(() => {
     const QUERY = groq`
@@ -24,9 +28,9 @@ export const BlogPage = ({ page, start }) => {
   }, [])
 
   useEffect(async () => {
-    const query = getQueryForBlog(postsOrder, start, page.postsPerPage)
+    const query = getQueryForBlog(postsOrder, start, postsLimit)
     setCurrentPosts(await client.fetch(query))
-  }, [postsOrder, start])
+  }, [postsOrder, start, postsLimit])
 
   return (
     <>
@@ -40,7 +44,7 @@ export const BlogPage = ({ page, start }) => {
           </div>
         </div>
       </section>
-      <section className={`cards-wrap relative pb-8x ${styles.cardsWrap}`}>
+      <section className={`cards-wrap relative pb-8x_lg ${styles.cardsWrap}`}>
         <div className="container">
           <div className="flex items-center justify-between mb-3x">
             <Search />
@@ -52,10 +56,32 @@ export const BlogPage = ({ page, start }) => {
                 return <BlogCard key={post._id} article={post} />
               })}
           </div>
-          {postsLength > page.postsPerPage && (
-            <div className="mt-7x">
-              <Pagination start={start} perPage={page.postsPerPage} length={postsLength} />
-            </div>
+          {window.width < MOBILE_BREAKPOINT ? (
+            <>
+              {postsLength > postsLimit && (
+                <div className="text-center mt-4x">
+                  <button
+                    className="btn btn-gray small mx-auto"
+                    onClick={() => {
+                      setPostsLimit(postsLimit + page.postsPerPage)
+                    }}
+                  >
+                    <span className="flex items-center gap-2 pl-1x">
+                      Load More
+                      <SVG content={arrowDown()} size={24} />
+                    </span>
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              {postsLength > page.postsPerPage && (
+                <div className="mt-7x">
+                  <Pagination start={start} perPage={page.postsPerPage} length={postsLength} />
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

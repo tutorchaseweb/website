@@ -73,7 +73,7 @@ export const Footer = ({ pages = [] }) => {
               <div className="link-group-wrapper flex justify-between gap-8">
                 <div className="link-group flex flex-col fz-14p">
                   <Link href="/">
-                    <a className="logo mb-2x">
+                    <a className="logo mb-2x" style={{ marginLeft: '-4px' }}>
                       {Boolean(logo) && (
                         <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
                       )}

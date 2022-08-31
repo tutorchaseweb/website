@@ -1,7 +1,7 @@
 import parsePhoneNumber from 'libphonenumber-js'
 import { log } from '~/utils/helpers'
 
-const validateName = (name) => /^[а-яА-Яa-zA-Z._\s-]{2,30}$/.test(name)
+const validateName = (name) => /^[а-яА-Яa-zA-Z._\s'-]{2,30}$/.test(name)
 const validateEmail = (email) =>
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
 const validatePassword = (password) =>

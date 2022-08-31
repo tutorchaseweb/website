@@ -8,7 +8,7 @@ import { getImageUrl } from '~/utils/helpers'
 import SVG from '~/components/SVG'
 import { smallArrowRight } from '~/utils/svgImages'
 import { myPortableTextComponents } from '~/utils/helpers'
-import { BlogCard } from '~/scenes/pages/Blog/BlogCard'
+import { BlogCard } from '~/scenes/pages/Blog/components/BlogCard'
 
 import styles from './style.module.scss'
 
@@ -67,7 +67,7 @@ export const ArticlePage = ({ article }) => {
               </div>
             </div>
             <div className={styles.textContentWrapper}>
-              <div className="description text-center fz-20p fw-500 l-height-1/4">
+              <div className="description text-center fz-20p fw-600 l-height-1/4">
                 <PortableText value={article.description} />
               </div>
             </div>

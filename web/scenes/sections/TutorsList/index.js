@@ -4,7 +4,7 @@ import Image from 'next/image'
 import SVG from '~/components/SVG'
 import { awesomeStar, studyHat } from '~/utils/svgImages'
 import { getImageUrl, useWindowSize } from '~/utils/helpers'
-import { MOBILE_BREAKPOINT, TUTORS_LIST_STEP } from '~/utils/constants'
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT, TUTORS_LIST_STEP } from '~/utils/constants'
 import styles from './style.module.scss'
 import { useRouter } from 'next/router'
 
@@ -47,7 +47,7 @@ export const TutorsList = ({ tutors }) => {
                   objectFit="cover"
                 />
               </div>
-              {view.width < MOBILE_BREAKPOINT ? (
+              {view.width < TABLET_BREAKPOINT ? (
                 <>
                   <div className="content w-full">
                     <p className="fw-600 mb-2x">{tutor.name}</p>
@@ -64,6 +64,33 @@ export const TutorsList = ({ tutors }) => {
                         </span>
                       ))}
                     </p>
+                  </div>
+                  <div className="actions flex">
+                    <Link href={`/tutors/${tutor.slug.current}`}>
+                      <a className="btn btn-white w-full">View profile</a>
+                    </Link>
+                    <a href="#hireFormBlock" className="btn btn-blue w-full" onClick={hireTutor}>
+                      {text.form.btnHireTutor}
+                    </a>
+                  </div>
+                </>
+              ) : view.width < MOBILE_BREAKPOINT ? (
+                <>
+                  <div className="content w-full">
+                    <p className="fw-600 mb-2x">{tutor.name}</p>
+                    <SVG content={awesomeStar()} size={24} />
+                    <p className="fz-14p fw-500">{tutor.position}</p>
+                    <div className="description pt-3x">
+                      <p className="fw-500 mb-3x">{tutor.education}</p>
+                      <p className="fz-14p fw-600 l-height-1/4">
+                        <span className="mr-1x">Teaches:</span>
+                        {tutor.teaches.map((teach) => (
+                          <span key={teach._id} className="teach mr-1x mb-1x">
+                            {teach.title}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
                   </div>
                   <div className="actions flex">
                     <Link href={`/tutors/${tutor.slug.current}`}>

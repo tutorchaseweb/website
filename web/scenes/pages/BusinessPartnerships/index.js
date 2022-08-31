@@ -9,7 +9,9 @@ import illustration3 from '~/assets/images/illustration-3.png'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 
-export const BusinessPartnershipsPage = () => {
+export const BusinessPartnershipsPage = ({ page }) => {
+  const { blueCard } = page
+
   return (
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
@@ -40,7 +42,7 @@ export const BusinessPartnershipsPage = () => {
               trust us
             </p>
           </div>
-          <Circle size={56} color={Color.LightBlue} classList="circle absolute handshake">
+          <Circle size={72} color={Color.LightBlue} classList="circle absolute handshake">
             <SVG content={handshake()} size={24} />
           </Circle>
         </div>
@@ -51,9 +53,11 @@ export const BusinessPartnershipsPage = () => {
             <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">Lorem ipsum</p>
             <h2 className="fz-48p fw-600 l-height-1 mb-10x">Flexibility</h2>
           </div>
-          <div className="flex flex-wrap items-center" style={{ gap: '6rem' }}>
-            <img src={illustration2.src} alt="illustration" />
-            <div className="flex-1">
+          <div className="section-row flex flex-wrap items-center" style={{ gap: '6rem' }}>
+            <div className="image-wrap">
+              <img src={illustration2.src} alt="illustration" />
+            </div>
+            <div className="text-wrap">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={globe(Color.Orange)} size={28} />
               </span>
@@ -65,9 +69,14 @@ export const BusinessPartnershipsPage = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap items-center mt-12x reverse_lg" style={{ gap: '6rem' }}>
-            <img src={illustration3.src} alt="illustration" />
-            <div className="flex-1">
+          <div
+            className="section-row flex flex-wrap items-center mt-12x reverse_lg"
+            style={{ gap: '6rem' }}
+          >
+            <div className="image-wrap">
+              <img src={illustration3.src} alt="illustration" />
+            </div>
+            <div className="text-wrap">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={studyHat(Color.Orange)} size={28} />
               </span>
@@ -84,9 +93,9 @@ export const BusinessPartnershipsPage = () => {
       <section className={`pt-9x ${styles.contacts}`}>
         <div className="container narrow">
           <BlueCardBlock
-            title={'Over 50 partners trust us'}
-            content={`If you would like to find out more about partnership opportunities, please email <a href="mailto:${text.contacts.email}">${text.contacts.email}</a>.`}
-            hireButton={false}
+            title={blueCard.title}
+            content={blueCard.description}
+            hireButton={blueCard.withButton}
           />
           <div className="mt-15x mb-15x">
             <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">

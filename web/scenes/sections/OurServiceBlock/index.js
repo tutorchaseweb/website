@@ -8,10 +8,12 @@ export const OurServiceBlock = ({ className = '' }) => {
   const windows = useWindowSize()
 
   return (
-    <section className={`service pt-8x pt-15x_lg pb-4x_lg ${styles.service} ${className}`}>
+    <section className={`service ${styles.service} ${className}`}>
       <div className="container">
-        <p className="before-title fw-600 uppercase color-lightGray mb-3x">Our Service</p>
-        <h2 className="section-title fw-600 mb-6x mx-auto">How it Works?</h2>
+        <p className="before-title fw-600 uppercase color-lightGray mb-3x text-center">
+          Our Service
+        </p>
+        <h2 className="section-title fw-600 mb-6x mx-auto text-center">How it Works?</h2>
         <div className="flex flex-wrap gap-8 justify-center">
           <div className="card flex-1 rounded-small transition pt-8x pb-6x pl-5x pr-5x">
             <div className="head flex items-center mb-2x">

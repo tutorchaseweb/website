@@ -10,8 +10,13 @@
     }
     .content {
       max-width: 30rem;
+      opacity: 0.85;
       @media (min-width: $lg) {
         font-size: 20px;
+        opacity: 1;
+      }
+      a {
+        text-decoration: underline;
       }
     }
     .btn {
