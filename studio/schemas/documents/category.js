@@ -5,13 +5,16 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
       type: 'string',
+      title: 'Title',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The title is required').required(),
     },
     {
       name: 'description',
-      title: 'Description',
       type: 'text',
+      title: 'Description',
+      description: '(optional field)',
     },
   ],
 }

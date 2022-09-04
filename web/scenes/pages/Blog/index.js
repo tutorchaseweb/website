@@ -20,7 +20,7 @@ export const BlogPage = ({ page, start }) => {
 
   useEffect(() => {
     const QUERY = groq`
-      *[_type == 'post' && !(_id in path("drafts.**"))] {
+      *[_type == 'post' && !(_id in path("drafts.**")) && (dateTime(publishedAt) < dateTime(now()) - 60*60*24*7)] {
         _id,
       }
     `
@@ -53,6 +53,8 @@ export const BlogPage = ({ page, start }) => {
           <div className="wrapper grid grid-columns-3 gap-8">
             {Boolean(currentPosts.length) &&
               currentPosts.map((post) => {
+                console.log(new Date())
+                console.log(post.publishedAt)
                 return <BlogCard key={post._id} article={post} />
               })}
           </div>

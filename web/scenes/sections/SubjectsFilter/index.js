@@ -17,6 +17,30 @@ export const SubjectsFilter = () => {
       },
       _type == 'subject' && !(_id in path("drafts.**")) => {
         ...,
+        levels[]->,
+        tutors[] {
+          rating,
+          tutor-> {
+            _id,
+            _rev,
+            _type,
+            _createdAt,
+            _updatedAt,
+            slug,
+            image,
+            name,
+            description,
+            education,
+            position,
+            elected,
+            'teaches': *[_type == 'subject' && references(^._id)] {
+              _id,
+              _createdAt,
+              title,
+              slug,
+            },
+          }
+        }
       },
     }
   `
@@ -29,9 +53,14 @@ export const SubjectsFilter = () => {
     })
   }, [])
 
-  const filterHandler = (e) => {
+  const filterHandler = async (e) => {
     if (e.target.ariaLabel === 'levels') {
       const currentLevel = levelsList.filter((item) => item._id === e.target.value)[0]
+      const allSubjects = await client.fetch(`*[_type == 'subject' && !(_id in path("drafts.**"))]`)
+      const currentSubjects = allSubjects.filter((subject) =>
+        Boolean(subject.levels.filter((level) => level._ref === currentLevel._id).length)
+      )
+      setSubjectsList(e.target.value !== 'all-levels' ? currentSubjects : allSubjects)
       setLevelQuery(e.target.value !== 'all-levels' ? currentLevel : null)
       let path = ''
       if (currentLevel && subjectQuery) {
@@ -51,6 +80,11 @@ export const SubjectsFilter = () => {
 
     if (e.target.ariaLabel === 'subjects') {
       const currentSubject = subjectsList.filter((item) => item._id === e.target.value)[0]
+      setLevelsList(
+        e.target.value !== 'all-subjects'
+          ? currentSubject.levels
+          : await client.fetch(`*[_type == 'level' && !(_id in path("drafts.**"))]`)
+      )
       setSubjectQuery(e.target.value !== 'all-subjects' ? currentSubject : null)
       let path = ''
       if (currentSubject && levelQuery) {
