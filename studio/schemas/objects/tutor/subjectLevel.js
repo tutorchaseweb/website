@@ -5,16 +5,18 @@ export default {
   fields: [
     {
       name: 'subject',
-      title: 'Subject',
       type: 'reference',
       to: { type: 'subject' },
+      title: 'Subject',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The subject is required').required(),
     },
     {
       name: 'rating',
-      title: 'Rating',
-      description: 'Set rating for this subject (from 1 to 100)',
       type: 'number',
       initialValue: 1,
+      title: 'Rating',
+      description: 'Set rating for this subject (from 1 to 100)',
       validation: (Rule) => Rule.required().error('Enter a number from 1 to 100').min(1).max(100),
     },
   ],

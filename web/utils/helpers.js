@@ -34,14 +34,14 @@ export const myPortableTextComponents = {
     image: ({ value }) => (
       <img
         src={`${getImageUrl(value.asset._ref)}`}
-        alt=""
+        alt={value.alt ? value.alt : 'image'}
         className="overflow-hidden rounded-small mt-2x mb-2x"
       />
     ),
     floatImage: ({ value }) => (
       <img
         src={`${getImageUrl(value.asset._ref)}`}
-        alt=""
+        alt={value.alt ? value.alt : 'image'}
         className={`image overflow-hidden rounded-small mt-2x mb-2x ${
           value.floatRight ? 'float-right ml-3x' : 'float-left mr-3x'
         }`}
@@ -143,8 +143,12 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
     query = `
       *[_type == 'tutor' && !(_id in path("drafts.**")) && references($level) && references($subject)] {
         ...,
-        levels[]->,
-        teaches[]->,
+        'teaches': *[_type == 'subject' && references(^._id)] {
+          _id,
+          _createdAt,
+          title,
+          slug,
+        },
         universities[]->
       }
     `
@@ -152,8 +156,12 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
     query = `
       *[_type == 'tutor' && !(_id in path("drafts.**")) && references($level)] {
         ...,
-        levels[]->,
-        teaches[]->,
+        'teaches': *[_type == 'subject' && references(^._id)] {
+          _id,
+          _createdAt,
+          title,
+          slug,
+        },
         universities[]->
       }
     `
@@ -161,16 +169,24 @@ export const getQueryForTutors = (levelQuery, subjectQuery) => {
     query = `
       *[_type == 'tutor' && !(_id in path("drafts.**")) && references($subject)] {
         ...,
-        levels[]->,
-        teaches[]->,
+        'teaches': *[_type == 'subject' && references(^._id)] {
+          _id,
+          _createdAt,
+          title,
+          slug,
+        },
         universities[]->
       }
     `
   } else {
     query = `*[_type == 'tutor' && !(_id in path("drafts.**"))] {
       ...,
-      levels[]->,
-      teaches[]->,
+      'teaches': *[_type == 'subject' && references(^._id)] {
+        _id,
+        _createdAt,
+        title,
+        slug,
+      },
       universities[]->
     }`
   }
@@ -183,11 +199,12 @@ export const getQueryForBlog = (order, start, length) => {
 
   if (Boolean(order) && typeof start === 'number' && typeof length === 'number') {
     query = `
-    *[_type == 'post' && !(_id in path("drafts.**"))] | order(${order})[${start}...${
+    *[_type == 'post' && !(_id in path("drafts.**")) && (dateTime(publishedAt) < dateTime(now()) - 60*60*24*7)] | order(${order})[${start}...${
       start + length
     }] {
       _id,
       _createdAt,
+      publishedAt,
       slug,
       mainImage,
       title,
@@ -197,9 +214,12 @@ export const getQueryForBlog = (order, start, length) => {
     }`
   } else if (!Boolean(order) && typeof start === 'number' && typeof length === 'number') {
     query = `
-    *[_type == 'post' && !(_id in path("drafts.**"))] [${start}...${start + length}] {
+    *[_type == 'post' && !(_id in path("drafts.**")) && (dateTime(publishedAt) < dateTime(now()) - 60*60*24*7)] [${start}...${
+      start + length
+    }] {
       _id,
       _createdAt,
+      publishedAt,
       slug,
       mainImage,
       title,
@@ -208,9 +228,10 @@ export const getQueryForBlog = (order, start, length) => {
       reading,
     }`
   } else {
-    query = `*[_type == 'post' && !(_id in path("drafts.**"))] {
+    query = `*[_type == 'post' && !(_id in path("drafts.**")) && (dateTime(publishedAt) < dateTime(now()) - 60*60*24*7)] {
       _id,
       _createdAt,
+      publishedAt,
       slug,
       mainImage,
       title,

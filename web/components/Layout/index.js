@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import { getImageUrl } from '~/utils/helpers'
 import { Header, Footer } from '~/scenes/sections'
 import { Loader } from '~/components/Loader'
+import { OpenGraphTags } from '~/components/OGtags'
+// import { TwitterTags } from '~/components/TwitterTags'
 
 export const ConfigContext = React.createContext({})
 
@@ -37,17 +39,22 @@ export const Layout = ({ children }) => {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
         <meta charSet="utf-8" />
-        <title>{siteConfig.title}</title>
-        <meta name="description" content={siteConfig.description} />
-        <meta property="og:title" content={siteConfig.title} key="title" />
-        <meta property="og:description" content={siteConfig.description} key="description" />
-        <meta
-          property="og:image"
-          content={`${getImageUrl(siteConfig.logo.asset._ref)}`}
-          key="image"
+        <title>{siteConfig.title ? siteConfig.title : 'TutorChase'}</title>
+        <OpenGraphTags
+          ogTitle={siteConfig.title}
+          description={siteConfig.description}
+          ogImage={`${getImageUrl(siteConfig.logo.asset._ref)}`}
+          ogUrl={siteConfig.url}
+          siteName={siteConfig.title}
         />
-        <meta property="og:site_name" content={siteConfig.title} />
-        <meta property="og:url" content={siteConfig.url} key="url" />
+        {/*
+        <TwitterTags
+          ogTitle={siteConfig.title}
+          description={siteConfig.description}
+          ogImage={`${getImageUrl(siteConfig.logo.asset._ref)}`}
+          author={'@author'}
+        />
+        */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />

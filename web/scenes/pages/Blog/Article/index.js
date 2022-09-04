@@ -49,7 +49,7 @@ export const ArticlePage = ({ article }) => {
             >
               <Image
                 src={`${getImageUrl(article.mainImage?.asset?._ref)}`}
-                alt={article.mainImage?.alt}
+                alt={article.mainImage?.alt ? article.mainImage?.alt : article.title}
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
