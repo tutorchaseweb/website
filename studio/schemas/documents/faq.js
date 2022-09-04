@@ -12,8 +12,10 @@ export default {
     {
       name: 'questions',
       type: 'array',
-      title: 'Questions/answers',
       of: [{ type: 'faqGroup' }],
+      title: 'Questions/answers',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The field is required').required(),
     },
   ],
 }

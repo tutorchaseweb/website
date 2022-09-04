@@ -5,27 +5,22 @@ export default {
   description: 'Student reviews about teachers',
   fields: [
     {
-      name: 'author',
-      type: 'string',
-      title: 'Author',
-      description: 'Review author',
-    },
-    {
-      name: 'position',
-      type: 'string',
-      title: 'Position',
-      description: 'Author position (student, parent of student, etc...)',
-    },
-    {
-      name: 'content',
-      type: 'text',
-      title: 'Content (review)',
+      name: 'reviewBlock',
+      type: 'reviewBlock',
+      title: 'Review fields',
     },
     {
       name: 'tutor',
-      title: 'Tutor',
       type: 'reference',
       to: { type: 'tutor' },
+      title: 'Tutor',
+      description: 'Select the teacher to whom this review applies (optional field)',
     },
   ],
+  preview: {
+    select: {
+      title: 'reviewBlock.author',
+      subtitle: 'reviewBlock.position',
+    },
+  },
 }

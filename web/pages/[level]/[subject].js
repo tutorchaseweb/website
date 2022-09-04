@@ -27,7 +27,13 @@ export const Subject = ({ level, subject }) => {
   const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
   useEffect(() => {
     client.fetch(query, params).then((data) => {
-      setTutors(data)
+      setTutors(
+        subject
+          ? subject.tutors
+              .sort((first, second) => second.rating - first.rating)
+              .map((item) => item.tutor)
+          : data
+      )
     })
   }, [level, subject])
 
@@ -62,6 +68,30 @@ export async function getServerSideProps(context) {
       },
       _type == 'subject' && slug.current == $subject => {
         ...,
+        levels[]->,
+        tutors[] {
+          rating,
+          tutor-> {
+            _id,
+            _rev,
+            _type,
+            _createdAt,
+            _updatedAt,
+            slug,
+            image,
+            name,
+            description,
+            education,
+            position,
+            elected,
+            'teaches': *[_type == 'subject' && references(^._id)] {
+              _id,
+              _createdAt,
+              title,
+              slug,
+            },
+          }
+        }
       }
     }
   `,

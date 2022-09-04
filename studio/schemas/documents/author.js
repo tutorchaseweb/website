@@ -5,38 +5,45 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
       type: 'string',
+      title: 'Name',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The name is required').required(),
     },
     {
       name: 'slug',
-      title: 'Slug',
       type: 'slug',
+      title: 'Slug',
+      description: '(required field)',
       options: {
         source: 'name',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.error('The slug is required').required(),
     },
     {
       name: 'image',
-      title: 'Image',
       type: 'image',
+      title: 'Image',
+      description: '(required field)',
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.error('The image is required').required(),
     },
     {
       name: 'bio',
-      title: 'Bio',
       type: 'array',
       of: [
         {
           title: 'Block',
           type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
+          styles: [{ title: 'Normal', value: 'normal' }],
           lists: [],
         },
       ],
+      title: 'Bio',
+      description: '(optional field)',
     },
   ],
   preview: {
