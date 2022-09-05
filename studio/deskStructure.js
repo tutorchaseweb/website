@@ -28,6 +28,7 @@ const hiddenDocTypes = (listItem) =>
     'access-page',
     'home-page',
     'oxbridge-page',
+    'subject-page',
     'partnerships-page',
     'tutors-page',
     'us-admissions-page',
@@ -139,6 +140,11 @@ export default () =>
                 .icon(BsBook)
                 .schemaType('custom-page')
                 .child(S.documentTypeList('custom-page').title('Custom page')),
+              S.listItem()
+                .title('Subject pages')
+                .icon(BsBook)
+                .schemaType('subject-page')
+                .child(S.documentTypeList('subject-page').title('Subject page')),
             ])
         ),
       S.listItem()

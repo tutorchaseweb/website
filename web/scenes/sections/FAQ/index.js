@@ -9,7 +9,7 @@ const FaqItem = ({ item }) => {
   const [active, setActive] = useState(false)
 
   return (
-    <div className="item">
+    <div className="item" key={item._id}>
       <div
         className={`question pointer ${active ? 'active' : ''}`}
         onClick={() => setActive(!active)}
@@ -34,7 +34,6 @@ export const FAQ = ({ className = '' }) => {
     setFaq(await client.fetch(query))
   }, [])
 
-  useEffect(() => console.log(faq), [faq])
   return (
     <section
       className={`faq-block pt-10x pt-18x_lg pb-2x pb-10x_lg ${styles.faqBlock} ${className}`}
