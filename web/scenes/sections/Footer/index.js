@@ -45,7 +45,7 @@ const MenuItem = ({ item, index }) => {
   }
 
   return (
-    <li className={index === 0 ? '' : 'mt-2x'}>
+    <li key={item._id} className={index === 0 ? '' : 'mt-2x'}>
       <ILink link={link} />
     </li>
   )
@@ -68,7 +68,10 @@ export const Footer = ({ pages = [] }) => {
         } = config
 
         return (
-          <footer className={`footer pt-6x pb-6x pt-9x_lg pb-9x_lg bg-lightGray ${styles.footer}`}>
+          <footer
+            key={'footer'}
+            className={`footer pt-6x pb-6x pt-9x_lg pb-9x_lg bg-lightGray ${styles.footer}`}
+          >
             <div className="container">
               <div className="link-group-wrapper flex justify-between gap-8">
                 <div className="link-group flex flex-col fz-14p">

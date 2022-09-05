@@ -9,6 +9,7 @@ import termAndConditions from './documents/pages/termsConditionsPage'
 import privacyPolicy from './documents/pages/privacyPolicyPage'
 import safeguardingPolicy from './documents/pages/safeguardingPolicyPage'
 import customPage from './documents/pages/customPage'
+import subjectPage from './documents/pages/subjectPage'
 import post from './documents/post'
 import author from './documents/author'
 import category from './documents/category'
@@ -34,6 +35,7 @@ export default [
   privacyPolicy,
   safeguardingPolicy,
   customPage,
+  subjectPage,
   post,
   author,
   category,
