@@ -1,18 +1,23 @@
 export default {
-  name: 'access-page',
+  name: 'applications-page',
   type: 'document',
-  title: 'Access Programme page',
+  title: 'Tutor applications page',
   fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
   fields: [
     {
-      name: 'firstScreen',
-      type: 'pageHead',
-      title: 'First section on access page',
+      name: 'title',
+      type: 'simpleContent',
+      title: 'Page title',
+      description: 'Title on first screen.',
+      validation: (Rule) => Rule.error('The title is required').required(),
     },
     {
-      name: 'secondScreen',
-      type: 'sectionHead',
-      title: 'Head of second section',
+      name: 'descriptionList',
+      type: 'array',
+      of: [{ type: 'string' }],
+      title: 'Description list',
+      description: 'Description on first screen (optional field)',
+      validation: (Rule) => Rule.error('The description (list) is required').required(),
     },
     {
       name: 'secondScreenPartOne',
@@ -28,16 +33,6 @@ export default {
       name: 'secondScreenPartThree',
       type: 'partOfSection',
       title: 'Second section (part 3)',
-    },
-    {
-      name: 'blueCard',
-      type: 'blueCard',
-      title: 'Blue card on access page',
-    },
-    {
-      name: 'lastScreen',
-      type: 'partOfSection',
-      title: 'Last section',
     },
     {
       name: 'seoTitle',
