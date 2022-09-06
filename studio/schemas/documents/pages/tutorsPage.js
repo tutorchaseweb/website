@@ -2,10 +2,7 @@ export default {
   name: 'tutors-page',
   type: 'document',
   title: 'Tutors page',
-  fieldsets: [
-    { name: 'seo', title: 'Fields for SEO' },
-    { name: 'faq', title: 'Fields for FAQ' },
-  ],
+  fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
   fields: [
     {
       name: 'firstScreen',
@@ -18,9 +15,9 @@ export default {
       title: 'Filter description and price per hour',
     },
     {
-      name: 'firstSectionHead',
+      name: 'tutorsSection',
       type: 'sectionHead',
-      title: 'First section head',
+      title: 'Tutors list section head',
     },
     {
       name: 'blueCard',
@@ -38,24 +35,9 @@ export default {
       title: 'Review block (one review)',
     },
     {
-      name: 'servicesBlock',
-      type: 'servicesBlock',
-      title: 'Our services block',
-    },
-    {
-      name: 'faqSectionHead',
-      type: 'sectionHead',
-      fieldset: 'faq',
-      title: 'FAQ section head',
-    },
-    {
-      name: 'faqQuestions',
-      type: 'array',
-      of: [{ type: 'faqGroup' }],
-      fieldset: 'faq',
-      title: 'Questions/answers',
-      description: '(required field)',
-      validation: (Rule) => Rule.error('The field is required').required(),
+      name: 'faqSection',
+      type: 'faqSection',
+      title: 'FAQ',
     },
     {
       name: 'seoTitle',
