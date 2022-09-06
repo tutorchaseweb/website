@@ -23,6 +23,15 @@ export const Subject = ({ level, subject }) => {
     }
   }, [])
 
+  useEffect(async () => {
+    const query = groq`
+      *[_type == 'subject-page' && slug.current == $slug]
+    `
+    const params = { slug: `${level.slug.current}_${subject.slug.current}` }
+    const data = await client.fetch(query, params)
+    console.log(data)
+  }, [])
+
   const query = getQueryForTutors(levelQuery, subjectQuery)
   const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
   useEffect(() => {

@@ -37,7 +37,10 @@ export const Header = () => {
         } = config
 
         return (
-          <header className={`w-full ${styles.header} ${activeMenu ? 'fixed' : 'absolute'}`}>
+          <header
+            key={'header'}
+            className={`w-full ${styles.header} ${activeMenu ? 'fixed' : 'absolute'}`}
+          >
             <div className="container wide">
               <div className="wrapper pt-3x pb-3x flex justify-between items-center gap-8">
                 <Link href="/">

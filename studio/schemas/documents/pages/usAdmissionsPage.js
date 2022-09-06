@@ -1,33 +1,18 @@
 export default {
-  name: 'access-page',
+  name: 'admissions-page',
   type: 'document',
-  title: 'Access Programme page',
+  title: 'US Admissions page',
   fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
   fields: [
     {
       name: 'firstScreen',
-      type: 'pageHead',
-      title: 'First section on access page',
+      type: 'pageHeadImage',
+      title: 'First section on oxbridge page',
     },
     {
-      name: 'secondScreen',
-      type: 'sectionHead',
-      title: 'Head of second section',
-    },
-    {
-      name: 'secondScreenPartOne',
-      type: 'partOfSection',
-      title: 'Second section (part 1)',
-    },
-    {
-      name: 'secondScreenPartTwo',
-      type: 'partOfSection',
-      title: 'Second section (part 2)',
-    },
-    {
-      name: 'secondScreenPartThree',
-      type: 'partOfSection',
-      title: 'Second section (part 3)',
+      name: 'filterDescription',
+      type: 'filterDescription',
+      title: 'Filter description and price per hour',
     },
     {
       name: 'blueCard',
@@ -35,9 +20,9 @@ export default {
       title: 'Blue card on access page',
     },
     {
-      name: 'lastScreen',
-      type: 'partOfSection',
-      title: 'Last section',
+      name: 'reviewBlock',
+      type: 'reviewBlock',
+      title: 'Review block (one review)',
     },
     {
       name: 'seoTitle',

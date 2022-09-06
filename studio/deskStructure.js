@@ -28,10 +28,13 @@ const hiddenDocTypes = (listItem) =>
     'access-page',
     'home-page',
     'oxbridge-page',
+    'subject-page',
     'partnerships-page',
     'tutors-page',
     'us-admissions-page',
     'blog-page',
+    'reviews-page',
+    'applications-page',
     'category',
     'author',
     'post',
@@ -115,9 +118,19 @@ export default () =>
                   S.document().schemaType('partnerships-page').documentId('partnerships-page')
                 ),
               S.listItem()
+                .title('Tutor applications page')
+                .icon(BsBook)
+                .child(
+                  S.document().schemaType('applications-page').documentId('applications-page')
+                ),
+              S.listItem()
                 .title('Blog page')
                 .icon(IoNewspaperOutline)
                 .child(S.document().schemaType('blog-page').documentId('blog-page')),
+              S.listItem()
+                .title('Reviews page')
+                .icon(BsStarHalf)
+                .child(S.document().schemaType('reviews-page').documentId('reviews-page')),
               S.listItem()
                 .title('Terms and conditions')
                 .icon(MdOutlinePolicy)
@@ -139,21 +152,26 @@ export default () =>
                 .icon(BsBook)
                 .schemaType('custom-page')
                 .child(S.documentTypeList('custom-page').title('Custom page')),
-            ])
-        ),
-      S.listItem()
-        .title('Sections')
-        .icon(BiCodeBlock)
-        .child(
-          S.list()
-            .title('Site sections')
-            .items([
               S.listItem()
-                .title('FAQ section')
-                .icon(FaQuestionCircle)
-                .child(S.document().schemaType('faq').documentId('faq')),
+                .title('Subject pages')
+                .icon(BsBook)
+                .schemaType('subject-page')
+                .child(S.documentTypeList('subject-page').title('Subject page')),
             ])
         ),
+      // S.listItem()
+      //   .title('Sections')
+      //   .icon(BiCodeBlock)
+      //   .child(
+      //     S.list()
+      //       .title('Site sections')
+      //       .items([
+      //         S.listItem()
+      //           .title('FAQ section')
+      //           .icon(FaQuestionCircle)
+      //           .child(S.document().schemaType('faq').documentId('faq')),
+      //       ])
+      //   ),
       S.listItem()
         .title('Subjects')
         .icon(BsJournalBookmark)
