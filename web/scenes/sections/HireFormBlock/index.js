@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import SVG from '~/components/SVG'
 import { handleMutations, log } from '~/utils/helpers'
@@ -11,7 +11,7 @@ import {
 import { Circle } from '~/components/Circle'
 import { Input, Select, Textarea } from '~/components/Form'
 import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/utils/svgImages'
-import { Color } from '~/utils/constants'
+import { Color, GEO_API_URL, GEO_API_KEY } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
 import styles from './style.module.scss'
@@ -104,6 +104,23 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     ]
     return handleMutations(mutations)
   }
+
+  useEffect(() => {
+    const apiKey = process.env.NEXT_PUBLIC_GEOLOCATION_API_KEY || GEO_API_KEY
+    fetch(`${GEO_API_URL}/ipgeo?apiKey=${apiKey}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.calling_code) {
+          setPhone(data.calling_code)
+        }
+        const currentCountry = countries.find(
+          (country) => country.title === data.country_name || country.value === data.country_code2
+        )
+        if (currentCountry) {
+          setCountry(currentCountry)
+        }
+      })
+  }, [])
 
   return (
     <section id="hireFormBlock" className={`block ${className}`}>
