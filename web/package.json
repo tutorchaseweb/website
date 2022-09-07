@@ -4,33 +4,37 @@
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Pasha Zubak <pashazubak@gmail.com>",
+  "author": "Halo Lab <mail@halo-lab.com>",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "build-export": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.4",
-    "@sanity/block-content-to-react": "^3.0.0",
+    "@portabletext/react": "^1.0.6",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^0.140.22",
+    "@sanity/ui": "^0.37.12",
     "graphql": "^16.5.0",
+    "libphonenumber-js": "^1.10.8",
+    "lodash.debounce": "^4.0.8",
     "next": "12.1.6",
     "next-sanity": "^0.5.2",
     "next-sanity-image": "^3.2.1",
+    "next-sitemap": "^3.1.21",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-dropzone": "^14.2.2",
+    "react-gtm-module": "^2.0.11",
     "sass": "^1.51.0",
-    "swiper": "^8.1.5"
+    "styled-components": "^5.3.5",
+    "swiper": "^8.2.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
     "eslint": "^8.15.0",
-    "postcss": "^8.4.5",
-    "prettier": "^2.6.2",
-    "tailwindcss": "^3.0.24"
+    "prettier": "^2.6.2"
   }
 }

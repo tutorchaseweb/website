@@ -1,0 +1,91 @@
+@import 'styles/variables';
+
+@mixin animate($animation,$duration,$method,$times, $delay) {
+  animation: $animation $duration $method $times $delay;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(rotate){
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+.service {
+  :global {
+    .card {
+      background-color: #F8F9FE;
+      box-shadow: 0 0 15px -10px rgba(215, 229, 255, 1);
+      flex-basis: auto;
+      @media (min-width: $sm) {
+        max-width: calc(50% - 1rem);
+      }
+      @media (min-width: $xl) {
+        flex-basis: 0;
+        max-width: initial;
+        text-align: center;
+      }
+      .head {
+        @media (min-width: $lg) {
+          flex-direction: column;
+        }
+      }
+      .title {
+        font-size: 18px;
+        @media (min-width: $lg) {
+          font-size: 20px;
+        }
+      }
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 15px -5px rgba(215, 229, 255, 1);
+      }
+      .circle {
+        width: 2.5rem;
+        margin-right: 22px;
+        @media (min-width: $lg) {
+          width: 4.5rem;
+          margin: 0 auto 2rem auto;
+        }
+      }
+    }
+  }
+}
+
+.point {
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    bottom: -0.5rem;
+    left: -0.5rem;
+    border: 1px solid $color-blue;
+    border-radius: 50%;
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $color-blue;
+    top: -12px;
+    left: calc(50% - 5px)
+  }
+}
+.point1 {
+  @include animate(rotate, 4s, ease-in-out, infinite, 0s);
+}
+.point2 {
+  @include animate(rotate, 4.5s, ease-in-out, infinite, 1s);
+}
+.point3 {
+  @include animate(rotate, 3.5s, ease-in-out, infinite, 2s);
+}

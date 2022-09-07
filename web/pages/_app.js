@@ -1,15 +1,16 @@
-import { ApolloProvider } from '@apollo/client'
-import apolloClient from '~/utils/apollo-client'
+import { useEffect } from 'react'
+import TagManager from 'react-gtm-module'
 
 import 'swiper/scss'
+import 'swiper/css/bundle'
 import '../styles/index.scss'
 
 const MyApp = ({ Component, pageProps }) => {
-  return (
-    <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-    </ApolloProvider>
-  )
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-5B7PST8' })
+  }, [])
+
+  return <Component {...pageProps} />
 }
 
 export default MyApp

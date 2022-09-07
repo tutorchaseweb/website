@@ -1,0 +1,44 @@
+{
+  "contacts": {
+    "email": "info@tutorchase.com",
+    "primaryPhone": "+1 (888) 2763561",
+    "secondaryPhone": "+44(0)1865306636",
+    "facebookLink": "https://www.facebook.com/",
+    "twitterLink": "https://twitter.com/",
+    "linkedInLink": "https://linkedin.com/"
+  },
+  "menu": {
+    "OnlineTutoring": "Online Tutoring",
+    "USAdmissions": "US Admissions",
+    "AboutUs": "About Us",
+    "Reviews": "Reviews",
+    "PrivacyPolicy": "Privacy Policy",
+    "TermsAndConditions": "Terms and Conditions",
+    "Safeguarding": "Safeguarding",
+    "Referrals": "Referrals",
+    "OurTutors": "Our tutors",
+    "Company": "Company",
+    "Blog": "Blog",
+    "HowItWorks": "How it works",
+    "TutorApplications": "Tutor Applications",
+    "AccessProgramme": "Access Programme",
+    "BusinessPartnerships": "Business Partnerships",
+    "GCSE": "GCSE",
+    "ALevel": "A-Level",
+    "IB": "IB",
+    "AP": "AP",
+    "AdmissionsTests": "Admissions Tests",
+    "Oxbridge": "Oxbridge",
+    "University": "University"
+  },
+  "form": {
+    "btnNextStep": "Next Step",
+    "btnBackToForm": "Back to Form",
+    "btnHireTutor": "Hire a tutor"
+  },
+  "static": {
+    "CompanyInformation": "Company Information",
+    "CoursesInformation": "Courses Information",
+    "WeAreHereToHelp": "We’re Here to Help"
+  }
+}

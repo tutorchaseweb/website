@@ -1,0 +1,60 @@
+export default {
+  name: 'studyCards',
+  type: 'object',
+  title: 'First Screen',
+  fields: [
+    {
+      name: 'firstTitle',
+      type: 'string',
+      title: 'Title for first card',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'firstDescription',
+      type: 'text',
+      title: 'Description for first card',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The description is required').required(),
+    },
+    {
+      name: 'secondTitle',
+      type: 'string',
+      title: 'Title for second card',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'secondDescription',
+      type: 'text',
+      title: 'Description for second card',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The description is required').required(),
+    },
+    {
+      name: 'thirdTitle',
+      type: 'string',
+      title: 'Title for third card',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'thirdDescription',
+      type: 'text',
+      title: 'Description for third card',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The description is required').required(),
+    },
+    {
+      name: 'thirdCardTags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      title: 'Third card tags',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The tags is required').required(),
+      options: {
+        layout: 'tags',
+      },
+    },
+  ],
+}

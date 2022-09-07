@@ -1,0 +1,50 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: #FFF1EC url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .image-wrapper {
+
+    }
+    .left-card {
+      display: none;
+      @media (min-width: $lg) {
+        display: flex;
+        max-width: 15.25rem;
+        align-items: flex-end;
+        left: -5rem;
+        bottom: 8rem;
+        z-index: 1;
+      }
+    }
+    .right-card {
+      right: 1rem;
+      top: 1rem;
+      @media (min-width: $lg) {
+        top: 10rem;
+        right: -2rem;
+      }
+    }
+  }
+}
+
+.content {
+  :global {
+    .video-block {
+      //.text {
+      //  border-radius: 16px 16px 0 0;
+      //  @media (min-width: $lg) {
+      //    border-radius: 16px 0 0 16px;
+      //  }
+      //}
+      //.video {
+      //  border-radius: 0 0 16px 16px;
+      //  @media (min-width: $lg) {
+      //    border-radius: 0 16px 16px 0;
+      //  }
+      //}
+    }
+  }
+}
+

@@ -1,0 +1,39 @@
+@import 'styles/variables';
+
+.reviews {
+  z-index: 1;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 120px;
+    left: 0;
+    background: url('/images/bg-gradient-small.jpg') no-repeat center/cover;
+  }
+
+  :global {
+    .pseudo {
+      @media (min-width: $lg) {
+        font-size: 22px;
+      }
+    }
+    .card {
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.03);
+    }
+    .content {
+      max-width: 54rem;
+    }
+    .author {
+      display: block;
+      @media (min-width: $lg) {
+        display: inline-block;
+        padding-right: 1rem;
+        margin-right: 1rem;
+        border-right: 1px solid #000000AA;
+      }
+    }
+  }
+}

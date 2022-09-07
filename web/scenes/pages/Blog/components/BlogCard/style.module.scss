@@ -1,0 +1,47 @@
+@import '../../../../../styles/variables';
+
+.blogArticle {
+  background-color: #F9FAFB;
+  &:hover {
+    :global {
+      .circle {
+        background-color: $color-blue !important;
+      }
+      .svg-wrap svg path {
+        fill: $color-white !important;
+      }
+    }
+  }
+
+  :global {
+    .image-wrap {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+    }
+    .circle, svg path {
+      transition: all 0.2s linear;
+    }
+    .featured {
+      padding: 0.25rem 0.5rem;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1;
+    }
+    .description {
+      max-height: 3rem;
+      overflow: hidden;
+    }
+  }
+
+  //@media (min-width: $lg) {
+  //  max-width: 50%;
+  //}
+  //@media (min-width: $xl) {
+  //  max-width: 33%;
+  //}
+}

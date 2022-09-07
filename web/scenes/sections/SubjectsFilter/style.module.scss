@@ -1,0 +1,47 @@
+@import 'styles/variables';
+
+.filter {
+  :global {
+    .wrapper {
+      gap: 1.5rem;
+      .text {
+        display: inline-block;
+        margin-right: 0.5rem;
+        @media (min-width: $sm) {
+          padding-right: 0.5rem;
+          border-right: 1px solid;
+        }
+      }
+    }
+    .form {
+      @media (min-width: $sm) {
+        flex-wrap: nowrap;
+      }
+      .label {
+        width: 100%;
+      }
+    }
+    select {
+      padding: 15px;
+      min-width: 14rem;
+      background-color: #FFFFFF;
+      border: 1px solid #EEEFF7;
+      border-radius: 4px;
+      width: 100%;
+    }
+    input, select, textarea {
+      font: inherit;
+      line-height: 2;
+      padding: 0.5rem;
+      min-height: 46px;
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+    .label-blue {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
+  padding-bottom: 15rem;
+}
+
+.cardsWrap {
+  margin-top: -10rem;
+  z-index: 2;
+
+  :global {
+    .wrapper {
+      grid-template-columns: repeat(1, 1fr);
+      @media (min-width: $sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (min-width: $xl) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pagination {
+      .pagination-item {
+        &:hover {
+          .circle {
+            background-color: $color-blue !important;
+          }
+          .svg-wrap svg path {
+            stroke: $color-white !important;
+          }
+        }
+      }
+    }
+  }
+}

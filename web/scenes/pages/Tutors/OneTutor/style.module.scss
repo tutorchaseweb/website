@@ -1,0 +1,185 @@
+@import 'styles/variables';
+
+.section {
+  z-index: 1;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 50%;
+    aspect-ratio: 4/3;
+    background: rgba(176, 190, 255, 0.4);
+    filter: blur(300px);
+    position: absolute;
+    left: 0;
+    top: 40%;
+    z-index: -2;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 50%;
+    aspect-ratio: 4/3;
+    background: rgba(225, 220, 207, 0.8);
+    filter: blur(200px);
+    position: absolute;
+    right: 0;
+    top: 40%;
+    z-index: -1;
+  }
+}
+
+.mainInfo {
+  padding: 1.5rem;
+  flex-direction: column;
+  @media (min-width: $lg) {
+    padding: 3.5rem 4rem 4rem;
+    flex-direction: row;
+  }
+
+  :global {
+    .avatar {
+      width: 100%;
+      max-width: 16rem;
+      aspect-ratio: 1/1;
+    }
+    .content {
+      padding-top: 1rem;
+      @media (min-width: $lg) {
+        padding-top: 0;
+        padding-left: 48px;
+      }
+      .wrap {
+        flex-direction: column;
+        @media (min-width: $lg) {
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+      .name {
+        font-size: 20px;
+        @media (min-width: $lg) {
+          font-size: 36px;
+        }
+      }
+    }
+    .teach {
+      display: inline-block;
+      line-height: 1.2;
+      background-color: #F4F5FA;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+    }
+    .studyHat {
+      display: none !important;
+      @media (min-width: $lg) {
+        display: inline-block !important;
+      }
+    }
+  }
+}
+
+.vettedTutor {
+  background-color: #EDF0FF;
+
+  :global {
+    .medium-title {
+      span {
+        text-decoration: underline;
+        //font-weight: 800;
+      }
+    }
+    strong {
+      color: inherit;
+    }
+  }
+}
+
+.experience {
+  background: #FFF1EC url('/images/illustration.png') no-repeat bottom center/contain;
+  @media (min-width: $lg) {
+    background-position: right center;
+  }
+
+  :global {
+    .activity {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+.reviews {
+  :global {
+    .content {
+      @media (min-width: $lg) {
+        font-size: 18px;
+      }
+    }
+    .stars {
+      width: 100%;
+      @media (min-width: $lg) {
+        width: initial;
+      }
+    }
+    .reviewsLink {
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid $color-blue;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.findTutor {
+  flex-wrap: wrap;
+
+  :global {
+    .avatar {
+      max-width: 40%;
+      aspect-ratio: 3/4;
+      @media (min-width: $lg) {
+        max-width: 13rem;
+      }
+    }
+    .card {
+      background-image: url('/images/graph.png');
+      background-repeat: no-repeat;
+      background-position-y: center;
+      background-position-x: right;
+      background-size: 55%;
+      width: 100%;
+      max-width: 38rem;
+      @media (min-width: $lg) {
+        background-position-x: calc(100% - 3rem);
+      }
+    }
+    .text {
+      width: 100%;
+      max-width: 20.5rem;
+      text-align: center;
+      @media (min-width: $lg) {
+        text-align: left;
+      }
+    }
+    .flexible {
+      top: -2rem;
+      right: 1rem;
+      max-width: 12rem;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+      @media (min-width: $lg) {
+        right: 2rem;
+        max-width: 13rem;
+      }
+    }
+    .controlPanel {
+      display: none;
+      right: 2rem;
+      bottom: 2rem;
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+  }
+}

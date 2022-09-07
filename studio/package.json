@@ -4,16 +4,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Pasha Zubak <pashazubak@gmail.com>",
+  "author": "Halo Lab <mail@halo-lab.com>",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity start",
     "build": "sanity build",
-    "graphql-deploy": "sanity graphql deploy --playground"
+    "graphql-deploy": "sanity graphql deploy --playground",
+    "graphql-deploy-all": "sanity graphql deploy --dataset develop --playground && sanity graphql deploy --dataset production --playground"
   },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
     "@sanity/base": "^2.29.8",
     "@sanity/cli": "^2.29.8",

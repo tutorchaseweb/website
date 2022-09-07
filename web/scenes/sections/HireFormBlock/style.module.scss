@@ -1,0 +1,104 @@
+@import 'styles/variables';
+
+.card {
+  background: url('/images/bg-form.jpg') no-repeat center/cover;
+  transform: translate(0, 5.5rem);
+  margin-left: -1rem;
+  margin-right: -1rem;
+  @media (min-width: $lg) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global {
+    .description {
+      font-size: 20px;
+      @media (min-width: $lg) {
+        font-size: 22px;
+      }
+    }
+    .form {
+      max-width: 34rem;
+      min-height: 26rem;
+      color: $default-text-color;
+      label {
+        flex-basis: 100%;
+        @media (min-width: $sm) {
+          flex-basis: 0;
+        }
+      }
+      select {
+        padding: 15px;
+      }
+      #country:invalid {
+        //border-color: #F57C40;
+      }
+      input, select, textarea {
+        font: inherit;
+        line-height: 2;
+        padding: 0.5rem;
+        min-height: 46px;
+        &::placeholder {
+          font-size: 14px;
+        }
+      }
+      textarea {
+        height: 72px;
+        resize: none;
+      }
+      input:focus, select:focus {
+        outline-width: 1px;
+        outline-color: $color-blue;
+      }
+      input[type="radio"] {
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+      input[type="radio"] + span {
+
+      }
+      input[type="radio"]:checked + span {
+        font-weight: 600;
+        color: $color-blue;
+        border-color: $color-blue;
+      }
+      .btn {
+        padding: 1rem;
+      }
+      .btn-gray {
+        min-width: 56px;
+
+      }
+      .btn-blue {
+        min-width: 11rem;
+        width: 100%;
+        @media (min-width: $lg) {
+          width: initial;
+        }
+      }
+      .round {
+        width: 4rem;
+        background: rgba(245, 124, 64, 0.2);
+      }
+    }
+  }
+}
+.contacts {
+  background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .medium-title {
+      max-width: 25rem;
+      @media (min-width: $sm) {
+        text-align: center;
+      }
+    }
+    .links {
+      max-width: 34rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      @media (min-width: $lg) {}
+    }
+  }
+}

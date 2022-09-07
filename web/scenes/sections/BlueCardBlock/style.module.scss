@@ -1,0 +1,27 @@
+@import 'styles/variables';
+
+.card {
+  background: url('/images/bg_blue.jpg') no-repeat center/cover;
+  color: $color-white;
+
+  :global {
+    .medium-title {
+      max-width: 40rem;
+    }
+    .content {
+      max-width: 30rem;
+      opacity: 0.85;
+      @media (min-width: $lg) {
+        font-size: 20px;
+        opacity: 1;
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+    .btn {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
+}

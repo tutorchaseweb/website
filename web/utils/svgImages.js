@@ -1,0 +1,301 @@
+import { Color } from '~/utils/constants'
+
+export const logo = () =>
+  `
+    <svg width="194" height="19" viewBox="0 0 194 19" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <mask id="mask0_1281_332" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="194" height="20">
+        <rect x="0.636719" y="0.400391" width="192.727" height="18.6" fill="url(#pattern0)"/>
+      </mask>
+      <g mask="url(#mask0_1281_332)">
+        <rect fill="#171D23" x="-3" y="-3" width="70" height="25"/>
+        <rect fill="#5E5E5E" x="67" y="-3" width="131" height="25"/>
+      </g>
+      <defs>
+        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlink:href="#image0_1281_332" transform="translate(0 -0.00189396) scale(0.003125 0.0323803)"/>
+        </pattern>
+        <image id="image0_1281_332" width="320" height="31" xlink:href="data:image/png;base64,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"/>
+      </defs>
+    </svg>
+  `
+
+export const star = (color = Color.Gold) =>
+  `
+    <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"/>
+    </svg>
+  `
+
+export const globe = (color = Color.White) =>
+  `
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_938_4947)">
+        <path fill="${color}" d="M13.987 2.33398C7.54703 2.33398 2.33203 7.56065 2.33203 14.0007C2.33203 20.4407 7.54703 25.6673 13.987 25.6673C20.4387 25.6673 25.6654 20.4407 25.6654 14.0007C25.6654 7.56065 20.4387 2.33398 13.987 2.33398ZM22.072 9.33398H18.6304C18.257 7.87565 17.7204 6.47565 17.0204 5.18065C19.167 5.91565 20.952 7.40898 22.072 9.33398ZM13.9987 4.71398C14.967 6.11398 15.7254 7.66565 16.227 9.33398H11.7704C12.272 7.66565 13.0304 6.11398 13.9987 4.71398ZM4.9687 16.334C4.78203 15.5873 4.66536 14.8057 4.66536 14.0007C4.66536 13.1957 4.78203 12.414 4.9687 11.6673H8.91203C8.8187 12.4373 8.7487 13.2073 8.7487 14.0007C8.7487 14.794 8.8187 15.564 8.91203 16.334H4.9687ZM5.92536 18.6673H9.36703C9.74036 20.1257 10.277 21.5257 10.977 22.8207C8.83036 22.0856 7.04536 20.604 5.92536 18.6673ZM9.36703 9.33398H5.92536C7.04536 7.39732 8.83036 5.91565 10.977 5.18065C10.277 6.47565 9.74036 7.87565 9.36703 9.33398ZM13.9987 23.2873C13.0304 21.8873 12.272 20.3356 11.7704 18.6673H16.227C15.7254 20.3356 14.967 21.8873 13.9987 23.2873ZM16.7287 16.334H11.2687C11.1637 15.564 11.082 14.794 11.082 14.0007C11.082 13.2073 11.1637 12.4257 11.2687 11.6673H16.7287C16.8337 12.4257 16.9154 13.2073 16.9154 14.0007C16.9154 14.794 16.8337 15.564 16.7287 16.334ZM17.0204 22.8207C17.7204 21.5257 18.257 20.1257 18.6304 18.6673H22.072C20.952 20.5923 19.167 22.0856 17.0204 22.8207ZM19.0854 16.334C19.1787 15.564 19.2487 14.794 19.2487 14.0007C19.2487 13.2073 19.1787 12.4373 19.0854 11.6673H23.0287C23.2154 12.414 23.332 13.1957 23.332 14.0007C23.332 14.8057 23.2154 15.5873 23.0287 16.334H19.0854Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_938_4947">
+          <rect width="28" height="28" fill="${color}" />
+        </clipPath>
+      </defs>
+    </svg>
+  `
+
+export const bookFull = (color = Color.Blue) =>
+  `
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M25.3359 1.33301L18.6693 7.99967V22.6663L25.3359 16.6663V1.33301ZM1.33594 7.99967V27.533C1.33594 27.8663 1.66927 28.1997 2.0026 28.1997C2.13594 28.1997 2.2026 28.133 2.33594 28.133C4.13594 27.2663 6.73594 26.6663 8.66927 26.6663C11.2693 26.6663 14.0693 27.1997 16.0026 28.6663V7.99967C14.0693 6.53301 11.2693 5.99967 8.66927 5.99967C6.06927 5.99967 3.26927 6.53301 1.33594 7.99967ZM30.6693 25.9997V7.99967C29.8693 7.39967 29.0026 6.99967 28.0026 6.66634V24.6663C26.5359 24.1997 24.9359 23.9997 23.3359 23.9997C21.0693 23.9997 17.8026 24.8663 16.0026 25.9997V28.6663C17.8026 27.533 21.0693 26.6663 23.3359 26.6663C25.5359 26.6663 27.8026 27.0663 29.6693 28.0663C29.8026 28.133 29.8693 28.133 30.0026 28.133C30.3359 28.133 30.6693 27.7997 30.6693 27.4663V25.9997Z"/>
+    </svg>
+  `
+
+export const openedBook = (color = Color.Orange) =>
+  `
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M20.4141 5.25C18.1391 5.25 15.6891 5.71667 13.9974 7C12.3057 5.71667 9.85573 5.25 7.58073 5.25C5.30573 5.25 2.85573 5.71667 1.16406 7V24.0917C1.16406 24.85 2.01573 24.6167 2.03906 24.6167C3.61406 23.8583 5.88906 23.3333 7.58073 23.3333C9.85573 23.3333 12.3057 23.8 13.9974 25.0833C15.5724 24.0917 18.4307 23.3333 20.4141 23.3333C22.3391 23.3333 24.3224 23.6833 25.9557 24.5583C26.4341 24.8033 26.8307 24.3367 26.8307 24.0333V7C25.0924 5.69333 22.5957 5.25 20.4141 5.25ZM24.4974 21.5833C23.2141 21.175 21.8141 21 20.4141 21C18.4307 21 15.5724 21.7583 13.9974 22.75V9.33333C15.5724 8.34167 18.4307 7.58333 20.4141 7.58333C21.8141 7.58333 23.2141 7.75833 24.4974 8.16667V21.5833Z"/>
+    </svg>
+  `
+
+export const checkCircle = (color = Color.Orange) =>
+  `
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M14.0026 2.33301C7.5626 2.33301 2.33594 7.55967 2.33594 13.9997C2.33594 20.4397 7.5626 25.6663 14.0026 25.6663C20.4426 25.6663 25.6693 20.4397 25.6693 13.9997C25.6693 7.55967 20.4426 2.33301 14.0026 2.33301ZM11.6693 19.833L5.83594 13.9997L7.48094 12.3547L11.6693 16.5313L20.5243 7.67634L22.1693 9.33301L11.6693 19.833Z"/>
+    </svg>
+  `
+
+export const arrowTopRight = (color = Color.DarkGray) =>
+  `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_1155_10477)">
+        <path fill="${color}" d="M6.55558 14.4125L12.8913 8.07681L12.8913 13.6205C12.8913 14.0731 13.2307 14.4125 13.6832 14.4125C14.1358 14.4125 14.4752 14.0731 14.4752 13.6205V6.15348C14.4752 5.70094 14.1358 5.36152 13.6832 5.36152L6.21617 5.36152C5.76362 5.36152 5.42421 5.70093 5.42421 6.15348C5.42421 6.60603 5.76362 6.94544 6.21617 6.94544L11.7599 6.94544L5.42421 13.2811C5.0848 13.6205 5.0848 14.0731 5.42421 14.4125C5.76362 14.7519 6.21617 14.7519 6.55558 14.4125Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1155_10477">
+          <rect width="19.2" height="19.2" fill="white" transform="translate(0.398438 0.400391)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  `
+
+export const videoCam = (color = Color.LightBlue) =>
+  `
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M20.6226 12.0855V7.61589C20.6226 6.91353 20.0266 6.33887 19.2983 6.33887H3.40636C2.67798 6.33887 2.08203 6.91353 2.08203 7.61589V20.3862C2.08203 21.0885 2.67798 21.6632 3.40636 21.6632H19.2983C20.0266 21.6632 20.6226 21.0885 20.6226 20.3862V15.9166L25.9199 21.0247V6.97738L20.6226 12.0855Z"/>
+    </svg>
+  `
+
+export const sendBack = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M3.01 21L24 12L3.01 3L3 10L10.6538 12L3 14L3.01 21Z"/>
+    </svg>
+  `
+
+export const handshake = (color = Color.White) =>
+  `
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M24.7234 15.6146C24.1384 16.1996 23.1634 16.1996 22.5784 15.6146L15.8734 8.92458L5.29844 19.4846L4.30844 18.5396C2.55344 16.7846 2.55344 13.9346 4.30844 12.1796L10.6684 5.81958C12.4234 4.06458 15.2734 4.06458 17.0284 5.81958L24.7234 13.4996C25.3084 14.0846 25.3084 15.0296 24.7234 15.6146ZM25.7734 12.4346C26.9434 13.6046 26.9434 15.5096 25.7734 16.6796C23.8684 18.5846 21.8584 17.0096 21.5284 16.6796L15.8884 11.0396L7.53344 19.3946C6.94844 19.9796 6.94844 20.9246 7.53344 21.5096C8.11844 22.0946 9.06344 22.0946 9.66344 21.5096L16.5934 14.5796L17.6584 15.6446L10.7284 22.5746C10.1434 23.1596 10.1434 24.1046 10.7284 24.6896C11.3134 25.2746 12.2584 25.2746 12.8584 24.6896L19.7884 17.7596L20.8534 18.8246L13.9234 25.7546C13.3384 26.3396 13.3384 27.2846 13.9234 27.8696C14.5084 28.4546 15.4534 28.4546 16.0384 27.8696L22.9684 20.9396L24.0334 22.0046L17.1034 28.9346C16.5184 29.5196 16.5184 30.4646 17.1034 31.0496C17.6884 31.6346 18.6334 31.6346 19.2184 31.0496L31.6984 18.5396C33.4534 16.7846 33.4534 13.9346 31.6984 12.1796L25.3384 5.81958C23.6134 4.09458 20.8234 4.06458 19.0684 5.72958L25.7734 12.4346Z"/>
+    </svg>
+  `
+
+export const thumbUp = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M1 21H5V9H1V21ZM23 10C23 8.9 22.1 8 21 8H14.69L15.64 3.43L15.67 3.11C15.67 2.7 15.5 2.32 15.23 2.05L14.17 1L7.59 7.59C7.22 7.95 7 8.45 7 9V19C7 20.1 7.9 21 9 21H18C18.83 21 19.54 20.5 19.84 19.78L22.86 12.73C22.95 12.5 23 12.26 23 12V10Z"/>
+    </svg>
+  `
+
+export const volunteerActivism = (color = Color.Blue) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M10 5.3C10 3.45 11.45 2 13.3 2C14.34 2 15.35 2.49 16 3.25C16.65 2.49 17.66 2 18.7 2C20.55 2 22 3.45 22 5.3C22 7.4 19.5 9.81 16.67 12.39C16.29 12.74 15.7 12.74 15.32 12.39C12.5 9.81 10 7.4 10 5.3Z"/>
+      <path fill="${color}" d="M19.99 17H13.16C13.05 17 12.94 16.98 12.83 16.94L11.36 16.43C11.1 16.34 10.97 16.06 11.06 15.8C11.15 15.54 11.44 15.4 11.7 15.5L12.82 15.93C12.93 15.97 13.06 16 13.18 16H15.81C16.46 16 16.99 15.47 16.99 14.82C16.99 14.33 16.68 13.89 16.22 13.71L9.3 11.13C9.08 11.04 8.84 11 8.6 11H7V20.02L13.37 21.83C13.78 21.95 14.22 21.93 14.62 21.78L22 19C22 17.89 21.1 17 19.99 17Z"/>
+      <rect fill="${color}" x="1" y="11" width="4" height="9"/>
+    </svg>
+  `
+
+export const screenVideo = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M21 3H3C1.89 3 1 3.89 1 5V17C1 18.1 1.89 19 3 19H8V21H16V19H21C22.1 19 22.99 18.1 22.99 17L23 5C23 3.89 22.1 3 21 3ZM21 17H3V5H21V17ZM16 11L9 15V7L16 11Z"/>
+    </svg>
+  `
+
+export const email = (color = Color.White) =>
+  `
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M13.3359 2.66602H2.66927C1.93594 2.66602 1.3426 3.26602 1.3426 3.99935L1.33594 11.9993C1.33594 12.7327 1.93594 13.3327 2.66927 13.3327H13.3359C14.0693 13.3327 14.6693 12.7327 14.6693 11.9993V3.99935C14.6693 3.26602 14.0693 2.66602 13.3359 2.66602ZM13.3359 5.33268L8.0026 8.66602L2.66927 5.33268V3.99935L8.0026 7.33268L13.3359 3.99935V5.33268Z"/>
+    </svg>
+  `
+
+export const phone = (color = Color.White) =>
+  `
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M12.6 9.56667L10.6556 9.33333C10.1889 9.25556 9.72222 9.41111 9.41111 9.8L8.01111 11.2C5.83333 10.1111 3.96667 8.24444 2.87778 6.06667L4.35556 4.58889C4.66667 4.27778 4.82222 3.81111 4.82222 3.34444L4.43333 1.4C4.35556 0.622222 3.65556 0 2.87778 0H1.55556C0.7 0 0 0.7 0 1.63333C0.388889 8.24444 5.75556 13.6111 12.3667 14C13.2222 14 14 13.3 14 12.4444V11.1222C14 10.2667 13.3778 9.64444 12.6 9.56667Z"/>
+    </svg>
+  `
+
+export const facebook = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M14.527 6.06691H16.2797V3.01411C15.9773 2.97251 14.9374 2.87891 13.7263 2.87891C11.1993 2.87891 9.46826 4.46851 9.46826 7.39011V10.0789H6.67969V13.4917H9.46826V22.0789H12.8872V13.4925H15.5629L15.9877 10.0797H12.8864V7.72851C12.8872 6.74211 13.1527 6.06691 14.527 6.06691Z"/>
+    </svg>
+  `
+
+export const twitter = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M22.1514 6.65841C21.3963 6.992 20.5916 7.21311 19.7526 7.32047C20.6157 6.80156 21.2744 5.98613 21.5841 5.00326C20.7794 5.48639 19.8909 5.82764 18.9441 6.01808C18.18 5.19881 17.091 4.69141 15.903 4.69141C13.5981 4.69141 11.7425 6.57534 11.7425 8.88487C11.7425 9.21718 11.7704 9.53671 11.8389 9.8409C8.37775 9.67091 5.3151 8.00042 3.25767 5.45571C2.89848 6.08326 2.68779 6.80156 2.68779 7.57481C2.68779 9.02674 3.43029 10.3138 4.53706 11.0589C3.86817 11.0462 3.21198 10.8506 2.65606 10.5426C2.65606 10.5554 2.65606 10.572 2.65606 10.5886C2.65606 12.6259 4.09917 14.3181 5.9916 14.7079C5.65271 14.8012 5.28337 14.846 4.90006 14.846C4.63352 14.846 4.36444 14.8306 4.11187 14.7744C4.65129 16.4346 6.18198 17.6552 8.00206 17.6949C6.5856 18.8106 4.7871 19.4829 2.8401 19.4829C2.49867 19.4829 2.17121 19.4676 1.84375 19.4254C3.68794 20.623 5.87356 21.3068 8.23052 21.3068C15.8916 21.3068 20.0801 14.9163 20.0801 9.37695C20.0801 9.19162 20.0737 9.01268 20.0648 8.83503C20.8911 8.24454 21.5854 7.50708 22.1514 6.65841Z"/>
+    </svg>
+  `
+
+export const linkedin = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M21.995 22V21.9991H22V14.4971C22 10.8271 21.2231 8 17.004 8C14.9758 8 13.6147 9.13186 13.059 10.2049H13.0003V8.34263H9V21.9991H13.1654V15.2369C13.1654 13.4565 13.4973 11.7348 15.6655 11.7348C17.8019 11.7348 17.8337 13.7667 17.8337 15.3512V22H21.995Z"/>
+      <path fill="${color}" d="M2 9H6V22H2V9Z"/>
+      <path fill="${color}" d="M4.5 2C3.11988 2 2 3.11466 2 4.48834C2 5.86203 3.11988 7 4.5 7C5.88012 7 7 5.86203 7 4.48834C6.99913 3.11466 5.87925 2 4.5 2V2Z"/>
+    </svg>
+  `
+
+export const arrowDown = (color = Color.DarkGray) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_1166_23976)">
+        <path fill="${color}" d="M16.59 8.59009L12 13.1701L7.41 8.59009L6 10.0001L12 16.0001L18 10.0001L16.59 8.59009Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1166_23976">
+          <rect width="24" height="24" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  `
+
+export const arrowLeft = (color = Color.DarkGray) =>
+  `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M15.4989 9.16634H6.16561L10.2489 5.08301C10.5823 4.74967 10.5823 4.24967 10.2489 3.91634C9.91561 3.58301 9.41561 3.58301 9.08227 3.91634L3.58227 9.41634C3.24894 9.74967 3.24894 10.2497 3.58227 10.583L9.08227 16.083C9.41561 16.4163 9.91561 16.4163 10.2489 16.083C10.5823 15.7497 10.5823 15.2497 10.2489 14.9163L6.16561 10.833H15.4989C15.9989 10.833 16.3323 10.4997 16.3323 9.99967C16.3323 9.49967 15.9989 9.16634 15.4989 9.16634Z"/>
+    </svg>
+  `
+
+export const arrowRight = (color = Color.White) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M4.9961 12.9994L16.1961 12.9994L11.2961 17.8994C10.8961 18.2994 10.8961 18.8994 11.2961 19.2994C11.6961 19.6994 12.2961 19.6994 12.6961 19.2994L19.2961 12.6994C19.6961 12.2994 19.6961 11.6994 19.2961 11.2994L12.6961 4.69941C12.2961 4.29941 11.6961 4.29941 11.2961 4.69941C10.8961 5.09941 10.8961 5.69941 11.2961 6.09941L16.1961 10.9994L4.99609 10.9994C4.39609 10.9994 3.99609 11.3994 3.9961 11.9994C3.9961 12.5994 4.3961 12.9994 4.9961 12.9994Z"/>
+    </svg>
+  `
+
+export const smallArrowRight = (color = Color.Blue) =>
+  `
+    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linejoin="round" d="M1 11L6 6L1 1"/>
+    </svg>
+  `
+
+export const navArrowLeft = (color = Color.Blue) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linejoin="round" d="M15 6L9.00137 12L15 18"/>
+    </svg>
+  `
+
+export const navArrowRight = (color = Color.Blue) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linejoin="round" d="M9 6L14.9986 12L9 18"/>
+    </svg>
+  `
+
+export const doneCheck = (color = Color.Orange) =>
+  `
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M12.0001 21.5999L6.40011 15.9999L4.53345 17.8666L12.0001 25.3332L28.0001 9.33322L26.1334 7.46655L12.0001 21.5999Z"/>
+    </svg>
+  `
+
+export const awesomeStar = (color = Color.Orange) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M14.5 9.5L12 4L9.5 9.5L4 12L9.5 14.5L12 20L14.5 14.5L20 12L14.5 9.5Z"/>
+    </svg>
+  `
+
+export const studyHat = (color = Color.Orange) =>
+  `
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M5.83464 15.3767V20.0433L14.0013 24.5L22.168 20.0433V15.3767L14.0013 19.8333L5.83464 15.3767ZM14.0013 3.5L1.16797 10.5L14.0013 17.5L24.5013 11.7717V19.8333H26.8346V10.5L14.0013 3.5Z"/>
+    </svg>
+  `
+
+export const magnifier = (color = Color.DarkGray) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="${color}" stroke-width="2" stroke-linecap="round" d="M21 21L16.514 16.506L21 21ZM19 10.5C19 12.7543 18.1045 14.9163 16.5104 16.5104C14.9163 18.1045 12.7543 19 10.5 19C8.24566 19 6.08365 18.1045 4.48959 16.5104C2.89553 14.9163 2 12.7543 2 10.5C2 8.24566 2.89553 6.08365 4.48959 4.48959C6.08365 2.89553 8.24566 2 10.5 2C12.7543 2 14.9163 2.89553 16.5104 4.48959C18.1045 6.08365 19 8.24566 19 10.5V10.5Z"/>
+    </svg>
+  `
+
+export const reviewsBlue = (color = Color.Blue) =>
+  `
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M23.334 2.33398H4.66732C3.38398 2.33398 2.33398 3.38398 2.33398 4.66732V25.6673L7.00065 21.0007H23.334C24.6173 21.0007 25.6673 19.9507 25.6673 18.6673V4.66732C25.6673 3.38398 24.6173 2.33398 23.334 2.33398ZM15.8323 13.499L14.0007 17.5007L12.169 13.499L8.16732 11.6673L12.169 9.83565L14.0007 5.83398L15.8323 9.83565L19.834 11.6673L15.8323 13.499Z"/>
+    </svg>
+  `
+
+export const academy = (color = Color.Orange) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M7 10H5V17H7V10Z"/>
+      <path fill="${color}" d="M13 10H11V17H13V10Z"/>
+      <path fill="${color}" d="M19 10H17V17H19V10Z"/>
+      <path fill="${color}" d="M22 6L12 1L2 6V8H22V6Z"/>
+      <path fill="${color}" d="M2 19V21H22C22 20.2409 22 19.7059 22 19H2Z"/>
+    </svg>
+  `
+
+export const paid = (color = Color.Orange) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12.88 17.76V19H11.13V17.71C10.39 17.53 8.74 16.94 8.11 14.75L9.76 14.08C9.82 14.3 10.34 16.17 12.16 16.17C13.09 16.17 14.14 15.69 14.14 14.56C14.14 13.6 13.44 13.1 11.86 12.53C10.76 12.14 8.51 11.5 8.51 9.22C8.51 9.12 8.52 6.82 11.13 6.26V5H12.88V6.24C14.72 6.56 15.39 8.03 15.54 8.47L13.96 9.14C13.85 8.79 13.37 7.8 12.06 7.8C11.36 7.8 10.25 8.17 10.25 9.19C10.25 10.14 11.11 10.5 12.89 11.09C15.29 11.92 15.9 13.14 15.9 14.54C15.9 17.17 13.4 17.67 12.88 17.76Z"/>
+    </svg>
+  `
+
+export const error = (color = Color.Orange) =>
+  `
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M8.00016 1.33325C4.32016 1.33325 1.3335 4.31992 1.3335 7.99992C1.3335 11.6799 4.32016 14.6666 8.00016 14.6666C11.6802 14.6666 14.6668 11.6799 14.6668 7.99992C14.6668 4.31992 11.6802 1.33325 8.00016 1.33325ZM8.66683 11.3333H7.3335V9.99992H8.66683V11.3333ZM8.66683 8.66658H7.3335V4.66658H8.66683V8.66658Z"/>
+    </svg>
+  `
+
+export const verifiedUser = (color = Color.LightBlue) =>
+  `
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_1166_26936)">
+        <path fill="${color}" d="M23.3082 5.71117L10.4147 8.20162L8.61102 15.9956C6.94259 23.2051 10.3706 31.1013 16.6946 34.2892C23.7763 34.2037 30.3246 28.6162 31.9931 21.4067L33.7968 13.6127L23.3082 5.71117ZM15.9003 25.894L11.9068 19.4955L14.1623 18.0878L16.7511 22.2178L27.2926 15.6384L28.6973 17.9069L15.9003 25.894Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1166_26936">
+          <rect width="32" height="32" fill="white" transform="translate(8.01953 0.804688) rotate(13.0301)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  `
+
+export const starRotate = (color = Color.Orange) =>
+  `
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_1166_26941)">
+        <path fill="${color}" d="M20.3961 25.8868L29.4589 29.1268L25.4564 20.3734L31.3407 12.748L21.7832 13.8525L16.3574 5.93134L14.4388 15.3389L5.20392 18.0377L13.5903 22.7749L13.3064 32.3958L20.3961 25.8868Z"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1166_26941">
+          <rect width="32" height="32" fill="${Color.White}" transform="translate(0.144531 6.4917) rotate(-11.4412)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  `
+
+export const play = (color = Color.DarkGray) =>
+  `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" d="M8 5V19L19 12L8 5Z"/>
+    </svg>
+  `

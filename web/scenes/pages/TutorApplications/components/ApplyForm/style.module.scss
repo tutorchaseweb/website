@@ -1,0 +1,24 @@
+@import 'styles/variables';
+
+.card {
+  max-width: 35rem;
+
+  :global {
+    .form {
+      min-height: 26rem;
+      .btn-gray {
+        min-width: 46px;
+        line-height: 1;
+      }
+      .file-wrapper {
+        border-style: dashed;
+
+        .close {
+          top: 1rem;
+          right: 1rem;
+          z-index: 2;
+        }
+      }
+    }
+  }
+}

@@ -1,66 +1,69 @@
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
-import { gql, useQuery } from '@apollo/client'
-import Header from '~/scenes/sections/Header'
-import Footer from '~/scenes/sections/Footer'
+import { groq } from 'next-sanity'
+import client from '~/utils/sanity-client'
+import { useRouter } from 'next/router'
+import { getImageUrl } from '~/utils/helpers'
+import { Header, Footer } from '~/scenes/sections'
 import { Loader } from '~/components/Loader'
+import { OpenGraphTags } from '~/components/OGtags'
+// import { TwitterTags } from '~/components/TwitterTags'
+
+export const ConfigContext = React.createContext({})
 
 export const Layout = ({ children }) => {
-  const QUERY = gql`
-    query Config {
-      SiteConfig(id: "global-config") {
-        _id
-        title
-        description
-        url
-        logo {
-          asset {
-            url
-          }
-        }
+  const { route } = useRouter()
+  const [siteConfig, setSiteConfig] = useState(null)
+  const [customPages, setCustomPages] = useState([])
+
+  useEffect(async () => {
+    const config = groq`
+      *[_type == 'site-config'][0] {
+        ...,
       }
-    }
-  `
-  const { data, loading, error } = useQuery(QUERY)
+    `
+    setSiteConfig(await client.fetch(config))
 
-  if (loading) {
-    return <Loader />
-  }
-  if (error) {
-    console.error(error)
-    return null
-  }
+    const pages = groq`
+      *[_type == 'custom-page' && !(_id in path("drafts.**"))] {
+        _id,
+        title,
+        slug,
+      }
+    `
+    setCustomPages(await client.fetch(pages))
+  }, [])
 
-  const { SiteConfig } = data
-
-  return (
-    <>
-      {Boolean(SiteConfig) && (
-        <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width, viewport-fit=cover"
-          />
-          <meta charSet="utf-8" />
-          <title>{SiteConfig.title}</title>
-          <meta name="description" content={SiteConfig.description} />
-          <meta property="og:title" content={SiteConfig.title} key="title" />
-          <meta property="og:description" content={SiteConfig.description} key="description" />
-          <meta
-            property="og:image"
-            content={SiteConfig.logo.asset.url}
-            key="image"
-          />
-          <meta property="og:site_name" content={SiteConfig.title} />
-          <meta property="og:url" content={SiteConfig.url} key="url" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-      )}
+  return Boolean(siteConfig) ? (
+    <ConfigContext.Provider value={siteConfig}>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
+        <meta charSet="utf-8" />
+        <title>{siteConfig.title ? siteConfig.title : 'TutorChase'}</title>
+        <OpenGraphTags
+          ogTitle={siteConfig.title}
+          description={siteConfig.description}
+          ogImage={`${getImageUrl(siteConfig.logo.asset._ref)}`}
+          ogUrl={siteConfig.url}
+          siteName={siteConfig.title}
+        />
+        {/*
+        <TwitterTags
+          ogTitle={siteConfig.title}
+          description={siteConfig.description}
+          ogImage={`${getImageUrl(siteConfig.logo.asset._ref)}`}
+          author={'@author'}
+        />
+        */}
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header />
-      <main className="main-content">{children}</main>
-      <Footer />
-    </>
+      <main className="main-content flex-1 flex flex-col">{children}</main>
+      {route !== '/404' && <Footer pages={customPages} />}
+    </ConfigContext.Provider>
+  ) : (
+    <Loader />
   )
-
 }
 
 export default Layout
