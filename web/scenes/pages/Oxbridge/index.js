@@ -32,6 +32,7 @@ import text from '~/assets/text-content/en/static.json'
 
 export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
   const { firstScreen, blueCard, reviewBlock } = page
+  console.log(page)
 
   const [levelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery] = useGlobalState('subjectQuery', null)

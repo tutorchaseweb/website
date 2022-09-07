@@ -156,19 +156,19 @@ export const ApplyForm = ({ className = '' }) => {
     return handleMutations(mutations)
   }
 
-  const sendData = () => {
+  const sendData = async () => {
     const file = files[0]
     if (file) {
       client.assets
         .upload('file', file, {
           filename: file.name,
         })
-        .then((file) => {
-          return sendForm(file)
+        .then(async (file) => {
+          return await sendForm(file)
         })
         .catch(console.error)
     } else {
-      return sendForm()
+      return await sendForm()
     }
   }
 
