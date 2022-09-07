@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDropzone } from 'react-dropzone'
 import client from '~/utils/sanity-client'
@@ -15,7 +15,7 @@ import {
 import { Circle } from '~/components/Circle'
 import { Input, Textarea, Select } from '~/components/Form'
 import { arrowLeft, doneCheck } from '~/utils/svgImages'
-import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
+import { Color, MOBILE_BREAKPOINT, GEO_API_URL, GEO_API_KEY } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
 import fileIcon from '~/assets/images/icons/data-file.jpg'
@@ -171,6 +171,23 @@ export const ApplyForm = ({ className = '' }) => {
       return sendForm()
     }
   }
+
+  useEffect(() => {
+    const apiKey = process.env.NEXT_PUBLIC_GEOLOCATION_API_KEY || GEO_API_KEY
+    fetch(`${GEO_API_URL}/ipgeo?apiKey=${apiKey}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.calling_code) {
+          setPhone(data.calling_code)
+        }
+        const currentCountry = countries.find(
+          (country) => country.title === data.country_name || country.value === data.country_code2
+        )
+        if (currentCountry) {
+          setCountry(currentCountry)
+        }
+      })
+  }, [])
 
   const empty = <span>&nbsp;</span>
 

@@ -42,3 +42,7 @@ export const REVIEWS_BREAKPOINT = 1200
 export const TUTORS_LIST_STEP = 5
 
 export const TUTOR_REVIEW_ITEMS = 3
+
+export const GEO_API_URL = 'https://api.ipgeolocation.io'
+
+export const GEO_API_KEY = '89437fb401f74dbbad589a2292cd9a51'
