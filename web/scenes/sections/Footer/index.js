@@ -101,6 +101,7 @@ export const Footer = ({ pages = [] }) => {
                     {Boolean(pages.length) &&
                       pages.map((page, idx) => {
                         const item = {
+                          _id: page._id,
                           link: `/page/${page.slug.current}`,
                           title: page.title,
                         }

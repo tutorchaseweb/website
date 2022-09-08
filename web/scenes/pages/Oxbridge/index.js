@@ -291,9 +291,9 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
       <section>
         <div className="container narrow">
           <BlueCardBlock
-            title={blueCard.title}
-            content={blueCard.description}
-            hireButton={blueCard.withButton}
+            title={blueCard?.title}
+            content={blueCard?.description}
+            hireButton={blueCard?.withButton}
           />
         </div>
       </section>
