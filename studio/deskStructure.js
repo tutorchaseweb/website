@@ -16,6 +16,12 @@ import {
   IoSchoolOutline,
   MdOutlineFormatListNumbered,
   MdOutlinePolicy,
+  IoIosPeople,
+  ImBooks,
+  SiOpenaccess,
+  FaHandshake,
+  IoIosSchool,
+  CgTemplate,
   BiCodeBlock,
   FaQuestionCircle,
 } from 'react-icons/all'
@@ -31,7 +37,7 @@ const hiddenDocTypes = (listItem) =>
     'subject-page',
     'partnerships-page',
     'tutors-page',
-    'us-admissions-page',
+    'admissions-page',
     'blog-page',
     'reviews-page',
     'applications-page',
@@ -104,16 +110,20 @@ export default () =>
                 .icon(FaUniversity)
                 .child(S.document().schemaType('oxbridge-page').documentId('oxbridge-page')),
               S.listItem()
+                .title('US Admissions page')
+                .icon(FaUniversity)
+                .child(S.document().schemaType('admissions-page').documentId('admissions-page')),
+              S.listItem()
                 .title('Tutors page')
-                .icon(BsBook)
+                .icon(IoIosPeople)
                 .child(S.document().schemaType('tutors-page').documentId('tutors-page')),
               S.listItem()
                 .title('Access page')
-                .icon(BsBook)
+                .icon(SiOpenaccess)
                 .child(S.document().schemaType('access-page').documentId('access-page')),
               S.listItem()
                 .title('Partnerships page')
-                .icon(BsBook)
+                .icon(FaHandshake)
                 .child(
                   S.document().schemaType('partnerships-page').documentId('partnerships-page')
                 ),
@@ -149,12 +159,12 @@ export default () =>
                 ),
               S.listItem()
                 .title('Custom pages')
-                .icon(BsBook)
+                .icon(CgTemplate)
                 .schemaType('custom-page')
                 .child(S.documentTypeList('custom-page').title('Custom page')),
               S.listItem()
                 .title('Subject pages')
-                .icon(BsBook)
+                .icon(IoIosSchool)
                 .schemaType('subject-page')
                 .child(S.documentTypeList('subject-page').title('Subject page')),
             ])

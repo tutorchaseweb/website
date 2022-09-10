@@ -6,7 +6,7 @@ export default {
   fields: [
     {
       name: 'title',
-      type: 'string',
+      type: 'text',
       title: 'Page title',
       description: 'Title on first screen (required field).',
       validation: (Rule) => Rule.error('The title is required').required(),

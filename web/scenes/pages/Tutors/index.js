@@ -15,7 +15,8 @@ import {
 import styles from './style.module.scss'
 
 export const TutorsPage = ({ page, tutors }) => {
-  const { firstScreen, filterDescription, tutorsSection, blueCard, reviewBlock, faqSection } = page
+  const { firstScreen, filterDescription, tutorsSection, blueCard, reviewBlock, faqSection } =
+    page || {}
 
   return (
     <>

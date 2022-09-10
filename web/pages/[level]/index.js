@@ -5,10 +5,9 @@ import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
-import { getQueryForTutors } from '~/utils/helpers'
 import { TutorsPage, OxbridgePage } from '~/scenes/pages'
 
-export const Level = ({ current, level }) => {
+export const Level = ({ current, subjectElements, level }) => {
   const router = useRouter()
   const [oxbridgePage, setOxbridgePage] = useState(null)
   const [tutorsPage, setTutorsPage] = useState(null)
@@ -22,12 +21,12 @@ export const Level = ({ current, level }) => {
   }
 
   const getSubjectsData = async () => {
-    const SubjectsQUERY = groq`
+    const SubjectsPageQUERY = groq`
     *[_type == 'subject-page' && slug.current == '${level}'][0] {
       ...,
     }
   `
-    return setSubjectsPage(await client.fetch(SubjectsQUERY))
+    return setSubjectsPage(await client.fetch(SubjectsPageQUERY))
   }
 
   useEffect(async () => {
@@ -55,18 +54,38 @@ export const Level = ({ current, level }) => {
     }
   }, [level])
 
-  const query = getQueryForTutors(levelQuery, subjectQuery)
-  const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
-  useEffect(() => {
-    client.fetch(query, params).then((data) => {
-      setTutors(
-        current && current._type === 'subject'
-          ? current.tutors
-              ?.sort((first, second) => second.rating - first.rating)
-              .map((item) => item.tutor)
-          : data
-      )
+  useEffect(async () => {
+    const levelTutors = subjectElements.map((item) => {
+      return item.tutors.filter((tutor) => {
+        return tutor?.level?.slug.current === level
+      })
     })
+
+    const tutorsList = []
+
+    levelTutors.map((array) => {
+      return array.length !== 0
+        ? array.length === 1
+          ? tutorsList.push(array[0].tutor)
+          : array.map((item) => {
+              return tutorsList.push(item.tutor)
+            })
+        : false
+    })
+
+    current &&
+      current._type === 'subject' &&
+      setTutors(
+        current.tutors
+          ?.sort((first, second) => second.rating - first.rating)
+          .map((item) => item.tutor)
+      )
+
+    current &&
+      current._type === 'level' &&
+      setTutors(tutorsList?.sort((first, second) => second.rating - first.rating))?.map(
+        (item) => item.tutor
+      )
   }, [current, level])
 
   useEffect(async () => {
@@ -129,6 +148,10 @@ export async function getServerSideProps(context) {
               title,
               slug,
             },
+          },
+          level->{
+            title,
+            slug
           }
         }
       },
@@ -141,10 +164,12 @@ export async function getServerSideProps(context) {
   )
 
   const current = data.filter((item) => item.slug && item.slug.current === level)[0]
+  const subjectElements = data.filter((item) => item._type && item._type === 'subject')
 
   return {
     props: {
       current: current ? current : null,
+      subjectElements: subjectElements ? subjectElements : null,
       level,
     },
   }
