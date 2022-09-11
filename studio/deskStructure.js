@@ -106,6 +106,10 @@ export default () =>
                 .icon(AiOutlineHome)
                 .child(S.document().schemaType('home-page').documentId('home-page')),
               S.listItem()
+                .title('Tutors page')
+                .icon(IoIosPeople)
+                .child(S.document().schemaType('tutors-page').documentId('tutors-page')),
+              S.listItem()
                 .title('Oxbridge page')
                 .icon(FaUniversity)
                 .child(S.document().schemaType('oxbridge-page').documentId('oxbridge-page')),
@@ -114,9 +118,14 @@ export default () =>
                 .icon(FaUniversity)
                 .child(S.document().schemaType('admissions-page').documentId('admissions-page')),
               S.listItem()
-                .title('Tutors page')
-                .icon(IoIosPeople)
-                .child(S.document().schemaType('tutors-page').documentId('tutors-page')),
+                .title('Subject pages')
+                .icon(IoIosSchool)
+                .schemaType('subject-page')
+                .child(S.documentTypeList('subject-page').title('Subject page')),
+              S.listItem()
+                .title('Reviews page')
+                .icon(BsStarHalf)
+                .child(S.document().schemaType('reviews-page').documentId('reviews-page')),
               S.listItem()
                 .title('Access page')
                 .icon(SiOpenaccess)
@@ -138,10 +147,6 @@ export default () =>
                 .icon(IoNewspaperOutline)
                 .child(S.document().schemaType('blog-page').documentId('blog-page')),
               S.listItem()
-                .title('Reviews page')
-                .icon(BsStarHalf)
-                .child(S.document().schemaType('reviews-page').documentId('reviews-page')),
-              S.listItem()
                 .title('Terms and conditions')
                 .icon(MdOutlinePolicy)
                 .child(
@@ -162,11 +167,6 @@ export default () =>
                 .icon(CgTemplate)
                 .schemaType('custom-page')
                 .child(S.documentTypeList('custom-page').title('Custom page')),
-              S.listItem()
-                .title('Subject pages')
-                .icon(IoIosSchool)
-                .schemaType('subject-page')
-                .child(S.documentTypeList('subject-page').title('Subject page')),
             ])
         ),
       // S.listItem()

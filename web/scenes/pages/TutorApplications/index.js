@@ -1,15 +1,20 @@
 import { useState } from 'react'
-import { useWindowSize } from '~/utils/helpers'
+import { getImageUrl, useWindowSize } from '~/utils/helpers'
 import { MOBILE_BREAKPOINT } from '~/utils/constants'
 import { ApplyForm } from './components/ApplyForm'
 import { HireFormBlock, BasedReviews } from '~/scenes/sections'
-import illustration7 from '~/assets/images/illustration-7.png'
-import illustration8 from '~/assets/images/illustration-8.png'
-import illustration9 from '~/assets/images/illustration-9.png'
 
 import styles from './style.module.scss'
+import { PortableText } from '@portabletext/react'
 
-export const TutorApplicationsPage = () => {
+export const TutorApplicationsPage = ({ pageData }) => {
+  const {
+    title,
+    descriptionList,
+    secondScreenPartOne,
+    secondScreenPartTwo,
+    secondScreenPartThree,
+  } = pageData || {}
   const [activePopup, setActivePopup] = useState(false)
   const page = useWindowSize()
 
@@ -29,12 +34,12 @@ export const TutorApplicationsPage = () => {
             <div className="text-wrapper mb-6x">
               <BasedReviews />
               <h1 className="main-title fw-700 l-height-1 mb-4x">
-                Become an <code>Online Tutor</code>
+                <PortableText value={title} />
               </h1>
               <ol className="ordered-list blue">
-                <li>Recruiting the world's best tutors</li>
-                <li>Flexible part-time tutoring</li>
-                <li>Tutor online from your own home</li>
+                {descriptionList?.map((item, index) => {
+                  return <li key={index + 1}>{item}</li>
+                })}
               </ol>
               {page.width < MOBILE_BREAKPOINT && (
                 <button className="btn btn-blue mt-5x" onClick={handler}>
@@ -50,7 +55,10 @@ export const TutorApplicationsPage = () => {
         <div className="container narrow">
           <div className="flex flex-wrap items-center justify-between gap-8">
             <div className="relative w-1/2_lg">
-              <img src={illustration7.src} alt="illustration7" />
+              <img
+                src={`${getImageUrl(secondScreenPartOne?.image.asset._ref)}`}
+                alt="illustration7"
+              />
               <div className="tutor absolute bg-white rounded-small">
                 <div className="flex items-center">
                   <p className="fz-14p fw-600">Tutors for any level</p>
@@ -65,42 +73,38 @@ export const TutorApplicationsPage = () => {
               </div>
             </div>
             <div className="text-wrap w-1/2_lg">
-              <h2 className="fz-48p fw-600 l-height-1 mb-3x">Flexibility</h2>
-              <p className="fz-18p">
-                TutorChase provides online tuition to students around the world. We operate by
-                maintaining a team of tutors whom we match students with.
-              </p>
+              <h2 className="fz-48p fw-600 l-height-1 mb-3x">{secondScreenPartOne?.title}</h2>
+              <div className="fz-18p">
+                <PortableText value={secondScreenPartOne?.description} />
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-8 mt-12x reverse_lg">
             <div className="relative w-1/2_lg">
-              <img src={illustration8.src} alt="illustration8" />
+              <img
+                src={`${getImageUrl(secondScreenPartTwo?.image.asset._ref)}`}
+                alt="illustration8"
+              />
             </div>
             <div className="text-wrap w-1/2_lg">
-              <h2 className="fz-48p fw-600 l-height-1 mb-3x">Convenient schedule</h2>
-              <p className="fz-18p">
-                <strong>
-                  Tutors are free to take on as many students as they want, whether that be just one
-                  or over a dozen.
-                </strong>{' '}
-                Tutoring jobs range from lasting for only a few lessons for students who want
-                short-term help, to over a year for students looking for long-term support.
-              </p>
+              <h2 className="fz-48p fw-600 l-height-1 mb-3x">{secondScreenPartTwo?.title}</h2>
+              <div className="fz-18p">
+                <PortableText value={secondScreenPartTwo?.description} />
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-8 mt-12x">
             <div className="relative w-1/2_lg">
-              <img src={illustration9.src} alt="illustration9" />
+              <img
+                src={`${getImageUrl(secondScreenPartThree?.image.asset._ref)}`}
+                alt="illustration9"
+              />
             </div>
             <div className="text-wrap w-1/2_lg">
-              <h2 className="fz-48p fw-600 l-height-1 mb-3x">Qualifications</h2>
-              <p className="fz-18p">
-                We are currently recruiting tutors for all subjects and admissions tests,{' '}
-                <strong>
-                  and in particular tutors who can teach UK and US curriculums and assist with
-                  university applications and admissions tests.
-                </strong>
-              </p>
+              <h2 className="fz-48p fw-600 l-height-1 mb-3x">{secondScreenPartThree?.title}</h2>
+              <div className="fz-18p">
+                <PortableText value={secondScreenPartThree?.description} />
+              </div>
             </div>
           </div>
         </div>

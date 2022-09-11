@@ -102,7 +102,8 @@ export const Level = ({ current, subjectElements, level }) => {
   return (
     <Layout>
       <Head>
-        <title>Online {current ? current.title : ''} Tutors</title>
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
       </Head>
       {current &&
         (current._type === 'level' || current._type === 'subject') &&

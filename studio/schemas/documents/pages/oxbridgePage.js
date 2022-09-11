@@ -55,11 +55,6 @@ export default {
       title: 'Blue card on access page',
     },
     {
-      name: 'interactivePlatform',
-      type: 'sectionHead',
-      title: 'Interactive platform content',
-    },
-    {
       name: 'reviewBlock',
       type: 'reviewBlock',
       title: 'Review block (one review)',

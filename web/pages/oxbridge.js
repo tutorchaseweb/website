@@ -26,7 +26,8 @@ export const Oxbridge = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>Oxbridge</title>
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
       </Head>
       <OxbridgePage page={page} tutors={tutors} />
     </Layout>

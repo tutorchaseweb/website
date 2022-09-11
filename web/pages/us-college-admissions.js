@@ -26,7 +26,8 @@ export const US_Admissions = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>US Admissions</title>
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
       </Head>
       <OxbridgePage page={page} tutors={tutors} />
     </Layout>

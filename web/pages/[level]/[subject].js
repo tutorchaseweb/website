@@ -57,7 +57,8 @@ export const Subject = ({ level, subject }) => {
     <Layout>
       <Head>
         <title>
-          Online {level?.title} {subject?.title} Tutors
+          <title>{page.seoTitle}</title>
+          <meta name="description" content={page.seoDescription} />
         </title>
       </Head>
       {(Boolean(subjectsPage) || Boolean(tutorsPage)) && (

@@ -248,7 +248,6 @@ export const OxbridgePage = ({ page, tutors }) => {
             {Boolean(tests.length) && (
               <p className="flex flex-wrap gap-4 fw-500 l-height-1">
                 {admissionsTests?.tests.map((test) => {
-                  console.log(admissionsTests?.tests)
                   return (
                     <Link
                       key={test._id}
