@@ -53,16 +53,21 @@ export const Subject = ({ level, subject }) => {
     setTutorsPage(await client.fetch(TutorsQUERY))
   }, [level, subject])
 
+  console.log(subjectsPage)
+
   return (
     <Layout>
-      <Head>
-        <title>
-          <title>{page.seoTitle}</title>
-          <meta name="description" content={page.seoDescription} />
-        </title>
-      </Head>
       {(Boolean(subjectsPage) || Boolean(tutorsPage)) && (
-        <TutorsPage page={subjectsPage ?? tutorsPage} tutors={tutors} />
+        <>
+          <Head>
+            <title>{subjectsPage ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
+            <meta
+              name="description"
+              content={subjectsPage ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+            />
+          </Head>
+          <TutorsPage page={subjectsPage ?? tutorsPage} tutors={tutors} />
+        </>
       )}
     </Layout>
   )

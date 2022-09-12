@@ -101,17 +101,28 @@ export const Level = ({ current, subjectElements, level }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{page.seoTitle}</title>
-        <meta name="description" content={page.seoDescription} />
-      </Head>
       {current &&
         (current._type === 'level' || current._type === 'subject') &&
         (Boolean(subjectsPage) || Boolean(tutorsPage)) && (
-          <TutorsPage page={!isEmpty ? subjectsPage : tutorsPage} tutors={tutors} />
+          <>
+            <Head>
+              <title>{!isEmpty ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
+              <meta
+                name="description"
+                content={!isEmpty ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+              />
+            </Head>
+            <TutorsPage page={!isEmpty ? subjectsPage : tutorsPage} tutors={tutors} />
+          </>
         )}
       {current && current._type === 'test' && Boolean(oxbridgePage) && (
-        <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
+        <>
+          <Head>
+            <title>{oxbridgePage?.seoTitle}</title>
+            <meta name="description" content={oxbridgePage?.seoDescription} />
+          </Head>
+          <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
+        </>
       )}
     </Layout>
   )

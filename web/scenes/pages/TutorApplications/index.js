@@ -7,16 +7,16 @@ import { HireFormBlock, BasedReviews } from '~/scenes/sections'
 import styles from './style.module.scss'
 import { PortableText } from '@portabletext/react'
 
-export const TutorApplicationsPage = ({ pageData }) => {
+export const TutorApplicationsPage = ({ page }) => {
   const {
     title,
     descriptionList,
     secondScreenPartOne,
     secondScreenPartTwo,
     secondScreenPartThree,
-  } = pageData || {}
+  } = page || {}
   const [activePopup, setActivePopup] = useState(false)
-  const page = useWindowSize()
+  const pageSize = useWindowSize()
 
   const handler = () => {
     if (typeof window !== 'undefined') {
@@ -41,13 +41,13 @@ export const TutorApplicationsPage = ({ pageData }) => {
                   return <li key={index + 1}>{item}</li>
                 })}
               </ol>
-              {page.width < MOBILE_BREAKPOINT && (
+              {pageSize.width < MOBILE_BREAKPOINT && (
                 <button className="btn btn-blue mt-5x" onClick={handler}>
                   Apply Now
                 </button>
               )}
             </div>
-            {page.width > MOBILE_BREAKPOINT && <ApplyForm />}
+            {pageSize.width > MOBILE_BREAKPOINT && <ApplyForm />}
           </div>
         </div>
       </section>
@@ -110,7 +110,7 @@ export const TutorApplicationsPage = ({ pageData }) => {
         </div>
       </section>
       <HireFormBlock onlyContacts={true} />
-      {page.width < MOBILE_BREAKPOINT && (
+      {pageSize.width < MOBILE_BREAKPOINT && (
         <div className={`popup-wrapper ${activePopup ? 'block' : 'hidden'} ${styles.popupWrapper}`}>
           <span className="close" onClick={handler}>
             &times;
