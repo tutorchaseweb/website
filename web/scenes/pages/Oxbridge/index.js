@@ -40,6 +40,7 @@ export const OxbridgePage = ({ page, tutors }) => {
     reviewBlock,
     faqSection,
   } = page
+
   const window = useWindowSize()
   const [tests, setTests] = useState([])
 
