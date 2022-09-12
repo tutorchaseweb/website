@@ -102,7 +102,6 @@ export const HomePage = ({ page }) => {
     blueCard,
     seventhScreen,
     allReviewsBlock,
-    servicesBlock,
   } = page
 
   return (

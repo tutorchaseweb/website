@@ -12,8 +12,7 @@ export default {
     },
     {
       name: 'price',
-      type: 'number',
-      initialValue: 3,
+      type: 'string',
       title: 'Price',
       description: '(required field)',
       validation: (Rule) => Rule.error('The price is required').required(),

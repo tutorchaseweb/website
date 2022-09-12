@@ -3,8 +3,13 @@ import { Circle } from '~/components/Circle'
 import { star, thumbUp } from '~/utils/svgImages'
 import { HireFormBlock } from '~/scenes/sections'
 import styles from './style.module.scss'
+import { PortableText } from '@portabletext/react'
 
-export const ReviewsPage = () => {
+export const ReviewsPage = ({ page }) => {
+  const {
+    firstScreen: { title, description },
+  } = page || {}
+
   return (
     <div className="bg-lightGray">
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
@@ -21,10 +26,10 @@ export const ReviewsPage = () => {
             </p>
           </div>
           <h1 className="main-title fw-700 l-height-1 mb-3x mx-auto" style={{ maxWidth: '50rem' }}>
-            Our Verified Reviews from <code>Students and Parents</code>
+            <PortableText value={title} />
           </h1>
           <p className="fz-20p fw-500 l-height-1/4 mx-auto mb-4x" style={{ maxWidth: '50rem' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elite
+            <PortableText value={description} />
           </p>
           <a
             href="https://www.reviews.co.uk/company-reviews/store/tutorchase"

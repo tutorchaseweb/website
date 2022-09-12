@@ -9,20 +9,30 @@ import illustration6 from '~/assets/images/illustration-6.png'
 import lgk_I8kY from '~/assets/images/lgk_I8kY_3.png'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
+import { PortableText } from '@portabletext/react'
+import { getImageUrl } from '~/utils/helpers'
 
 export const AccessProgrammePage = ({ page }) => {
-  const { blueCard } = page
+  const {
+    firstScreen,
+    secondScreen,
+    secondScreenPartOne,
+    secondScreenPartTwo,
+    secondScreenPartThree,
+    blueCard,
+    lastScreen,
+  } = page
   return (
     <>
       <section className={`pt-20x pb-18x ${styles.firstScreen}`}>
         <div className="container text-center">
           <BasedReviews center={true} />
           <h1 className="main-title fw-700 l-height-1 mb-3x">
-            TutorChase <code>Access</code>
+            <PortableText value={firstScreen?.title} />
           </h1>
-          <p className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
-            Widening educational support in the UK
-          </p>
+          <div className="fz-20p fw-500 l-height-1/4 mx-auto" style={{ maxWidth: '22rem' }}>
+            <PortableText value={firstScreen?.description} />
+          </div>
           <div className="left-card bg-white">
             <SVG content={volunteerActivism()} size={24} />
             <p className="l-height-1/4">
@@ -40,60 +50,60 @@ export const AccessProgrammePage = ({ page }) => {
       <section className={`pt-13x pb-10x bg-white ${styles.flexibility}`}>
         <div className="container narrow">
           <div className="text-center">
-            <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">Lorem ipsum</p>
-            <h2 className="fz-48p fw-600 l-height-1 mb-10x">Our Access Programme</h2>
+            <p className="fz-18p fw-600 l-height-1 color-lightGray mb-2x">
+              {secondScreen?.preTitle}
+            </p>
+            <h2 className="fz-48p fw-600 l-height-1 mb-10x">{secondScreen?.title}</h2>
           </div>
           <div className="section-row flex flex-wrap items-center justify-between gap-8">
             <div className="image-wrap">
-              <img src={illustration4.src} alt="illustration" />
+              <img
+                src={`${getImageUrl(secondScreenPartOne?.image.asset._ref)}`}
+                alt="illustration"
+              />
             </div>
             <div className="text-wrap limit">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={volunteerActivism(Color.Orange)} size={28} />
               </span>
-              <h3 className="fz-32p fw-600 l-height-1/4 mb-3x">Premium UK and US Tutors</h3>
-              <p className="fz-18p l-height-1/4">
-                TutorChase is committed to providing tuition and university application support to
-                students from disadvantaged backgrounds. The aim being to help those who otherwise
-                would not have the financial resources to obtain private tuition receive the extra
-                educational support that that we offer as an organisation.
-              </p>
+              <h3 className="fz-32p fw-600 l-height-1/4 mb-3x">{secondScreenPartOne?.title}</h3>
+              <div className="fz-18p l-height-1/4">
+                <PortableText value={secondScreenPartOne?.description} />
+              </div>
             </div>
           </div>
           <div className="section-row flex flex-wrap items-center justify-between gap-8 mt-12x reverse_lg">
             <div className="image-wrap">
-              <img src={illustration5.src} alt="illustration" />
+              <img
+                src={`${getImageUrl(secondScreenPartTwo?.image.asset._ref)}`}
+                alt="illustration"
+              />
             </div>
             <div className="text-wrap limit">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={studyHat(Color.Orange)} size={28} />
               </span>
-              <h3 className="fz-32p fw-600 l-height-1/4 mb-3x">Premium UK and US Tutors</h3>
-              <p className="fz-18p l-height-1/4">
-                Our access programme works by pairing students with tutors, whom over the course of
-                a number of sessions will help them prepare for a certain goal, whether that be
-                achieving their desired grades in exams, helping them with their personal statement,
-                or coaching them in preparation for a university interview. Rather than simply
-                focussing on teaching subject specific knowledge, the programme is also centred
-                around mentorship, where tutors will help students develop a broader set of skills
-                which will help them achieve longterm educational success even after the programme
-                has ended.
-              </p>
+              <h3 className="fz-32p fw-600 l-height-1/4 mb-3x">{secondScreenPartTwo?.title}</h3>
+              <div className="fz-18p l-height-1/4">
+                <PortableText value={secondScreenPartTwo?.description} />
+              </div>
             </div>
           </div>
           <div className="section-row flex flex-wrap items-center justify-between gap-8 mt-15x">
             <div className="image-wrap">
-              <img src={illustration6.src} alt="illustration" />
+              <img
+                src={`${getImageUrl(secondScreenPartThree?.image.asset._ref)}`}
+                alt="illustration"
+              />
             </div>
             <div className="text-wrap limit">
               <span className="square flex items-center justify-center mb-3x">
                 <SVG content={paid(Color.Orange)} size={28} />
               </span>
-              <h3 className="fz-32p fw-600 l-height-1/4 mb-3x">Premium UK and US Tutors</h3>
-              <p className="fz-18p l-height-1/4">
-                The access programme is completely free to eligible students and is in most cases is
-                funded by TutorChase.
-              </p>
+              <h3 className="fz-32p fw-600 l-height-1/4 mb-3x">{secondScreenPartThree?.title}</h3>
+              <div className="fz-18p l-height-1/4">
+                <PortableText value={secondScreenPartThree?.description} />
+              </div>
             </div>
           </div>
         </div>
@@ -118,17 +128,11 @@ export const AccessProgrammePage = ({ page }) => {
               <img src={lgk_I8kY.src} alt="image" />
             </div>
             <div className="text-wrap">
-              <h3 className="fz-32p fw-600 l-height-1 mb-4x ">
-                General criteria for selecting students for the programme
-              </h3>
+              <h3 className="fz-32p fw-600 l-height-1 mb-4x ">{lastScreen?.title}</h3>
               <ul className="ordered-list mb-10x mb-0x_lg">
-                <li>Receive free school meals or have a household income of less than £21,000</li>
-                <li>Attend a non fee-paying state school in the UK</li>
-                <li>
-                  Be predicted to or have achieved predominantly top grades (8s or 9s) at GCSEs
-                </li>
-                <li>Have a written letter or recommendation stating the student’s potential</li>
-                <li>Be a UK resident</li>
+                {lastScreen?.list.map((item, index) => {
+                  return <li key={index + 1}>{item}</li>
+                })}
               </ul>
             </div>
           </div>

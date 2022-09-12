@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .firstScreen {
-  background: #FFF1EC url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+  background: #fff1ec url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
 
   :global {
     .left-card {
@@ -28,6 +28,13 @@
 
 .content {
   :global {
+    .video-block {
+      p {
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
     .section-row {
       > * {
         width: 100%;
@@ -145,4 +152,3 @@
     }
   }
 }
-
