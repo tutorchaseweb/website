@@ -53,8 +53,6 @@ export const Subject = ({ level, subject }) => {
     setTutorsPage(await client.fetch(TutorsQUERY))
   }, [level, subject])
 
-  console.log(subjectsPage)
-
   return (
     <Layout>
       {(Boolean(subjectsPage) || Boolean(tutorsPage)) && (

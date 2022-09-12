@@ -149,9 +149,7 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
           </form>
           <p className="fz-18p">
             <span className="text">{description}</span>
-            <span className="label-blue fz-20p l-height-1 fw-700 bg-blue color-white">
-              From £{price}/Hour
-            </span>
+            <span className="label-blue fz-20p l-height-1 fw-700 bg-blue color-white">{price}</span>
           </p>
         </div>
       </div>
