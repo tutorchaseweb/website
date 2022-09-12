@@ -25,11 +25,6 @@ export default {
       title: 'Blue card on tutors page',
     },
     {
-      name: 'interactivePlatform',
-      type: 'sectionHead',
-      title: 'Interactive platform content',
-    },
-    {
       name: 'reviewBlock',
       type: 'reviewBlock',
       title: 'Review block (one review)',

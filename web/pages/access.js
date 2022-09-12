@@ -8,7 +8,7 @@ export const AccessProgramme = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>{page?.seoTitle ? page.seoTitle : 'Acces sProgramme'}</title>
+        <title>{page?.seoTitle ? page.seoTitle : 'Access Programme'}</title>
         {Boolean(page?.seoDescription) && <meta name="description" content={page.seoDescription} />}
         {Boolean(page?.seoTitle) && (
           <meta property="og:title" content={page.seoTitle} key="title" />

@@ -8,10 +8,10 @@ export const Home = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>{page.title}</title>
-        <meta name="description" content={page.description} />
-        <meta property="og:title" content={page.title} key="title" />
-        <meta property="og:description" content={page.description} key="description" />
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
+        <meta property="og:title" content={page.seoTitle} key="title" />
+        <meta property="og:description" content={page.seoDescription} key="description" />
         {typeof window !== 'undefined' && (
           <meta property="og:url" content={window.location.href} key="url" />
         )}

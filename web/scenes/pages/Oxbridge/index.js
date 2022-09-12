@@ -6,7 +6,6 @@ import { PortableText } from '@portabletext/react'
 import { Circle } from '~/components/Circle'
 import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
 import { getImageUrl, hireTutor, useWindowSize } from '~/utils/helpers'
-import { useGlobalState } from '~/utils/state'
 import SVG from '~/components/SVG'
 import { studyHat, checkCircle, play, bookFull, handshake } from '~/utils/svgImages'
 import {
@@ -23,21 +22,28 @@ import {
 } from '~/scenes/sections'
 
 import oxford from '~/assets/images/oxford_logo2.png'
-import illustration11 from '~/assets/images/illustration-11.png'
-import illustration12 from '~/assets/images/illustration-12.png'
-import illustration13 from '~/assets/images/illustration-13.png'
-import illustration14 from '~/assets/images/illustration-14.png'
 import styles from './style.module.scss'
 import text from '~/assets/text-content/en/static.json'
 
-export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
-  const { firstScreen, blueCard, reviewBlock } = page
-  console.log(page)
+export const OxbridgePage = ({ page, tutors }) => {
+  const {
+    firstScreen,
+    filterDescription,
+    firstSection,
+    secondScreen,
+    secondScreenPartOne,
+    secondScreenPartThree,
+    secondScreenPartTwo,
+    admissionsTests,
+    tutorsSection,
+    blueCard,
+    reviewBlock,
+    faqSection,
+  } = page
 
-  const [levelQuery] = useGlobalState('levelQuery', null)
-  const [subjectQuery] = useGlobalState('subjectQuery', null)
   const window = useWindowSize()
   const [tests, setTests] = useState([])
+
   useEffect(async () => {
     const QUERY = groq`
         *[_type == 'test'] {
@@ -55,14 +61,14 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
             <div className="text-wrapper mb-10x">
               <BasedReviews />
               <h1 className="main-title fw-700 l-height-1 mt-3x mb-3x">
-                Online <span className="color-blue">{title}</span> Tutoring
+                <PortableText value={firstScreen?.title} />
               </h1>
-              {Boolean(firstScreen.description) && (
+              {Boolean(firstScreen?.description) && (
                 <div className="fz-20p fw-500 l-height-1/4 mb-3x">
-                  <PortableText value={firstScreen.description} />
+                  <PortableText value={firstScreen?.description} />
                 </div>
               )}
-              {Boolean(firstScreen.withButton) && (
+              {Boolean(firstScreen?.withButton) && (
                 <a href="#hireFormBlock" className="btn btn-blue" onClick={hireTutor}>
                   {text.form.btnHireTutor}
                 </a>
@@ -75,7 +81,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
                 </p>
                 <SVG content={studyHat()} size={28} />
               </div>
-              {Boolean(firstScreen.image) && window.width > MOBILE_BREAKPOINT && (
+              {Boolean(firstScreen?.image) && window.width > MOBILE_BREAKPOINT && (
                 <img
                   src={`${getImageUrl(firstScreen.image.asset._ref)}`}
                   alt="Elite Online Tutoring"
@@ -103,29 +109,29 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
           </div>
         </div>
       </section>
-      <SubjectsFilter />
+      <SubjectsFilter filterDescription={filterDescription} />
       <section className={`bg-white pt-12x pb-18x ${styles.content}`}>
         <div className="container narrow">
           <div className="video-block flex flex-wrap mb-15x overflow-hidden rounded-rem">
             <div className="text bg-lightBlue pl-3x pl-8x_lg pr-3x pr-8x_lg pt-4x pt-10x_lg pb-4x pb-10x_lg w-1/2_lg">
-              <h4 className="fz-32p mb-3x">Lorem ipsum dolor</h4>
-              <p className="l-height-1/4 mb-2x">
-                We provide online tutoring to support students applying to{' '}
-                <span className="fw-600">Oxford and Cambridge University.</span>
-              </p>
-              <p className="l-height-1/4">
-                We match students with a highly selective group of accomplished tutors who have
-                studied the{' '}
-                <span className="fw-600">applicant's chosen subject at Oxford or Cambridge.</span>
-              </p>
+              <h4 className="fz-32p mb-3x">{firstSection?.title}</h4>
+              <div className="l-height-1/4 mb-2x">
+                <PortableText value={firstSection?.description} />
+              </div>
             </div>
             <div className="video w-1/2_lg mx-auto">
-              <img src={illustration11.src} alt="illustration" className="block" />
+              <img
+                src={`${getImageUrl(firstSection?.image.asset._ref)}`}
+                alt="illustration"
+                className="block"
+              />
             </div>
           </div>
           <div className="text-center">
-            <p className="before-title fw-600 uppercase color-lightGray mb-3x">Lorem ipsum</p>
-            <h2 className="section-title fw-600 mb-6x mx-auto">Flexibility</h2>
+            <p className="before-title fw-600 uppercase color-lightGray mb-3x">
+              {secondScreen?.preTitle}
+            </p>
+            <h2 className="section-title fw-600 mb-6x mx-auto">{secondScreen?.title}</h2>
           </div>
           <div className="section-row flex flex-wrap items-center" style={{ gap: '6rem' }}>
             <div className="image-wrap relative">
@@ -152,20 +158,17 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
                   <span className="fz-14p">1h 30m</span>
                 </p>
               </div>
-              <img src={illustration12.src} alt="illustration" />
+              <img
+                src={`${getImageUrl(secondScreenPartOne?.image.asset._ref)}`}
+                alt="illustration"
+              />
             </div>
             <div className="text-wrap">
-              <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Premium UK and US Tutors</h4>
+              <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">{secondScreenPartOne?.title}</h4>
               <ul className="ordered-list fz-18p">
-                <li>
-                  Our tutors teach applicants the subject material required for their particular
-                  admissions test
-                </li>
-                <li>
-                  They instruct applicants in the necessary exam techniques to perform to the best
-                  of their abilities
-                </li>
-                <li>Past papers are covered to familiarise students with the test</li>
+                {secondScreenPartOne?.list.map((item, index) => {
+                  return <li key={index + 1}>{item}</li>
+                })}
               </ul>
             </div>
           </div>
@@ -188,22 +191,17 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
                 </p>
                 <SVG content={checkCircle()} size={28} />
               </div>
-              <img src={illustration13.src} alt="illustration" />
+              <img
+                src={`${getImageUrl(secondScreenPartTwo?.image.asset._ref)}`}
+                alt="illustration"
+              />
             </div>
             <div className="text-wrap">
-              <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Personal Statement Guidance</h4>
+              <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">{secondScreenPartTwo?.title}</h4>
               <ul className="ordered-list fz-18p">
-                <li>
-                  The applicant can write their personal statement under the supervision of a tutor
-                </li>
-                <li>
-                  The tutor will suggest further reading which the student can mention in their
-                  statement
-                </li>
-                <li>
-                  The structure and content of the personal statement will be reviewed by the tutor
-                  before being submitted
-                </li>
+                {secondScreenPartTwo?.list.map((item, index) => {
+                  return <li key={index + 2}>{item}</li>
+                })}
               </ul>
             </div>
           </div>
@@ -225,22 +223,17 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
                 <span className="line"></span>
                 <span className="line"></span>
               </div>
-              <img src={illustration14.src} alt="illustration" />
+              <img
+                src={`${getImageUrl(secondScreenPartThree?.image.asset._ref)}`}
+                alt="illustration"
+              />
             </div>
             <div className="text-wrap">
-              <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">Interview Preparation</h4>
+              <h4 className="fz-32p fw-600 l-height-1/4 mb-3x">{secondScreenPartThree?.title}</h4>
               <ul className="ordered-list fz-18p">
-                <li>
-                  The applicant is taught how to effectively answer questions and communicate well
-                  in an interview
-                </li>
-                <li>
-                  The applicant and tutor will run through a bank of past and potential interview
-                  questions
-                </li>
-                <li>
-                  Mock interviews are given to simulate the real conditions of an Oxbridge interview
-                </li>
+                {secondScreenPartThree?.list.map((item, index) => {
+                  return <li key={index + 3}>{item}</li>
+                })}
               </ul>
             </div>
           </div>
@@ -249,15 +242,18 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
       <section>
         <div className="container narrow">
           <div className="card bg-lightBlue pt-4x pb-4x pl-3x pr-3x p-8x_lg rounded-small">
-            <h4 className="mb-2x">Admissions Tests</h4>
-            <p className="fz-18p mb-4x">
-              We offer tuition for all the Oxford and Cambridge University admissions tests:
-            </p>
+            <h4 className="mb-2x">{admissionsTests?.title}</h4>
+            <div className="fz-18p mb-4x">
+              <PortableText value={admissionsTests?.description} />
+            </div>
             {Boolean(tests.length) && (
               <p className="flex flex-wrap gap-4 fw-500 l-height-1">
-                {tests.map((test) => {
+                {admissionsTests?.tests.map((test) => {
                   return (
-                    <Link key={test._id} href={test.slug.current}>
+                    <Link
+                      key={test._id}
+                      href={test._type === 'subject' ? test.slug.current : '/tutors'}
+                    >
                       <a className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">
                         {test.title}
                       </a>
@@ -272,29 +268,19 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
 
       <section className={`tutors-list pt-11x pb-19x ${styles.tutorsList}`}>
         <div className="container">
-          <h2 className="fz-36p fw-600 l-height-1/4 mb-2x">
-            {`${levelQuery?.title ? levelQuery.title : ''} ${
-              subjectQuery?.title ? subjectQuery.title : ''
-            } Tutor Spotlight`}
-          </h2>
-          <p className="description fz-18p mb-3x">
-            Our{' '}
-            {`${levelQuery?.title ? levelQuery.title : ''} ${
-              subjectQuery?.title ? subjectQuery.title : ''
-            }`}{' '}
-            tutors have all studied at the UK's top universities, achieved A* grades, and have
-            extensive tutoring experience.{' '}
-            <strong>We'll find the perfect tutor for you based on your requirements!</strong>
-          </p>
+          <h2 className="fz-36p fw-600 l-height-1/4 mb-2x">{tutorsSection?.title}</h2>
+          <div className="description fz-18p mb-3x">
+            <PortableText value={tutorsSection?.description} />
+          </div>
           <TutorsList tutors={tutors} />
         </div>
       </section>
       <section>
         <div className="container narrow">
           <BlueCardBlock
-            title={blueCard.title}
-            content={blueCard.description}
-            hireButton={blueCard.withButton}
+            title={blueCard?.title}
+            content={blueCard?.description}
+            hireButton={blueCard?.withButton}
           />
         </div>
       </section>
@@ -302,7 +288,7 @@ export const OxbridgePage = ({ title = 'Oxbridge', page, tutors }) => {
       <ReviewBlock {...reviewBlock} />
       <OurServiceBlock className="pt-8x pt-15x_lg pb-8x pb-18x_lg" />
       <RatedBlock />
-      <FAQ />
+      <FAQ faqSection={faqSection} />
       <HireFormBlock />
     </>
   )

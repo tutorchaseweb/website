@@ -26,7 +26,8 @@ export const AdditionalPage = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>Additional Page</title>
+        <title>{page?.seoTitle}</title>
+        <meta name="description" content={page?.seoDescription} />
       </Head>
       <div className="container pt-20x">
         <h1>Additional Page</h1>

@@ -26,9 +26,10 @@ export const Oxbridge = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>Oxbridge</title>
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
       </Head>
-      <OxbridgePage title={'Oxbridge'} page={page} tutors={tutors} />
+      <OxbridgePage page={page} tutors={tutors} />
     </Layout>
   )
 }
@@ -37,6 +38,10 @@ export async function getServerSideProps() {
   const QUERY = groq`
     *[_type == 'oxbridge-page'][0] {
       ...,
+      admissionsTests{
+        ...,
+        tests[] ->
+      }
     }
   `
   const page = await client.fetch(QUERY)

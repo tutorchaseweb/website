@@ -27,7 +27,8 @@ export const Tutors = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>Online Tutors</title>
+        <title>{page.seoTitle}</title>
+        <meta name="description" content={page.seoDescription} />
       </Head>
       <TutorsPage page={page} tutors={tutors} />
     </Layout>

@@ -4,12 +4,13 @@ import { useRouter } from 'next/router'
 import { useGlobalState } from '~/utils/state'
 import styles from './style.module.scss'
 
-export const SubjectsFilter = () => {
+export const SubjectsFilter = ({ filterDescription: { price, description } = {} }) => {
   const router = useRouter()
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
   const [levelsList, setLevelsList] = useState([])
   const [subjectsList, setSubjectsList] = useState([])
+
   const query = `
     *[_type in ['level', 'subject']] {
       _type == 'level' && !(_id in path("drafts.**")) => {
@@ -58,7 +59,7 @@ export const SubjectsFilter = () => {
       const currentLevel = levelsList.filter((item) => item._id === e.target.value)[0]
       const allSubjects = await client.fetch(`*[_type == 'subject' && !(_id in path("drafts.**"))]`)
       const currentSubjects = allSubjects.filter((subject) =>
-        Boolean(subject.levels.filter((level) => level._ref === currentLevel._id).length)
+        Boolean(subject.levels?.filter((level) => level._ref === currentLevel?._id).length)
       )
       setSubjectsList(e.target.value !== 'all-levels' ? currentSubjects : allSubjects)
       setLevelQuery(e.target.value !== 'all-levels' ? currentLevel : null)
@@ -131,7 +132,7 @@ export const SubjectsFilter = () => {
             <label className="label">
               <select aria-label="levels" defaultValue={levelQuery ? levelQuery._id : 'all-levels'}>
                 <option value="all-levels">All levels</option>
-                {Boolean(levelsList.length) &&
+                {Boolean(levelsList?.length) &&
                   levelsList.map((item) => {
                     return (
                       <option
@@ -147,10 +148,8 @@ export const SubjectsFilter = () => {
             </label>
           </form>
           <p className="fz-18p">
-            <span className="text">Fully flexible pay-as-you-go tutoring</span>
-            <span className="label-blue fz-20p l-height-1 fw-700 bg-blue color-white">
-              From £49/Hour
-            </span>
+            <span className="text">{description}</span>
+            <span className="label-blue fz-20p l-height-1 fw-700 bg-blue color-white">{price}</span>
           </p>
         </div>
       </div>
