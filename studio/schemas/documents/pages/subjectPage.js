@@ -11,11 +11,17 @@ function getUnitedSlug(level, subject) {
       },
     }
   `
-  const params = { level: level._ref, subject: subject._ref }
+  const params = { level: level?._ref ?? '', subject: subject?._ref ?? '' }
+
   return sanityClient.fetch(query, params).then((data) => {
     const level = data.filter((item) => item._type === 'level')[0]
     const subject = data.filter((item) => item._type === 'subject')[0]
-    return `${level.slug.current}_${subject.slug.current}`
+
+    const newSlug = `${level?.slug.current ?? ''}${
+      level !== undefined && subject !== undefined ? '_' : ''
+    }${subject?.slug.current ?? ''}`
+
+    return newSlug
   })
 }
 
@@ -30,16 +36,12 @@ export default {
       type: 'reference',
       to: { type: 'level' },
       title: 'Level',
-      description: '(required field)',
-      validation: (Rule) => Rule.error('The level is required').required(),
     },
     {
       name: 'subject',
       type: 'reference',
       to: { type: 'subject' },
       title: 'Subject',
-      description: '(required field)',
-      validation: (Rule) => Rule.error('The subject is required').required(),
     },
     {
       name: 'title',
@@ -59,12 +61,42 @@ export default {
         },
         maxLength: 96,
       },
-      validation: (Rule) => Rule.error('The slug is required').required(),
+      validation: (Rule) => Rule.error('Please select a level or subject for the page').required(),
     },
     {
       name: 'firstScreen',
-      type: 'pageHeadImage',
-      title: 'First section on page',
+      type: 'pageHead',
+      title: 'First section on tutors page',
+    },
+    {
+      name: 'filterDescription',
+      type: 'filterDescription',
+      title: 'Filter description and price per hour',
+    },
+    {
+      name: 'tutorsSection',
+      type: 'sectionHead',
+      title: 'Tutors list section head',
+    },
+    {
+      name: 'blueCard',
+      type: 'blueCard',
+      title: 'Blue card on tutors page',
+    },
+    {
+      name: 'interactivePlatform',
+      type: 'sectionHead',
+      title: 'Interactive platform content',
+    },
+    {
+      name: 'reviewBlock',
+      type: 'reviewBlock',
+      title: 'Review block (one review)',
+    },
+    {
+      name: 'faqSection',
+      type: 'faqSection',
+      title: 'FAQ',
     },
     {
       name: 'seoTitle',
