@@ -22,7 +22,7 @@ export const BlogCard = ({ article }) => {
         )}
         {article.mainImage?.asset?._ref ? (
           <Image
-            src={`${getImageUrl(article.mainImage.asset._ref).width(400).height(200)}`}
+            src={`${getImageUrl(article.mainImage?.asset?._ref).width(400).height(200)}`}
             alt={article.mainImage?.alt}
             layout="fill"
             objectFit="cover"

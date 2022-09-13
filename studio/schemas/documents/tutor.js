@@ -90,6 +90,11 @@ export default {
       validation: (Rule) => Rule.error('The field is required').required(),
     },
     {
+      name: 'tutoringReviews',
+      type: 'reviewSection',
+      title: 'Tutoring Reviews',
+    },
+    {
       name: 'extracurricularActivities',
       type: 'array',
       of: [{ type: 'string' }],
