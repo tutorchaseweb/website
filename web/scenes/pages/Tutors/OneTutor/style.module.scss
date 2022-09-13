@@ -66,7 +66,7 @@
     .teach {
       display: inline-block;
       line-height: 1.2;
-      background-color: #F4F5FA;
+      background-color: #f4f5fa;
       border-radius: 4px;
       padding: 0.25rem 0.5rem;
     }
@@ -80,7 +80,7 @@
 }
 
 .vettedTutor {
-  background-color: #EDF0FF;
+  background-color: #edf0ff;
 
   :global {
     .medium-title {
@@ -96,7 +96,7 @@
 }
 
 .experience {
-  background: #FFF1EC url('/images/illustration.png') no-repeat bottom center/contain;
+  background: #fff1ec url('/images/illustration.png') no-repeat bottom center/contain;
   @media (min-width: $lg) {
     background-position: right center;
   }
@@ -123,8 +123,10 @@
       }
     }
     .reviewsLink {
-      padding-bottom: 0.25rem;
-      border-bottom: 1px solid $color-blue;
+      border-style: solid;
+      border-width: 0 0 1px 0;
+      border-color: $color-blue;
+      background-color: transparent;
       &:hover {
         text-decoration: none;
       }
