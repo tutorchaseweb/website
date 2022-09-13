@@ -1,0 +1,25 @@
+@import 'styles/variables';
+
+.container {
+  bottom: 0;
+  gap: 1rem;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  padding: 16px;
+  position: fixed;
+  align-items: center;
+  color: $color-white;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-blue;
+
+  @media (min-width: $sm) {
+    gap: 2rem;
+    flex-direction: row;
+  }
+}
+
+.wrapper {
+  flex-shrink: 0;
+}
