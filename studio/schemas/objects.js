@@ -11,6 +11,7 @@ import pageHeadImage from './objects/global/pageHeadImage'
 import servicesBlock from './objects/global/servicesBlock'
 import sectionHead from './objects/global/sectionHead'
 import reviewBlock from './objects/global/reviewBlock'
+import reviewSection from './objects/global/reviewSection'
 import faqSection from './objects/global/faqSection'
 import blueCard from './objects/global/blueCard'
 import pageHead from './objects/global/pageHead'
@@ -44,6 +45,7 @@ export default [
   floatImage,
   studyCards,
   tutorLevel,
+  reviewSection,
   faqSection,
   mainImage,
   blueCard,

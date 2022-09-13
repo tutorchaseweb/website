@@ -5,18 +5,9 @@ export default {
   fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      title: 'Page title',
-      description: 'Title on first screen (required field).',
-      validation: (Rule) => Rule.error('The title is required').required(),
-    },
-    {
-      name: 'description',
-      type: 'text',
-      title: 'Description',
-      description: 'Description on first screen (required field).',
-      validation: (Rule) => Rule.error('The description is required').required(),
+      name: 'firstScreen',
+      type: 'pageHead',
+      title: 'First section on reviews page',
     },
     {
       name: 'seoTitle',

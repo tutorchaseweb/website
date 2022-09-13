@@ -9,7 +9,7 @@ const FaqItem = ({ item }) => {
   const [active, setActive] = useState(false)
 
   return (
-    <div className="item" key={item._id}>
+    <div className="item" key={item._key}>
       <div
         className={`question pointer ${active ? 'active' : ''}`}
         onClick={() => setActive(!active)}
@@ -23,7 +23,7 @@ const FaqItem = ({ item }) => {
   )
 }
 
-export const FAQ = ({ className = '' }) => {
+export const FAQ = ({ faqSection: { sectionHead, questions } = {}, className = '' }) => {
   const [faq, setFaq] = useState(null)
   useEffect(async () => {
     const query = groq`
@@ -42,24 +42,26 @@ export const FAQ = ({ className = '' }) => {
         <div className="container narrow">
           <div className="cover flex items-center">
             <div className="text mb-4x mb-0x_lg mr-8x_lg">
-              {Boolean(faq.sectionHead?.preTitle) && (
+              {Boolean(sectionHead?.preTitle) && (
                 <p className="before-title fw-600 l-height-1 uppercase color-lightGray mb-3x">
-                  {faq.sectionHead.preTitle}
+                  {sectionHead.preTitle}
                 </p>
               )}
-              {Boolean(faq.sectionHead?.title) && (
-                <h2 className="section-title fw-600 mb-4x">{faq.sectionHead.title}</h2>
+              {Boolean(sectionHead?.title) && (
+                <h2 className="section-title fw-600 mb-4x">{sectionHead.title}</h2>
               )}
-              {Boolean(faq.sectionHead?.description) && (
+              {Boolean(sectionHead?.description) && (
                 <div className="description fz-18p l-height-1/5">
-                  <PortableText value={faq.sectionHead.description} />
+                  <PortableText value={sectionHead.description} />
                 </div>
               )}
             </div>
             <div className="wrapper flex-1">
               <div className="accordion">
-                {Boolean(faq.questions.length) &&
-                  faq.questions.map((item) => <FaqItem key={item._id} item={item} />)}
+                {Boolean(questions?.length) &&
+                  questions.map((item) => {
+                    return <FaqItem key={item._key} item={item} />
+                  })}
               </div>
             </div>
           </div>

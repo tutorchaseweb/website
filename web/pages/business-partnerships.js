@@ -8,7 +8,8 @@ export const BusinessPartnerships = ({ page }) => {
   return (
     <Layout>
       <Head>
-        <title>Business Partnerships</title>
+        <title>{page?.seoTitle}</title>
+        <meta name="description" content={page?.seoDescription} />
       </Head>
       <BusinessPartnershipsPage page={page} />
     </Layout>
