@@ -10,8 +10,56 @@ import { HireFormBlock } from '~/scenes/sections'
 import groupImg from '~/assets/images/group-427319714.png'
 import ControlPanel from '~/assets/images/Control_Panel.png'
 import styles from './style.module.scss'
+import { useEffect, useState } from 'react'
 
 export const TutorPage = ({ tutor }) => {
+  const { title, list } = tutor.reviews || {}
+  const [firtsNumber, setFirstNumber] = useState(0)
+  let lastNumber = firtsNumber + TUTOR_REVIEW_ITEMS
+  const [reviewsList, setReviewsList] = useState(list?.slice(0, TUTOR_REVIEW_ITEMS))
+
+  useEffect(() => {
+    createReviewsList()
+  }, [firtsNumber])
+
+  const createReviewBlock = (review, index) => {
+    return (
+      <div
+        key={review._key + index}
+        className="pt-3x pt-4x_lg pb-3x pb-4x_lg"
+        style={{ borderTop: `1px solid ${index !== 0 ? '#E1E7ED' : 'transparent'}` }}
+      >
+        <div className="content mb-3x l-height-1/4">
+          <PortableText value={review?.content} />
+        </div>
+        <p className="flex flex-wrap items-center">
+          <span className="fw-700">{review?.author}</span>
+          <span className="ml-1x mr-1x">|</span>
+          {review?.position}
+          <span className="stars l-height-1 ml-2x_lg">
+            <SVG content={star()} size={20} />
+            <SVG content={star()} size={20} />
+            <SVG content={star()} size={20} />
+            <SVG content={star()} size={20} />
+            <SVG content={star()} size={20} />
+          </span>
+        </p>
+      </div>
+    )
+  }
+
+  const createReviewsList = () => {
+    return reviewsList?.map((item, index) => {
+      return createReviewBlock(item, index)
+    })
+  }
+
+  const onClick = () => {
+    const newList = reviewsList.concat(list?.slice(firtsNumber, lastNumber))
+    setFirstNumber(firtsNumber + TUTOR_REVIEW_ITEMS)
+    setReviewsList(newList)
+  }
+
   return (
     <>
       <section className={`pt-20x relative bg-lightGray ${styles.section}`}>
@@ -117,38 +165,16 @@ export const TutorPage = ({ tutor }) => {
               ))}
             </div>
           </div>
-          {Boolean(tutor.reviews.length) && (
+          {Boolean(list?.length > 0) && (
             <div
               className={`bg-white pt-4x pt-7x_lg pb-4x pl-3x pl-8x_lg pr-3x pr-8x_lg rounded-rem ${styles.reviews}`}
             >
-              <h2 className="medium-title fw-600 ">Tutor Reviews</h2>
-              {tutor.reviews.slice(0, TUTOR_REVIEW_ITEMS).map((review, idx) => {
-                return (
-                  <div
-                    key={review._id}
-                    className="pt-3x pt-4x_lg pb-3x pb-4x_lg"
-                    style={{ borderTop: `1px solid ${idx !== 0 ? '#E1E7ED' : 'transparent'}` }}
-                  >
-                    <p className="content mb-3x l-height-1/4">{review.content}</p>
-                    <p className="flex flex-wrap items-center">
-                      <span className="fw-700">{review.author}</span>
-                      <span className="ml-1x mr-1x">|</span>
-                      {review.position}
-                      <span className="stars l-height-1 ml-2x_lg">
-                        <SVG content={star()} size={20} />
-                        <SVG content={star()} size={20} />
-                        <SVG content={star()} size={20} />
-                        <SVG content={star()} size={20} />
-                        <SVG content={star()} size={20} />
-                      </span>
-                    </p>
-                  </div>
-                )
-              })}
-              {tutor.reviews.length > TUTOR_REVIEW_ITEMS && (
-                <Link href="/reviews">
-                  <a className="reviewsLink color-blue fz-18p fw-600">Show more reviews</a>
-                </Link>
+              <h2 className="medium-title fw-600 ">{title}</h2>
+              {createReviewsList(list)}
+              {list?.length > TUTOR_REVIEW_ITEMS && lastNumber < list?.length && (
+                <button className="reviewsLink color-blue fz-18p fw-600" onClick={onClick}>
+                  Show more reviews
+                </button>
               )}
             </div>
           )}

@@ -26,7 +26,10 @@ export async function getServerSideProps(context) {
         title,
         slug,
       },
-      'reviews': *[_type == 'review' && references(^._id)],
+      'reviews': {
+        'title': tutoringReviews.title,
+        'list': tutoringReviews.reviews,
+      }
     }
   `,
     { slug }
