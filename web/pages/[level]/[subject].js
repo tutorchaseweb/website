@@ -29,7 +29,6 @@ export const Subject = ({ level, subject }) => {
     `
     const params = { slug: `${level.slug.current}_${subject.slug.current}` }
     const data = await client.fetch(query, params)
-    console.log(data)
   }, [])
 
   const query = getQueryForTutors(levelQuery, subjectQuery)

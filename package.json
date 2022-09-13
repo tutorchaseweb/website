@@ -20,5 +20,8 @@
   "homepage": "https://github.com/pasha-z25/tutorchase#readme",
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "nodemailer": "^6.7.8"
   }
 }

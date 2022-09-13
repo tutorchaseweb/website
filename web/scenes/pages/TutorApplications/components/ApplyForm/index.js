@@ -103,6 +103,26 @@ export const ApplyForm = ({ className = '' }) => {
   const checkMandatoryFields_step3 = () => {
     event.preventDefault()
     sendData()
+      .then(() => {
+        fetch('/api/apply_form_to_sales_team', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+      })
+      .then(() => {
+        fetch('/api/apply_form_to_user', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+      })
       .then((result) => {
         log(result)
         clearAllFields()
@@ -123,6 +143,21 @@ export const ApplyForm = ({ className = '' }) => {
     setLinkedInUrl('')
     setReferrer('')
     setFiles([])
+  }
+
+  const data = {
+    fullName,
+    email,
+    country: country.title,
+    phone,
+    hearAboutUs,
+    qualifications,
+    tutoringExperience,
+    tutoringOffered,
+    linkedInUrl,
+    referrer,
+    fileName: files[0]?.name,
+    filePath: files[0]?.path,
   }
 
   const sendForm = (file = {}) => {
