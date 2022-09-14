@@ -6,7 +6,6 @@ export const Dropdown = ({ items, selected, handler, className }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpacity, setIsOpacity] = useState(false)
   const [filter, setFilter] = useState('')
-  const [value, setValue] = useState('')
   const wrapperRef = useRef(null)
 
   useEffect(() => {
