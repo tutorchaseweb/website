@@ -53,7 +53,10 @@ export const ApplyForm = ({ className = '' }) => {
 
   const countries = [
     defaultCountry,
-    ...countriesRaw.map((country) => ({ title: country.name, value: country.code })),
+    ...countriesRaw.map((country) => ({
+      title: country.name,
+      value: country.code,
+    })),
   ]
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(acceptedFiles)
