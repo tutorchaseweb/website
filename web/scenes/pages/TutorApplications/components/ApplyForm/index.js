@@ -103,6 +103,16 @@ export const ApplyForm = ({ className = '' }) => {
   const checkMandatoryFields_step3 = () => {
     event.preventDefault()
     sendData()
+      .then(() => {
+        fetch('/api/apply_form_to_user', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(email),
+        })
+      })
       .then((result) => {
         log(result)
         clearAllFields()
@@ -162,6 +172,30 @@ export const ApplyForm = ({ className = '' }) => {
       client.assets
         .upload('file', file, {
           filename: file.name,
+        })
+        .then((imageAsset) => {
+          const data = {
+            fullName,
+            email,
+            country: country.title,
+            phone,
+            hearAboutUs,
+            qualifications,
+            tutoringExperience,
+            tutoringOffered,
+            linkedInUrl,
+            referrer,
+            fileName: files[0]?.name,
+            filePath: imageAsset?.url,
+          }
+          fetch('/api/apply_form_to_sales_team', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json, text/plain, */*',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          })
         })
         .then(async (file) => {
           return await sendForm(file)
