@@ -61,6 +61,26 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     setDetailsErrors(checkValidateMessage(details))
     if (!checkValidateMessage(details).length) {
       sendForm()
+        .then(() => {
+          fetch('/api/hire_form_to_sales_team', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json, text/plain, */*',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          })
+        })
+        .then(() => {
+          fetch('/api/hire_form_to_user', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json, text/plain, */*',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          })
+        })
         .then((result) => {
           log(result)
           clearAllFields()
@@ -84,22 +104,24 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     setFrequencyDuration('')
   }
 
+  const data = {
+    _type: 'hireForm',
+    position,
+    fullName,
+    country: country.title,
+    phone,
+    email,
+    details,
+    frequencyDuration,
+    source,
+    time: new Date().toString(),
+    processed: false,
+  }
+
   const sendForm = () => {
     const mutations = [
       {
-        create: {
-          _type: 'hireForm',
-          position,
-          fullName,
-          country,
-          phone,
-          email,
-          details,
-          frequencyDuration,
-          source,
-          time: new Date().toString(),
-          processed: false,
-        },
+        create: data,
       },
     ]
     return handleMutations(mutations)
