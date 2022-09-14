@@ -1,7 +1,7 @@
-export default async function (req, res) {
+export default function (req, res) {
   //   require('dotenv').config()
+  const nodemailer = require('nodemailer')
 
-  let nodemailer = require('nodemailer')
   const transporter = nodemailer.createTransport({
     port: 465,
     host: 'smtp.gmail.com',
@@ -51,7 +51,7 @@ export default async function (req, res) {
     attachments: [
       {
         filename: req.body.fileName,
-        path: process.env.NEXT_PUBLIC_BASE_URL + req.body.filePath,
+        path: req.body.filePath,
       },
     ],
   }

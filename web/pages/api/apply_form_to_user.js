@@ -13,7 +13,7 @@ export default async function (req, res) {
   })
   const mailData = {
     from: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
-    to: req.body.email,
+    to: req.body,
     subject: `TutorChase Tutor Application`,
     text: 'Thank you for your application. We aim to respond to successful applicants within two weeks. The TutorChase Team',
 

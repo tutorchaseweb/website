@@ -1,7 +1,7 @@
 export default function (req, res) {
   //   require('dotenv').config()
 
-  let nodemailer = require('nodemailer')
+  const nodemailer = require('nodemailer')
   const transporter = nodemailer.createTransport({
     port: 465,
     host: 'smtp.gmail.com',
@@ -30,13 +30,13 @@ export default function (req, res) {
       req.body.details +
       'Frequency and Duration of Tuition: ' +
       req.body.frequencyDuration,
-    html: `<p>Position: ${req.body.position}</p>
-    <p>Full name: ${req.body.fullName}</p>
-    <p>Country: ${req.body.country}</p>
-    <p>Phone: ${req.body.phone}</p>
-    <p>Email: ${req.body.email}</p>
-    <p>Details of Tutoring Request: ${req.body.details}</p>
-    <p>Frequency and Duration of Tuition: ${req.body.frequencyDuration}</p>`,
+    html: `<p><b>Position:</b><br/> ${req.body.position}</p>
+    <p><b>Full name:</b><br/> ${req.body.fullName}</p>
+    <p><bCountry:</b><br/> ${req.body.country}</p>
+    <p><b>Phone:</b><br/> ${req.body.phone}</p>
+    <p><b>Email:</b><br/> ${req.body.email}</p>
+    <p><b>Details of Tutoring Request:</b><br/> ${req.body.details}</p>
+    <p><b>Frequency and Duration of Tuition:</b><br/> ${req.body.frequencyDuration}</p>`,
   }
   transporter.sendMail(mailData, function (err) {
     if (err) console.log(err)
