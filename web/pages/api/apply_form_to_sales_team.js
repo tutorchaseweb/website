@@ -3,13 +3,11 @@ export default function (req, res) {
   const nodemailer = require('nodemailer')
 
   const transporter = nodemailer.createTransport({
-    port: 465,
-    host: 'smtp.gmail.com',
+    service: 'gmail',
     auth: {
       user: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
       pass: process.env.NEXT_PUBLIC_MAIL_PASSWORD,
     },
-    secure: true,
   })
   const mailData = {
     from: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
