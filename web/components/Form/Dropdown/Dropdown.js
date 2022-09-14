@@ -5,6 +5,7 @@ import styles from './style.module.scss'
 export const Dropdown = ({ items, selected, handler, className }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpacity, setIsOpacity] = useState(false)
+  const [filter, setFilter] = useState('')
   const wrapperRef = useRef(null)
 
   useEffect(() => {
@@ -33,6 +34,10 @@ export const Dropdown = ({ items, selected, handler, className }) => {
 
   useOutsideAlerter(wrapperRef)
 
+  const handleChange = (e) => {
+    setFilter(e.target.value)
+  }
+
   return (
     <div ref={wrapperRef} className={`${styles.dropdown} dropdown relative`}>
       <div
@@ -48,37 +53,51 @@ export const Dropdown = ({ items, selected, handler, className }) => {
           isOpen ? 'visible' : ''
         } select-list transition absolute w-full bg-white index-1`}
       >
-        {items.map((item, index) => {
-          const [image, setImage] = useState('')
-          useEffect(() => {
-            if (item.image?.asset?.url) {
-              fetch(item.image.asset.url)
-                .then((response) => response.text())
-                .then((svg) => setImage(svg))
-            }
-          }, [])
-          return (
-            <li
-              key={item.value}
-              data-value={item.value}
-              onClick={() => {
-                handler(item)
-                setIsOpen(!isOpen)
-                setIsOpacity(false)
-              }}
-              className={`pointer item transition flex align-center ${
-                index ? '' : 'disable hidden'
-              }`}
-            >
-              {item.image?.asset?.url && (
-                <>
-                  <span className="icon svg-wrap" dangerouslySetInnerHTML={{ __html: image }} />
-                </>
-              )}
-              {item.title}
-            </li>
-          )
-        })}
+        <li className="pl-1x pr-1x">
+          <input
+            type="text"
+            placeholder="Select your country"
+            onChange={handleChange}
+            value={filter}
+            className="p-1x border-light l-height-2 w-full rounded-xSmall"
+          />
+        </li>
+        {items
+          ?.filter(({ title }) => {
+            return title.toLowerCase().startsWith(filter)
+          })
+          .map((item, index) => {
+            // const [image, setImage] = useState('')
+            // useEffect(() => {
+            //   if (item.image?.asset?.url) {
+            //     fetch(item.image.asset.url)
+            //       .then((response) => response.text())
+            //       .then((svg) => setImage(svg))
+            //   }
+            // }, [])
+            return (
+              <li
+                key={item.value}
+                data-value={item.value}
+                onClick={() => {
+                  handler(item)
+                  setIsOpen(!isOpen)
+                  setIsOpacity(false)
+                  setFilter('')
+                }}
+                className={`pointer item transition flex align-center ${
+                  filter === '' && (index ? '' : 'disable hidden')
+                }`}
+              >
+                {/* {item.image?.asset?.url && (
+                  <>
+                    <span className="icon svg-wrap" dangerouslySetInnerHTML={{ __html: image }} />
+                  </>
+                )} */}
+                {item.title}
+              </li>
+            )
+          })}
       </ul>
     </div>
   )
