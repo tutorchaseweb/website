@@ -51,7 +51,7 @@ export default async function (req, res) {
     attachments: [
       {
         filename: req.body.fileName,
-        path: 'http://localhost:3000/' + (await req.body.filePath),
+        path: process.env.NEXT_PUBLIC_BASE_URL + req.body.filePath,
       },
     ],
   }
