@@ -2,6 +2,7 @@ import siteConfig from './documents/siteConfig'
 import accessPage from './documents/pages/accessProgrammePage'
 import homePage from './documents/pages/homePage'
 import oxbridgePage from './documents/pages/oxbridgePage'
+import usAdmissionsPage from './documents/pages/usAdmissionsPage'
 import businessPartnershipsPage from './documents/pages/businessPartnershipsPage'
 import tutorsPage from './documents/pages/tutorsPage'
 import blogPage from './documents/pages/blogPage'
@@ -30,6 +31,7 @@ export default [
   accessPage,
   homePage,
   oxbridgePage,
+  usAdmissionsPage,
   businessPartnershipsPage,
   tutorApplicationsPage,
   tutorsPage,

@@ -12,6 +12,7 @@ export const Subject = ({ level, subject }) => {
   const router = useRouter()
   const [tutors, setTutors] = useState([])
   const [tutorsPage, setTutorsPage] = useState(null)
+  const [subjectsPage, setSubjectsPage] = useState(null)
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
 
@@ -25,11 +26,9 @@ export const Subject = ({ level, subject }) => {
 
   useEffect(async () => {
     const query = groq`
-      *[_type == 'subject-page' && slug.current == $slug]
-    `
-    const params = { slug: `${level.slug.current}_${subject.slug.current}` }
-    const data = await client.fetch(query, params)
-  }, [])
+      *[_type == 'subject-page' && slug.current == '${level.slug.current}_${subject.slug.current}'][0]`
+    setSubjectsPage(await client.fetch(query))
+  }, [level, subject])
 
   const query = getQueryForTutors(levelQuery, subjectQuery)
   const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
@@ -38,7 +37,7 @@ export const Subject = ({ level, subject }) => {
       setTutors(
         subject
           ? subject.tutors
-              .sort((first, second) => second.rating - first.rating)
+              ?.sort((first, second) => second.rating - first.rating)
               .map((item) => item.tutor)
           : data
       )
@@ -52,16 +51,22 @@ export const Subject = ({ level, subject }) => {
         }
       `
     setTutorsPage(await client.fetch(TutorsQUERY))
-  }, [])
+  }, [level, subject])
 
   return (
     <Layout>
-      <Head>
-        <title>
-          Online {level?.title} {subject?.title} Tutors
-        </title>
-      </Head>
-      {Boolean(tutorsPage) && <TutorsPage page={tutorsPage} tutors={tutors} />}
+      {(Boolean(subjectsPage) || Boolean(tutorsPage)) && (
+        <>
+          <Head>
+            <title>{subjectsPage ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
+            <meta
+              name="description"
+              content={subjectsPage ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+            />
+          </Head>
+          <TutorsPage page={subjectsPage ?? tutorsPage} tutors={tutors} />
+        </>
+      )}
     </Layout>
   )
 }

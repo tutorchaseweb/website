@@ -14,7 +14,7 @@ export const TutorsList = ({ tutors }) => {
   const [tutorsLimit, setTutorsLimit] = useState(TUTORS_LIST_STEP)
   const view = useWindowSize()
   const router = useRouter()
-  const orderedTutors = tutors.sort((first, second) => second.sortingRating - first.sortingRating)
+  const orderedTutors = tutors?.sort((first, second) => second.sortingRating - first.sortingRating)
 
   const hireTutor = (event) => {
     event.preventDefault()
@@ -31,7 +31,7 @@ export const TutorsList = ({ tutors }) => {
 
   return (
     <div className="flex flex-wrap gap-8">
-      {Boolean(tutors.length) ? (
+      {Boolean(tutors?.length) ? (
         orderedTutors.slice(0, tutorsLimit).map((tutor) => {
           return (
             <div
@@ -139,7 +139,7 @@ export const TutorsList = ({ tutors }) => {
       ) : (
         <p className="medium-title fw-500">Tutors not found for this query</p>
       )}
-      {tutors.length > tutorsLimit ? (
+      {tutors?.length > tutorsLimit ? (
         <button
           className="btn btn-blue"
           onClick={() => setTutorsLimit(tutorsLimit + TUTORS_LIST_STEP)}

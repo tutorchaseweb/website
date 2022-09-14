@@ -5,13 +5,13 @@ import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
-import { getQueryForTutors } from '~/utils/helpers'
 import { TutorsPage, OxbridgePage } from '~/scenes/pages'
 
-export const Level = ({ current }) => {
+export const Level = ({ current, subjectElements, level }) => {
   const router = useRouter()
   const [oxbridgePage, setOxbridgePage] = useState(null)
   const [tutorsPage, setTutorsPage] = useState(null)
+  const [subjectsPage, setSubjectsPage] = useState(null)
   const [tutors, setTutors] = useState([])
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
@@ -20,27 +20,26 @@ export const Level = ({ current }) => {
     typeof window !== 'undefined' && router.replace('/404')
   }
 
+  const getSubjectsData = async () => {
+    const SubjectsPageQUERY = groq`
+    *[_type == 'subject-page' && slug.current == '${level}'][0] {
+      ...,
+    }
+  `
+    return setSubjectsPage(await client.fetch(SubjectsPageQUERY))
+  }
+
   useEffect(async () => {
     if (current && current._type === 'level') {
       !levelQuery && setLevelQuery(current)
       setSubjectQuery(null)
 
-      const TutorsQUERY = groq`
-        *[_type == 'tutors-page'][0] {
-          ...,
-        }
-      `
-      setTutorsPage(await client.fetch(TutorsQUERY))
+      getSubjectsData()
     } else if (current && current._type === 'subject') {
       !subjectQuery && setSubjectQuery(current)
       setLevelQuery(null)
 
-      const TutorsQUERY = groq`
-        *[_type == 'tutors-page'][0] {
-          ...,
-        }
-      `
-      setTutorsPage(await client.fetch(TutorsQUERY))
+      getSubjectsData()
     } else if (current && current._type === 'test') {
       setLevelQuery(null)
       setSubjectQuery(null)
@@ -53,35 +52,77 @@ export const Level = ({ current }) => {
     } else {
       typeof window !== 'undefined' && router.replace('/404')
     }
-  }, [])
+  }, [level])
 
-  const query = getQueryForTutors(levelQuery, subjectQuery)
-  const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
-  useEffect(() => {
-    client.fetch(query, params).then((data) => {
-      setTutors(
-        current && current._type === 'subject'
-          ? current.tutors
-              .sort((first, second) => second.rating - first.rating)
-              .map((item) => item.tutor)
-          : data
-      )
+  useEffect(async () => {
+    const levelTutors = subjectElements.map((item) => {
+      return item.tutors.filter((tutor) => {
+        return tutor?.level?.slug.current === level
+      })
     })
-  }, [current])
+
+    const tutorsList = []
+
+    levelTutors.map((array) => {
+      return array.length !== 0
+        ? array.length === 1
+          ? tutorsList.push(array[0].tutor)
+          : array.map((item) => {
+              return tutorsList.push(item.tutor)
+            })
+        : false
+    })
+
+    current &&
+      current._type === 'subject' &&
+      setTutors(
+        current.tutors
+          ?.sort((first, second) => second.rating - first.rating)
+          .map((item) => item.tutor)
+      )
+
+    current &&
+      current._type === 'level' &&
+      setTutors(tutorsList?.sort((first, second) => second.rating - first.rating))?.map(
+        (item) => item.tutor
+      )
+  }, [current, level])
+
+  useEffect(async () => {
+    const TutorsQUERY = groq`
+        *[_type == 'tutors-page'][0] {
+          ...,
+        }
+      `
+    setTutorsPage(await client.fetch(TutorsQUERY))
+  }, [level])
+
+  const isEmpty = subjectsPage && Object.keys(subjectsPage).length === 0
 
   return (
     <Layout>
-      <Head>
-        <title>Online {current ? current.title : ''} Tutors</title>
-      </Head>
-      {current && current._type === 'level' && Boolean(tutorsPage) && (
-        <TutorsPage page={tutorsPage} tutors={tutors} />
-      )}
-      {current && current._type === 'subject' && Boolean(tutorsPage) && (
-        <TutorsPage page={tutorsPage} tutors={tutors} />
-      )}
+      {current &&
+        (current._type === 'level' || current._type === 'subject') &&
+        (Boolean(subjectsPage) || Boolean(tutorsPage)) && (
+          <>
+            <Head>
+              <title>{!isEmpty ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
+              <meta
+                name="description"
+                content={!isEmpty ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+              />
+            </Head>
+            <TutorsPage page={!isEmpty ? subjectsPage : tutorsPage} tutors={tutors} />
+          </>
+        )}
       {current && current._type === 'test' && Boolean(oxbridgePage) && (
-        <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
+        <>
+          <Head>
+            <title>{oxbridgePage?.seoTitle}</title>
+            <meta name="description" content={oxbridgePage?.seoDescription} />
+          </Head>
+          <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
+        </>
       )}
     </Layout>
   )
@@ -119,6 +160,10 @@ export async function getServerSideProps(context) {
               title,
               slug,
             },
+          },
+          level->{
+            title,
+            slug
           }
         }
       },
@@ -131,10 +176,13 @@ export async function getServerSideProps(context) {
   )
 
   const current = data.filter((item) => item.slug && item.slug.current === level)[0]
+  const subjectElements = data.filter((item) => item._type && item._type === 'subject')
 
   return {
     props: {
       current: current ? current : null,
+      subjectElements: subjectElements ? subjectElements : null,
+      level,
     },
   }
 }
