@@ -7,6 +7,9 @@ const MetaTags = ({ title, description }) => {
 
   return (
     <Head>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
+
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={title} />
@@ -21,6 +24,8 @@ const MetaTags = ({ title, description }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+
+      <link rel="icon" href="/favicon.ico" />
     </Head>
   )
 }

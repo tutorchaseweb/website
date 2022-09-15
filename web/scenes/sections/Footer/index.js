@@ -7,8 +7,6 @@ import { facebook, twitter, linkedin } from '~/utils/svgImages'
 import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
 import { getImageUrl, useWindowSize } from '~/utils/helpers'
 import text from '~/assets/text-content/en/static.json'
-import CompanyInformation from './CompanyInformationMenu.json'
-import CoursesInformation from './CoursesInformationMenu.json'
 import styles from './style.module.scss'
 
 export const CopyFragment = ({ title }) => {
@@ -40,12 +38,12 @@ export const CopyFragment = ({ title }) => {
 
 const MenuItem = ({ item, index }) => {
   const link = {
-    url: item.link,
-    text: item.title,
+    url: item?.slug?.current,
+    text: item?.name,
   }
 
   return (
-    <li key={item._id} className={index === 0 ? '' : 'mt-2x'}>
+    <li key={item._key} className={index === 0 ? '' : 'mt-2x'}>
       <ILink link={link} />
     </li>
   )
@@ -65,6 +63,8 @@ export const Footer = ({ pages = [] }) => {
           facebook: facebookLink = text.contacts.facebookLink,
           twitter: twitterLink = text.contacts.twitterLink,
           linkedIn: linkedInLink = text.contacts.linkedInLink,
+          companyMenu,
+          coursesMenu,
         } = config
 
         return (
@@ -95,8 +95,8 @@ export const Footer = ({ pages = [] }) => {
                     {text.static.CompanyInformation}
                   </h4>
                   <ul className="group-list">
-                    {CompanyInformation.map((item, idx) => (
-                      <MenuItem key={item._id} item={item} index={idx} />
+                    {companyMenu.map((item, idx) => (
+                      <MenuItem key={item._key} item={item} index={idx} />
                     ))}
                     {Boolean(pages.length) &&
                       pages.map((page, idx) => {
@@ -120,8 +120,8 @@ export const Footer = ({ pages = [] }) => {
                     {text.static.CoursesInformation}
                   </h4>
                   <ul className="group-list">
-                    {CoursesInformation.map((item, idx) => (
-                      <MenuItem key={item._id} item={item} index={idx} />
+                    {coursesMenu.map((item, idx) => (
+                      <MenuItem key={item._key} item={item} index={idx} />
                     ))}
                   </ul>
                 </div>

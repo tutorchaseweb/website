@@ -39,7 +39,7 @@ export const OxbridgePage = ({ page, tutors }) => {
     blueCard,
     reviewBlock,
     faqSection,
-  } = page
+  } = page || {}
 
   const window = useWindowSize()
   const [tests, setTests] = useState([])
@@ -251,7 +251,7 @@ export const OxbridgePage = ({ page, tutors }) => {
                 {admissionsTests?.tests.map((test) => {
                   return (
                     <Link
-                      key={test._id}
+                      key={test._key}
                       href={test._type === 'subject' ? test.slug.current : '/tutors'}
                     >
                       <a className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">
