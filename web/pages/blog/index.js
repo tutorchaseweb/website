@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { useGlobalState } from '~/utils/state'
 import { Layout } from '~/components/Layout'
 import { BlogPage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const Blog = ({ page }) => {
   const [, setPostsStart] = useGlobalState('postsStart', 0)
@@ -12,15 +12,7 @@ export const Blog = ({ page }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{page.seoTitle}</title>
-        <meta name="description" content={page.seoDescription} />
-        <meta property="og:title" content={page.seoTitle} key="title" />
-        <meta property="og:description" content={page.seoDescription} key="description" />
-        {typeof window !== 'undefined' && (
-          <meta property="og:url" content={window.location.href} key="url" />
-        )}
-      </Head>
+      <MetaTags title={page.seoTitle} description={page.seoDescription} />
       <BlogPage page={page} start={0} />
     </Layout>
   )

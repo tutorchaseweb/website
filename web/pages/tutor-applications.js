@@ -1,18 +1,15 @@
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { TutorApplicationsPage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const TutorApplications = ({ page }) => {
   const { seoTitle, seoDescription } = page || {}
 
   return (
     <Layout>
-      <Head>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDescription} />
-      </Head>
+      <MetaTags title={seoTitle} description={seoDescription} />
       <TutorApplicationsPage page={page} />
     </Layout>
   )

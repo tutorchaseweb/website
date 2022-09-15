@@ -2,7 +2,10 @@ export default {
   name: 'post',
   title: 'Post',
   type: 'document',
-  fieldsets: [{ name: 'additional', title: 'Additional description' }],
+  fieldsets: [
+    { name: 'additional', title: 'Additional description' },
+    { name: 'seo', title: 'Fields for SEO' },
+  ],
   fields: [
     {
       name: 'title',
@@ -92,6 +95,20 @@ export default {
       title: 'Description',
       description: '(required field)',
       validation: (Rule) => Rule.error('The additional description is required').required(),
+    },
+    {
+      name: 'seoTitle',
+      type: 'string',
+      fieldset: 'seo',
+      title: 'Page title',
+      description: 'Title for your site, search engines and social media (required field).',
+    },
+    {
+      name: 'seoDescription',
+      type: 'text',
+      fieldset: 'seo',
+      title: 'Description',
+      description: 'Describe your site for search engines and social media (required field).',
     },
   ],
 

@@ -2,6 +2,7 @@ export default {
   name: 'tutor',
   type: 'document',
   title: 'Tutor',
+  fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
   fields: [
     {
       name: 'name',
@@ -111,6 +112,20 @@ export default {
       title: 'Elected',
       description: 'Enable this option to display the tutor on the main page',
       initialValue: false,
+    },
+    {
+      name: 'seoTitle',
+      type: 'string',
+      fieldset: 'seo',
+      title: 'Page title',
+      description: 'Title for your site, search engines and social media (required field).',
+    },
+    {
+      name: 'seoDescription',
+      type: 'text',
+      fieldset: 'seo',
+      title: 'Description',
+      description: 'Describe your site for search engines and social media (required field).',
     },
   ],
 }

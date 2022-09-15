@@ -1,25 +1,13 @@
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { AccessProgrammePage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const AccessProgramme = ({ page }) => {
   return (
     <Layout>
-      <Head>
-        <title>{page?.seoTitle ? page.seoTitle : 'Access Programme'}</title>
-        {Boolean(page?.seoDescription) && <meta name="description" content={page.seoDescription} />}
-        {Boolean(page?.seoTitle) && (
-          <meta property="og:title" content={page.seoTitle} key="title" />
-        )}
-        {Boolean(page?.seoDescription) && (
-          <meta property="og:description" content={page.seoDescription} key="description" />
-        )}
-        {typeof window !== 'undefined' && (
-          <meta property="og:url" content={window.location.href} key="url" />
-        )}
-      </Head>
+      <MetaTags title={page.seoTitle} description={page.seoDescription} />
       <AccessProgrammePage page={page} />
     </Layout>
   )
