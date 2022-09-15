@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import Head from 'next/head'
 import { Layout } from '~/components/Layout'
 import client from '~/utils/sanity-client'
 import { OxbridgePage } from '~/scenes/pages'
 import { getQueryForTutors } from '~/utils/helpers'
 import { useGlobalState } from '~/utils/state'
+import MetaTags from '~/components/MetaTags'
 
 export const AdditionalPage = ({ page }) => {
   const [tutors, setTutors] = useState([])
@@ -25,14 +25,8 @@ export const AdditionalPage = ({ page }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{page?.seoTitle}</title>
-        <meta name="description" content={page?.seoDescription} />
-      </Head>
-      <div className="container pt-20x">
-        <h1>Additional Page</h1>
-      </div>
-      <OxbridgePage title={page.title} page={page} tutors={tutors} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
+      <OxbridgePage page={page} tutors={tutors} />
     </Layout>
   )
 }
