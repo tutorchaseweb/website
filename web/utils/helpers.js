@@ -226,7 +226,7 @@ export const getQueryForBlog = (order, start, length) => {
       reading,
     }`
   } else {
-    query = `*[_type == 'post' && !(_id in path("drafts.**"))) - 60*60*24*7)] {
+    query = `*[_type == 'post' && !(_id in path("drafts.**"))] {
       _id,
       _createdAt,
       publishedAt,
