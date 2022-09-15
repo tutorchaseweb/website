@@ -16,6 +16,7 @@ import faqSection from './objects/global/faqSection'
 import blueCard from './objects/global/blueCard'
 import pageHead from './objects/global/pageHead'
 import faqGroup from './objects/global/faqGroup'
+import menuItem from './objects/global/menuItem'
 
 import firstScreen from './objects/homePage/firstScreen'
 import studyCards from './objects/homePage/studyCards'
@@ -51,6 +52,7 @@ export default [
   blueCard,
   pageHead,
   faqGroup,
+  menuItem,
   button,
   logo,
   link,

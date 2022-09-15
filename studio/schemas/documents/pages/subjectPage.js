@@ -56,8 +56,8 @@ export default {
       title: 'Slug',
       description: 'Click "Generate" button (required field)',
       options: {
-        source: async ({ level, subject }) => {
-          return await getUnitedSlug(level, subject)
+        source: async ({ level, subject, title }) => {
+          return (await (level || subject)) ? getUnitedSlug(level, subject) : title
         },
         maxLength: 96,
       },
