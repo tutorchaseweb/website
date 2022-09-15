@@ -15,39 +15,39 @@ export const BlogCard = ({ article }) => {
       className={`blog-article rounded-xSmall overflow-hidden w-full flex-1 flex flex-col ${styles.blogArticle}`}
     >
       <div className="image-wrap relative" style={{ aspectRatio: '2/1' }}>
-        {article.featured && (
+        {article?.featured && (
           <span className="featured fz-14p fw-500 color-blue l-height-1 rounded-xSmall bg-white absolute z-1">
             Featured Article
           </span>
         )}
-        {article.mainImage?.asset?._ref ? (
+        {article?.mainImage?.asset?._ref ? (
           <Image
-            src={`${getImageUrl(article.mainImage?.asset?._ref).width(400).height(200)}`}
-            alt={article.mainImage?.alt}
+            src={`${getImageUrl(article?.mainImage?.asset?._ref).width(400).height(200)}`}
+            alt={article?.mainImage?.alt}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
           />
         ) : (
           <img
-            src={`${article.mainImage?.asset?.url}`}
-            alt={article.mainImage?.alt}
+            src={`${article?.mainImage?.asset?.url}`}
+            alt={article?.mainImage?.alt}
             className="absolute inset-0 w-full h-full"
             style={{ objectFit: 'cover' }}
           />
         )}
       </div>
       <div className="content flex-1 p-3x">
-        <h3 className="fz-20p fw-600 mb-1x">{article.title}</h3>
+        <h3 className="fz-20p fw-600 mb-1x">{article?.title}</h3>
         <div className="description color-lightGray l-height-1/5">
           <PortableText
-            value={article.description ? article.description : article.descriptionRaw}
+            value={article?.description ? article?.description : article?.descriptionRaw}
           />
         </div>
       </div>
       <div className="flex items-center justify-between pt-4x pl-3x pr-2x pb-2x">
-        <span className="color-lightGray">{article.reading} min Read</span>
-        <Link href={`/blog/${article.slug.current}`}>
+        <span className="color-lightGray">{article?.reading} min Read</span>
+        <Link href={`/blog/${article?.slug.current}`}>
           <a>
             <Circle size={40} color={Color.Transparent} classList="circle">
               <SVG content={arrowRight(Color.Blue)} size={24} />

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { TutorsPage, OxbridgePage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const Level = ({ current, subjectElements, level }) => {
   const router = useRouter()
@@ -105,22 +105,16 @@ export const Level = ({ current, subjectElements, level }) => {
         (current._type === 'level' || current._type === 'subject') &&
         (Boolean(subjectsPage) || Boolean(tutorsPage)) && (
           <>
-            <Head>
-              <title>{!isEmpty ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
-              <meta
-                name="description"
-                content={!isEmpty ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
-              />
-            </Head>
+            <MetaTags
+              title={!isEmpty ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}
+              description={!isEmpty ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+            />
             <TutorsPage page={!isEmpty ? subjectsPage : tutorsPage} tutors={tutors} />
           </>
         )}
       {current && current._type === 'test' && Boolean(oxbridgePage) && (
         <>
-          <Head>
-            <title>{oxbridgePage?.seoTitle}</title>
-            <meta name="description" content={oxbridgePage?.seoDescription} />
-          </Head>
+          <MetaTags title={oxbridgePage?.seoTitle} description={oxbridgePage?.seoDescription} />
           <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
         </>
       )}

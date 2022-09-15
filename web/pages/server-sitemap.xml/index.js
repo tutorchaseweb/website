@@ -8,10 +8,20 @@ export const getServerSideProps = async (ctx) => {
       ...,
     }
   `
-  const posts = await client.fetch(QUERY)
+  const pages = await client.fetch(QUERY)
 
-  const newsSitemaps = posts.map((item) => ({
-    loc: `${process.env.NEXT_PUBLIC_BASE_URL}/${item?.slug?.current}`,
+  const newsSitemaps = pages.map((item) => ({
+    loc: `${process.env.NEXT_PUBLIC_BASE_URL}/${
+      item?._type === 'post'
+        ? 'blog/'
+        : item?._type === 'tutor'
+        ? 'tutors/'
+        : item?._type === 'custom-page'
+        ? 'page/'
+        : ''
+    }${
+      item?._type === 'subject-page' ? (item?.slug?.current).replace(/_/, '/') : item?.slug?.current
+    }`,
     lastmod: new Date().toISOString(),
   }))
 
