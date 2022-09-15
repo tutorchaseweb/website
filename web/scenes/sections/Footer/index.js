@@ -65,7 +65,7 @@ export const Footer = ({ pages = [] }) => {
           linkedIn: linkedInLink = text.contacts.linkedInLink,
           companyMenu,
           coursesMenu,
-        } = config
+        } = config || {}
 
         return (
           <footer
@@ -95,7 +95,7 @@ export const Footer = ({ pages = [] }) => {
                     {text.static.CompanyInformation}
                   </h4>
                   <ul className="group-list">
-                    {companyMenu.map((item, idx) => (
+                    {companyMenu?.map((item, idx) => (
                       <MenuItem key={item._key} item={item} index={idx} />
                     ))}
                     {Boolean(pages.length) &&
@@ -120,7 +120,7 @@ export const Footer = ({ pages = [] }) => {
                     {text.static.CoursesInformation}
                   </h4>
                   <ul className="group-list">
-                    {coursesMenu.map((item, idx) => (
+                    {coursesMenu?.map((item, idx) => (
                       <MenuItem key={item._key} item={item} index={idx} />
                     ))}
                   </ul>
