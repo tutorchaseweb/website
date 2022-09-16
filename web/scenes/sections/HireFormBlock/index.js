@@ -6,6 +6,7 @@ import {
   checkValidateFullName,
   checkValidateEmail,
   checkValidateMessage,
+  checkValidatePhone,
   checkValidateSelect,
 } from '~/utils/validators'
 import { Circle } from '~/components/Circle'
@@ -34,6 +35,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const [fullName, setFullName] = useState('')
   const [fullNameErrors, setFullNameErrors] = useState([])
   const [phone, setPhone] = useState('')
+  const [phoneErrors, setPhoneErrors] = useState([])
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
   const [country, setCountry] = useState(countries[0])
@@ -44,10 +46,12 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
 
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
+    setPhoneErrors(checkValidatePhone(phone))
     setEmailErrors(checkValidateEmail(email))
     setCountryErrors(checkValidateSelect(country, countries[0]))
     if (
       !checkValidateFullName(fullName).length &&
+      !checkValidatePhone(phone).length &&
       !checkValidateEmail(email).length &&
       !checkValidateSelect(country, countries[0]).length
     ) {
@@ -81,8 +85,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
             body: JSON.stringify(data),
           })
         })
-        .then((result) => {
-          log(result)
+        .then(() => {
           clearAllFields()
           router.push('/form-submission')
           // setActiveStep(activeStep + 1)
@@ -217,6 +220,9 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       type="tel"
                       value={phone}
                       setValue={setPhone}
+                      Errors={phoneErrors}
+                      setErrors={setPhoneErrors}
+                      checkValidateValue={checkValidatePhone}
                     />
                     <Input
                       id="email"
@@ -237,8 +243,8 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                     </label>
                   )}
                   <div className="flex flex-wrap gap-4 items-center justify-between">
-                    <label className="flex-1 fz-14p">
-                      <b>1</b>/2 <span className="fw-500">About yourself</span>
+                    <label className="flex-1 ">
+                      <b>1</b>/2 About yourself
                     </label>
                     <label>
                       <button

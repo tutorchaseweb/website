@@ -116,8 +116,7 @@ export const ApplyForm = ({ className = '' }) => {
           body: JSON.stringify(email),
         })
       })
-      .then((result) => {
-        log(result)
+      .then(() => {
         clearAllFields()
         router.push('/tutor-submission')
       })
@@ -324,7 +323,7 @@ export const ApplyForm = ({ className = '' }) => {
               <Input
                 id="hearAboutUs"
                 inputName="How did you hear about us?"
-                placeholder="Select an option"
+                placeholder="Describe how you heard about us"
                 className="flex-1 fz-14p"
                 value={hearAboutUs}
                 setValue={setHearAboutUs}
