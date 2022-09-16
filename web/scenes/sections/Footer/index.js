@@ -67,8 +67,6 @@ export const Footer = ({ pages = [] }) => {
           coursesMenu,
         } = config
 
-        console.log(config)
-
         return (
           <footer
             key={'footer'}
