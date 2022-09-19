@@ -24,8 +24,6 @@ export const ArticlePage = ({ article }) => {
     setAllPosts(await client.fetch(QUERY))
   }, [])
 
-  console.log(allPosts.length)
-
   return (
     <>
       <article className="article">
@@ -97,7 +95,7 @@ export const ArticlePage = ({ article }) => {
         <div className="container">
           <h2 className="section-title fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
           <div className="wrapper grid grid-columns-3 gap-8">
-            {Boolean(allPosts.length) &&
+            {Boolean(allPosts.length > 0) &&
               allPosts.map((post) => {
                 return <BlogCard key={post._id} article={post} />
               })}
