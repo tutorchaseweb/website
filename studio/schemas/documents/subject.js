@@ -32,8 +32,6 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: { type: 'level' } }],
       title: 'Levels',
-      description: 'Add level of the subject (required field)',
-      validation: (Rule) => Rule.error('The field is required').required(),
     },
     {
       name: 'tutors',
