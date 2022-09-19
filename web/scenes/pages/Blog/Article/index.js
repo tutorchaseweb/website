@@ -24,6 +24,8 @@ export const ArticlePage = ({ article }) => {
     setAllPosts(await client.fetch(QUERY))
   }, [])
 
+  console.log(allPosts.length)
+
   return (
     <>
       <article className="article">
