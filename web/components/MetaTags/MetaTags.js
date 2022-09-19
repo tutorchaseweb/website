@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-const MetaTags = ({ title, description }) => {
+const MetaTags = ({ data }) => {
+  const { title, description } = data || {}
   const currentURL = typeof window !== 'undefined' ? window.location.href : ''
   const homeUrl = typeof window !== 'undefined' ? window.location.origin : ''
   const imageUrl = `${homeUrl}/images/og_image.png`
