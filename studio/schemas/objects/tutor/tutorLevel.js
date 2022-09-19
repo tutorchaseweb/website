@@ -16,8 +16,6 @@ export default {
       type: 'reference',
       to: { type: 'level' },
       title: 'Level',
-      description: '(required field)',
-      validation: (Rule) => Rule.error('The level is required').required(),
     },
     {
       name: 'rating',
