@@ -20,7 +20,7 @@ export const BlogPage = ({ page, start }) => {
 
   useEffect(() => {
     const QUERY = groq`
-      *[_type == 'post' && !(_id in path("drafts.**")) && (dateTime(publishedAt) < dateTime(now()) - 60*60*24*7)] {
+      *[_type == 'post' && !(_id in path("drafts.**"))] {
         _id,
       }
     `

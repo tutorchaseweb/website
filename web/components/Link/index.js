@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 export const ILink = ({ link, className = '' }) => {
+  const homeUrl = typeof window !== 'undefined' ? window.location.origin : ''
   if (!Boolean(link?.url)) {
     return null
   }
@@ -10,7 +11,7 @@ export const ILink = ({ link, className = '' }) => {
       {link.text}
     </a>
   ) : (
-    <Link href={link.url}>
+    <Link href={`${homeUrl}/${link.url}`}>
       <a className={className}>{link.text}</a>
     </Link>
   )

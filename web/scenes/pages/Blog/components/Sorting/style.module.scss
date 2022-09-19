@@ -6,9 +6,20 @@
   :global {
     .sorting {
       select {
+        color: #000000;
         min-width: 160px;
         background-color: transparent;
         border-color: rgba(23, 29, 35, 0.1);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        line-height: 1.4;
+        padding: 0.75rem 1rem;
+        background: url('/images/arrow_down_blue.svg') no-repeat calc(100% - 16px) 50%;
+        outline: none;
+
+        @media (min-width: $md) {
+          padding: 1rem;
+        }
       }
     }
   }

@@ -1,24 +1,16 @@
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { useRouter } from 'next/router'
 import { Layout } from '~/components/Layout'
 import { BlogPage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const BlogNav = ({ page }) => {
   const router = useRouter()
 
   return (
     <Layout>
-      <Head>
-        <title>{page.seoTitle}</title>
-        <meta name="description" content={page.seoDescription} />
-        <meta property="og:title" content={page.seoTitle} key="title" />
-        <meta property="og:description" content={page.seoDescription} key="description" />
-        {typeof window !== 'undefined' && (
-          <meta property="og:url" content={window.location.href} key="url" />
-        )}
-      </Head>
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <BlogPage page={page} start={(router.query.number - 1) * page.postsPerPage} />
     </Layout>
   )

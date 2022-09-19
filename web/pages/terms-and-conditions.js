@@ -1,18 +1,12 @@
-import Head from 'next/head'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { PolicyPage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const TermsAndConditions = ({ page }) => {
   return (
     <Layout>
-      <Head>
-        <title>{page?.seoTitle ? page.seoTitle : 'Terms and Conditions'}</title>
-        <meta
-          name="description"
-          content={page?.seoDescription ? page.seoDescription : 'Terms and Conditions'}
-        />
-      </Head>
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <PolicyPage page={page} />
     </Layout>
   )

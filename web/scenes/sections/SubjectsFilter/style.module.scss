@@ -22,21 +22,35 @@
       }
     }
     select {
-      padding: 15px;
+      color: #000000;
+      padding: 0.5rem 1rem;
       min-width: 14rem;
-      background-color: #FFFFFF;
-      border: 1px solid #EEEFF7;
+      border: 1px solid #eeeff7;
       border-radius: 4px;
       width: 100%;
+      line-height: 1;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: #ffffff url('/images/arrow_down_blue.svg') no-repeat calc(100% - 16px) 50%;
+      outline: none;
+
+      @media (min-width: $md) {
+        padding: 1rem;
+      }
     }
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       font: inherit;
-      line-height: 2;
-      padding: 0.5rem;
       min-height: 46px;
       &::placeholder {
         font-size: 14px;
       }
+    }
+    input,
+    textarea {
+      padding: 0.5rem;
+      line-height: 2;
     }
     .label-blue {
       display: inline-block;

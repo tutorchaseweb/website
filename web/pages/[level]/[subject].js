@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { getQueryForTutors } from '~/utils/helpers'
 import { TutorsPage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const Subject = ({ level, subject }) => {
   const router = useRouter()
@@ -57,13 +57,10 @@ export const Subject = ({ level, subject }) => {
     <Layout>
       {(Boolean(subjectsPage) || Boolean(tutorsPage)) && (
         <>
-          <Head>
-            <title>{subjectsPage ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
-            <meta
-              name="description"
-              content={subjectsPage ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
-            />
-          </Head>
+          <MetaTags
+            title={subjectsPage ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}
+            description={subjectsPage ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+          />
           <TutorsPage page={subjectsPage ?? tutorsPage} tutors={tutors} />
         </>
       )}

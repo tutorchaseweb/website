@@ -1,10 +1,12 @@
 import client from '../../utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { ArticlePage } from '~/scenes/pages/Blog/Article'
+import MetaTags from '~/components/MetaTags'
 
 export const Post = ({ post }) => {
   return (
     <Layout>
+      <MetaTags title={post?.seoTitle ?? post?.title} description={post?.seoDescription} />
       <ArticlePage article={post} />
     </Layout>
   )

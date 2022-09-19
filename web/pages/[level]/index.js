@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
 import { TutorsPage, OxbridgePage } from '~/scenes/pages'
+import MetaTags from '~/components/MetaTags'
 
 export const Level = ({ current, subjectElements, level }) => {
   const router = useRouter()
@@ -43,12 +43,7 @@ export const Level = ({ current, subjectElements, level }) => {
     } else if (current && current._type === 'test') {
       setLevelQuery(null)
       setSubjectQuery(null)
-      const OxbridgeQUERY = groq`
-        *[_type == 'oxbridge-page'][0] {
-          ...,
-        }
-      `
-      setOxbridgePage(await client.fetch(OxbridgeQUERY))
+      getSubjectsData()
     } else {
       typeof window !== 'undefined' && router.replace('/404')
     }
@@ -99,29 +94,36 @@ export const Level = ({ current, subjectElements, level }) => {
 
   const isEmpty = subjectsPage && Object.keys(subjectsPage).length === 0
 
+  useEffect(async () => {
+    const OxbridgeQUERY = groq`
+        *[_type == 'oxbridge-page'][0] {
+          ...,
+        }
+      `
+    setOxbridgePage(await client.fetch(OxbridgeQUERY))
+  }, [current._type === 'test'])
+
   return (
     <Layout>
       {current &&
         (current._type === 'level' || current._type === 'subject') &&
         (Boolean(subjectsPage) || Boolean(tutorsPage)) && (
           <>
-            <Head>
-              <title>{!isEmpty ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}</title>
-              <meta
-                name="description"
-                content={!isEmpty ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
-              />
-            </Head>
+            <MetaTags
+              title={!isEmpty ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}
+              description={!isEmpty ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
+            />
             <TutorsPage page={!isEmpty ? subjectsPage : tutorsPage} tutors={tutors} />
           </>
         )}
       {current && current._type === 'test' && Boolean(oxbridgePage) && (
         <>
-          <Head>
-            <title>{oxbridgePage?.seoTitle}</title>
-            <meta name="description" content={oxbridgePage?.seoDescription} />
-          </Head>
-          <OxbridgePage title={current.title} page={oxbridgePage} tutors={tutors} />
+          <MetaTags title={oxbridgePage?.seoTitle} description={oxbridgePage?.seoDescription} />
+          <OxbridgePage
+            title={current.title}
+            page={!isEmpty ? subjectsPage : oxbridgePage}
+            tutors={tutors}
+          />
         </>
       )}
     </Layout>

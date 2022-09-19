@@ -53,7 +53,10 @@ export const ApplyForm = ({ className = '' }) => {
 
   const countries = [
     defaultCountry,
-    ...countriesRaw.map((country) => ({ title: country.name, value: country.code })),
+    ...countriesRaw.map((country) => ({
+      title: country.name,
+      value: country.code,
+    })),
   ]
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(acceptedFiles)
@@ -103,8 +106,17 @@ export const ApplyForm = ({ className = '' }) => {
   const checkMandatoryFields_step3 = () => {
     event.preventDefault()
     sendData()
-      .then((result) => {
-        log(result)
+      .then(() => {
+        fetch('/api/apply_form_to_user', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(email),
+        })
+      })
+      .then(() => {
         clearAllFields()
         router.push('/tutor-submission')
       })
@@ -162,6 +174,30 @@ export const ApplyForm = ({ className = '' }) => {
       client.assets
         .upload('file', file, {
           filename: file.name,
+        })
+        .then((imageAsset) => {
+          const data = {
+            fullName,
+            email,
+            country: country.title,
+            phone,
+            hearAboutUs,
+            qualifications,
+            tutoringExperience,
+            tutoringOffered,
+            linkedInUrl,
+            referrer,
+            fileName: files[0]?.name,
+            filePath: imageAsset?.url,
+          }
+          fetch('/api/apply_form_to_sales_team', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json, text/plain, */*',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          })
         })
         .then(async (file) => {
           return await sendForm(file)
@@ -287,7 +323,7 @@ export const ApplyForm = ({ className = '' }) => {
               <Input
                 id="hearAboutUs"
                 inputName="How did you hear about us?"
-                placeholder="Select an option"
+                placeholder="Describe how you heard about us"
                 className="flex-1 fz-14p"
                 value={hearAboutUs}
                 setValue={setHearAboutUs}

@@ -98,7 +98,7 @@ export const Header = () => {
                     </Circle>
                     {email}
                   </a>
-                  <Link href="/tutors">
+                  <Link href={route === '/tutors' ? '#hireFormBlock' : '/tutors'}>
                     <a className="btn btn-gray small">{text.form.btnHireTutor}</a>
                   </Link>
                 </div>

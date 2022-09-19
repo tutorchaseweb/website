@@ -1,14 +1,12 @@
-import Head from 'next/head'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { TutorPage } from '~/scenes/pages/Tutors/OneTutor'
+import MetaTags from '~/components/MetaTags'
 
 export const Post = ({ tutor }) => {
   return (
     <Layout>
-      <Head>
-        <title>{tutor?.name}</title>
-      </Head>
+      <MetaTags title={tutor?.seoTitle ?? tutor?.name} description={tutor?.seoDescription} />
       <TutorPage tutor={tutor} />
     </Layout>
   )

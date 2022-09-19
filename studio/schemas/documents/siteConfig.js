@@ -4,7 +4,10 @@ export default {
   title: 'Site configuration',
   // https://www.sanity.io/docs/experimental/ui-affordances-for-actions
   __experimental_actions: ['create', 'delete', 'update', 'publish'],
-  fieldsets: [{ name: 'contacts', title: 'Contacts' }],
+  fieldsets: [
+    { name: 'contacts', title: 'Contacts' },
+    { name: 'footerMenu', title: 'Footer Menus' },
+  ],
   fields: [
     {
       name: 'title',
@@ -86,6 +89,24 @@ export default {
       title: 'LinkedIn',
       type: 'url',
       fieldset: 'contacts',
+    },
+    {
+      name: 'companyMenu',
+      type: 'array',
+      of: [{ type: 'menuItem' }],
+      title: 'Company Information Menu',
+      fieldset: 'footerMenu',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('Add menu items').min(2),
+    },
+    {
+      name: 'coursesMenu',
+      type: 'array',
+      of: [{ type: 'menuItem' }],
+      title: 'Courses Information Menu',
+      fieldset: 'footerMenu',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('Add menu items').min(2),
     },
   ],
 }
