@@ -24,8 +24,6 @@ export const ArticlePage = ({ article }) => {
     setAllPosts(await client.fetch(QUERY))
   }, [])
 
-  console.log(article)
-
   return (
     <>
       <article className="article">
@@ -49,22 +47,13 @@ export const ArticlePage = ({ article }) => {
             <div
               className={`main-image-wrap relative bg-lightGray flex flex-col items-center justify-center p-4x overflow-hidden mx-auto mb-7x ${styles.mainImageWrap}`}
             >
-              {article?.mainImage?.asset?._ref ? (
-                <Image
-                  src={`${getImageUrl(article?.mainImage?.asset?._ref)}`}
-                  alt={article?.mainImage?.alt ? article?.mainImage?.alt : article.title}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                />
-              ) : (
-                <img
-                  src={`${article?.mainImage?.asset?.url}`}
-                  alt={article?.mainImage?.alt}
-                  className="absolute inset-0 w-full h-full"
-                  style={{ objectFit: 'cover' }}
-                />
-              )}
+              <Image
+                src={`${getImageUrl(article?.mainImage?.asset?._ref)}`}
+                alt={article?.mainImage?.alt ? article?.mainImage?.alt : article.title}
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
               <h1 className="article-title main-title fw-700 color-white l-height-1 mb-3x text-center mx-auto relative">
                 {article?.title}
               </h1>
