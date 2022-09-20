@@ -33,14 +33,14 @@ export const myPortableTextComponents = {
   types: {
     image: ({ value }) => (
       <img
-        src={`${getImageUrl(value.asset._ref)}`}
+        src={`${getImageUrl(value?.asset?._ref)}`}
         alt={value.alt ? value.alt : 'image'}
         className="overflow-hidden rounded-small mt-2x mb-2x"
       />
     ),
     floatImage: ({ value }) => (
       <img
-        src={`${getImageUrl(value.asset._ref)}`}
+        src={`${getImageUrl(value?.asset?._ref)}`}
         alt={value.alt ? value.alt : 'image'}
         className={`image overflow-hidden rounded-small mt-2x mb-2x ${
           value.floatRight ? 'float-right ml-3x' : 'float-left mr-3x'
