@@ -12,6 +12,12 @@ export default {
       validation: (Rule) => Rule.error('The file is required').required(),
     },
     {
+      name: 'thumbnailImage',
+      type: 'image',
+      title: 'Thumbnail image',
+      description: '(optional field)',
+    },
+    {
       name: 'preTitle',
       type: 'string',
       title: 'Small text before title',

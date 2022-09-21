@@ -30,6 +30,18 @@
   }
 }
 
+.poster {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transition: opacity 0.3s;
+
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .play_button {
   left: 16px;
   z-index: 0;
