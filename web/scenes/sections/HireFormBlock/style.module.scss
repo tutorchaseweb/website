@@ -33,7 +33,9 @@
       #country:invalid {
         //border-color: #F57C40;
       }
-      input, select, textarea {
+      input,
+      select,
+      textarea {
         font: inherit;
         line-height: 2;
         padding: 0.5rem;
@@ -46,19 +48,19 @@
         height: 72px;
         resize: none;
       }
-      input:focus, select:focus {
+      input:focus,
+      select:focus {
         outline-width: 1px;
         outline-color: $color-blue;
       }
-      input[type="radio"] {
+      input[type='radio'] {
         width: 0;
         height: 0;
         opacity: 0;
       }
-      input[type="radio"] + span {
-
+      input[type='radio'] + span {
       }
-      input[type="radio"]:checked + span {
+      input[type='radio']:checked + span {
         font-weight: 600;
         color: $color-blue;
         border-color: $color-blue;
@@ -68,7 +70,6 @@
       }
       .btn-gray {
         min-width: 56px;
-
       }
       .btn-blue {
         min-width: 11rem;
@@ -80,6 +81,17 @@
       .round {
         width: 4rem;
         background: rgba(245, 124, 64, 0.2);
+      }
+      .specific {
+        @media (min-width: $lg) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        @media (min-width: $fhd) {
+          display: inline-block;
+        }
       }
     }
   }
@@ -98,7 +110,8 @@
       max-width: 34rem;
       flex-wrap: wrap;
       gap: 1rem;
-      @media (min-width: $lg) {}
+      @media (min-width: $lg) {
+      }
     }
   }
 }

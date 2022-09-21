@@ -33,6 +33,7 @@
   },
   "form": {
     "btnNextStep": "Next Step",
+    "btnSubmit": "Submit",
     "btnBackToForm": "Back to Form",
     "btnHireTutor": "Hire a tutor"
   },

@@ -5,12 +5,12 @@ export default async function (req, res) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
+      user: process.env.NEXT_PUBLIC_MAIL_ADDRESS,
       pass: process.env.NEXT_PUBLIC_MAIL_PASSWORD,
     },
   })
   const mailData = {
-    from: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
+    from: process.env.NEXT_PUBLIC_MAIL_ADDRESS,
     to: req.body,
     subject: `TutorChase Tutor Application`,
     text: 'Thank you for your application. We aim to respond to successful applicants within two weeks. The TutorChase Team',

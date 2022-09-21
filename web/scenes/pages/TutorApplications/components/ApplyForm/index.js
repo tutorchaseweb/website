@@ -280,7 +280,7 @@ export const ApplyForm = ({ className = '' }) => {
                 <div className="flex mb-2x">
                   <Input
                     id="phone"
-                    inputName="Your phone"
+                    inputName="Your phone (including country code)"
                     placeholder="Enter your phone"
                     className="flex-1 fz-14p"
                     type="tel"
@@ -300,14 +300,14 @@ export const ApplyForm = ({ className = '' }) => {
                   selected={country}
                   inputName={'Country'}
                   setValue={setCountry}
-                  className="flex-1 fz-14p"
+                  className="flex-1 fz-14p specific"
                   Errors={countryErrors}
                   setErrors={setCountryErrors}
                   checkValidateValue={checkValidateSelect}
                 />
                 <Input
                   id="phone"
-                  inputName="Your phone"
+                  inputName="Your phone (including country code)"
                   placeholder="Enter your phone"
                   className="flex-1 fz-14p"
                   type="tel"
@@ -500,7 +500,7 @@ export const ApplyForm = ({ className = '' }) => {
                   className="btn small btn-blue"
                   onClick={checkMandatoryFields_step3}
                 >
-                  {text.form.btnNextStep}
+                  {text.form.btnSubmit}
                 </button>
               </div>
             </div>

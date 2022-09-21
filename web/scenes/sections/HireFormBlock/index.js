@@ -214,7 +214,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                   <div className="flex flex-wrap gap-4 mb-4x flex-1">
                     <Input
                       id="phone"
-                      inputName="Your phone"
+                      inputName="Your phone (including country code)"
                       placeholder="Enter your phone"
                       className="flex-1 fz-14p"
                       type="tel"
@@ -228,7 +228,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       id="email"
                       inputName="Your email"
                       placeholder="Enter your email"
-                      className="flex-1 fz-14p"
+                      className="flex-1 fz-14p specific"
                       type="email"
                       value={email}
                       setValue={setEmail}
@@ -307,7 +307,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                         className="btn btn-blue"
                         onClick={checkMandatoryFields_step2}
                       >
-                        {text.form.btnNextStep}
+                        {text.form.btnSubmit}
                       </button>
                     </label>
                   </div>

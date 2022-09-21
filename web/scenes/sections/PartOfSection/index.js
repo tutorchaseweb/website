@@ -21,7 +21,7 @@ export const PartOfSection = ({ section, className = '' }) => {
   return (
     <div className={`page-part flex flex-wrap gap-4 items-center ${className} ${styles.section}`}>
       <div className="w-full w-1/2_lg">
-        {Boolean(section.image?.asset) && (
+        {Boolean(section.image?.asset && section?.file?._type !== 'file') && (
           <img
             src={`${getImageUrl(section.image.asset._ref).width(650).height(450)}`}
             alt={section.title}
@@ -31,19 +31,28 @@ export const PartOfSection = ({ section, className = '' }) => {
         {Boolean(section?.file?._type === 'file') && (
           <div className={styles.video_wrapper}>
             <video
+              controls
               src={section?.file?.asset?.url}
               type={section?.file?.asset?.mimeType}
               width="100%"
               height="auto"
               ref={vidRef}
-              onClick={handleVideo}
             ></video>
-            <button
-              className={`${styles.play_button} ${play ? styles.hide : styles.show}`}
-              onClick={handleVideo}
-            >
-              <PlayButton />
-            </button>
+            {Boolean(section?.thumbnailImage?.asset) && (
+              <img
+                src={getImageUrl(section?.thumbnailImage?.asset?._ref)}
+                alt="poster"
+                className={`${styles.poster} ${play ? styles.hide : ''}`}
+              />
+            )}
+            {Boolean(section?.thumbnailImage?.asset) && (
+              <button
+                className={`${styles.play_button} ${play ? styles.hide : ''}`}
+                onClick={handleVideo}
+              >
+                <PlayButton />
+              </button>
+            )}
           </div>
         )}
       </div>

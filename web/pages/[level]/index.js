@@ -30,17 +30,17 @@ export const Level = ({ current, subjectElements, level }) => {
   }
 
   useEffect(async () => {
-    if (current && current._type === 'level') {
+    if (current && current?._type === 'level') {
       !levelQuery && setLevelQuery(current)
       setSubjectQuery(null)
 
       getSubjectsData()
-    } else if (current && current._type === 'subject') {
+    } else if (current && current?._type === 'subject') {
       !subjectQuery && setSubjectQuery(current)
       setLevelQuery(null)
 
       getSubjectsData()
-    } else if (current && current._type === 'test') {
+    } else if (current && current?._type === 'test') {
       setLevelQuery(null)
       setSubjectQuery(null)
       getSubjectsData()
@@ -101,7 +101,7 @@ export const Level = ({ current, subjectElements, level }) => {
         }
       `
     setOxbridgePage(await client.fetch(OxbridgeQUERY))
-  }, [current._type === 'test'])
+  }, [current?._type === 'test'])
 
   return (
     <Layout>
@@ -116,7 +116,7 @@ export const Level = ({ current, subjectElements, level }) => {
             <TutorsPage page={!isEmpty ? subjectsPage : tutorsPage} tutors={tutors} />
           </>
         )}
-      {current && current._type === 'test' && Boolean(oxbridgePage) && (
+      {current && current?._type === 'test' && Boolean(oxbridgePage) && (
         <>
           <MetaTags title={oxbridgePage?.seoTitle} description={oxbridgePage?.seoDescription} />
           <OxbridgePage

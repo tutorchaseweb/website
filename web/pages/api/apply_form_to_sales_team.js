@@ -5,13 +5,13 @@ export default function (req, res) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
-      pass: process.env.NEXT_PUBLIC_MAIL_PASSWORD,
+      user: process.env.NEXT_PUBLIC_MAIL_ADDRESS_GMAIL,
+      pass: process.env.NEXT_PUBLIC_MAIL_PASSWORD_GMAIL,
     },
   })
   const mailData = {
-    from: process.env.NEXT_PUBLIC_MAIL_ADDRESS_FROM,
-    to: process.env.NEXT_PUBLIC_MAIL_ADDRESS_TO,
+    from: process.env.NEXT_PUBLIC_MAIL_ADDRESS_GMAIL,
+    to: process.env.NEXT_PUBLIC_MAIL_ADDRESS,
     subject: `Message From ${req.body.fullName}`,
     text:
       'Full name: ' +
