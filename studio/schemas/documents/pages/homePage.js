@@ -11,7 +11,7 @@ export default {
     },
     {
       name: 'secondScreen',
-      type: 'partOfSection',
+      type: 'videoSection',
       title: 'Second section on main page',
     },
     {

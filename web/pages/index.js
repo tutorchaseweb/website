@@ -17,6 +17,13 @@ export async function getServerSideProps() {
   const QUERY = groq`
     *[_type == 'home-page'][0] {
       ...,
+      secondScreen{
+        ...,
+        file{
+          _type,
+          asset->
+        }
+      }
     }
   `
   const page = await client.fetch(QUERY)

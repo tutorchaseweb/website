@@ -16,5 +16,10 @@
         }
       }
     }
+    .active {
+      font-weight: 600;
+      color: $color-blue;
+      text-decoration: none;
+    }
   }
 }

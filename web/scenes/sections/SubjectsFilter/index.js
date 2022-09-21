@@ -12,11 +12,11 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
   const [subjectsList, setSubjectsList] = useState([])
 
   const query = `
-    *[_type in ['level', 'subject']] {
+    *[_type in ['level', 'subject']] | order(title) {
       _type == 'level' && !(_id in path("drafts.**")) => {
         ...,
       },
-      _type == 'subject' && !(_id in path("drafts.**")) => {
+      _type == 'subject' && !(_id in path("drafts.**"))  => {
         ...,
         levels[]->,
         tutors[] {

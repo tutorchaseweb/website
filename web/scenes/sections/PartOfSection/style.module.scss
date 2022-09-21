@@ -12,3 +12,38 @@
     }
   }
 }
+
+.video_wrapper {
+  position: relative;
+
+  video {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.play_button {
+  left: 32px;
+  z-index: 0;
+  bottom: 32px;
+  border: none;
+  position: absolute;
+  transition: opacity 0.3s;
+  background-color: transparent;
+
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}

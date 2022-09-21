@@ -79,7 +79,7 @@ export const HomePage = ({ page }) => {
       }
     `
   const getUniversities = `
-      *[_type == 'university' && !(_id in path("drafts.**"))] {
+      *[_type == 'university' && !(_id in path("drafts.**"))] | order(order) {
         ...,
       }
     `
