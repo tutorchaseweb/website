@@ -12,3 +12,54 @@
     }
   }
 }
+
+.video_wrapper {
+  display: flex;
+  position: relative;
+  margin-bottom: 40px;
+  align-items: center;
+
+  @media (min-width: $lg) {
+    margin-bottom: 0;
+  }
+
+  video {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.play_button {
+  left: 16px;
+  z-index: 0;
+  width: 40px;
+  bottom: 16px;
+  border: none;
+  height: 40px;
+  position: absolute;
+  transition: opacity 0.3s;
+  background-color: transparent;
+
+  @media (min-width: $sm) {
+    left: 32px;
+    width: 80px;
+    height: 80px;
+    bottom: 32px;
+  }
+
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}

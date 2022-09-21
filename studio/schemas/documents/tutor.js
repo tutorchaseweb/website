@@ -100,11 +100,9 @@ export default {
       type: 'array',
       of: [{ type: 'string' }],
       title: 'Extracurricular Activities',
-      description: '(required field)',
       options: {
         layout: 'tags',
       },
-      validation: (Rule) => Rule.error('The field is required').required(),
     },
     {
       name: 'elected',

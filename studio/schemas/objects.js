@@ -17,6 +17,7 @@ import blueCard from './objects/global/blueCard'
 import pageHead from './objects/global/pageHead'
 import faqGroup from './objects/global/faqGroup'
 import menuItem from './objects/global/menuItem'
+import videoSection from './objects/homePage/videoSection'
 
 import firstScreen from './objects/homePage/firstScreen'
 import studyCards from './objects/homePage/studyCards'
@@ -49,6 +50,7 @@ export default [
   reviewSection,
   faqSection,
   mainImage,
+  videoSection,
   blueCard,
   pageHead,
   faqGroup,

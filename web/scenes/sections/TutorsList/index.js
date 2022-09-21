@@ -33,6 +33,9 @@ export const TutorsList = ({ tutors }) => {
     <div className="flex flex-wrap gap-8">
       {Boolean(tutors?.length) ? (
         orderedTutors.slice(0, tutorsLimit).map((tutor) => {
+          const teachesList = (list) => {
+            return list?.length >= 3 ? list?.slice(0, 3) : list
+          }
           return (
             <div
               key={tutor._id}
@@ -58,7 +61,7 @@ export const TutorsList = ({ tutors }) => {
                     <p className="fw-500 mb-3x">{tutor.education}</p>
                     <p className="fz-14p fw-600 l-height-1/4">
                       <span className="mr-1x">Teaches:</span>
-                      {tutor.teaches.map((teach) => (
+                      {teachesList(tutor?.teaches).map((teach) => (
                         <span key={teach._id} className="teach mr-1x mb-1x">
                           {teach.title}
                         </span>
@@ -84,7 +87,7 @@ export const TutorsList = ({ tutors }) => {
                       <p className="fw-500 mb-3x">{tutor.education}</p>
                       <p className="fz-14p fw-600 l-height-1/4">
                         <span className="mr-1x">Teaches:</span>
-                        {tutor.teaches.map((teach) => (
+                        {teachesList(tutor?.teaches).map((teach) => (
                           <span key={teach._id} className="teach mr-1x mb-1x">
                             {teach.title}
                           </span>
@@ -118,7 +121,7 @@ export const TutorsList = ({ tutors }) => {
                   <div className="actions flex">
                     <p className="fz-14p fw-600 l-height-1/4 pt-4x pb-4x pl-3x pr-3x flex-1">
                       <span className="mr-1x">Teaches:</span>
-                      {tutor.teaches.map((teach) => (
+                      {teachesList(tutor?.teaches).map((teach) => (
                         <span key={teach._id} className="teach mr-1x mb-1x">
                           {teach.title}
                         </span>
