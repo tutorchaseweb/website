@@ -121,7 +121,7 @@ const checkValidateSelect = (initial, value) => {
 }
 const checkValidatePhone = (phone) => {
   let phoneErrors = []
-  const phoneNumber = parsePhoneNumber(phone)
+  const phoneNumber = parsePhoneNumber(phone.startsWith('+') ? phone : `+${phone}`)
   if (phone === '') {
     phoneErrors = [{ type: 'empty', message: 'Please enter your phone' }]
     // phoneErrors = []

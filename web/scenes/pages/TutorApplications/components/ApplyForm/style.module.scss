@@ -19,6 +19,13 @@
           z-index: 2;
         }
       }
+      .specific {
+        @media (min-width: $lg) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+      }
     }
   }
 }

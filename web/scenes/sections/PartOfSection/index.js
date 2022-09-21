@@ -38,17 +38,21 @@ export const PartOfSection = ({ section, className = '' }) => {
               height="auto"
               ref={vidRef}
             ></video>
-            <img
-              src={getImageUrl(section?.thumbnailImage?.asset?._ref)}
-              alt="poster"
-              className={`${styles.poster} ${play ? styles.hide : ''}`}
-            />
-            <button
-              className={`${styles.play_button} ${play ? styles.hide : ''}`}
-              onClick={handleVideo}
-            >
-              <PlayButton />
-            </button>
+            {Boolean(section?.thumbnailImage?.asset) && (
+              <img
+                src={getImageUrl(section?.thumbnailImage?.asset?._ref)}
+                alt="poster"
+                className={`${styles.poster} ${play ? styles.hide : ''}`}
+              />
+            )}
+            {Boolean(section?.thumbnailImage?.asset) && (
+              <button
+                className={`${styles.play_button} ${play ? styles.hide : ''}`}
+                onClick={handleVideo}
+              >
+                <PlayButton />
+              </button>
+            )}
           </div>
         )}
       </div>
