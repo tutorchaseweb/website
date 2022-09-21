@@ -8,7 +8,7 @@ export const OurServiceBlock = ({ className = '' }) => {
   const windows = useWindowSize()
 
   return (
-    <section className={`service ${styles.service} ${className}`}>
+    <section className={`service ${styles.service} ${className}`} id="how_it_works">
       <div className="container">
         <p className="before-title fw-600 uppercase color-lightGray mb-3x text-center">
           Our Service

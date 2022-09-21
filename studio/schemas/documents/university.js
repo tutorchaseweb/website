@@ -23,5 +23,17 @@ export default {
       title: 'Description',
       description: '(optional field)',
     },
+    {
+      name: 'order',
+      type: 'number',
+      title: 'Order number',
+    },
+  ],
+  orderings: [
+    {
+      title: 'Order',
+      name: 'ordered',
+      by: [{ field: 'order', direction: 'asc' }],
+    },
   ],
 }

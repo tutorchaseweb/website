@@ -38,7 +38,17 @@ export const Pagination = ({ start, perPage, length }) => {
           return (
             <li key={idx}>
               <Link href={counter === 1 ? '/blog' : `/blog/page/${counter}`}>
-                <a className="p-1x">{counter}</a>
+                <a
+                  className={`p-1x ${
+                    router.route === '/blog' && idx === 0
+                      ? 'active'
+                      : router.query.number == counter
+                      ? 'active'
+                      : ''
+                  }`}
+                >
+                  {counter}
+                </a>
               </Link>
             </li>
           )

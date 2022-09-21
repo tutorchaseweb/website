@@ -2,8 +2,22 @@ import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
 import { ILink } from '~/components/Link'
 import styles from './style.module.scss'
+import { useEffect, useRef, useState } from 'react'
+
+import PlayButton from '../../../components/PlayButton'
 
 export const PartOfSection = ({ section, className = '' }) => {
+  const vidRef = useRef(null)
+  const [play, setPlay] = useState(false)
+
+  const handleVideo = (event) => {
+    setPlay((current) => !current)
+  }
+
+  useEffect(() => {
+    play ? vidRef.current.play() : vidRef.current.pause()
+  }, [play])
+
   return (
     <div className={`page-part flex flex-wrap gap-4 items-center ${className} ${styles.section}`}>
       <div className="w-full w-1/2_lg">
@@ -13,6 +27,24 @@ export const PartOfSection = ({ section, className = '' }) => {
             alt={section.title}
             className="block rounded-small overflow-hidden"
           />
+        )}
+        {Boolean(section?.file?._type === 'file') && (
+          <div className={styles.video_wrapper}>
+            <video
+              src={section?.file?.asset?.url}
+              type={section?.file?.asset?.mimeType}
+              width="100%"
+              height="auto"
+              ref={vidRef}
+              onClick={handleVideo}
+            ></video>
+            <button
+              className={`${styles.play_button} ${play ? styles.hide : styles.show}`}
+              onClick={handleVideo}
+            >
+              <PlayButton />
+            </button>
+          </div>
         )}
       </div>
       <div className="w-full w-1/2_lg">
