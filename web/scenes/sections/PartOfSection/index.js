@@ -15,7 +15,7 @@ export const PartOfSection = ({ section, className = '' }) => {
   }
 
   useEffect(() => {
-    play ? vidRef.current.play() : vidRef.current.pause()
+    play ? vidRef?.current?.play() : vidRef?.current?.pause()
   }, [play])
 
   return (
