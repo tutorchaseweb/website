@@ -107,6 +107,16 @@ export const ApplyForm = ({ className = '' }) => {
     event.preventDefault()
     sendData()
       .then(() => {
+        fetch('/api/apply_form_to_sales_team', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+      })
+      .then(() => {
         fetch('/api/apply_form_to_user', {
           method: 'POST',
           headers: {
