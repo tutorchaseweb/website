@@ -8,6 +8,7 @@ import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
 import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
+import { ConfigContext } from '~/components/Layout'
 
 export const AccessProgrammePage = ({ page }) => {
   const {
@@ -133,25 +134,34 @@ export const AccessProgrammePage = ({ page }) => {
               </ul>
             </div>
           </div>
-          <div className="mt-15x mb-15x">
-            <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">
-              Still have questions? Let’s get in touch.
-            </h3>
-            <div className="links flex flex-wrap gap-4 items-center justify-between mx-auto fz-20p fw-600">
-              <a href={`mailto:${text.contacts.email}`} className="flex items-center">
-                <Circle size={32} color={Color.Blue} classList="mr-1x">
-                  <SVG content={email()} />
-                </Circle>
-                {text.contacts.email}
-              </a>
-              <a href={`tel:${text.contacts.primaryPhone}`} className="flex items-center">
-                <Circle size={32} color={Color.Blue} classList="mr-1x">
-                  <SVG content={phone()} size={14} />
-                </Circle>
-                {text.contacts.primaryPhone}
-              </a>
-            </div>
-          </div>
+
+          <ConfigContext.Consumer>
+            {(config) => {
+              const { secondaryPhone = text.contacts.secondaryPhone, email: emailAddress } = config
+
+              return (
+                <div className="mt-15x mb-15x">
+                  <h3 className="title fz-36p fw-600 text-center mx-auto mb-4x">
+                    Still have questions? Let’s get in touch.
+                  </h3>
+                  <div className="links flex flex-wrap gap-4 items-center justify-between mx-auto fz-20p fw-600">
+                    <a href={`mailto:${emailAddress}`} className="flex items-center">
+                      <Circle size={32} color={Color.Blue} classList="mr-1x">
+                        <SVG content={email()} />
+                      </Circle>
+                      {emailAddress}
+                    </a>
+                    <a href={`tel:${secondaryPhone}`} className="flex items-center">
+                      <Circle size={32} color={Color.Blue} classList="mr-1x">
+                        <SVG content={phone()} size={14} />
+                      </Circle>
+                      {secondaryPhone}
+                    </a>
+                  </div>
+                </div>
+              )
+            }}
+          </ConfigContext.Consumer>
         </div>
       </section>
     </>

@@ -82,17 +82,6 @@
         width: 4rem;
         background: rgba(245, 124, 64, 0.2);
       }
-      .specific {
-        @media (min-width: $lg) {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        @media (min-width: $fhd) {
-          display: inline-block;
-        }
-      }
     }
   }
 }

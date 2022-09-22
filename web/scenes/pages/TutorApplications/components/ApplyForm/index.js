@@ -280,7 +280,7 @@ export const ApplyForm = ({ className = '' }) => {
                 <div className="flex mb-2x">
                   <Input
                     id="phone"
-                    inputName="Your phone (including country code)"
+                    inputName="Your phone (with country code)"
                     placeholder="Enter your phone"
                     className="flex-1 fz-14p"
                     type="tel"
@@ -300,7 +300,7 @@ export const ApplyForm = ({ className = '' }) => {
                   selected={country}
                   inputName={'Country'}
                   setValue={setCountry}
-                  className="flex-1 fz-14p specific"
+                  className="flex-1 fz-14p"
                   Errors={countryErrors}
                   setErrors={setCountryErrors}
                   checkValidateValue={checkValidateSelect}
