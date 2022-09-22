@@ -74,6 +74,11 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
+          }).then((res) => {
+            console.log(res)
+            if (res.status === 200) {
+              return
+            }
           })
         })
         .then(() => {
@@ -84,11 +89,16 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
+          }).then((res) => {
+            console.log(res, '2')
+            if (res.status === 200) {
+              return
+            }
           })
         })
         .then(() => {
           clearAllFields()
-          router.push('/form-submission')
+          // router.push('/form-submission')
           // setActiveStep(activeStep + 1)
         })
         .catch((e) => console.log(e))
