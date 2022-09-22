@@ -24,5 +24,5 @@ export default async function (req, res) {
       console.log(err)
     }
   })
-  res.status(200).end()
+  res.status(200)
 }
