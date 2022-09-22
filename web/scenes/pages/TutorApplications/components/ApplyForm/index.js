@@ -307,7 +307,7 @@ export const ApplyForm = ({ className = '' }) => {
                 />
                 <Input
                   id="phone"
-                  inputName="Your phone (including country code)"
+                  inputName="Your phone (with country code)"
                   placeholder="Enter your phone"
                   className="flex-1 fz-14p"
                   type="tel"
