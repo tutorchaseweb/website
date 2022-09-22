@@ -10,6 +10,7 @@ import {
   checkValidateSelect,
 } from '~/utils/validators'
 import { Circle } from '~/components/Circle'
+import { ConfigContext } from '~/components/Layout'
 import { Input, Select, Textarea } from '~/components/Form'
 import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/utils/svgImages'
 import { Color, GEO_API_URL, GEO_API_KEY } from '~/utils/constants'
@@ -214,7 +215,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                   <div className="flex flex-wrap gap-4 mb-4x flex-1">
                     <Input
                       id="phone"
-                      inputName="Your phone (including country code)"
+                      inputName="Your phone (with country code)"
                       placeholder="Enter your phone"
                       className="flex-1 fz-14p"
                       type="tel"
@@ -228,7 +229,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                       id="email"
                       inputName="Your email"
                       placeholder="Enter your email"
-                      className="flex-1 fz-14p specific"
+                      className="flex-1 fz-14p"
                       type="email"
                       value={email}
                       setValue={setEmail}
@@ -338,31 +339,40 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
           </div>
         </div>
       )}
-      <div
-        className={`contacts ${onlyContacts ? 'pt-13x pb-13x' : 'pt-20x pb-15x'} ${
-          styles.contacts
-        }`}
-      >
-        <div className="container">
-          <h3 className="medium-title fw-600 mx-auto mb-4x">
-            Still have questions? Let’s get in touch.
-          </h3>
-          <div className="links flex flex-wrap items-center justify-between gap-4 mx-auto fz-20p fw-600">
-            <a href={`mailto:${text.contacts.email}`} className="flex items-center">
-              <Circle size={32} color={Color.Blue} classList="mr-1x">
-                <SVG content={emailIcon()} />
-              </Circle>
-              {text.contacts.email}
-            </a>
-            <a href={`tel:${text.contacts.primaryPhone}`} className="flex items-center">
-              <Circle size={32} color={Color.Blue} classList="mr-1x">
-                <SVG content={phoneIcon()} size={14} />
-              </Circle>
-              {text.contacts.primaryPhone}
-            </a>
-          </div>
-        </div>
-      </div>
+
+      <ConfigContext.Consumer>
+        {(config) => {
+          const { secondaryPhone = text.contacts.secondaryPhone, email: emailAddress } = config
+
+          return (
+            <div
+              className={`contacts ${onlyContacts ? 'pt-13x pb-13x' : 'pt-20x pb-15x'} ${
+                styles.contacts
+              }`}
+            >
+              <div className="container">
+                <h3 className="medium-title fw-600 mx-auto mb-4x">
+                  Still have questions? Let’s get in touch.
+                </h3>
+                <div className="links flex flex-wrap items-center justify-between gap-4 mx-auto fz-20p fw-600">
+                  <a href={`mailto:${emailAddress}`} className="flex items-center">
+                    <Circle size={32} color={Color.Blue} classList="mr-1x">
+                      <SVG content={emailIcon()} />
+                    </Circle>
+                    {emailAddress}
+                  </a>
+                  <a href={`tel:${secondaryPhone}`} className="flex items-center">
+                    <Circle size={32} color={Color.Blue} classList="mr-1x">
+                      <SVG content={phoneIcon()} size={14} />
+                    </Circle>
+                    {secondaryPhone}
+                  </a>
+                </div>
+              </div>
+            </div>
+          )
+        }}
+      </ConfigContext.Consumer>
     </section>
   )
 }
