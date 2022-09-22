@@ -1,6 +1,4 @@
 export default async function (req, res) {
-  //   require('dotenv').config()
-
   let nodemailer = require('nodemailer')
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -22,5 +20,5 @@ export default async function (req, res) {
   transporter.sendMail(mailData, function (err) {
     if (err) console.log(err)
   })
-  res.status(200)
+  res.status(200).end()
 }

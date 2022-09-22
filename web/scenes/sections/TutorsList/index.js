@@ -116,7 +116,7 @@ export const TutorsList = ({ tutors }) => {
                       <SVG content={studyHat()} size={24} className="mr-1x" />
                       {tutor.education}
                     </p>
-                    <p className="l-height-1/5">{tutor.description}</p>
+                    <p className={`l-height-1/5 ${styles.overflow}`}>{tutor.description}</p>
                   </div>
                   <div className="actions flex">
                     <p className="fz-14p fw-600 l-height-1/4 pt-4x pb-4x pl-3x pr-3x flex-1">

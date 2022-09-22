@@ -1,5 +1,4 @@
 export default function (req, res) {
-  //   require('dotenv').config()
   const nodemailer = require('nodemailer')
 
   const transporter = nodemailer.createTransport({
@@ -57,5 +56,5 @@ export default function (req, res) {
   transporter.sendMail(mailData, function (err) {
     if (err) console.log(err)
   })
-  res.status(200)
+  res.status(200).end()
 }

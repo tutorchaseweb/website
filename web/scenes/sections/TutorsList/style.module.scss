@@ -17,7 +17,7 @@
     .content {
       width: 50%;
       padding: 1rem;
-      border-bottom: 1px solid #E6E7ED;
+      border-bottom: 1px solid #e6e7ed;
       @media (min-width: $lg) {
         width: initial;
         padding: 2rem;
@@ -34,11 +34,11 @@
     .actions {
       width: 100%;
       @media (min-width: $lg) {
-        border-left: 1px solid #E6E7ED;
+        border-left: 1px solid #e6e7ed;
       }
       .btn-white {
-        border-top: 1px solid #E6E7ED;
-        color: #171D23;
+        border-top: 1px solid #e6e7ed;
+        color: #171d23;
         border-radius: 0;
       }
       .btn-blue {
@@ -58,5 +58,12 @@
         flex-direction: column;
       }
     }
+  }
+
+  .overflow {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

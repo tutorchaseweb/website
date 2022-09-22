@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .firstScreen {
-  background: #FFF1EC url('/images/bg-first-section.jpg') no-repeat center/cover;
+  background: #fff1ec url('/images/bg-first-section.jpg') no-repeat center/cover;
 
   :global {
     .left-card {
@@ -27,7 +27,7 @@
         transform: translate(50%, -50%);
 
         &:after {
-          content: "";
+          content: '';
           display: block;
           width: 0;
           height: 0;
@@ -48,10 +48,9 @@
       padding: 1.5rem 1.25rem 1.125rem;
       .play {
         width: 3.25rem;
-        cursor: pointer;
 
         &:after {
-          content: "";
+          content: '';
           display: block;
           width: 0;
           height: 0;
@@ -77,7 +76,7 @@
     .square {
       width: 3rem;
       height: 3rem;
-      background-color: #F9FAFB;
+      background-color: #f9fafb;
       border-radius: 8px;
     }
     .limit {
