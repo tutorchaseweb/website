@@ -1,9 +1,5 @@
 export default function (req, res) {
-  //   require('dotenv').config()
-
   const nodemailer = require('nodemailer')
-  const SMTPConnection = require('nodemailer/lib/smtp-connection')
-  let connection = new SMTPConnection()
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -42,9 +38,7 @@ export default function (req, res) {
   transporter.sendMail(mailData, function (err) {
     if (err) {
       console.log(err)
-    } else {
-      connection.quit()
     }
   })
-  res.status(200)
+  res.status(200).end()
 }

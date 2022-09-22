@@ -198,6 +198,7 @@ export const ApplyForm = ({ className = '' }) => {
             },
             body: JSON.stringify(data),
           })
+          return imageAsset
         })
         .then(async (file) => {
           return await sendForm(file)
