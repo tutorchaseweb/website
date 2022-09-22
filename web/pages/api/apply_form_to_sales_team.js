@@ -56,5 +56,5 @@ export default function (req, res) {
   transporter.sendMail(mailData, function (err) {
     if (err) console.log(err)
   })
-  res.status(200)
+  return res.status(200).json({ status: 'Ok' })
 }
