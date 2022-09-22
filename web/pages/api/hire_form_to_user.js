@@ -1,6 +1,4 @@
 export default async function (req, res) {
-  //   require('dotenv').config()
-
   const nodemailer = require('nodemailer')
   const SMTPConnection = require('nodemailer/lib/smtp-connection')
   let connection = new SMTPConnection()
