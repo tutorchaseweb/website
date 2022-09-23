@@ -12,10 +12,10 @@ export default {
       validation: (Rule) => Rule.error('The tutor is required').required(),
     },
     {
-      name: 'level',
-      type: 'reference',
-      to: { type: 'level' },
-      title: 'Level',
+      name: 'levels',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'level' } }],
+      title: 'Levels',
     },
     {
       name: 'rating',

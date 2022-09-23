@@ -52,7 +52,10 @@ export const Level = ({ current, subjectElements, level }) => {
   useEffect(async () => {
     const levelTutors = subjectElements.map((item) => {
       return item.tutors.filter((tutor) => {
-        return tutor?.level?.slug.current === level
+        const array = tutor?.levels?.filter((tutorLevel) => {
+          return tutorLevel?.slug.current === level
+        })
+        return array?.length !== 0 && array?.length !== undefined
       })
     })
 
@@ -61,9 +64,9 @@ export const Level = ({ current, subjectElements, level }) => {
     levelTutors.map((array) => {
       return array.length !== 0
         ? array.length === 1
-          ? tutorsList.push(array[0].tutor)
+          ? tutorsList.push(array[0]?.tutor)
           : array.map((item) => {
-              return tutorsList.push(item.tutor)
+              return tutorsList.push(item?.tutor)
             })
         : false
     })
@@ -143,6 +146,7 @@ export async function getServerSideProps(context) {
         levels[]->,
         tutors[] {
           rating,
+          levels[]->,
           tutor-> {
             _id,
             _rev,
@@ -163,10 +167,6 @@ export async function getServerSideProps(context) {
               slug,
             },
           },
-          level->{
-            title,
-            slug
-          }
         }
       },
       _type == 'test' && !(_id in path("drafts.**")) => {
