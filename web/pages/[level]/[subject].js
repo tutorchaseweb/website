@@ -4,17 +4,26 @@ import { groq } from 'next-sanity'
 import client from '~/utils/sanity-client'
 import { Layout } from '~/components/Layout'
 import { useGlobalState } from '~/utils/state'
-import { getQueryForTutors } from '~/utils/helpers'
 import { TutorsPage } from '~/scenes/pages'
 import MetaTags from '~/components/MetaTags'
 
 export const Subject = ({ level, subject }) => {
   const router = useRouter()
-  const [tutors, setTutors] = useState([])
   const [tutorsPage, setTutorsPage] = useState(null)
   const [subjectsPage, setSubjectsPage] = useState(null)
   const [levelQuery, setLevelQuery] = useGlobalState('levelQuery', null)
   const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
+
+  const currentLevel = level?.slug?.current
+  const tutorsList = []
+
+  subject?.tutors
+    ?.sort((first, second) => second.rating - first.rating)
+    .map((item) => {
+      return item?.levels?.map((level) => {
+        level?.slug?.current === currentLevel ? tutorsList.push(item.tutor) : false
+      })
+    })
 
   useEffect(() => {
     !levelQuery && setLevelQuery(level)
@@ -28,20 +37,6 @@ export const Subject = ({ level, subject }) => {
     const query = groq`
       *[_type == 'subject-page' && slug.current == '${level.slug.current}_${subject.slug.current}'][0]`
     setSubjectsPage(await client.fetch(query))
-  }, [level, subject])
-
-  const query = getQueryForTutors(levelQuery, subjectQuery)
-  const params = { level: levelQuery?._id || '*', subject: subjectQuery?._id || '*' }
-  useEffect(() => {
-    client.fetch(query, params).then((data) => {
-      setTutors(
-        subject
-          ? subject.tutors
-              ?.sort((first, second) => second.rating - first.rating)
-              .map((item) => item.tutor)
-          : data
-      )
-    })
   }, [level, subject])
 
   useEffect(async () => {
@@ -61,7 +56,7 @@ export const Subject = ({ level, subject }) => {
             title={subjectsPage ? subjectsPage?.seoTitle : tutorsPage?.seoTitle}
             description={subjectsPage ? subjectsPage?.seoDescription : tutorsPage?.seoDescription}
           />
-          <TutorsPage page={subjectsPage ?? tutorsPage} tutors={tutors} />
+          <TutorsPage page={subjectsPage ?? tutorsPage} tutors={tutorsList} />
         </>
       )}
     </Layout>
@@ -81,6 +76,7 @@ export async function getServerSideProps(context) {
         levels[]->,
         tutors[] {
           rating,
+          levels[]->,
           tutor-> {
             _id,
             _rev,

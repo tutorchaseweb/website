@@ -20,5 +20,5 @@ export default async function (req, res) {
   transporter.sendMail(mailData, function (err) {
     if (err) console.log(err)
   })
-  return res.status(200).json({ status: 'Ok' })
+  res.status(200)
 }
