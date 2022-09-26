@@ -27,5 +27,11 @@ export default {
       title: 'Description',
       description: '(optional field)',
     },
+    {
+      name: 'order',
+      type: 'number',
+      title: 'Order number',
+      description: '(optional field)',
+    },
   ],
 }
