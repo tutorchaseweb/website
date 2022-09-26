@@ -25,7 +25,7 @@ import oxford from '~/assets/images/oxford_logo2.png'
 import styles from './style.module.scss'
 import text from '~/assets/text-content/en/static.json'
 
-export const OxbridgePage = ({ page, tutors }) => {
+export const OxbridgePage = ({ page, tutors, type = 'oxbridge-page' }) => {
   const {
     firstScreen,
     filterDescription,
@@ -75,12 +75,15 @@ export const OxbridgePage = ({ page, tutors }) => {
               )}
             </div>
             <div className="image-wrapper relative">
-              <div className="left-card absolute bg-white rounded-xSmall p-3x flex">
-                <p className="fz-18p fw-500 l-height-1/4 pr-3x">
-                  Trusted by <span className="fw-600">Oxford University</span> as a tutoring partner
-                </p>
-                <SVG content={studyHat()} size={28} />
-              </div>
+              {Boolean(type === 'oxbridge-page') && (
+                <div className="left-card absolute bg-white rounded-xSmall p-3x flex">
+                  <p className="fz-18p fw-500 l-height-1/4 pr-3x">
+                    Trusted by <span className="fw-600">Oxford University</span> as a tutoring
+                    partner
+                  </p>
+                  <SVG content={studyHat()} size={28} />
+                </div>
+              )}
               {Boolean(firstScreen?.image) && window.width > MOBILE_BREAKPOINT && (
                 <img
                   src={`${getImageUrl(firstScreen.image.asset._ref)}`}
@@ -92,19 +95,21 @@ export const OxbridgePage = ({ page, tutors }) => {
                   }}
                 />
               )}
-              <div className="right-card absolute">
-                <Circle
-                  color={Color.White}
-                  size={window.width < MOBILE_BREAKPOINT ? 76 : 88}
-                  classList="pt-1x"
-                >
-                  <img
-                    src={oxford.src}
-                    alt="Oxford logo"
-                    width={window.width < MOBILE_BREAKPOINT ? 42 : 48}
-                  />
-                </Circle>
-              </div>
+              {Boolean(type === 'oxbridge-page') && (
+                <div className="right-card absolute">
+                  <Circle
+                    color={Color.White}
+                    size={window.width < MOBILE_BREAKPOINT ? 76 : 88}
+                    classList="pt-1x"
+                  >
+                    <img
+                      src={oxford.src}
+                      alt="Oxford logo"
+                      width={window.width < MOBILE_BREAKPOINT ? 42 : 48}
+                    />
+                  </Circle>
+                </div>
+              )}
             </div>
           </div>
         </div>

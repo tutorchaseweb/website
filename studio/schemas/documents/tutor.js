@@ -2,7 +2,10 @@ export default {
   name: 'tutor',
   type: 'document',
   title: 'Tutor',
-  fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
+  fieldsets: [
+    { name: 'seo', title: 'Fields for SEO' },
+    { name: 'options', title: 'Options fields' },
+  ],
   fields: [
     {
       name: 'name',
@@ -109,6 +112,22 @@ export default {
       type: 'boolean',
       title: 'Elected',
       description: 'Enable this option to display the tutor on the main page',
+      initialValue: false,
+    },
+    {
+      name: 'showOnOxbridge',
+      type: 'boolean',
+      fieldset: 'options',
+      title: 'Show on Oxbridge page',
+      description: 'Enable this option to display the tutor on the Oxbridge page',
+      initialValue: false,
+    },
+    {
+      name: 'showOnAdmissions',
+      type: 'boolean',
+      fieldset: 'options',
+      title: 'Show on US Admissions page',
+      description: 'Enable this option to display the tutor on the US Admissions page',
       initialValue: false,
     },
     {
