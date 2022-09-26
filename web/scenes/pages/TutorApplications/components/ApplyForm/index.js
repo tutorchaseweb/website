@@ -189,6 +189,8 @@ export const ApplyForm = ({ className = '' }) => {
             referrer,
             fileName: files[0]?.name,
             filePath: imageAsset?.url,
+            source,
+            time: new Date().toString(),
           }
           fetch('/api/apply_form_to_sales_team', {
             method: 'POST',
