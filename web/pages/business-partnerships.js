@@ -7,7 +7,7 @@ import MetaTags from '~/components/MetaTags'
 export const BusinessPartnerships = ({ page }) => {
   return (
     <Layout>
-      <MetaTags title={page.seoTitle} description={page.seoDescription} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <BusinessPartnershipsPage page={page} />
     </Layout>
   )

@@ -9,7 +9,7 @@ export const US_Admissions = ({ data }) => {
 
   return (
     <Layout>
-      <MetaTags title={page.seoTitle} description={page.seoDescription} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <OxbridgePage page={page} tutors={tutors} type="admissions-page" />
     </Layout>
   )
