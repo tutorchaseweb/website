@@ -21,7 +21,7 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
           levels[]->,
         }`
     },
-    'subjects': *[_type == 'subject' && !(_id in path("drafts.**"))] | order(title) {
+    'subjects': *[_type == 'subject' && !(_id in path("drafts.**"))] | order(lower(title) asc) {
       ...,
       levels[]->,
       tutors[] {

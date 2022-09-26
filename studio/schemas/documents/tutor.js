@@ -126,4 +126,11 @@ export default {
       description: 'Describe your site for search engines and social media (required field).',
     },
   ],
+  orderings: [
+    {
+      title: 'Tutor name',
+      name: 'name',
+      by: [{ field: 'name', direction: 'asc' }],
+    },
+  ],
 }

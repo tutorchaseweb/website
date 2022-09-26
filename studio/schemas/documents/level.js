@@ -34,4 +34,11 @@ export default {
       description: '(optional field)',
     },
   ],
+  orderings: [
+    {
+      title: 'Order',
+      name: 'order',
+      by: [{ field: 'order', direction: 'asc' }],
+    },
+  ],
 }
