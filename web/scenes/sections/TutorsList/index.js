@@ -150,11 +150,7 @@ export const TutorsList = ({ tutors }) => {
           Show more
         </button>
       ) : (
-        router.route !== '/tutors' && (
-          <Link href="/tutors">
-            <a className="btn btn-blue">All tutors</a>
-          </Link>
-        )
+        ''
       )}
     </div>
   )
