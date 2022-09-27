@@ -120,6 +120,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     })
       .then((res) => {
         if (res.status === 200) {
+          console.log(res)
           return true
         }
       })
@@ -135,6 +136,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     })
       .then((res) => {
         if (res.status === 200) {
+          console.log(res)
           return true
         }
       })

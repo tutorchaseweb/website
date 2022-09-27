@@ -48,7 +48,8 @@ export default function (req, res) {
     if (err) {
       console.log('Error ' + err)
     } else {
-      return res.status(200)
+      res.status(200)
+      res.send(`Email sent`)
     }
   })
 }
