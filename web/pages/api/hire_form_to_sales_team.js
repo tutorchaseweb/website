@@ -49,6 +49,5 @@ export default function (req, res) {
       console.log(err)
     }
   })
-
-  return res.status(200).json({ status: 'Ok' })
+  res.status(200)
 }
