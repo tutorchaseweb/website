@@ -170,6 +170,12 @@ export const ApplyForm = ({ className = '' }) => {
       },
       body: JSON.stringify(data),
     })
+      .then((res) => {
+        if (res.status === 200) {
+          return true
+        }
+      })
+      .catch((e) => console.log(e))
 
     fetch('/api/apply_form_to_user', {
       method: 'POST',
@@ -179,6 +185,12 @@ export const ApplyForm = ({ className = '' }) => {
       },
       body: JSON.stringify(email),
     })
+      .then((res) => {
+        if (res.status === 200) {
+          return true
+        }
+      })
+      .catch((e) => console.log(e))
 
     return handleMutations(mutations)
   }
