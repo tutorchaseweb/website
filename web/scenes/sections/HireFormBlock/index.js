@@ -68,8 +68,8 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     if (!checkValidateMessage(details).length) {
       sendForm()
         .then(() => {
-          // clearAllFields()
-          // router.push('/form-submission')
+          clearAllFields()
+          router.push('/form-submission')
         })
         .catch((e) => console.log(e))
     } else {

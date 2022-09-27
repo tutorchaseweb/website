@@ -48,7 +48,7 @@ export default function (req, res) {
     if (err) {
       console.log('Error ' + err)
     } else {
-      res.status(200)
+      return res.status(200)
     }
   })
 }
