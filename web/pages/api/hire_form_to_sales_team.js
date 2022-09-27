@@ -44,10 +44,11 @@ export default function (req, res) {
     <p><b>GCLID (Google Click Identifier):</b><br/> ${req.body.gclidValue}</p>
     <p><b>Date and time of the application:</b><br/> ${req.body.time}</p>`,
   }
-  transporter.sendMail(mailData, function (err) {
+  transporter.sendMail(mailData, function (err, info) {
     if (err) {
-      console.log(err)
+      console.log('Error ' + err)
+    } else {
+      res.status(200)
     }
   })
-  res.status(200)
 }

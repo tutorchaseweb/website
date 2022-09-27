@@ -68,8 +68,8 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     if (!checkValidateMessage(details).length) {
       sendForm()
         .then(() => {
-          clearAllFields()
-          router.push('/form-submission')
+          // clearAllFields()
+          // router.push('/form-submission')
         })
         .catch((e) => console.log(e))
     } else {
@@ -118,6 +118,12 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
       },
       body: JSON.stringify(data),
     })
+      .then((res) => {
+        if (res.status === 200) {
+          return true
+        }
+      })
+      .catch((e) => console.log(e))
 
     fetch('/api/hire_form_to_user', {
       method: 'POST',
@@ -127,6 +133,12 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
       },
       body: JSON.stringify(data),
     })
+      .then((res) => {
+        if (res.status === 200) {
+          return true
+        }
+      })
+      .catch((e) => console.log(e))
 
     return handleMutations(mutations)
   }

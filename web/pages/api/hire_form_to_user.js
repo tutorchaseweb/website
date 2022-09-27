@@ -19,11 +19,11 @@ export default async function (req, res) {
     <p>The TutorChase Team</p>`,
   }
 
-  transporter.sendMail(mailData, function (err) {
+  transporter.sendMail(mailData, function (err, info) {
     if (err) {
-      console.log(err)
+      console.log('Error ' + err)
+    } else {
+      res.status(200)
     }
   })
-
-  res.status(200)
 }
