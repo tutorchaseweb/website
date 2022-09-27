@@ -26,7 +26,7 @@ export const Tutors = ({ page }) => {
 
   return (
     <Layout>
-      <MetaTags title={page.seoTitle} description={page.seoDescription} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <TutorsPage page={page} tutors={tutors} />
     </Layout>
   )

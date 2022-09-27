@@ -12,7 +12,7 @@ export const Blog = ({ page }) => {
 
   return (
     <Layout>
-      <MetaTags title={page.seoTitle} description={page.seoDescription} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <BlogPage page={page} start={0} />
     </Layout>
   )

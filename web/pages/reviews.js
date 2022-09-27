@@ -7,7 +7,7 @@ import MetaTags from '~/components/MetaTags'
 export const Reviews = ({ page }) => {
   return (
     <Layout>
-      <MetaTags title={page.seoTitle} description={page.seoDescription} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <ReviewsPage page={page} />
     </Layout>
   )
