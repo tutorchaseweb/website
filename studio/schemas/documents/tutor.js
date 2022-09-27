@@ -2,7 +2,10 @@ export default {
   name: 'tutor',
   type: 'document',
   title: 'Tutor',
-  fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
+  fieldsets: [
+    { name: 'seo', title: 'Fields for SEO' },
+    { name: 'options', title: 'Options fields' },
+  ],
   fields: [
     {
       name: 'name',
@@ -112,6 +115,22 @@ export default {
       initialValue: false,
     },
     {
+      name: 'showOnOxbridge',
+      type: 'boolean',
+      fieldset: 'options',
+      title: 'Show on Oxbridge page',
+      description: 'Enable this option to display the tutor on the Oxbridge page',
+      initialValue: false,
+    },
+    {
+      name: 'showOnAdmissions',
+      type: 'boolean',
+      fieldset: 'options',
+      title: 'Show on US Admissions page',
+      description: 'Enable this option to display the tutor on the US Admissions page',
+      initialValue: false,
+    },
+    {
       name: 'seoTitle',
       type: 'string',
       fieldset: 'seo',
@@ -124,6 +143,13 @@ export default {
       fieldset: 'seo',
       title: 'Description',
       description: 'Describe your site for search engines and social media (required field).',
+    },
+  ],
+  orderings: [
+    {
+      title: 'Tutor name',
+      name: 'name',
+      by: [{ field: 'name', direction: 'asc' }],
     },
   ],
 }

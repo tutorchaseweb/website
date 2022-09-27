@@ -89,7 +89,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
         .then(() => {
           clearAllFields()
           router.push('/form-submission')
-          // setActiveStep(activeStep + 1)
         })
         .catch((e) => console.log(e))
     } else {

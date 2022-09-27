@@ -38,8 +38,8 @@
     "btnHireTutor": "Hire a tutor"
   },
   "static": {
-    "CompanyInformation": "Company Information",
-    "CoursesInformation": "Courses Information",
+    "CompanyInformation": "Company",
+    "CoursesInformation": "Popular Services",
     "WeAreHereToHelp": "We’re Here to Help"
   }
 }

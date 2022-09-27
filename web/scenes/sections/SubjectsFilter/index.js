@@ -11,58 +11,59 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
   const [levelsList, setLevelsList] = useState([])
   const [subjectsList, setSubjectsList] = useState([])
 
-  const query = `
-    *[_type in ['level', 'subject']] | order(title) {
-      _type == 'level' && !(_id in path("drafts.**")) => {
-        ...,
-      },
-      _type == 'subject' && !(_id in path("drafts.**"))  => {
-        ...,
-        levels[]->,
-        tutors[] {
-          rating,
-          tutor-> {
+  const query = `{
+    'levels': ${
+      subjectQuery === null
+        ? `*[_type == 'level' && !(_id in path("drafts.**"))] | order(order) {
+      ...,
+    }`
+        : `*[_type == 'subject' && _id == '${subjectQuery?._id}' && !(_id in path("drafts.**"))][0] {
+          levels[]->,
+        }`
+    },
+    'subjects': *[_type == 'subject' && !(_id in path("drafts.**"))] | order(lower(title) asc) {
+      ...,
+      levels[]->,
+      tutors[] {
+        rating,
+        tutor-> {
+          _id,
+          _rev,
+          _type,
+          _createdAt,
+          _updatedAt,
+          slug,
+          image,
+          name,
+          description,
+          education,
+          position,
+          elected,
+          'teaches': *[_type == 'subject' && references(^._id)] {
             _id,
-            _rev,
-            _type,
             _createdAt,
-            _updatedAt,
+            title,
             slug,
-            image,
-            name,
-            description,
-            education,
-            position,
-            elected,
-            'teaches': *[_type == 'subject' && references(^._id)] {
-              _id,
-              _createdAt,
-              title,
-              slug,
-            },
-          }
+          },
         }
-      },
+      }
     }
+  }
   `
+
   useEffect(() => {
     client.fetch(query).then((data) => {
-      const subjects = data.filter((item) => item._type === 'subject')
+      const { subjects, levels } = data || {}
       setSubjectsList(subjects)
-      const levels = data.filter((item) => item._type === 'level')
-      setLevelsList(levels)
+      setLevelsList(subjectQuery === null ? levels : levels.levels)
     })
-  }, [])
+  }, [subjectQuery])
 
-  const filterHandler = async (e) => {
+  const filterHandler = (e) => {
     if (e.target.ariaLabel === 'levels') {
       const currentLevel = levelsList.filter((item) => item._id === e.target.value)[0]
-      const allSubjects = await client.fetch(`*[_type == 'subject' && !(_id in path("drafts.**"))]`)
-      const currentSubjects = allSubjects.filter((subject) =>
-        Boolean(subject.levels?.filter((level) => level._ref === currentLevel?._id).length)
-      )
-      setSubjectsList(e.target.value !== 'all-levels' ? currentSubjects : allSubjects)
       setLevelQuery(e.target.value !== 'all-levels' ? currentLevel : null)
+
       let path = ''
       if (currentLevel && subjectQuery) {
         path = `/${currentLevel.slug.current}/${subjectQuery.slug.current}`
@@ -81,17 +82,11 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
 
     if (e.target.ariaLabel === 'subjects') {
       const currentSubject = subjectsList.filter((item) => item._id === e.target.value)[0]
-      setLevelsList(
-        e.target.value !== 'all-subjects'
-          ? currentSubject.levels
-          : await client.fetch(`*[_type == 'level' && !(_id in path("drafts.**"))]`)
-      )
-      setSubjectQuery(e.target.value !== 'all-subjects' ? currentSubject : null)
+      setSubjectQuery(e.target.value !== 'all-levels' ? currentSubject : null)
+      setLevelQuery(null)
+
       let path = ''
-      if (currentSubject && levelQuery) {
-        path = `/${levelQuery.slug.current}/${currentSubject.slug.current}`
-      }
-      if (currentSubject && !levelQuery) {
+      if (currentSubject) {
         path = `/${currentSubject.slug.current}`
       }
       if (!currentSubject && levelQuery) {

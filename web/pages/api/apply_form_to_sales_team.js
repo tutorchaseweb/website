@@ -11,7 +11,7 @@ export default function (req, res) {
   const mailData = {
     from: process.env.NEXT_PUBLIC_MAIL_ADDRESS_GMAIL,
     to: process.env.NEXT_PUBLIC_MAIL_ADDRESS,
-    subject: `Message From ${req.body.fullName}`,
+    subject: `TutorChase "Tutor Applications"`,
     text:
       'Full name: ' +
       req.body.fullName +
@@ -32,8 +32,11 @@ export default function (req, res) {
       'LinkedIn Profile URL: ' +
       req.body.linkedInUrl +
       'Referrer: ' +
-      req.body.referrer,
-
+      req.body.referrer +
+      'The page from which the form was submitted: ' +
+      req.body.source +
+      'Date and time of the application: ' +
+      req.body.time,
     html: `<p><b>Full name:</b><br/> ${req.body.fullName}</p>
     <p><b>Email:</b><br/> ${req.body.email}</p>
     <p><b>Country:</b><br/> ${req.body.country}</p>
@@ -43,7 +46,9 @@ export default function (req, res) {
     <p><b>Tutoring Experience:</b><br/> ${req.body.tutoringExperience}</p>
     <p><b>Tutoring Offered:</b><br/> ${req.body.tutoringOffered}</p>
     <p><b>LinkedIn Profile URL:</b><br/> ${req.body.linkedInUrl}</p>
-    <p><b>Referrer:</b><br/> ${req.body.referrer}</p></br>`,
+    <p><b>Referrer:</b><br/> ${req.body.referrer}</p>
+    <p><b>The page from which the form was submitted:</b><br/> ${req.body.source}</p>
+    <p><b>Date and time of the application:</b><br/> ${req.body.time}</p>`,
 
     attachments: [
       {

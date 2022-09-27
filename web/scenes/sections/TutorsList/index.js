@@ -43,7 +43,7 @@ export const TutorsList = ({ tutors }) => {
             >
               <div className="relative image-wrapper">
                 <Image
-                  src={`${getImageUrl(tutor.image.asset._ref).width(300).height(300)}`}
+                  src={`${getImageUrl(tutor?.image?.asset?._ref).width(300).height(300)}`}
                   alt={tutor.name}
                   className="block"
                   layout="fill"
@@ -61,7 +61,7 @@ export const TutorsList = ({ tutors }) => {
                     <p className="fw-500 mb-3x">{tutor.education}</p>
                     <p className="fz-14p fw-600 l-height-1/4">
                       <span className="mr-1x">Teaches:</span>
-                      {teachesList(tutor?.teaches).map((teach) => (
+                      {teachesList(tutor?.teaches)?.map((teach) => (
                         <span key={teach._id} className="teach mr-1x mb-1x">
                           {teach.title}
                         </span>
@@ -69,7 +69,7 @@ export const TutorsList = ({ tutors }) => {
                     </p>
                   </div>
                   <div className="actions flex">
-                    <Link href={`/tutors/${tutor.slug.current}`}>
+                    <Link href={`/tutors/${tutor.slug?.current}`}>
                       <a className="btn btn-white w-full">View profile</a>
                     </Link>
                     <a href="#hireFormBlock" className="btn btn-blue w-full" onClick={hireTutor}>
@@ -121,7 +121,7 @@ export const TutorsList = ({ tutors }) => {
                   <div className="actions flex">
                     <p className="fz-14p fw-600 l-height-1/4 pt-4x pb-4x pl-3x pr-3x flex-1">
                       <span className="mr-1x">Teaches:</span>
-                      {teachesList(tutor?.teaches).map((teach) => (
+                      {teachesList(tutor?.teaches)?.map((teach) => (
                         <span key={teach._id} className="teach mr-1x mb-1x">
                           {teach.title}
                         </span>
@@ -150,11 +150,7 @@ export const TutorsList = ({ tutors }) => {
           Show more
         </button>
       ) : (
-        router.route !== '/tutors' && (
-          <Link href="/tutors">
-            <a className="btn btn-blue">All tutors</a>
-          </Link>
-        )
+        ''
       )}
     </div>
   )

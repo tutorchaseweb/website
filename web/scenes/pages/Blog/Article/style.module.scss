@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .firstScreen {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
 }
 .mainImageWrap {
   max-width: 1120px;
@@ -66,7 +66,7 @@
       font-size: 20px;
       font-weight: 600;
       line-height: 150%;
-      color: #171D23;
+      color: #171d23;
       margin-top: 1.5rem;
       margin-bottom: 0.5rem;
     }
@@ -86,6 +86,10 @@
         object-fit: initial;
       }
     }
+    ul {
+      margin-left: 2em;
+      list-style-type: disc;
+    }
 
     .body {
       &::after {
@@ -98,7 +102,7 @@
 }
 
 .afterContent {
-  background-color: #F3F5FF;
+  background-color: #f3f5ff;
   border-radius: 16px;
   :global {
     .medium-title {
