@@ -25,7 +25,7 @@ export const US_Admissions = ({ page }) => {
 
   return (
     <Layout>
-      <MetaTags title={page.seoTitle} description={page.seoDescription} />
+      <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
       <OxbridgePage page={page} tutors={tutors} />
     </Layout>
   )
