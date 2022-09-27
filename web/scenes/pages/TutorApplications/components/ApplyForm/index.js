@@ -15,7 +15,7 @@ import {
 import { Circle } from '~/components/Circle'
 import { Input, Textarea, Select } from '~/components/Form'
 import { arrowLeft, doneCheck } from '~/utils/svgImages'
-import { Color, MOBILE_BREAKPOINT, GEO_API_URL, GEO_API_KEY } from '~/utils/constants'
+import { Color, MOBILE_BREAKPOINT, GEO_API_URL, GEO_API_KEY, EXPIRY_DATE } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
 import fileIcon from '~/assets/images/icons/data-file.jpg'
@@ -50,6 +50,7 @@ export const ApplyForm = ({ className = '' }) => {
   const [linkedInUrl, setLinkedInUrl] = useState('')
   const [referrer, setReferrer] = useState('')
   const [files, setFiles] = useState([])
+  const [gclidValue, setGclidValue] = useState('')
 
   const countries = [
     defaultCountry,
@@ -107,16 +108,6 @@ export const ApplyForm = ({ className = '' }) => {
     event.preventDefault()
     sendData()
       .then(() => {
-        fetch('/api/apply_form_to_user', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(email),
-        })
-      })
-      .then(() => {
         clearAllFields()
         router.push('/tutor-submission')
       })
@@ -138,69 +129,67 @@ export const ApplyForm = ({ className = '' }) => {
   }
 
   const sendForm = (file = {}) => {
-    const mutations = [
-      {
-        create: {
-          _type: 'applyForm',
-          fullName,
-          email,
-          country: country.title === 'Select your country' ? 'not selected' : country.title,
-          phone,
-          hearAboutUs,
-          qualifications,
-          tutoringExperience,
-          tutoringOffered,
-          linkedInUrl,
-          referrer,
-          tutorCv: {
-            _type: 'file',
-            asset: {
-              _type: 'reference',
-              _ref: file._id,
-            },
-          },
-          source,
-          time: new Date().toString(),
-          processed: false,
+    const data = {
+      _type: 'applyForm',
+      fullName,
+      email,
+      country: country.title === 'Select your country' ? 'not selected' : country.title,
+      phone,
+      hearAboutUs,
+      qualifications,
+      tutoringExperience,
+      tutoringOffered,
+      linkedInUrl,
+      referrer,
+      tutorCv: {
+        _type: 'file',
+        asset: {
+          _type: 'reference',
+          _ref: file._id,
         },
       },
+      fileName: file.originalFilename,
+      filePath: file.url,
+      source,
+      gclidValue,
+      time: new Date().toString(),
+      processed: false,
+    }
+
+    const mutations = [
+      {
+        create: data,
+      },
     ]
+
+    fetch('/api/apply_form_to_sales_team', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    fetch('/api/apply_form_to_user', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(email),
+    })
+
     return handleMutations(mutations)
   }
 
   const sendData = async () => {
     const file = files[0]
+
     if (file) {
       client.assets
         .upload('file', file, {
           filename: file.name,
-        })
-        .then((imageAsset) => {
-          const data = {
-            fullName,
-            email,
-            country: country.title,
-            phone,
-            hearAboutUs,
-            qualifications,
-            tutoringExperience,
-            tutoringOffered,
-            linkedInUrl,
-            referrer,
-            fileName: files[0]?.name,
-            filePath: imageAsset?.url,
-            source,
-            time: new Date().toString(),
-          }
-          fetch('/api/apply_form_to_sales_team', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          })
-          return imageAsset
         })
         .then(async (file) => {
           return await sendForm(file)
@@ -226,6 +215,11 @@ export const ApplyForm = ({ className = '' }) => {
           setCountry(currentCountry)
         }
       })
+
+    const gclid = JSON.parse(localStorage.getItem('gclid'))
+    const isGclidValid = gclid && new Date().getTime() < EXPIRY_DATE
+
+    isGclidValid && setGclidValue(gclid?.value)
   }, [])
 
   const empty = <span>&nbsp;</span>
@@ -236,6 +230,7 @@ export const ApplyForm = ({ className = '' }) => {
     >
       <h2 className="fz-24p fw-600 l-height-1 mb-4x">{activeStep === 3 ? empty : 'Apply Now'}</h2>
       <form className="form flex flex-col">
+        <input type="hidden" name="gclidField" value={gclidValue} />
         {activeStep === 0 && (
           <>
             <div className="flex mb-2x">

@@ -35,6 +35,8 @@ export default function (req, res) {
       req.body.referrer +
       'The page from which the form was submitted: ' +
       req.body.source +
+      'GCLID (Google Click Identifier): ' +
+      req.body.gclidValue +
       'Date and time of the application: ' +
       req.body.time,
     html: `<p><b>Full name:</b><br/> ${req.body.fullName}</p>
@@ -48,6 +50,7 @@ export default function (req, res) {
     <p><b>LinkedIn Profile URL:</b><br/> ${req.body.linkedInUrl}</p>
     <p><b>Referrer:</b><br/> ${req.body.referrer}</p>
     <p><b>The page from which the form was submitted:</b><br/> ${req.body.source}</p>
+    <p><b>GCLID (Google Click Identifier):</b><br/> ${req.body.gclidValue}</p>
     <p><b>Date and time of the application:</b><br/> ${req.body.time}</p>`,
 
     attachments: [
@@ -61,5 +64,6 @@ export default function (req, res) {
   transporter.sendMail(mailData, function (err) {
     if (err) console.log(err)
   })
-  res.status(200)
+
+  return res.status(200).json({ status: 'Ok' })
 }

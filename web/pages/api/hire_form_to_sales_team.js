@@ -29,6 +29,8 @@ export default function (req, res) {
       req.body.frequencyDuration +
       'The page from which the form was submitted: ' +
       req.body.source +
+      'GCLID (Google Click Identifier): ' +
+      req.body.gclidValue +
       'Date and time of the application: ' +
       req.body.time,
     html: `<p><b>Position:</b><br/> ${req.body.position}</p>
@@ -39,6 +41,7 @@ export default function (req, res) {
     <p><b>Details of Tutoring Request:</b><br/> ${req.body.details}</p>
     <p><b>Frequency and Duration of Tuition:</b><br/> ${req.body.frequencyDuration}</p>
     <p><b>The page from which the form was submitted:</b><br/> ${req.body.source}</p>
+    <p><b>GCLID (Google Click Identifier):</b><br/> ${req.body.gclidValue}</p>
     <p><b>Date and time of the application:</b><br/> ${req.body.time}</p>`,
   }
   transporter.sendMail(mailData, function (err) {
@@ -46,5 +49,6 @@ export default function (req, res) {
       console.log(err)
     }
   })
-  res.status(200)
+
+  return res.status(200).json({ status: 'Ok' })
 }

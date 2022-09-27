@@ -13,7 +13,7 @@ import { Circle } from '~/components/Circle'
 import { ConfigContext } from '~/components/Layout'
 import { Input, Select, Textarea } from '~/components/Form'
 import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/utils/svgImages'
-import { Color, GEO_API_URL, GEO_API_KEY } from '~/utils/constants'
+import { Color, GEO_API_URL, GEO_API_KEY, EXPIRY_DATE } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
 import styles from './style.module.scss'
@@ -44,6 +44,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const [details, setDetails] = useState('')
   const [detailsErrors, setDetailsErrors] = useState([])
   const [frequencyDuration, setFrequencyDuration] = useState('')
+  const [gclidValue, setGclidValue] = useState('')
 
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
@@ -66,26 +67,6 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     setDetailsErrors(checkValidateMessage(details))
     if (!checkValidateMessage(details).length) {
       sendForm()
-        .then(() => {
-          fetch('/api/hire_form_to_sales_team', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          })
-        })
-        .then(() => {
-          fetch('/api/hire_form_to_user', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          })
-        })
         .then(() => {
           clearAllFields()
           router.push('/form-submission')
@@ -117,6 +98,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     details,
     frequencyDuration,
     source,
+    gclidValue,
     time: new Date().toString(),
     processed: false,
   }
@@ -127,6 +109,25 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
         create: data,
       },
     ]
+
+    fetch('/api/hire_form_to_sales_team', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    fetch('/api/hire_form_to_user', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
     return handleMutations(mutations)
   }
 
@@ -145,6 +146,11 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
           setCountry(currentCountry)
         }
       })
+
+    const gclid = JSON.parse(localStorage.getItem('gclid'))
+    const isGclidValid = gclid && new Date().getTime() < EXPIRY_DATE
+
+    isGclidValid && setGclidValue(gclid?.value)
   }, [])
 
   return (
@@ -159,6 +165,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
               Please fill out the form and we'll find a tutor for you
             </p>
             <form className="form mx-auto flex flex-col bg-white rounded-small pr-3x pl-3x pt-4x pb-4x pt-5x_lg pr-5x_lg pl-5x_lg">
+              <input type="hidden" name="gclidField" value={gclidValue} />
               {activeStep === 0 && (
                 <>
                   <div className="flex flex-wrap gap-4 mb-3x">

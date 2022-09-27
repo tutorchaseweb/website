@@ -37,11 +37,8 @@ export const CopyFragment = ({ title }) => {
 }
 
 const MenuItem = ({ item, index }) => {
-  const homeUrl = typeof window !== 'undefined' ? window.location.origin : ''
   const link = {
-    url: item?.slug?.current?.includes('http')
-      ? item?.slug?.current
-      : `${homeUrl}/${item?.slug?.current}`,
+    url: item?.slug?.current,
     text: item?.name,
   }
 
