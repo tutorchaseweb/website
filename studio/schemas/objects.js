@@ -26,6 +26,7 @@ import filterDescription from './objects/tutor/filterDescription'
 import qualification from './objects/tutor/qualification'
 import subjectLevel from './objects/tutor/subjectLevel'
 import tutorLevel from './objects/tutor/tutorLevel'
+import tutorsList from './objects/global/tutorsList'
 
 import admissionsTests from './objects/oxbridge/admissionsTests'
 import smallSection from './objects/oxbridge/smallSection'
@@ -47,6 +48,7 @@ export default [
   floatImage,
   studyCards,
   tutorLevel,
+  tutorsList,
   reviewSection,
   faqSection,
   mainImage,

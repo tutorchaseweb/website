@@ -97,6 +97,14 @@ export default {
       validation: (Rule) => Rule.error('The additional description is required').required(),
     },
     {
+      name: 'relatedPosts',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'post' } }],
+      title: 'Related Posts',
+      description: 'Choose from 1 to 3 related posts for this article (optional field)',
+      validation: (Rule) => Rule.max(3),
+    },
+    {
       name: 'seoTitle',
       type: 'string',
       fieldset: 'seo',

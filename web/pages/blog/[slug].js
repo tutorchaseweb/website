@@ -16,7 +16,10 @@ export async function getServerSideProps(context) {
   const { slug = '' } = context.params
   const post = await client.fetch(
     `
-    *[_type == 'post' && slug.current == $slug][0]
+    *[_type == 'post' && slug.current == $slug][0] {
+      ..., 
+      relatedPosts[]->
+    }
   `,
     { slug }
   )
