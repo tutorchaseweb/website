@@ -41,7 +41,7 @@ export default function (req, res) {
       req.body.time,
     html: `<p><b>Full name:</b><br/> ${req.body.fullName}</p>
     <p><b>Email:</b><br/> ${req.body.email}</p>
-    <p style="color:red;font-size:large;"><b>Country:</b><br/> ${req.body.country}</p>
+    <p><b>Country:</b><br/> ${req.body.country}</p>
     <p><b>Phone:</b><br/> ${req.body.phone}</p>
     <p><b>How did you hear about us?</b><br/> ${req.body.hearAboutUs}</p>
     <p><b>Qualifications:</b><br/> ${req.body.qualifications}</p>

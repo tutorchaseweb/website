@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { groq } from 'next-sanity'
-import client from '~/utils/sanity-client'
 import { PortableText } from '@portabletext/react'
 import { getImageUrl } from '~/utils/helpers'
 import SVG from '~/components/SVG'
@@ -13,17 +10,6 @@ import { BlogCard } from '~/scenes/pages/Blog/components/BlogCard'
 import styles from './style.module.scss'
 
 export const ArticlePage = ({ article }) => {
-  const [allPosts, setAllPosts] = useState([])
-
-  useEffect(async () => {
-    const QUERY = groq`
-      *[_type == 'post' && !(_id in path("drafts.**"))][0...3] {
-        ...,
-      }
-    `
-    setAllPosts(await client.fetch(QUERY))
-  }, [])
-
   return (
     <>
       <article className="article">
@@ -91,17 +77,18 @@ export const ArticlePage = ({ article }) => {
           </div>
         </section>
       </article>
-      <section className={`related pt-11x pb-15x ${styles.related}`}>
-        <div className="container">
-          <h2 className="section-title fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
-          <div className="wrapper grid grid-columns-3 gap-8">
-            {Boolean(allPosts.length > 0) &&
-              allPosts.map((post) => {
+      {Boolean(article?.relatedPosts?.length > 0) && (
+        <section className={`related pt-11x pb-15x ${styles.related}`}>
+          <div className="container">
+            <h2 className="section-title fw-600 l-height-1/5 mb-4x text-center">Related Posts</h2>
+            <div className="wrapper grid grid-columns-3 gap-8">
+              {article?.relatedPosts.map((post) => {
                 return <BlogCard key={post._id} article={post} />
               })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   )
 }

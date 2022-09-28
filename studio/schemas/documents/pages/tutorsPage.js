@@ -16,8 +16,8 @@ export default {
     },
     {
       name: 'tutorsSection',
-      type: 'sectionHead',
-      title: 'Tutors list section head',
+      type: 'tutorsList',
+      title: 'Tutors list section',
     },
     {
       name: 'blueCard',
