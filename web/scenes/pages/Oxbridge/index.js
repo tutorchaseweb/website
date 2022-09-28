@@ -251,12 +251,12 @@ export const OxbridgePage = ({ page, tutors, type = 'oxbridge-page' }) => {
             <div className="fz-18p mb-4x">
               <PortableText value={admissionsTests?.description} />
             </div>
-            {Boolean(tests.length) && (
+            {Boolean(admissionsTests?.tests.length) && (
               <p className="flex flex-wrap gap-4 fw-500 l-height-1">
                 {admissionsTests?.tests.map((test) => {
                   return (
                     <Link
-                      key={test._key}
+                      key={test._id}
                       href={test._type === 'subject' ? test.slug.current : '/tutors'}
                     >
                       <a className="tag bg-white pt-1x pb-1x pl-2x pr-2x rounded-xSmall">

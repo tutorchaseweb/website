@@ -24,7 +24,15 @@ export async function getServerSideProps() {
         tests[] ->
       }
     },
-    'tutors': *[_type == 'tutor' && !(_id in path("drafts.**")) && showOnOxbridge==true]
+    'tutors': *[_type == 'tutor' && !(_id in path("drafts.**")) && showOnOxbridge == true] {
+      ...,
+      'teaches': *[_type == 'subject' && references(^._id)] {
+        _id,
+        _createdAt,
+        title,
+        slug,
+      },
+    }
   }`
   const data = await client.fetch(QUERY)
 

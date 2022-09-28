@@ -29,22 +29,27 @@ export default function (req, res) {
       req.body.frequencyDuration +
       'The page from which the form was submitted: ' +
       req.body.source +
+      'GCLID (Google Click Identifier): ' +
+      req.body.gclidValue +
       'Date and time of the application: ' +
       req.body.time,
     html: `<p><b>Position:</b><br/> ${req.body.position}</p>
     <p><b>Full name:</b><br/> ${req.body.fullName}</p>
-    <p><bCountry:</b><br/> ${req.body.country}</p>
+    <p><b style="color:red;font-size:large;">Country:</b><br/> ${req.body.country}</p>
     <p><b>Phone:</b><br/> ${req.body.phone}</p>
     <p><b>Email:</b><br/> ${req.body.email}</p>
     <p><b>Details of Tutoring Request:</b><br/> ${req.body.details}</p>
     <p><b>Frequency and Duration of Tuition:</b><br/> ${req.body.frequencyDuration}</p>
     <p><b>The page from which the form was submitted:</b><br/> ${req.body.source}</p>
+    <p><b>GCLID (Google Click Identifier):</b><br/> ${req.body.gclidValue}</p>
     <p><b>Date and time of the application:</b><br/> ${req.body.time}</p>`,
   }
-  transporter.sendMail(mailData, function (err) {
+  transporter.sendMail(mailData, function (err, info) {
     if (err) {
-      console.log(err)
+      console.log('Error ' + err)
+    } else {
+      res.status(200)
+      res.send(`Email sent`)
     }
   })
-  res.status(200)
 }

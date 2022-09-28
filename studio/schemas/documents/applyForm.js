@@ -79,6 +79,12 @@ export default {
       readOnly: true,
     },
     {
+      name: 'gclidValue',
+      type: 'string',
+      title: 'GCLID (Google Click Identifier)',
+      readOnly: true,
+    },
+    {
       name: 'time',
       type: 'string',
       title: 'Date and time of the application (local time of the sender)',
