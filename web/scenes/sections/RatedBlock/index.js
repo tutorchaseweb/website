@@ -6,6 +6,7 @@ import { Autoplay } from 'swiper'
 import SVG from '~/components/SVG'
 import { shuffleArray, useWindowSize } from '~/utils/helpers'
 import { REVIEWS_BREAKPOINT } from '~/utils/constants'
+import { ConfigContext } from '~/components/Layout'
 import { star } from '~/utils/svgImages'
 import styles from './style.module.scss'
 
@@ -132,9 +133,17 @@ export const RatedBlock = ({ className }) => {
             <SVG content={star()} size={24} />
             <SVG content={star()} size={24} />
           </p>
-          <h2 className="section-title fw-600 mb-3x l-height-1">
-            Rated 4.92/5 based on 214 reviews
-          </h2>
+          <ConfigContext.Consumer>
+            {(config) => {
+              const { currentRaiting, numberOfReviews } = config || {}
+
+              return (
+                <h2 className="section-title fw-600 mb-3x l-height-1">
+                  Rated {currentRaiting}/5 based on {numberOfReviews} reviews
+                </h2>
+              )
+            }}
+          </ConfigContext.Consumer>
           <p className="description l-height-1/4 mb-6x">Trusted globally by students and parents</p>
           {window.width < REVIEWS_BREAKPOINT && <MobileReviews reviews={allReviews} />}
           <a

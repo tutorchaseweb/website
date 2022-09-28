@@ -6,6 +6,7 @@ export default {
   __experimental_actions: ['create', 'delete', 'update', 'publish'],
   fieldsets: [
     { name: 'contacts', title: 'Contacts' },
+    { name: 'raiting', title: 'Raiting', options: { columns: 2 } },
     { name: 'footerMenu', title: 'Footer Menus' },
   ],
   fields: [
@@ -89,6 +90,18 @@ export default {
       title: 'LinkedIn',
       type: 'url',
       fieldset: 'contacts',
+    },
+    {
+      name: 'currentRaiting',
+      title: 'Current rating number',
+      type: 'number',
+      fieldset: 'raiting',
+    },
+    {
+      name: 'numberOfReviews',
+      title: 'Number of reviews',
+      type: 'number',
+      fieldset: 'raiting',
     },
     {
       name: 'companyMenu',
