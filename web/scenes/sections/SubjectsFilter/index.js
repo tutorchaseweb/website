@@ -57,6 +57,13 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
       setSubjectsList(subjects)
       setLevelsList(subjectQuery === null ? levels : levels.levels)
     })
+    if (
+      router?.pathname === '/oxbridge' ||
+      router?.pathname === '/tutors' ||
+      router?.pathname === '/us-college-admissions'
+    ) {
+      setLevelQuery(null), setSubjectQuery(null)
+    }
   }, [subjectQuery])
 
   const filterHandler = (e) => {

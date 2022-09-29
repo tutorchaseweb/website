@@ -34,9 +34,15 @@ export const TutorPage = ({ tutor }) => {
         </div>
         <p className="flex flex-wrap items-center">
           <span className="fw-700">{review?.author}</span>
-          <span className="ml-1x mr-1x">|</span>
-          {review?.position}
-          <span className="stars l-height-1 ml-2x_lg">
+          {review?.position ? (
+            <>
+              <span className="ml-1x mr-1x">|</span>
+              {review?.position}
+            </>
+          ) : (
+            ''
+          )}
+          <span className={`stars l-height-1 ${review?.position ? 'ml-2x_lg' : 'ml-3x_lg'}`}>
             <SVG content={star()} size={20} />
             <SVG content={star()} size={20} />
             <SVG content={star()} size={20} />

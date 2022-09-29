@@ -11,6 +11,7 @@ export const Input = ({
   value,
   setValue = () => null,
   checkValidateValue,
+  countryCode = '',
   Errors = [],
   setErrors = () => null,
   title = '',
@@ -32,12 +33,12 @@ export const Input = ({
         onChange={(e) => {
           setValue(e.target.value)
           if (checkValidateValue) {
-            setErrors(checkValidateValue(e.target.value))
+            setErrors(checkValidateValue(e.target.value, countryCode))
           }
         }}
         onBlur={(e) => {
           if (checkValidateValue) {
-            checkValidateValue(e.target.value.trim()).length
+            checkValidateValue(e.target.value.trim(), countryCode).length
               ? setErrors(checkValidateValue(e.target.value.trim()))
               : setValue(e.target.value.trim())
           } else {

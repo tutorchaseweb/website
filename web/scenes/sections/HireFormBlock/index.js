@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import SVG from '~/components/SVG'
-import { handleMutations, log } from '~/utils/helpers'
+import { error } from '~/utils/svgImages'
+import { handleMutations } from '~/utils/helpers'
 import {
   checkValidateFullName,
   checkValidateEmail,
@@ -16,6 +17,7 @@ import { email as emailIcon, phone as phoneIcon, arrowLeft, doneCheck } from '~/
 import { Color, GEO_API_URL, GEO_API_KEY, EXPIRY_DATE } from '~/utils/constants'
 import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
+import PhoneInput from 'react-phone-input-2'
 import styles from './style.module.scss'
 
 const defaultCountry = {
@@ -40,6 +42,7 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
   const [email, setEmail] = useState('')
   const [emailErrors, setEmailErrors] = useState([])
   const [country, setCountry] = useState(countries[0])
+  const [countryCode, setCountryCode] = useState('')
   const [countryErrors, setCountryErrors] = useState([])
   const [details, setDetails] = useState('')
   const [detailsErrors, setDetailsErrors] = useState([])
@@ -48,12 +51,12 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
 
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
-    setPhoneErrors(checkValidatePhone(phone))
+    setPhoneErrors(checkValidatePhone(phone, countryCode))
     setEmailErrors(checkValidateEmail(email))
     setCountryErrors(checkValidateSelect(country, countries[0]))
     if (
       !checkValidateFullName(fullName).length &&
-      !checkValidatePhone(phone).length &&
+      !checkValidatePhone(phone, countryCode).length &&
       !checkValidateEmail(email).length &&
       !checkValidateSelect(country, countries[0]).length
     ) {
@@ -148,8 +151,8 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
     fetch(`${GEO_API_URL}/ipgeo?apiKey=${apiKey}`)
       .then((resp) => resp.json())
       .then((data) => {
-        if (data.calling_code) {
-          setPhone(data.calling_code)
+        if (data.country_code2) {
+          setCountryCode(data.country_code2)
         }
         const currentCountry = countries.find(
           (country) => country.title === data.country_name || country.value === data.country_code2
@@ -231,18 +234,50 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
                     />
                   </div>
                   <div className="flex flex-wrap gap-4 mb-4x flex-1">
-                    <Input
-                      id="phone"
-                      inputName="Your phone (with country code)"
-                      placeholder="Enter your phone"
-                      className="flex-1 fz-14p"
-                      type="tel"
-                      value={phone}
-                      setValue={setPhone}
-                      Errors={phoneErrors}
-                      setErrors={setPhoneErrors}
-                      checkValidateValue={checkValidatePhone}
-                    />
+                    <div
+                      className={`label relative flex-1 fz-14p ${
+                        phoneErrors.length ? 'error' : ''
+                      } ${styles.wrapper}`}
+                    >
+                      <PhoneInput
+                        value={phone}
+                        country={countryCode.toLowerCase()}
+                        inputClass="p-1x border-light l-height-2 w-full rounded-xSmall"
+                        placeholder="Enter your phone"
+                        specialLabel="Your phone (with country code)"
+                        buttonStyle={{ display: 'none' }}
+                        autoFormat={false}
+                        onChange={(phone) => {
+                          setPhone(phone)
+                          if (checkValidatePhone) {
+                            setPhoneErrors(checkValidatePhone(phone, countryCode))
+                          }
+                        }}
+                        onBlur={(e) => {
+                          if (checkValidatePhone) {
+                            checkValidatePhone(phone).length
+                              ? setPhoneErrors(checkValidatePhone(phone, countryCode))
+                              : setPhone(phone)
+                          } else {
+                            setPhone(phone)
+                          }
+                        }}
+                      />
+                      {phoneErrors.length !== 0 && (
+                        <span className="error-wrap absolute">
+                          <SVG content={error()} size={16} />
+                          <span className="errors block absolute l-height-1">
+                            {phoneErrors?.map((error) => {
+                              return (
+                                <span key={error.type} className="block">
+                                  {error.message}
+                                </span>
+                              )
+                            })}
+                          </span>
+                        </span>
+                      )}
+                    </div>
                     <Input
                       id="email"
                       inputName="Your email"
