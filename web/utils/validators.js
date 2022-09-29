@@ -119,9 +119,10 @@ const checkValidateSelect = (initial, value) => {
   }
   return selectErrors
 }
-const checkValidatePhone = (phone) => {
+const checkValidatePhone = (phone, countryCode) => {
   let phoneErrors = []
-  const phoneNumber = parsePhoneNumber(phone.startsWith('+') ? phone : `+${phone}`)
+  const phoneNumber = parsePhoneNumber(phone, countryCode)
+
   if (phone === '') {
     phoneErrors = [{ type: 'empty', message: 'Please enter your phone' }]
     // phoneErrors = []

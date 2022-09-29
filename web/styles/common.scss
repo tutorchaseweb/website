@@ -1,7 +1,9 @@
 @import 'indentation';
 @import 'atomic';
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -10,7 +12,8 @@
 img {
   display: block;
 }
-img, svg {
+img,
+svg {
   max-width: 100%;
 }
 svg {
@@ -24,7 +27,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 strong {
@@ -34,7 +38,10 @@ code {
   font: inherit;
   color: $color-blue;
 }
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   font: inherit;
   resize: none;
 }
@@ -56,7 +63,12 @@ body.openMenu {
   overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
 }
 h1 {
@@ -71,7 +83,9 @@ h3 {
   font-size: 48px;
   line-height: 110%;
 }
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-size: 32px;
   line-height: 120%;
 }
@@ -132,9 +146,10 @@ h4, h5, h6 {
   padding: 0.75rem;
   min-width: 8rem;
 }
-.btn.large {}
+.btn.large {
+}
 .btn.btn-gray {
-  background-color: #D8DAE5;
+  background-color: #d8dae5;
   color: $default-text-color;
 }
 .btn.btn-gray:hover {
@@ -145,7 +160,7 @@ h4, h5, h6 {
   color: $color-white;
 }
 .btn.btn-blue:hover {
-  background-color: #4053B0;
+  background-color: #4053b0;
 }
 .btn.btn-white {
   background-color: $color-white;
@@ -155,7 +170,6 @@ h4, h5, h6 {
 .btn.btn-white:hover {
   color: $color-orange;
 }
-
 
 .main-title {
   font-size: 2.5rem;
@@ -221,7 +235,7 @@ h4, h5, h6 {
       }
     }
     &::before {
-      content: "0" counter(index);
+      content: '0' counter(index);
       display: block;
       width: 32px;
       min-width: 32px;
@@ -232,7 +246,7 @@ h4, h5, h6 {
       font-weight: 600;
       text-align: center;
       letter-spacing: 0.03em;
-      color: #F57C40;
+      color: #f57c40;
       margin-right: 1rem;
       @media (min-width: $lg) {
         width: 44px;
@@ -247,7 +261,7 @@ h4, h5, h6 {
     li {
       &::before {
         background: rgba(0, 26, 150, 0.1);
-        color: #001A96;
+        color: #001a96;
       }
     }
   }
@@ -259,32 +273,37 @@ input:focus {
 }
 label.error input,
 label.error textarea,
-label.error .dropdown .current {
-  border-color: #F57C40;
+label.error .dropdown .current,
+.label.error input {
+  border-color: #f57c40;
 }
-label.error .error-wrap {
+label.error .error-wrap,
+.label.error .error-wrap {
   top: 2.5rem;
   right: 0.5rem;
 }
-label.error .error-wrap .svg-wrap {
+label.error .error-wrap .svg-wrap,
+.label.error .error-wrap .svg-wrap {
   cursor: pointer;
 }
 
-label.error .error-wrap .errors {
+label.error .error-wrap .errors,
+.label.error .error-wrap .errors {
   display: none;
-  background: #FFF1EC;
+  background: #fff1ec;
   box-shadow: 3px 4px 20px rgba(180, 111, 78, 0.08);
   border-radius: 4px;
   min-width: min-content;
   width: 165px;
   max-width: 165px;
   padding: 1em;
-  color: #F57C40;
+  color: #f57c40;
   top: 100%;
   right: 0;
   z-index: 2;
 }
-label.error .error-wrap:hover .errors {
+label.error .error-wrap:hover .errors,
+.label.error .error-wrap:hover .errors {
   display: block;
 }
 
