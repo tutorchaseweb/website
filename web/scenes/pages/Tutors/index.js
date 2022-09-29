@@ -49,7 +49,7 @@ export const TutorsPage = ({ page, tutors }) => {
           <div className="description fz-18p mb-3x">
             <PortableText value={tutorsSection?.description} />
           </div>
-          <TutorsList tutors={tutorsSection?.tutorsList ?? tutors} />
+          <TutorsList tutors={tutors ?? tutorsSection?.tutorsList} />
         </div>
       </section>
       <section>
