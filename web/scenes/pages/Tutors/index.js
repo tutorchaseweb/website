@@ -14,7 +14,7 @@ import {
 
 import styles from './style.module.scss'
 
-export const TutorsPage = ({ page }) => {
+export const TutorsPage = ({ page, tutors }) => {
   const { firstScreen, filterDescription, tutorsSection, blueCard, reviewBlock, faqSection } =
     page || {}
 
@@ -49,7 +49,7 @@ export const TutorsPage = ({ page }) => {
           <div className="description fz-18p mb-3x">
             <PortableText value={tutorsSection?.description} />
           </div>
-          <TutorsList tutors={tutorsSection?.tutorsList} />
+          <TutorsList tutors={tutors ?? tutorsSection?.tutorsList} />
         </div>
       </section>
       <section>
