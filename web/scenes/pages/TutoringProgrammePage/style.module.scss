@@ -1,0 +1,185 @@
+@import 'styles/variables';
+
+.firstScreen {
+  background: #fff1ec url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+
+  :global {
+    .container {
+      text-align: left;
+      max-width: 60rem;
+
+      @media (min-width: $lg) {
+        text-align: center;
+      }
+
+      @media (min-width: $xl) {
+        max-width: 74rem;
+      }
+
+      .description {
+        @media (min-width: $lg) {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+
+    code {
+      display: block;
+    }
+
+    .btn {
+      min-width: 11rem;
+
+      @media (min-width: $lg) {
+        min-width: 13.5rem;
+      }
+    }
+
+    .left-card {
+      left: 0;
+      top: 60%;
+      width: 100%;
+      display: none;
+      line-height: 1.5;
+      max-width: 7.5rem;
+      position: absolute;
+      border-radius: 8px;
+      padding: 2.5rem 1rem 1rem;
+      transform: rotate(-8deg);
+      filter: drop-shadow(14px 14px 58px rgba(0, 18, 86, 0.08));
+
+      .circle {
+        top: 0;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+
+    .right-card {
+      top: 75%;
+      right: 0;
+      display: none;
+      padding: 1rem;
+      text-align: left;
+      line-height: 1.5;
+      margin-top: 3rem;
+      margin-left: auto;
+      border-radius: 8px;
+      max-width: 12.6rem;
+      transform: rotate(6deg);
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.04);
+
+      @media (min-width: $lg) {
+        display: flex;
+        position: absolute;
+        margin-left: initial;
+        margin-top: initial;
+      }
+
+      .svg-wrap {
+        margin-right: 12px;
+      }
+    }
+
+    .academy {
+      right: 2rem;
+      bottom: 1.7rem;
+      transform: rotate(16deg);
+
+      svg {
+        width: 56px;
+        height: 56px;
+      }
+
+      @media (min-width: $lg) {
+        display: none;
+      }
+    }
+  }
+}
+
+.content {
+  :global {
+    .container {
+      & > .flex {
+        row-gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @media (min-width: $lg) {
+          flex-wrap: nowrap;
+          justify-content: space-between;
+        }
+      }
+
+      h2 {
+        font-size: 32px;
+
+        @media (min-width: $lg) {
+          font-style: 48px;
+        }
+      }
+
+      p {
+        &:not(:last-child) {
+          margin-bottom: 0.75rem;
+
+          @media (min-width: $lg) {
+            margin-bottom: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .image-wrap {
+      width: 85%;
+      max-width: 400px;
+
+      @media (min-width: $lg) {
+        max-width: 23.5rem;
+      }
+    }
+
+    .card {
+      bottom: 1rem;
+      padding: 12px;
+      font-size: 12px;
+      max-width: 8.2rem;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+
+      @media (min-width: $lg) {
+        padding: 16px;
+        bottom: 3.3rem;
+        font-size: 16px;
+        max-width: 11rem;
+      }
+    }
+
+    .circle {
+      top: 1.3rem;
+      margin-left: 1.3rem;
+    }
+
+    .exams {
+      right: 0;
+      gap: 8px;
+      top: 1rem;
+      padding: 8px;
+      max-width: 8.4rem;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.04);
+
+      @media (min-width: $lg) {
+        top: 4rem;
+        gap: 16px;
+        padding: 16px;
+        font-size: 16px;
+        max-width: 11rem;
+      }
+    }
+  }
+}

@@ -24,6 +24,7 @@ import {
   CgTemplate,
   BiCodeBlock,
   FaQuestionCircle,
+  IoMdListBox,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -41,6 +42,7 @@ const hiddenDocTypes = (listItem) =>
     'blog-page',
     'reviews-page',
     'applications-page',
+    'tutoring-programme-page',
     'category',
     'author',
     'post',
@@ -141,6 +143,14 @@ export default () =>
                 .icon(BsBook)
                 .child(
                   S.document().schemaType('applications-page').documentId('applications-page')
+                ),
+              S.listItem()
+                .title('NTP partner page')
+                .icon(IoMdListBox)
+                .child(
+                  S.document()
+                    .schemaType('tutoring-programme-page')
+                    .documentId('tutoring-programme-page')
                 ),
               S.listItem()
                 .title('Blog page')
