@@ -221,7 +221,7 @@ export const OxbridgePage = ({ page, tutors, type = 'oxbridge-page' }) => {
               </Circle>
               <div className="blank absolute bg-white rounded-xSmall p-2x">
                 <p className="flex items-center justify-between">
-                  <span className="fw-600">Blank</span>
+                  <span className="fw-600 l-height-1/2">Interview Preparation</span>
                   <SVG content={checkCircle()} size={24} />
                 </p>
                 <span className="line"></span>
