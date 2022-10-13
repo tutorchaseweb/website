@@ -20,6 +20,63 @@ export default {
       title: 'Blue card on tutors page',
     },
     {
+      name: 'secondScreenTitle',
+      type: 'string',
+      title: 'Section screen title',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The title is required').required(),
+    },
+    {
+      name: 'secondScreenCards',
+      type: 'array',
+      of: [
+        {
+          name: 'secondScreenItem',
+          type: 'object',
+          title: 'Card with text and image',
+          fields: [
+            {
+              name: 'image',
+              type: 'image',
+              title: 'Section image',
+              description: '(required field)',
+              validation: (Rule) => Rule.error('The image is required').required(),
+            },
+            {
+              name: 'description',
+              type: 'simpleContent',
+              title: 'Description',
+              description: '(optional field)',
+            },
+          ],
+          preview: {
+            select: {
+              image: 'image.asset',
+              blocks: 'description',
+            },
+            prepare({ image, blocks }) {
+              const block = (blocks || []).find((block) => block._type === 'block')
+              return {
+                media: image,
+                title: block
+                  ? block.children
+                      .filter((child) => child._type === 'span')
+                      .map((span) => span.text)
+                      .join('')
+                  : 'No title',
+              }
+            },
+          },
+        },
+      ],
+      options: {
+        layout: 'secondScreenCards',
+      },
+      title: 'Second screen cards',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The field is required').required().min(2),
+    },
+    {
       name: 'reviewBlock',
       type: 'reviewBlock',
       title: 'Review block (one review)',

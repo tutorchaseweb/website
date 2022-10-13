@@ -117,14 +117,6 @@
         }
       }
 
-      h2 {
-        font-size: 32px;
-
-        @media (min-width: $lg) {
-          font-style: 48px;
-        }
-      }
-
       p {
         &:not(:last-child) {
           margin-bottom: 0.75rem;
@@ -181,5 +173,45 @@
         max-width: 11rem;
       }
     }
+  }
+}
+
+.flexibility {
+  background-color: $color-light-gray;
+
+  :global {
+    .section-row {
+      @media (min-width: $lg) {
+        &:not(.reverse_lg) {
+          row-gap: 4rem;
+        }
+      }
+    }
+    .image-wrap {
+      margin: 0;
+      max-width: 32.5rem;
+    }
+    .limit {
+      @media (min-width: $lg) {
+        max-width: 25rem;
+        margin-top: 4rem;
+      }
+    }
+    .reverse_lg {
+      @media (min-width: $lg) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}
+
+.reviews {
+  padding-top: 0;
+  @media (min-width: $lg) {
+    padding-top: 1rem;
+  }
+
+  &:before {
+    background: $color-light-gray;
   }
 }

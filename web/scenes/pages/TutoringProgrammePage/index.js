@@ -8,15 +8,23 @@ import styles from './style.module.scss'
 
 import Photo from '~/assets/images/woman-photo.png'
 import { PortableText } from '@portabletext/react'
-import { FAQ, RatedBlock } from '~/scenes/sections'
+import { FAQ, RatedBlock, ReviewBlock } from '~/scenes/sections'
 import { getImageUrl } from '~/utils/helpers'
 
 export const TutoringProgrammePage = ({ page }) => {
-  const { firstScreen, firstSection, blueCard, reviewBlock, faqSection } = page || {}
+  const {
+    firstScreen,
+    firstSection,
+    blueCard,
+    secondScreenTitle,
+    secondScreenCards,
+    reviewBlock,
+    faqSection,
+  } = page || {}
 
   return (
     <>
-      <section className={`pt-20x pb-14x ${styles.firstScreen}`}>
+      <section className={`pt-20x_lg pt-13x pb-14x_lg pb-5x ${styles.firstScreen}`}>
         <div className="container">
           {Boolean(firstScreen?.title) && (
             <h1
@@ -28,7 +36,7 @@ export const TutoringProgrammePage = ({ page }) => {
           )}
           {Boolean(firstScreen?.description) && (
             <div
-              className="fz-20p fw-500 l-height-1/4 mb-4x description"
+              className="fz-20p_lg fz-16p fw-500 l-height-1/4 mb-4x description"
               style={{ maxWidth: '41rem' }}
             >
               <PortableText value={firstScreen.description} />
@@ -99,10 +107,12 @@ export const TutoringProgrammePage = ({ page }) => {
             </div>
             <div className="text-wrap w-1/2_lg">
               {Boolean(firstSection?.title) && (
-                <h2 className="fz-48p fw-600 l-height-1 mb-4x">{firstSection?.title}</h2>
+                <h2 className="fz-48p_lg fz-26p fw-600 l-height-1 mb-4x_lg mb-2x">
+                  {firstSection?.title}
+                </h2>
               )}
               {Boolean(firstSection?.description) && (
-                <div className="fz-18p">
+                <div className="fz-18p_lg fz-16p l-height-1/5">
                   <PortableText value={firstSection?.description} />
                 </div>
               )}
@@ -110,13 +120,42 @@ export const TutoringProgrammePage = ({ page }) => {
           </div>
         </div>
       </section>
-      <section class="pb-10x pb-18x_lg">
+      <section className="pb-10x pb-18x_lg">
         <div className="container large">
           <BlueCardBlock title={blueCard?.title} content={blueCard?.description} />
         </div>
       </section>
+      <section className={`pt-13x_lg pt-5x pb-10x bg-white ${styles.flexibility}`}>
+        <div className="container narrow">
+          <div className="text-center">
+            <h2 className="fz-26p fz-48p_lg fw-600 l-height-1 mb-5x mb-10x_lg">
+              {secondScreenTitle}
+            </h2>
+          </div>
+          {secondScreenCards?.map((card, index) => {
+            return (
+              <div
+                className={`section-row flex flex-wrap mt-5x mt-12x_lg gap-12_lg gap-4 ${
+                  index % 2 !== 0 ? 'reverse_lg' : ''
+                }`}
+                key={card?._key}
+              >
+                <div className="image-wrap">
+                  <img src={`${getImageUrl(card?.image.asset._ref)}`} alt="illustration" />
+                </div>
+                <div className="text-wrap limit">
+                  <div className="fz-18p_lg fz-16p l-height-1/4">
+                    <PortableText value={card?.description} />
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </section>
 
-      <RatedBlock />
+      <ReviewBlock {...reviewBlock} className={styles.reviews} />
+      <RatedBlock className="mt-10x mt-18x_lg" />
       <FAQ faqSection={faqSection} />
     </>
   )
