@@ -4,7 +4,6 @@ import { academy, planet, like, checkCircle } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import { FlexibleCard, TextComponent } from '~/scenes/elements'
 import { BlueCardBlock } from './components/BlueCardBlock'
-import logoNTP from '~/assets/images/logo_NTP.png'
 import styles from './style.module.scss'
 
 import { PortableText } from '@portabletext/react'
@@ -126,7 +125,7 @@ export const TutoringProgrammePage = ({ page }) => {
       </section>
       <section className="pb-10x pb-18x_lg">
         <div className="container large">
-          <BlueCardBlock title={blueCard?.title} content={blueCard?.description} image={logoNTP} />
+          <BlueCardBlock title={blueCard?.title} content={blueCard?.description} />
         </div>
       </section>
       <section className={`pt-13x_lg pt-5x pb-10x bg-white ${styles.flexibility}`}>

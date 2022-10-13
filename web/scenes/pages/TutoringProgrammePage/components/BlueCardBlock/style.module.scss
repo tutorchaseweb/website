@@ -62,9 +62,12 @@
   }
 }
 
-.card_logo {
+.section_logo {
+  width: 100%;
   display: block;
   max-width: 5.3rem;
+  position: relative;
+  aspect-ratio: 3/1.7;
 
   @media (min-width: $lg) {
     left: 4.5rem;
