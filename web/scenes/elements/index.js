@@ -1,1 +1,4 @@
-export { FlexibleCard } from './FlexibleCard'
+import { FlexibleCard } from './FlexibleCard'
+import { TextComponent } from './TextComponent'
+
+export { FlexibleCard, TextComponent }

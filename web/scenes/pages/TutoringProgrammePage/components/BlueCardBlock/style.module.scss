@@ -1,0 +1,74 @@
+@import 'styles/variables';
+
+.card {
+  flex-wrap: wrap;
+  border-radius: 8px;
+  position: relative;
+  color: $color-white;
+  padding: 2.5rem 1.5rem;
+  background: url('/images/bg_blue_info.png') no-repeat center/cover;
+
+  @media (min-width: $lg) {
+    gap: 4rem;
+    flex-wrap: nowrap;
+    padding: 4rem 4.5rem;
+  }
+
+  :global {
+    .section-title {
+      font-size: 20px;
+      max-width: 40rem;
+      margin-top: 1.5rem;
+
+      @media (min-width: $lg) {
+        font-size: 48px;
+      }
+    }
+    .content {
+      max-width: 30rem;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.72);
+
+      @media (min-width: $lg) {
+        font-size: 18px;
+      }
+
+      code {
+        font-size: 16px;
+        color: $color-white;
+
+        @media (min-width: $lg) {
+          font-size: 20px;
+          color: $color-light-gray;
+        }
+      }
+
+      a {
+        text-decoration: underline;
+      }
+
+      p {
+        line-height: 1.5;
+        &:not(:last-child) {
+          line-height: 1.2;
+          margin-bottom: 0.75rem;
+
+          @media (min-width: $lg) {
+            margin-bottom: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card_logo {
+  max-width: 5.3rem;
+
+  @media (min-width: $lg) {
+    left: 4.5rem;
+    bottom: 4rem;
+    max-width: none;
+    position: absolute;
+  }
+}

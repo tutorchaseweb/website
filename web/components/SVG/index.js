@@ -1,10 +1,10 @@
-export const SVG = ({ content, size = 16, className = '' }) => {
+export const SVG = ({ content, size = 16, display = 'inline-block', className = '' }) => {
   return (
     <span
       className={`svg-wrap ${className}`}
       dangerouslySetInnerHTML={{ __html: content }}
       style={{
-        display: 'inline-block',
+        display: display,
         minWidth: `${size}px`,
         width: `${size}px`,
         height: `${size}px`,
