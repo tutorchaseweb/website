@@ -1,6 +1,6 @@
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
-import { academy, planet, like, checkCircle, bookFull } from '~/utils/svgImages'
+import { academy, planet, like, checkCircle } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import { FlexibleCard, TextComponent } from '~/scenes/elements'
 import { BlueCardBlock } from './components/BlueCardBlock'

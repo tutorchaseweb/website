@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react'
-import logoNTP from '~/assets/images/logo_NTP.svg'
+import logoNTP from '~/assets/images/logo_NTP.png'
 import styles from './style.module.scss'
 
 export const BlueCardBlock = ({ title = '', content = [], className = '' }) => {
