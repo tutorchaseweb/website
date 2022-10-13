@@ -8,6 +8,7 @@ export default {
     { name: 'contacts', title: 'Contacts' },
     { name: 'raiting', title: 'Raiting', options: { columns: 2 } },
     { name: 'footerMenu', title: 'Footer Menus' },
+    { name: 'errorPage', title: 'Text on the 404 page' },
   ],
   fields: [
     {
@@ -120,6 +121,20 @@ export default {
       fieldset: 'footerMenu',
       description: '(required field)',
       validation: (Rule) => Rule.error('Add menu items').min(2),
+    },
+    {
+      name: 'ErrorTitle',
+      type: 'string',
+      title: 'Title',
+      fieldset: 'errorPage',
+      description: '(required field)',
+      validation: (Rule) => Rule.error('The title on 404 page is required').required(),
+    },
+    {
+      name: 'ErrorDescription',
+      type: 'text',
+      title: 'Description',
+      fieldset: 'errorPage',
     },
   ],
 }
