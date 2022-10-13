@@ -352,6 +352,17 @@
   }
 }
 
+// lg-breakpoint 992px for Fonts
+@for $i from 0 to 100 {
+  .fz-#{$i}p {
+    &_lg {
+      @media (min-width: $lg) {
+        font-size: ($i / 16) + rem;
+      }
+    }
+  }
+}
+
 // xl-breakpoint 1200px
 @for $i from 0 through 20 {
   .m-#{$i}x {

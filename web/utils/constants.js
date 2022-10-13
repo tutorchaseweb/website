@@ -6,6 +6,7 @@ export const Color = {
   LightBlue: '#77B0ED',
   DarkGray: '#171D23',
   White: '#FFFFFF',
+  Melrose: '#B1BFFF',
 }
 
 export const daysOfTheWeek = [

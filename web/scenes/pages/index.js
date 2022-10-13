@@ -10,6 +10,7 @@ import { ReviewsPage } from './Reviews'
 import { TutorApplicationsPage } from './TutorApplications'
 import { TutorsPage } from './Tutors'
 import { TutorSubmissionPage } from './TutorSubmission'
+import { TutoringProgrammePage } from './TutoringProgrammePage'
 
 export {
   AccessProgrammePage,
@@ -24,4 +25,5 @@ export {
   TutorApplicationsPage,
   TutorsPage,
   TutorSubmissionPage,
+  TutoringProgrammePage,
 }

@@ -25,6 +25,7 @@ import test from './documents/test'
 import faq from './documents/faq'
 import hireForm from './documents/hireForm'
 import applyForm from './documents/applyForm'
+import tutoringProgrammePage from './documents/pages/tutoringProgrammePage'
 
 export default [
   siteConfig,
@@ -54,4 +55,5 @@ export default [
   faq,
   hireForm,
   applyForm,
+  tutoringProgrammePage,
 ]
