@@ -6,7 +6,6 @@ import styles from './style.module.scss'
 export const BlueCardBlock = ({ title = '', content = [], className = '' }) => {
   return (
     <div className={`card mx-auto rounded-small flex ${styles.card} ${className}`}>
-      <img src={logoNTP.src} alt="photo of a woman" className={styles.card_logo} />
       <div className={styles.section_logo}>
         <Image src={logoNTP.src} layout="fill" alt="NTP logo" />
       </div>
