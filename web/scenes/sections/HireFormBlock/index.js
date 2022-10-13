@@ -30,7 +30,12 @@ const countries = [
   ...countriesRaw.map((country) => ({ title: country.name, value: country.code })),
 ]
 
-export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
+export const HireFormBlock = ({
+  className = '',
+  onlyContacts = false,
+  title = 'Still have questions? Let’s get in touch.',
+  description = '',
+}) => {
   const router = useRouter()
   const [activeStep, setActiveStep] = useState(0)
   const [source, setSource] = useState(process.env.NEXT_PUBLIC_BASE_URL)
@@ -404,9 +409,14 @@ export const HireFormBlock = ({ className = '', onlyContacts = false }) => {
               }`}
             >
               <div className="container">
-                <h3 className="medium-title fw-600 mx-auto mb-4x">
-                  Still have questions? Let’s get in touch.
-                </h3>
+                <h3 className="medium-title fw-600 mx-auto mb-4x">{title}</h3>
+                {description ? (
+                  <p className="mx-auto fz-20p_lg fz-16p l-height-1/4 fw-500 mb-4x">
+                    {description}
+                  </p>
+                ) : (
+                  ''
+                )}
                 <div className="links flex flex-wrap items-center justify-between gap-4 mx-auto fz-20p fw-600">
                   <a href={`mailto:${emailAddress}`} className="flex items-center">
                     <Circle size={32} color={Color.Blue} classList="mr-1x">

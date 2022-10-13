@@ -1,15 +1,15 @@
 import SVG from '~/components/SVG'
 import { Circle } from '~/components/Circle'
-import { academy, planet, like, checkCircle } from '~/utils/svgImages'
+import { academy, planet, like, checkCircle, bookFull } from '~/utils/svgImages'
 import { Color } from '~/utils/constants'
 import { FlexibleCard, TextComponent } from '~/scenes/elements'
 import { BlueCardBlock } from './components/BlueCardBlock'
 import styles from './style.module.scss'
 
-import Photo from '~/assets/images/woman-photo.png'
 import { PortableText } from '@portabletext/react'
-import { FAQ, RatedBlock, ReviewBlock } from '~/scenes/sections'
+import { FAQ, HireFormBlock, RatedBlock, ReviewBlock } from '~/scenes/sections'
 import { getImageUrl } from '~/utils/helpers'
+import ILink from '~/components/Link'
 
 export const TutoringProgrammePage = ({ page }) => {
   const {
@@ -19,7 +19,10 @@ export const TutoringProgrammePage = ({ page }) => {
     secondScreenTitle,
     secondScreenCards,
     reviewBlock,
+    secondScreenPart,
     faqSection,
+    contactTitle,
+    contactDescription,
   } = page || {}
 
   return (
@@ -135,7 +138,7 @@ export const TutoringProgrammePage = ({ page }) => {
           {secondScreenCards?.map((card, index) => {
             return (
               <div
-                className={`section-row flex flex-wrap mt-5x mt-12x_lg gap-12_lg gap-4 ${
+                className={`section-row flex flex-wrap mt-5x mt-12x_lg gap-12_lg ${
                   index % 2 !== 0 ? 'reverse_lg' : ''
                 }`}
                 key={card?._key}
@@ -153,10 +156,78 @@ export const TutoringProgrammePage = ({ page }) => {
           })}
         </div>
       </section>
-
       <ReviewBlock {...reviewBlock} className={styles.reviews} />
       <RatedBlock className="mt-10x mt-18x_lg" />
+      <section className={`bg-white pt-18x_lg pt-10x  ${styles.contentList}`}>
+        <div className="container large">
+          <div
+            className="section-row flex flex-wrap items-center"
+            style={{ flexDirection: 'row-reverse' }}
+          >
+            <div className="image-wrap relative">
+              <div className="tutor absolute bg-white rounded-small">
+                <div className="flex">
+                  <p className="fz-14p_lg fz-12p l-height-1/4">
+                    Professionals at <br />
+                    <b>all levels</b>
+                  </p>
+                </div>
+                <span className="wrap">
+                  <span className="line bg-orange"></span>
+                  <span className="line bg-orange"></span>
+                  <span className="line bg-orange"></span>
+                  <span className="line bg-orange"></span>
+                </span>
+                <span className="fz-14p_lg fz-12p fw-800 ml-1x">A/A+</span>
+              </div>
+              <div className="statement absolute bg-white rounded-xSmall p-2x_lg p-1x l-height-1/2 flex gap-2 items-center">
+                <SVG content={checkCircle(Color.White)} size={28} />
+                <p>
+                  <span className="fz-14p_lg fz-12p block">
+                    Only{' '}
+                    <b>
+                      qualified <br />
+                      tutors
+                    </b>
+                  </span>
+                </p>
+              </div>
+              <img src={`${getImageUrl(secondScreenPart?.image.asset._ref)}`} alt="illustration" />
+            </div>
+            <div className="text-wrap">
+              {Boolean(secondScreenPart?.preTitle) && (
+                <p className="before-title fw-600 uppercase color-lightGray mb-2x mb-3x_lg">
+                  {secondScreenPart.preTitle}
+                </p>
+              )}
+              <h4 className="fz-48p_lg fz-26p fw-600 l-height-1/1 mb-4x_lg mb-3x">
+                {secondScreenPart?.title}
+              </h4>
+              {Boolean(secondScreenPart?.list) ? (
+                <ul className="ordered-list blue fz-18p_lg fz-16p">
+                  {secondScreenPart?.list.map((item, index) => {
+                    return <li key={index + 1}>{item}</li>
+                  })}
+                </ul>
+              ) : (
+                <div className="fz-18p">
+                  <PortableText value={secondScreenPart?.description} />
+                </div>
+              )}
+              {Boolean(secondScreenPart?.button) && (
+                <ILink link={secondScreenPart.button} className="btn btn-blue mt-4x" />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
       <FAQ faqSection={faqSection} />
+      <HireFormBlock
+        onlyContacts={true}
+        className={`pt-15x_lg pt-10x ${styles.contacts}`}
+        title={contactTitle}
+        description={contactDescription}
+      />
     </>
   )
 }

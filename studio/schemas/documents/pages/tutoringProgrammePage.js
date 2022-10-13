@@ -2,7 +2,10 @@ export default {
   name: 'tutoring-programme-page',
   type: 'document',
   title: 'National tutoring programme partner page',
-  fieldsets: [{ name: 'seo', title: 'Fields for SEO' }],
+  fieldsets: [
+    { name: 'seo', title: 'Fields for SEO' },
+    { name: 'contacts', title: 'Section with contacts' },
+  ],
   fields: [
     {
       name: 'firstScreen',
@@ -82,9 +85,26 @@ export default {
       title: 'Review block (one review)',
     },
     {
+      name: 'secondScreenPart',
+      type: 'partOfSection',
+      title: 'Second section',
+    },
+    {
       name: 'faqSection',
       type: 'faqSection',
       title: 'FAQ',
+    },
+    {
+      name: 'contactTitle',
+      type: 'string',
+      fieldset: 'contacts',
+      title: 'Section title',
+    },
+    {
+      name: 'contactDescription',
+      type: 'text',
+      fieldset: 'contacts',
+      title: 'Section description',
     },
     {
       name: 'seoTitle',

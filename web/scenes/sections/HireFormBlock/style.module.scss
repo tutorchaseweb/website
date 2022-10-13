@@ -98,6 +98,11 @@
         text-align: center;
       }
     }
+    p {
+      @media (min-width: $lg) {
+        text-align: center;
+      }
+    }
     .links {
       max-width: 34rem;
       flex-wrap: wrap;
