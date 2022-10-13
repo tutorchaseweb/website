@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Layout, ConfigContext } from '~/components/Layout'
 import backgroundImage from '~/assets/images/bg-big.jpg'
 
@@ -10,10 +11,15 @@ const styles = {
 }
 
 export const Custom404 = () => {
+  const router = useRouter()
+  const homeUrl = typeof window !== 'undefined' ? window.location.origin : ''
+  const canonicalUrl = (homeUrl + (router.asPath === '/' ? '' : router.asPath)).split('?')[0]
+
   return (
     <Layout>
       <Head>
         <title>Error 404 - page not found</title>
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <ConfigContext.Consumer>
         {(config) => {
