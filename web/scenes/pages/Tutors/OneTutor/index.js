@@ -209,10 +209,10 @@ export const TutorPage = ({ tutor }) => {
                 Study With Our Tutors
               </p>
               <h2 className="medium-title fw-600 l-height-1 mb-7x">
-                Find a tutor like {tutor.name}
+                Hire a tutor like {tutor.name}
               </h2>
-              <Link href="/tutors">
-                <a className="btn btn-blue">Go Explore</a>
+              <Link href="#hireFormBlock">
+                <a className="btn btn-blue">Enquire Now</a>
               </Link>
             </div>
           </div>

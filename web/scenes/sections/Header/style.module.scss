@@ -9,7 +9,6 @@
       @media (min-width: $xl) {
         gap: 2rem;
       }
-
     }
     .logo {
       z-index: 5;
@@ -26,7 +25,7 @@
       width: 24px;
       height: 24px;
       z-index: 5;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         display: none;
       }
 
@@ -37,7 +36,7 @@
         background-color: $default-text-color;
         position: absolute;
         left: 3px;
-        transition: all .3s linear;
+        transition: all 0.3s linear;
         opacity: 1;
       }
       span:first-child {
@@ -79,7 +78,7 @@
       &.active {
         display: flex;
       }
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -91,29 +90,31 @@
     .nav-menu {
       flex-direction: column;
       align-items: flex-start;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         flex-direction: row;
         align-items: center;
       }
     }
-    .email, .phone {
+    .email,
+    .phone {
       font-size: 20px;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         font-size: inherit;
       }
     }
     .email {
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         display: none;
       }
     }
     .btn {
       width: 100%;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         width: initial;
       }
     }
   }
 }
 
-.wrapper {}
+.wrapper {
+}

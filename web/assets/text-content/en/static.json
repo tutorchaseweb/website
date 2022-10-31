@@ -29,7 +29,8 @@
     "AP": "AP",
     "AdmissionsTests": "Admissions Tests",
     "Oxbridge": "Oxbridge",
-    "University": "University"
+    "University": "University",
+    "Schools": "Schools"
   },
   "form": {
     "btnNextStep": "Next Step",

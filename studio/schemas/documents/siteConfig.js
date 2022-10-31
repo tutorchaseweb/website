@@ -132,7 +132,7 @@ export default {
     },
     {
       name: 'ErrorDescription',
-      type: 'text',
+      type: 'simpleContent',
       title: 'Description',
       fieldset: 'errorPage',
     },

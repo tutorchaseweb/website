@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Layout, ConfigContext } from '~/components/Layout'
 import backgroundImage from '~/assets/images/bg-big.jpg'
+import { PortableText } from '@portabletext/react'
 
 const styles = {
   margin: 'auto 0',
@@ -32,19 +33,19 @@ export const Custom404 = () => {
             >
               <div className="container">
                 <h1 className="main-title fw-700 l-height-1 mb-3x">
-                  <span className="block mb-1x color-blue">404</span>
+                  <span className="block mb-1x color-blue">404 Error</span>
                   {ErrorTitle}
                 </h1>
                 {Boolean(ErrorDescription) && (
-                  <p
+                  <div
                     className="fz-20p fw-500 l-height-1/4 mx-auto mb-7x"
                     style={{ maxWidth: '30rem' }}
                   >
-                    {ErrorDescription}
-                  </p>
+                    <PortableText value={ErrorDescription} />
+                  </div>
                 )}
                 <Link href={'/'}>
-                  <a className="btn btn-blue">Go Home</a>
+                  <a className="btn btn-blue">Home</a>
                 </Link>
               </div>
             </secton>

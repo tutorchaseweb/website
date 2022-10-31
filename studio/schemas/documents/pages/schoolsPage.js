@@ -1,9 +1,10 @@
 export default {
-  name: 'tutoring-programme-page',
+  name: 'schools-page',
   type: 'document',
-  title: 'National tutoring programme partner page',
+  title: 'Schools page',
   fieldsets: [
     { name: 'seo', title: 'Fields for SEO' },
+    { name: 'screen', title: 'Second screen' },
     { name: 'contacts', title: 'Section with contacts' },
   ],
   fields: [
@@ -25,6 +26,7 @@ export default {
     {
       name: 'secondScreenTitle',
       type: 'string',
+      fieldset: 'screen',
       title: 'Section screen title',
       description: '(required field)',
       validation: (Rule) => Rule.error('The title is required').required(),
@@ -32,6 +34,7 @@ export default {
     {
       name: 'secondScreenCards',
       type: 'array',
+      fieldset: 'screen',
       of: [
         {
           name: 'secondScreenItem',

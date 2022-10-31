@@ -80,6 +80,11 @@ export const Header = () => {
                         </Link>
                       </li>
                       <li className="menu-item">
+                        <Link href="/schools">
+                          <a>{text.menu.Schools}</a>
+                        </Link>
+                      </li>
+                      <li className="menu-item">
                         <Link href="/reviews">
                           <a>{text.menu.Reviews}</a>
                         </Link>

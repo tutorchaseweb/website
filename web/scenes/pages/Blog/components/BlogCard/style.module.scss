@@ -1,7 +1,7 @@
 @import '../../../../../styles/variables';
 
 .blogArticle {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   &:hover {
     :global {
       .circle {
@@ -23,7 +23,8 @@
         background-color: rgba(0, 0, 0, 0.15);
       }
     }
-    .circle, svg path {
+    .circle,
+    svg path {
       transition: all 0.2s linear;
     }
     .featured {
@@ -33,7 +34,7 @@
       z-index: 1;
     }
     .description {
-      max-height: 3rem;
+      max-height: 6rem;
       overflow: hidden;
     }
   }
