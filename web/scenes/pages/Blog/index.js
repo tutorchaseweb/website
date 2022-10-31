@@ -15,12 +15,12 @@ export const BlogPage = ({ page, start }) => {
   const [currentPosts, setCurrentPosts] = useState([])
   const [postsLength, setPostsLength] = useState(0)
   const [postsLimit, setPostsLimit] = useState(page.postsPerPage)
-  const [postsOrder] = useGlobalState('postsOrder', null)
+  const [postsOrder] = useGlobalState('postsOrder', '_createdAt desc')
   const window = useWindowSize()
 
   useEffect(() => {
     const QUERY = groq`
-      *[_type == 'post' && !(_id in path("drafts.**"))] {
+      *[_type == 'post' && !(_id in path("drafts.**")) && publishedAt < now()] {
         _id,
       }
     `

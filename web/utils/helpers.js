@@ -199,7 +199,7 @@ export const getQueryForBlog = (order, start, length) => {
 
   if (Boolean(order) && typeof start === 'number' && typeof length === 'number') {
     query = `
-    *[_type == 'post' && !(_id in path("drafts.**"))] | order(${order})[${start}...${
+    *[_type == 'post' && !(_id in path("drafts.**")) && publishedAt < now()] | order(${order})[${start}...${
       start + length
     }] {
       _id,
@@ -214,7 +214,9 @@ export const getQueryForBlog = (order, start, length) => {
     }`
   } else if (!Boolean(order) && typeof start === 'number' && typeof length === 'number') {
     query = `
-    *[_type == 'post' && !(_id in path("drafts.**"))] [${start}...${start + length}] {
+    *[_type == 'post' && !(_id in path("drafts.**")) && publishedAt < now()] [${start}...${
+      start + length
+    }] {
       _id,
       _createdAt,
       publishedAt,
@@ -226,7 +228,7 @@ export const getQueryForBlog = (order, start, length) => {
       reading,
     }`
   } else {
-    query = `*[_type == 'post' && !(_id in path("drafts.**"))] {
+    query = `*[_type == 'post' && !(_id in path("drafts.**")) && publishedAt < now()] {
       _id,
       _createdAt,
       publishedAt,
