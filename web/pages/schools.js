@@ -4,7 +4,7 @@ import { Layout } from '~/components/Layout'
 import { TutoringProgrammePage } from '~/scenes/pages'
 import MetaTags from '~/components/MetaTags'
 
-export const NationalTutoringProgrammePartner = ({ page }) => {
+export const Schools = ({ page }) => {
   return (
     <Layout>
       <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
@@ -15,7 +15,7 @@ export const NationalTutoringProgrammePartner = ({ page }) => {
 
 export async function getServerSideProps() {
   const QUERY = groq`
-    *[_type == 'tutoring-programme-page'][0] {
+    *[_type == 'schools-page'][0] {
       ...,
     }
   `
@@ -28,4 +28,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default NationalTutoringProgrammePartner
+export default Schools

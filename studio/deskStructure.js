@@ -25,6 +25,7 @@ import {
   BiCodeBlock,
   FaQuestionCircle,
   IoMdListBox,
+  MdCorporateFare,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -42,7 +43,6 @@ const hiddenDocTypes = (listItem) =>
     'blog-page',
     'reviews-page',
     'applications-page',
-    'tutoring-programme-page',
     'category',
     'author',
     'post',
@@ -58,6 +58,8 @@ const hiddenDocTypes = (listItem) =>
     'privacyPolicy',
     'safeguardingPolicy',
     'faq',
+    'corporate-page',
+    'schools-page',
   ].includes(listItem.getId())
 
 export default () =>
@@ -145,12 +147,22 @@ export default () =>
                   S.document().schemaType('applications-page').documentId('applications-page')
                 ),
               S.listItem()
-                .title('NTP partner page')
+                .title('Schools page')
                 .icon(IoMdListBox)
                 .child(
                   S.document()
-                    .schemaType('tutoring-programme-page')
-                    .documentId('tutoring-programme-page')
+                    .schemaType('schools-page')
+                    .documentId('schools-page')
+                    .title('Schools page')
+                ),
+              S.listItem()
+                .title('Corporate Page')
+                .icon(MdCorporateFare)
+                .child(
+                  S.document()
+                    .schemaType('corporate-page')
+                    .documentId('corporate-page')
+                    .title('Corporate Page')
                 ),
               S.listItem()
                 .title('Blog page')
