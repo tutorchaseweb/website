@@ -61,6 +61,17 @@ export default {
     {
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        {
+          title: 'Alternative text',
+          name: 'alt',
+          type: 'string',
+          description: 'Important for SEO and accessiblity.',
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       type: 'floatImage',
