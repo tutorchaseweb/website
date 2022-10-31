@@ -7,7 +7,7 @@
   :global {
     .wrapper {
       flex-wrap: wrap;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         flex-wrap: nowrap;
         transform: translate(calc((100vw - 80rem) / 2), 0);
       }
@@ -15,7 +15,7 @@
     .content {
       max-width: 100%;
       align-items: center;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         align-items: initial;
         min-height: 100vh;
         max-width: 18.5rem;
@@ -25,7 +25,7 @@
       text-align: center;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         text-align: left;
         padding-left: 0;
         padding-right: 0;
@@ -35,15 +35,14 @@
       text-align: center;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         text-align: left;
         padding-left: 0;
         padding-right: 0;
       }
     }
     .btn {
-      @media (min-width: $lg) {
-
+      @media (min-width: $xl) {
       }
     }
     .swiper:not(.swiper-vertical) .swiper-slide {
@@ -55,12 +54,12 @@
     .card {
       max-width: 250px;
       border-radius: 4px;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         max-width: 350px;
       }
       .reviewContent {
         height: 9rem;
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
           height: initial;
         }
       }

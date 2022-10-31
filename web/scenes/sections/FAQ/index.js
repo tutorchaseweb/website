@@ -10,12 +10,12 @@ const FaqItem = ({ item }) => {
 
   return (
     <div className="item" key={item._key}>
-      <div
+      <h3
         className={`question pointer ${active ? 'active' : ''}`}
         onClick={() => setActive(!active)}
       >
         {item.question}
-      </div>
+      </h3>
       <div className={`answer ${active ? 'open' : ''}`}>
         <PortableText value={item.answer} />
       </div>

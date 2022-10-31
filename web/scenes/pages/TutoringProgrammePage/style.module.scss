@@ -222,7 +222,7 @@
   :global {
     .section-row {
       gap: 2rem;
-      @media (min-width: $lg) {
+      @media (min-width: $xl) {
         gap: 6rem;
       }
       .image-wrap {
@@ -231,7 +231,11 @@
         img {
           max-width: 15.5rem;
           @media (min-width: $lg) {
+            margin: 0 2rem;
             max-width: 25.78rem;
+          }
+          @media (min-width: $xl) {
+            margin: 0;
           }
         }
         .tutor {
@@ -239,8 +243,11 @@
           left: -16px;
           padding: 0.5rem 0.75rem;
           @media (min-width: $lg) {
-            padding: 1rem;
+            left: 0;
             bottom: 48px;
+            padding: 1rem;
+          }
+          @media (min-width: $xl) {
             left: -56px;
           }
           .line {
@@ -266,6 +273,9 @@
           background-color: $default-text-color;
           @media (min-width: $lg) {
             top: 48px;
+            right: 0;
+          }
+          @media (min-width: $xl) {
             right: -48px;
           }
         }
