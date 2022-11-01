@@ -96,20 +96,11 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
       })
 
       let path = ''
-      if (
-        currentSubject?.hasOwnProperty('levels') &&
-        presenceOfLevel?.length !== 0 &&
-        currentSubject?.slug.current !== 'oxbridge'
-      ) {
-        path = `/${levelQuery.slug.current}/${currentSubject.slug.current}`
-      }
-      if (
-        !currentSubject?.hasOwnProperty('levels') ||
-        presenceOfLevel?.length === 0 ||
-        currentSubject?.slug.current === 'oxbridge'
-      ) {
-        setLevelQuery(null)
-        path = `/${currentSubject.slug.current}`
+      if (currentSubject) {
+        path =
+          currentSubject?.hasOwnProperty('levels') && presenceOfLevel?.length !== 0
+            ? `/${levelQuery.slug.current}/${currentSubject.slug.current}`
+            : `/${currentSubject.slug.current}`
       }
       if (!currentSubject && levelQuery) {
         path = `/${levelQuery.slug.current}`
