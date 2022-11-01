@@ -145,8 +145,8 @@ export const TutorPage = ({ tutor }) => {
                 <span>Vetted Tutor</span>
                 <SVG content={reviewsBlue()} size={24} />
               </p>
-              <h3 className="medium-title fw-600 l-height-1 mb-3x">
-                {tutor.position} by <span className="color-orange">TutorChase</span>
+              <h3 className="medium-title fw-600 l-height-1 mb-3x color-orange">
+                {tutor.position}
               </h3>
               <div>
                 <PortableText value={tutor.vettedDescription} />
