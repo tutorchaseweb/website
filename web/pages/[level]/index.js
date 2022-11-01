@@ -65,9 +65,11 @@ export const Level = ({ current, subjectElements, level }) => {
       return array.length !== 0
         ? array.length === 1
           ? tutorsList.push(array[0]?.tutor)
-          : array.map((item) => {
-              return tutorsList.push(item?.tutor)
-            })
+          : array
+              ?.sort((first, second) => second.rating - first.rating)
+              ?.map((item) => {
+                return tutorsList.push(item?.tutor)
+              })
         : false
     })
 

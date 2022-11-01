@@ -31,6 +31,10 @@
       border-radius: 4px;
       padding: 0.25rem 0.5rem;
     }
+    .others {
+      font-weight: 400;
+      color: $color-blue;
+    }
     .actions {
       width: 100%;
       @media (min-width: $lg) {

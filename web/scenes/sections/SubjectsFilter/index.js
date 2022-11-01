@@ -90,10 +90,25 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
     if (e.target.ariaLabel === 'subjects') {
       const currentSubject = subjectsList.filter((item) => item._id === e.target.value)[0]
       setSubjectQuery(e.target.value !== 'all-levels' ? currentSubject : null)
-      setLevelQuery(null)
+
+      const presenceOfLevel = currentSubject?.levels?.filter(({ slug }) => {
+        return slug.current === levelQuery?.slug?.current
+      })
 
       let path = ''
-      if (currentSubject) {
+      if (
+        currentSubject?.hasOwnProperty('levels') &&
+        presenceOfLevel?.length !== 0 &&
+        currentSubject?.slug.current !== 'oxbridge'
+      ) {
+        path = `/${levelQuery.slug.current}/${currentSubject.slug.current}`
+      }
+      if (
+        !currentSubject?.hasOwnProperty('levels') ||
+        presenceOfLevel?.length === 0 ||
+        currentSubject?.slug.current === 'oxbridge'
+      ) {
+        setLevelQuery(null)
         path = `/${currentSubject.slug.current}`
       }
       if (!currentSubject && levelQuery) {

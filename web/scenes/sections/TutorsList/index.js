@@ -33,6 +33,7 @@ export const TutorsList = ({ tutors }) => {
     <div className="flex flex-wrap gap-8">
       {Boolean(tutors?.length) ? (
         orderedTutors.slice(0, tutorsLimit).map((tutor) => {
+          const teachesListLength = tutor?.teaches?.length
           const teachesList = (list) => {
             return list?.length >= 3 ? list?.slice(0, 3) : list
           }
@@ -66,6 +67,9 @@ export const TutorsList = ({ tutors }) => {
                           {teach?.title}
                         </span>
                       ))}
+                      <span className="others">
+                        {teachesListLength > 3 ? `+ ${teachesListLength - 3} others` : ''}
+                      </span>
                     </p>
                   </div>
                   <div className="actions flex">
@@ -92,6 +96,9 @@ export const TutorsList = ({ tutors }) => {
                             {teach?.title}
                           </span>
                         ))}
+                        <span className="others">
+                          {teachesListLength > 3 ? `+ ${teachesListLength - 3} others` : ''}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -126,6 +133,9 @@ export const TutorsList = ({ tutors }) => {
                           {teach?.title}
                         </span>
                       ))}
+                      <span className="others">
+                        {teachesListLength > 3 ? `+ ${teachesListLength - 3} others` : ''}
+                      </span>
                     </p>
                     <Link href={`/tutors/${tutor?.slug?.current}`}>
                       <a className="btn btn-white w-full">View profile</a>

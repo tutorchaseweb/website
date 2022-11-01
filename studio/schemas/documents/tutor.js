@@ -38,7 +38,7 @@ export default {
     {
       name: 'position',
       type: 'string',
-      title: 'Tutor position',
+      title: 'Tutor description',
       description: '(required field)',
       validation: (Rule) => Rule.error('The position is required').required(),
     },
