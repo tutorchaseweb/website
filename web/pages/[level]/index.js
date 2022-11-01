@@ -59,17 +59,17 @@ export const Level = ({ current, subjectElements, level }) => {
       })
     })
 
-    const tutorsList = []
+    const tutorsList = new Map()
 
     levelTutors.map((array) => {
       return array.length !== 0
         ? array.length === 1
-          ? tutorsList.push(array[0]?.tutor)
-          : array
-              ?.sort((first, second) => second.rating - first.rating)
-              ?.map((item) => {
-                return tutorsList.push(item?.tutor)
-              })
+          ? (Object.assign(array[0]?.tutor, { rating: array[0]?.tutor.rating }),
+            tutorsList.set(array[0]?.tutor?.slug.current, array[0]?.tutor))
+          : array?.map((item) => {
+              Object.assign(item?.tutor, { rating: item.rating })
+              return tutorsList.set(item?.tutor?.slug.current, item?.tutor)
+            })
         : false
     })
 
@@ -83,9 +83,11 @@ export const Level = ({ current, subjectElements, level }) => {
 
     current &&
       current._type === 'level' &&
-      setTutors(tutorsList?.sort((first, second) => second.rating - first.rating))?.map(
-        (item) => item.tutor
-      )
+      setTutors(
+        Object.values(Object.fromEntries(tutorsList))?.sort(
+          (first, second) => second.rating - first.rating
+        )
+      )?.map((item) => item.tutor)
   }, [current, level])
 
   useEffect(async () => {
