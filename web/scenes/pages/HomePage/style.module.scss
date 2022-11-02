@@ -1,445 +1,476 @@
 @import 'styles/variables';
 
 .firstScreen {
-    background-image: linear-gradient(42deg, #FFDCCFAA 0%, #FFFFFF 50%);
-    @media (min-width: $lg) {
-        background-image: url('/images/lines.png'), linear-gradient(130.77deg, #FFFFFF 18.52%, #ECECEC 86.63%);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: right center;
-    }
+  background-image: linear-gradient(42deg, #ffdccfaa 0%, #ffffff 50%);
+  @media (min-width: $lg) {
+    background-image: url('/images/lines.png'),
+      linear-gradient(130.77deg, #ffffff 18.52%, #ececec 86.63%);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+  }
 
-    :global {
-        .main-title {
-            code {
-                display: inline-block;
-                position: relative;
-                padding-right: 1.5rem;
-                @media (min-width: $lg) {
-                    padding-right: 0;
-                }
-                &::after {
-                    content: '';
-                    display: block;
-                    width: 0;
-                    height: 0;
-                    border-top: 11px solid transparent;
-                    border-left: 15px solid $color-orange;
-                    border-bottom: 11px solid transparent;
-                    position: absolute;
-                    right: 0;
-                    bottom: 0.25rem;
-                    @media (min-width: $lg) {
-                        display: none;
-                    }
-                }
-            }
+  :global {
+    .main-title {
+      code {
+        display: inline-block;
+        position: relative;
+        padding-right: 1.5rem;
+        @media (min-width: $lg) {
+          padding-right: 0;
         }
-        .text-wrapper {
-            max-width: 30rem;
-            .buttons {
-                flex-wrap: wrap;
-                gap: 1.5rem;
-                @media (min-width: $xl) {
-                    flex-wrap: nowrap;
-                    gap: 2.5rem;
-                }
-            }
-        }
-        .image-wrapper {
+        &::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 11px solid transparent;
+          border-left: 15px solid $color-orange;
+          border-bottom: 11px solid transparent;
+          position: absolute;
+          right: 0;
+          bottom: 0.25rem;
+          @media (min-width: $lg) {
             display: none;
-            @media (min-width: $xl) {
-                display: block;
-            }
+          }
         }
-        .description {
-            font-size: 1rem;
-            font-weight: 500;
-            @media (min-width: $lg) {
-                font-size: 1.25rem;
-                font-weight: 400;
-            }
-        }
-        .blue-book {
-            width: 5.5rem;
-            top: 72px;
-            left: 32px;
-            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
-        }
-        .lesson1 {
-            top: 135px;
-            right: -50px;
-            max-width: 120px;
-            padding: 1.5rem 1.25rem 1.125rem 1.25rem;
-            .play {
-                width: 3.25rem;
-                &::after {
-                    content: '';
-                    display: block;
-                    width: 0;
-                    height: 0;
-                    border-top: 5px solid transparent;
-                    border-left: 10px solid $color-white;
-                    border-bottom: 5px solid transparent;
-                }
-            }
-        }
-        .tutor {
-            padding: 1.25rem;
-            bottom: 180px;
-            left: -50px;
-            .line {
-                display: inline-block;
-                width: 32px;
-                height: 4px;
-                border-radius: 2px;
-                margin-right: 4px;
-                &:last-child {
-                    opacity: 0.5;
-                }
-            }
-        }
+      }
     }
+    .text-wrapper {
+      max-width: 30rem;
+      .buttons {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        @media (min-width: $xl) {
+          flex-wrap: nowrap;
+          gap: 2.5rem;
+        }
+      }
+    }
+    .image-wrapper {
+      display: none;
+      @media (min-width: $xl) {
+        width: 100%;
+        display: block;
+        max-width: 550px;
+      }
+    }
+    .image-container {
+      z-index: 0;
+      width: 100%;
+      position: relative;
+      aspect-ratio: 2/2.216;
+    }
+    .description {
+      font-size: 1rem;
+      font-weight: 500;
+      @media (min-width: $lg) {
+        font-size: 1.25rem;
+        font-weight: 400;
+      }
+    }
+    .blue-book {
+      z-index: 1;
+      width: 5.5rem;
+      top: 72px;
+      left: 32px;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+    }
+    .lesson1 {
+      top: 135px;
+      z-index: 1;
+      right: -50px;
+      max-width: 120px;
+      padding: 1.5rem 1.25rem 1.125rem 1.25rem;
+      .play {
+        width: 3.25rem;
+        &::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-left: 10px solid $color-white;
+          border-bottom: 5px solid transparent;
+        }
+      }
+    }
+    .tutor {
+      z-index: 1;
+      padding: 1.25rem;
+      bottom: 180px;
+      left: -50px;
+      .line {
+        display: inline-block;
+        width: 32px;
+        height: 4px;
+        border-radius: 2px;
+        margin-right: 4px;
+        &:last-child {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
 }
 
 .universities {
-    :global {
-        .intro {
-            text-align: center;
-            color: rgba(23, 29, 35, 0.71);
-            @media (min-width: $lg) {
-                max-width: 21rem;
-                text-align: left;
-            }
-        }
-        .logos {
-            gap: 1.5rem;
-            @media (min-width: $lg) {
-                gap: 2rem;
-            }
-        }
+  :global {
+    .intro {
+      text-align: center;
+      color: rgba(23, 29, 35, 0.71);
+      @media (min-width: $lg) {
+        max-width: 21rem;
+        text-align: left;
+      }
     }
+    .logos {
+      gap: 1.5rem;
+      @media (min-width: $lg) {
+        gap: 2rem;
+      }
+    }
+    .logo-wrapper {
+      width: 100%;
+      height: 35px;
+      position: relative;
+    }
+  }
 }
 
 .study {
-    padding-top: 48px;
-    padding-bottom: 80px;
-    @media (min-width: $lg) {
-        padding-top: 148px;
-        padding-bottom: 148px;
+  padding-top: 48px;
+  padding-bottom: 80px;
+  @media (min-width: $lg) {
+    padding-top: 148px;
+    padding-bottom: 148px;
+  }
+
+  :global {
+    .cards-wrapper {
+      margin-top: 80px;
+      overflow-x: auto;
+      scrollbar-color: $color-blue rgba(23, 29, 35, 0.1);
+      scrollbar-width: thin;
+      padding-bottom: 1.5rem;
+      @media (min-width: $lg) {
+        padding-bottom: 0;
+        margin-top: 148px;
+      }
+      /* width */
+      &::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: rgba(23, 29, 35, 0.1);
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: $color-blue;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: $color-blue;
+      }
+      .card {
+        min-width: 16.875rem;
+        .preTitle {
+          font-size: 14px;
+          @media (min-width: $lg) {
+            font-size: 16px;
+          }
+        }
+      }
     }
-
-    :global {
-        .cards-wrapper {
-            margin-top: 80px;
-            overflow-x: auto;
-            scrollbar-color: $color-blue rgba(23, 29, 35, 0.1);
-            scrollbar-width: thin;
-            padding-bottom: 1.5rem;
-            @media (min-width: $lg) {
-                padding-bottom: 0;
-                margin-top: 148px;
-            }
-            /* width */
-            &::-webkit-scrollbar {
-                width: 2px;
-                height: 2px;
-            }
-
-            /* Track */
-            &::-webkit-scrollbar-track {
-                background: rgba(23, 29, 35, 0.1);
-            }
-
-            /* Handle */
-            &::-webkit-scrollbar-thumb {
-                background: $color-blue;
-            }
-
-            /* Handle on hover */
-            &::-webkit-scrollbar-thumb:hover {
-                background: $color-blue;
-            }
-            .card {
-                min-width: 16.875rem;
-                .preTitle {
-                    font-size: 14px;
-                    @media (min-width: $lg) {
-                        font-size: 16px;
-                    }
-                }
-            }
+    .card-1 {
+      flex: 4;
+      .title {
+        max-width: 330px;
+        font-size: 24px;
+        @media (min-width: $lg) {
+          font-size: 32px;
         }
-        .card-1 {
-            flex: 4;
-            .title {
-                max-width: 330px;
-                font-size: 24px;
-                @media (min-width: $lg) {
-                    font-size: 32px;
-                }
-            }
-            .foot {
-                @media (min-width: $lg) {
-                    flex-wrap: nowrap;
-                }
-            }
+      }
+      .foot {
+        @media (min-width: $lg) {
+          flex-wrap: nowrap;
         }
-        .card-2 {
-            flex: 3;
-            .title {
-                max-width: 195px;
-                font-size: 20px;
-                @media (min-width: $lg) {
-                    font-size: 24px;
-                }
-            }
-            .logo {
-                align-self: flex-end;
-            }
-            .center {
-                @media (min-width: $lg) {
-                    flex-direction: row;
-                }
-            }
-        }
-        .card-3 {
-            flex: 3;
-            .title {
-                max-width: 220px;
-                font-size: 20px;
-                @media (min-width: $lg) {
-                    font-size: 24px;
-                }
-            }
-            .tag {
-                display: inline-block;
-                padding: 1px 8px;
-                background: #F3F4F4;
-                border-radius: 4px;
-                margin-right: 8px;
-                margin-bottom: 8px;
-            }
-        }
+      }
     }
+    .card-2 {
+      flex: 3;
+      .title {
+        max-width: 195px;
+        font-size: 20px;
+        @media (min-width: $lg) {
+          font-size: 24px;
+        }
+      }
+      .logo {
+        align-self: flex-end;
+      }
+      .center {
+        @media (min-width: $lg) {
+          flex-direction: row;
+        }
+      }
+    }
+    .card-3 {
+      flex: 3;
+      .title {
+        max-width: 220px;
+        font-size: 20px;
+        @media (min-width: $lg) {
+          font-size: 24px;
+        }
+      }
+      .tag {
+        display: inline-block;
+        padding: 1px 8px;
+        background: #f3f4f4;
+        border-radius: 4px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+    }
+  }
 }
 
 .tutors {
-    :global {
-        .card {
-            width: 50%;
-            min-width: 50%;
-            @media (min-width: $lg) {
-                width: 20%;
-                min-width: 20%;
-            }
-            &:nth-child(5) {
-                display: none;
-                @media (min-width: $lg) {
-                    display: block;
-                }
-            }
-            &:hover {
-                text-decoration: none;
-                background-color: #F8F9FE;
-                border-color: $color-blue;
-                .arrow {
-                    background-color: $color-blue;
-                    border-color: $color-blue;
-                    svg {
-                        path {
-                            fill: $color-white;
-                        }
-                    }
-                }
-            }
-            .arrow {
-                width: 3rem;
-                height: 3rem;
-            }
-            .avatar {
-                width: 4rem;
-                height: 4rem;
-                padding: 0.25rem;
-                @media (min-width: $sm) {
-                    width: 8.5rem;
-                    height: 8.5rem;
-                    padding: 0.5rem;
-                }
-                img {
-                    object-fit: cover;
-                }
-            }
+  :global {
+    .card {
+      width: 50%;
+      min-width: 50%;
+      @media (min-width: $lg) {
+        width: 20%;
+        min-width: 20%;
+      }
+      &:nth-child(5) {
+        display: none;
+        @media (min-width: $lg) {
+          display: block;
         }
+      }
+      &:hover {
+        text-decoration: none;
+        background-color: #f8f9fe;
+        border-color: $color-blue;
+        .arrow {
+          background-color: $color-blue;
+          border-color: $color-blue;
+          svg {
+            path {
+              fill: $color-white;
+            }
+          }
+        }
+      }
+      .arrow {
+        width: 3rem;
+        height: 3rem;
+      }
+      .avatar {
+        width: 4rem;
+        height: 4rem;
+        padding: 0.25rem;
+        @media (min-width: $sm) {
+          width: 8.5rem;
+          height: 8.5rem;
+          padding: 0.5rem;
+        }
+        img {
+          object-fit: cover;
+        }
+      }
+      .logo-container {
+        width: 100%;
+        height: 24px;
+        position: relative;
+      }
     }
+  }
 }
 
 .premium {
-    :global {
-        .card {
-            display: none;
-            max-width: 14.5rem;
-            box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
-            top: -2.5rem;
-            right: 2rem;
-            @media (min-width: $lg) {
-                display: block;
-            }
-        }
-        .check-book {
-            top: 2rem;
-            right: 2rem;
-            width: 64px;
-            box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
-            @media (min-width: $lg) {
-                width: 74px;
-                top: initial;
-                right: initial;
-                left: 2rem;
-                bottom: 2rem;
-            }
-        }
-        .btn {
-            min-width: 10rem;
-        }
+  :global {
+    .card {
+      display: none;
+      max-width: 14.5rem;
+      box-shadow: 14px 14px 58px rgba(0, 18, 86, 0.08);
+      top: -2.5rem;
+      right: 2rem;
+      @media (min-width: $lg) {
+        display: block;
+      }
     }
+    .check-book {
+      top: 2rem;
+      right: 2rem;
+      width: 64px;
+      box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+      @media (min-width: $lg) {
+        width: 74px;
+        top: initial;
+        right: initial;
+        left: 2rem;
+        bottom: 2rem;
+      }
+    }
+    .btn {
+      min-width: 10rem;
+    }
+    .image-container {
+      z-index: -1;
+      position: relative;
+      aspect-ratio: 4/3.2;
+    }
+  }
 }
 
 .globally {
-    :global {
-        .section-title {
-            max-width: 40rem;
-        }
-        .map {
-            min-height: 15rem;
-            background: url('/images/bg_map.png') no-repeat center/cover;
-            @media (min-width: $lg) {
-                min-height: 37rem;
-            }
-        }
-        .avatar {
-            width: 3rem;
-            height: 3rem;
-            color: #046663;
-            img {
-                padding: 0.25rem;
-                object-fit: cover;
-            }
-            @media (min-width: $lg) {
-                width: 6.75rem;
-                height: 6.75rem;
-            }
-        }
-        .logo_1 {
-            top: 0;
-            left: 10%;
-            @media (min-width: $lg) {
-                top: 15%;
-            }
-        }
-        .logo_2 {
-            display: none;
-            bottom: 4%;
-            left: 27%;
-            @media (min-width: $lg) {
-                display: block;
-            }
-        }
-        .logo_3 {
-            //top: 55%;
-            //left: 55%;
-            right: 20%;
-            bottom: 20%;
-            @media (min-width: $lg) {
-                top: 50%;
-                left: 47%;
-                right: initial;
-                bottom: initial;
-            }
-        }
-        .logo_4 {
-            display: none;
-            top: 0;
-            right: 36%;
-            @media (min-width: $lg) {
-                display: block;
-            }
-        }
-        .logo_5 {
-            display: none;
-            top: 40%;
-            right: 20%;
-            @media (min-width: $lg) {
-                display: block;
-            }
-        }
-        .logo_6 {
-            top: 3%;
-            right: 9%;
-            @media (min-width: $lg) {}
-        }
-        .card_1 {
-            max-width: 11rem;
-            box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
-            bottom: 20%;
-            left: 5%;
-            padding: 0.5rem;
-            @media (min-width: $lg) {
-                max-width: 12.5rem;
-                top: 23%;
-                left: 31%;
-                bottom: initial;
-                padding: 1rem 1.5rem;
-            }
-        }
-        .card_2 {
-            max-width: 3rem;
-            padding: 0.5rem;
-            background-color: #171D23;
-            color: $color-white;
-            box-shadow: 0 17px 17px -6px rgba(13, 19, 21, 0.08);
-            top: 15%;
-            left: 45%;
-            .text {
-                display: none;
-            }
-            @media (min-width: $lg) {
-                max-width: 10rem;
-                padding: 1rem;
-                top: initial;
-                bottom: 10%;
-                left: 8%;
-                .text {
-                    display: block;
-                }
-            }
-        }
-        .card_3 {
-            display: none;
-            max-width: 20rem;
-            box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
-            right: 8%;
-            bottom: 0;
-            @media (min-width: $lg) {
-                display: block;
-            }
-        }
-        .play {
-            width: 2rem;
-
-            &::after {
-                content: "";
-                display: block;
-                width: 0;
-                height: 0;
-                border-top: 5px solid transparent;
-                border-left: 10px solid $color-black;
-                border-bottom: 5px solid transparent;
-            }
-            @media (min-width: $lg) {
-                width: 2.625rem;
-                margin-bottom: 0.5rem;
-            }
-        }
+  :global {
+    .section-title {
+      max-width: 40rem;
     }
+    .map {
+      min-height: 15rem;
+      position: relative;
+      @media (min-width: $lg) {
+        min-height: 37rem;
+      }
+    }
+    .avatar {
+      width: 3rem;
+      height: 3rem;
+      color: #046663;
+      @media (min-width: $lg) {
+        width: 6.75rem;
+        height: 6.75rem;
+      }
+    }
+    .photo-wrapper {
+      top: 0.25rem;
+      left: 0.25rem;
+      position: absolute;
+      width: calc(100% - 0.5rem);
+      height: calc(100% - 0.5rem);
+    }
+    .logo_1 {
+      top: 0;
+      left: 10%;
+      @media (min-width: $lg) {
+        top: 15%;
+      }
+    }
+    .logo_2 {
+      display: none;
+      bottom: 4%;
+      left: 27%;
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+    .logo_3 {
+      //top: 55%;
+      //left: 55%;
+      right: 20%;
+      bottom: 20%;
+      @media (min-width: $lg) {
+        top: 50%;
+        left: 47%;
+        right: initial;
+        bottom: initial;
+      }
+    }
+    .logo_4 {
+      display: none;
+      top: 0;
+      right: 36%;
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+    .logo_5 {
+      display: none;
+      top: 40%;
+      right: 20%;
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+    .logo_6 {
+      top: 3%;
+      right: 9%;
+      @media (min-width: $lg) {
+      }
+    }
+    .card_1 {
+      max-width: 11rem;
+      box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+      bottom: 20%;
+      left: 5%;
+      padding: 0.5rem;
+      @media (min-width: $lg) {
+        max-width: 12.5rem;
+        top: 23%;
+        left: 31%;
+        bottom: initial;
+        padding: 1rem 1.5rem;
+      }
+    }
+    .card_2 {
+      max-width: 3rem;
+      padding: 0.5rem;
+      background-color: #171d23;
+      color: $color-white;
+      box-shadow: 0 17px 17px -6px rgba(13, 19, 21, 0.08);
+      top: 15%;
+      left: 45%;
+      .text {
+        display: none;
+      }
+      @media (min-width: $lg) {
+        max-width: 10rem;
+        padding: 1rem;
+        top: initial;
+        bottom: 10%;
+        left: 8%;
+        .text {
+          display: block;
+        }
+      }
+    }
+    .card_3 {
+      display: none;
+      max-width: 20rem;
+      box-shadow: 0 8px 19px rgba(0, 0, 0, 0.1);
+      right: 8%;
+      bottom: 0;
+      @media (min-width: $lg) {
+        display: block;
+      }
+    }
+    .play {
+      width: 2rem;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left: 10px solid $color-black;
+        border-bottom: 5px solid transparent;
+      }
+      @media (min-width: $lg) {
+        width: 2.625rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
 }

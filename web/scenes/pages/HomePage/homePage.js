@@ -33,6 +33,7 @@ import image_810 from '~/assets/images/image_810.png'
 import image_811 from '~/assets/images/image_811.png'
 import image_812 from '~/assets/images/image_812.png'
 import image_813 from '~/assets/images/image_813.png'
+import mapBackground from '~/assets/images/bg_map.png'
 
 const TutorCard = ({ tutor }) => {
   const university = tutor.universities[0]
@@ -57,12 +58,15 @@ const TutorCard = ({ tutor }) => {
         <p className="fz-18p fw-700 mb-1x">{tutor.name}</p>
         <p className="fw-600 l-height-1 color-lightGray mb-3x">{tutor.position}</p>
         {Boolean(university?.logo) && (
-          <img
-            src={`${getImageUrl(university.logo.asset._ref)}`}
-            alt={university.title}
-            style={{ height: '24px' }}
-            className="mx-auto"
-          />
+          <div className="logo-container">
+            <Image
+              src={`${getImageUrl(university.logo.asset._ref)}`}
+              alt={university.title}
+              className="mx-auto"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         )}
       </a>
     </Link>
@@ -80,7 +84,11 @@ export const HomePage = ({ page }) => {
     `
   const getUniversities = `
       *[_type == 'university' && !(_id in path("drafts.**"))] | order(order) {
-        ...,
+        ..., 
+        logo{
+          ...,
+          asset->
+        }
       }
     `
   useEffect(async () => {
@@ -152,15 +160,16 @@ export const HomePage = ({ page }) => {
                 <span className="fz-14p fw-800 ml-1x">A/A+</span>
               </div>
               {Boolean(firstScreen?.image) && (
-                <img
-                  src={`${getImageUrl(firstScreen.image.asset._ref)}`}
-                  alt="Elite Online Tutoring"
-                  className="block"
-                  style={{
-                    maxWidth: '550px',
-                    maxHeight: '650px',
-                  }}
-                />
+                <div className="image-container">
+                  <Image
+                    src={`${getImageUrl(firstScreen.image.asset._ref)}`}
+                    alt="Elite Online Tutoring"
+                    className="block"
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -177,13 +186,15 @@ export const HomePage = ({ page }) => {
             <div className="logos flex flex-wrap items-center justify-center">
               {Boolean(universities.length) &&
                 universities.map((university) => {
+                  const imageWidth = university?.logo?.asset?.metadata?.dimensions?.width
                   return (
-                    <img
+                    <Image
                       key={university._id}
-                      src={`${getImageUrl(university.logo.asset._ref)}`}
+                      src={`${getImageUrl(university.logo.asset.url)}`}
                       alt={university.title}
-                      style={{ height: '35px' }}
                       className="mx-auto"
+                      height={35}
+                      width={imageWidth > 200 ? 100 : imageWidth}
                     />
                   )
                 })}
@@ -208,8 +219,8 @@ export const HomePage = ({ page }) => {
                 <h4 className="title fw-600 mb-5x">{studyCards.firstDescription}</h4>
               )}
               <p className="foot flex flex-wrap items-center">
-                <img src={avatarsImg.src} alt="avatars" className="block mr-2x" />
-                1000+ Satisfied Students
+                <Image src={avatarsImg} alt="avatars" />
+                <span className="block ml-2x">1000+ Satisfied Students</span>
               </p>
             </div>
             <div className="card card-2 bg-lightGray rounded-small p-4x flex flex-col">
@@ -229,12 +240,7 @@ export const HomePage = ({ page }) => {
                   <>
                     <h4 className="title fw-600">{studyCards.secondDescription}</h4>
                     <p className="logo">
-                      <img
-                        src={oxfordSmallLogo.src}
-                        alt="Oxford Logo"
-                        className="block"
-                        width="68"
-                      />
+                      <Image src={oxfordSmallLogo} alt="Oxford Logo" />
                     </p>
                   </>
                 )}
@@ -287,11 +293,16 @@ export const HomePage = ({ page }) => {
             <div className="w-full w-1/2_lg relative">
               <FlexibleCard />
               {Boolean(fourthScreen.image?.asset) && (
-                <img
-                  src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
-                  alt="Premium Tutor"
-                  className="block"
-                />
+                <div className="image-container">
+                  <Image
+                    src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
+                    alt="Premium Tutor"
+                    className="block"
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                  />
+                </div>
               )}
               <div className="check-book absolute round bg-white flex items-center justify-center">
                 <SVG content={checkCircle()} size={28} />
@@ -337,48 +348,86 @@ export const HomePage = ({ page }) => {
           )}
         </div>
         <div className="map flex pt-2x pt-6x_lg pb-2x pb-15x_lg mb-7x mb-10x_lg">
+          <Image
+            src={mapBackground.src}
+            alt="background"
+            className="map-background"
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
+          />
           <div className="container relative">
             <p className="avatar logo_1 border border-round absolute mx-auto">
-              <img
-                src={image_810.src}
-                alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_810.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_2 border border-round absolute mx-auto">
-              <img
-                src={image_811.src}
-                alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_811.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_3 border border-round absolute mx-auto">
-              <img
-                src={image_812.src}
-                alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_812.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_4 border border-round absolute mx-auto">
-              <img
-                src={image_591.src}
-                alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_591.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_5 border border-round absolute mx-auto">
-              <img
-                src={image_592.src}
-                alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_592.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_6 border border-round absolute mx-auto">
-              <img
-                src={image_813.src}
-                alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_813.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="card_1 absolute rounded-small bg-white flex items-center">
               <span className="fz-18p fw-600 l-height-1/4 flex-1 pr-2x">

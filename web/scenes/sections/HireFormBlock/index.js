@@ -19,6 +19,10 @@ import text from '~/assets/text-content/en/static.json'
 import countriesRaw from '~/assets/text-content/en/countries.json'
 import PhoneInput from 'react-phone-input-2'
 import styles from './style.module.scss'
+import Image from 'next/image'
+
+import formBackground from '~/assets/images/bg-form.png'
+import contactsBackground from '~/assets/images/bg-gradient-medium.png'
 
 const defaultCountry = {
   title: 'Select your country',
@@ -180,6 +184,14 @@ export const HireFormBlock = ({
           <div
             className={`card rounded-rem bg-blue pt-8x pb-8x pl-2x pr-2x pt-10x_lg pb-11x_lg pl-4x_lg pr-4x_lg ${styles.card}`}
           >
+            <Image
+              src={formBackground.src}
+              alt="background image"
+              className="bg-image"
+              objectFit="cover"
+              objectPosition="center"
+              layout="fill"
+            />
             <h2 className="section-title fw-600 l-height-1 mb-2x text-center">Hire a tutor</h2>
             <p className="description fz-22p l-height-1/5 mb-6x mb-4x_lg text-center">
               Please fill out the form and we'll find a tutor for you
@@ -408,6 +420,14 @@ export const HireFormBlock = ({
                 styles.contacts
               }`}
             >
+              <Image
+                src={contactsBackground.src}
+                alt="background"
+                className="contacts-background"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
+              />
               <div className="container">
                 <h3 className="medium-title fw-600 mx-auto mb-4x">{title}</h3>
                 {description ? (

@@ -8,6 +8,7 @@ import { Color, MOBILE_BREAKPOINT } from '~/utils/constants'
 import { getImageUrl, useWindowSize } from '~/utils/helpers'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
+import Image from 'next/image'
 
 export const CopyFragment = ({ title }) => {
   return (
@@ -78,7 +79,12 @@ export const Footer = ({ pages = [] }) => {
                   <Link href="/">
                     <a className="logo mb-2x" style={{ marginLeft: '-4px' }}>
                       {Boolean(logo) && (
-                        <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
+                        <Image
+                          src={`${getImageUrl(logo.asset._ref)}`}
+                          alt={logo.alt}
+                          layout="fill"
+                          objectFit="contain"
+                        />
                       )}
                     </a>
                   </Link>

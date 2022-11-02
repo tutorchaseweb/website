@@ -3,6 +3,7 @@ import { getImageUrl } from '~/utils/helpers'
 import { ILink } from '~/components/Link'
 import styles from './style.module.scss'
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
 import PlayButton from '../../../components/PlayButton'
 
@@ -39,10 +40,13 @@ export const PartOfSection = ({ section, className = '' }) => {
               ref={vidRef}
             ></video>
             {Boolean(section?.thumbnailImage?.asset) && (
-              <img
-                src={getImageUrl(section?.thumbnailImage?.asset?._ref)}
+              <Image
+                src={`${getImageUrl(section?.thumbnailImage?.asset?._ref)}`}
                 alt="poster"
                 className={`${styles.poster} ${play ? styles.hide : ''}`}
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             )}
             {Boolean(section?.thumbnailImage?.asset) && (

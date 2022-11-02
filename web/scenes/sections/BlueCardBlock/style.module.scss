@@ -1,10 +1,14 @@
 @import 'styles/variables';
 
 .card {
-  background: url('/images/bg_blue.jpg') no-repeat center/cover;
+  position: relative;
   color: $color-white;
 
   :global {
+    .section-background {
+      z-index: -1;
+      border-radius: 0.5rem;
+    }
     .medium-title {
       max-width: 40rem;
     }

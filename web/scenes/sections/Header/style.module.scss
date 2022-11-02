@@ -12,7 +12,10 @@
     }
     .logo {
       z-index: 5;
+      width: 100%;
       max-width: 8.5rem;
+      position: relative;
+      aspect-ratio: 2/0.47;
       @media (min-width: $lg) {
         max-width: 10rem;
       }
