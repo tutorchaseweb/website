@@ -3,9 +3,21 @@ import SVG from '~/components/SVG'
 import { star } from '~/utils/svgImages'
 import styles from './style.module.scss'
 
+import reviewsBackground from '~/assets/images/bg-gradient-small.png'
+import Image from 'next/image'
+
 export const ReviewBlock = ({ content = [], author = '', position = '', className = '' }) => {
   return (
     <section className={`reviews relative pt-9x ${styles.reviews} ${className}`}>
+      <div className="bg-image">
+        <Image
+          src={reviewsBackground.src}
+          alt="background image"
+          objectFit="cover"
+          objectPosition="center"
+          layout="fill"
+        />
+      </div>
       <div className="container narrow">
         <div className="card bg-white rounded-small pt-5x pb-5x pl-2x pr-2x p-8x_lg mx-auto">
           <div className="content l-height-1/5 text-center mx-auto">
