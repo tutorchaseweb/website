@@ -23,5 +23,15 @@
         max-width: 12rem;
       }
     }
+    .image-container {
+      max-width: 584px;
+      position: relative;
+      aspect-ratio: 2/2.08;
+
+      @media (min-width: $lg) {
+        max-width: none;
+        aspect-ratio: 2/1.295;
+      }
+    }
   }
 }
