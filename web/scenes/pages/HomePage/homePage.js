@@ -58,12 +58,15 @@ const TutorCard = ({ tutor }) => {
         <p className="fz-18p fw-700 mb-1x">{tutor.name}</p>
         <p className="fw-600 l-height-1 color-lightGray mb-3x">{tutor.position}</p>
         {Boolean(university?.logo) && (
-          <img
-            src={`${getImageUrl(university.logo.asset._ref)}`}
-            alt={university.title}
-            style={{ height: '24px' }}
-            className="mx-auto"
-          />
+          <div className="logo-container">
+            <Image
+              src={`${getImageUrl(university.logo.asset._ref)}`}
+              alt={university.title}
+              className="mx-auto"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         )}
       </a>
     </Link>
@@ -81,7 +84,11 @@ export const HomePage = ({ page }) => {
     `
   const getUniversities = `
       *[_type == 'university' && !(_id in path("drafts.**"))] | order(order) {
-        ...,
+        ..., 
+        logo{
+          ...,
+          asset->
+        }
       }
     `
   useEffect(async () => {
@@ -179,13 +186,15 @@ export const HomePage = ({ page }) => {
             <div className="logos flex flex-wrap items-center justify-center">
               {Boolean(universities.length) &&
                 universities.map((university) => {
+                  const imageWidth = university?.logo?.asset?.metadata?.dimensions?.width
                   return (
-                    <img
+                    <Image
                       key={university._id}
-                      src={`${getImageUrl(university.logo.asset._ref)}`}
+                      src={`${getImageUrl(university.logo.asset.url)}`}
                       alt={university.title}
-                      style={{ height: '35px' }}
                       className="mx-auto"
+                      height={35}
+                      width={imageWidth > 200 ? 100 : imageWidth}
                     />
                   )
                 })}
