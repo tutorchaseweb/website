@@ -1,6 +1,7 @@
 import { useWindowSize } from '~/utils/helpers'
 import { MOBILE_BREAKPOINT } from '~/utils/constants'
 import styles from './style.module.scss'
+import Image from 'next/image'
 
 import InteractiveBlockDesktop from '~/assets/images/InteractiveBlockDesktop.png'
 import InteractiveBlockMobile from '~/assets/images/InteractiveBlockMobile.png'
@@ -17,15 +18,20 @@ export const InteractiveBlock = ({ className = '' }) => {
         <div className="flex flex-wrap items-center">
           <div className="w-full w-1/2_lg relative">
             <img src={LessonsCard.src} alt="Lessons Card" className="absolute z-1 lessons" />
-            <img
-              src={
-                window.width < MOBILE_BREAKPOINT
-                  ? InteractiveBlockMobile.src
-                  : InteractiveBlockDesktop.src
-              }
-              alt="Illustration"
-              className="rounded-small shadow-light"
-            />
+            <div className="image-container">
+              <Image
+                src={
+                  window.width < MOBILE_BREAKPOINT
+                    ? InteractiveBlockMobile.src
+                    : InteractiveBlockDesktop.src
+                }
+                alt="Illustration"
+                className="rounded-small shadow-light"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
+              />
+            </div>
             <img src={ControlPanel.src} alt="Control Panel" className="absolute z-1 control" />
           </div>
           <div className="w-full w-1/2_lg mt-6x mt-0x_lg pl-11x_lg">

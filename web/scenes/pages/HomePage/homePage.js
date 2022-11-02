@@ -152,15 +152,16 @@ export const HomePage = ({ page }) => {
                 <span className="fz-14p fw-800 ml-1x">A/A+</span>
               </div>
               {Boolean(firstScreen?.image) && (
-                <img
-                  src={`${getImageUrl(firstScreen.image.asset._ref)}`}
-                  alt="Elite Online Tutoring"
-                  className="block"
-                  style={{
-                    maxWidth: '550px',
-                    maxHeight: '650px',
-                  }}
-                />
+                <div className="image-container">
+                  <Image
+                    src={`${getImageUrl(firstScreen.image.asset._ref)}`}
+                    alt="Elite Online Tutoring"
+                    className="block"
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -287,11 +288,16 @@ export const HomePage = ({ page }) => {
             <div className="w-full w-1/2_lg relative">
               <FlexibleCard />
               {Boolean(fourthScreen.image?.asset) && (
-                <img
-                  src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
-                  alt="Premium Tutor"
-                  className="block"
-                />
+                <div className="image-container">
+                  <Image
+                    src={`${getImageUrl(fourthScreen.image.asset._ref)}`}
+                    alt="Premium Tutor"
+                    className="block"
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                  />
+                </div>
               )}
               <div className="check-book absolute round bg-white flex items-center justify-center">
                 <SVG content={checkCircle()} size={28} />
@@ -339,45 +345,63 @@ export const HomePage = ({ page }) => {
         <div className="map flex pt-2x pt-6x_lg pb-2x pb-15x_lg mb-7x mb-10x_lg">
           <div className="container relative">
             <p className="avatar logo_1 border border-round absolute mx-auto">
-              <img
+              <Image
                 src={image_810.src}
                 alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
+                className="inset-0 w-full h-full border-round"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             </p>
             <p className="avatar logo_2 border border-round absolute mx-auto">
-              <img
+              <Image
                 src={image_811.src}
                 alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
+                className="inset-0 w-full h-full border-round"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             </p>
             <p className="avatar logo_3 border border-round absolute mx-auto">
-              <img
+              <Image
                 src={image_812.src}
                 alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
+                className="inset-0 w-full h-full border-round"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             </p>
             <p className="avatar logo_4 border border-round absolute mx-auto">
-              <img
+              <Image
                 src={image_591.src}
                 alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
+                className="inset-0 w-full h-full border-round"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             </p>
             <p className="avatar logo_5 border border-round absolute mx-auto">
-              <img
+              <Image
                 src={image_592.src}
                 alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
+                className="inset-0 w-full h-full border-round"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             </p>
             <p className="avatar logo_6 border border-round absolute mx-auto">
-              <img
+              <Image
                 src={image_813.src}
                 alt="User photo"
-                className="absolute inset-0 w-full h-full border-round"
+                className="inset-0 w-full h-full border-round"
+                objectFit="cover"
+                objectPosition="center"
+                layout="fill"
               />
             </p>
             <p className="card_1 absolute rounded-small bg-white flex items-center">
