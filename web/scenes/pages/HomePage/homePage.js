@@ -358,64 +358,76 @@ export const HomePage = ({ page }) => {
           />
           <div className="container relative">
             <p className="avatar logo_1 border border-round absolute mx-auto">
-              <Image
-                src={image_810.src}
-                alt="User photo"
-                className="inset-0 w-full h-full border-round"
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_810.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_2 border border-round absolute mx-auto">
-              <Image
-                src={image_811.src}
-                alt="User photo"
-                className="inset-0 w-full h-full border-round"
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_811.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_3 border border-round absolute mx-auto">
-              <Image
-                src={image_812.src}
-                alt="User photo"
-                className="inset-0 w-full h-full border-round"
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_812.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_4 border border-round absolute mx-auto">
-              <Image
-                src={image_591.src}
-                alt="User photo"
-                className="inset-0 w-full h-full border-round"
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_591.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_5 border border-round absolute mx-auto">
-              <Image
-                src={image_592.src}
-                alt="User photo"
-                className="inset-0 w-full h-full border-round"
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_592.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="avatar logo_6 border border-round absolute mx-auto">
-              <Image
-                src={image_813.src}
-                alt="User photo"
-                className="inset-0 w-full h-full border-round"
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
-              />
+              <span className="photo-wrapper">
+                <Image
+                  src={image_813.src}
+                  alt="User photo"
+                  className="inset-0 w-full h-full border-round"
+                  objectFit="cover"
+                  objectPosition="center"
+                  layout="fill"
+                />
+              </span>
             </p>
             <p className="card_1 absolute rounded-small bg-white flex items-center">
               <span className="fz-18p fw-600 l-height-1/4 flex-1 pr-2x">
