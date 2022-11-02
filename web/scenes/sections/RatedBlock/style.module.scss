@@ -1,10 +1,13 @@
 @import 'styles/variables';
 
 .rated {
-  background: url('/images/bg-gradient-large.jpg') no-repeat center/cover;
   overflow: hidden;
+  position: relative;
 
   :global {
+    .section-background {
+      z-index: -1;
+    }
     .wrapper {
       flex-wrap: wrap;
       @media (min-width: $xl) {

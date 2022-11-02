@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .card {
-  background: url('/images/bg-form.jpg') no-repeat center/cover;
+  position: relative;
   transform: translate(0, 5.5rem);
   margin-left: -1rem;
   margin-right: -1rem;
@@ -11,6 +11,10 @@
   }
 
   :global {
+    .bg-image {
+      z-index: -1;
+      border-radius: 1rem;
+    }
     .description {
       font-size: 20px;
       @media (min-width: $lg) {
@@ -89,9 +93,12 @@
   }
 }
 .contacts {
-  background: url('/images/bg-gradient-medium.jpg') no-repeat center/cover;
+  position: relative;
 
   :global {
+    .contacts-background {
+      z-index: -1;
+    }
     .medium-title {
       max-width: 25rem;
       @media (min-width: $sm) {

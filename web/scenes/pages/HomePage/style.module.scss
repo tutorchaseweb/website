@@ -329,7 +329,7 @@
     }
     .map {
       min-height: 15rem;
-      background: url('/images/bg_map.png') no-repeat center/cover;
+      position: relative;
       @media (min-width: $lg) {
         min-height: 37rem;
       }

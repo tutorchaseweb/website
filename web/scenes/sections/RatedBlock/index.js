@@ -9,6 +9,9 @@ import { REVIEWS_BREAKPOINT } from '~/utils/constants'
 import { ConfigContext } from '~/components/Layout'
 import { star } from '~/utils/svgImages'
 import styles from './style.module.scss'
+import Image from 'next/image'
+
+import ratedBackground from '~/assets/images/bg-gradient-large.png'
 
 const getReviewCard = (review) => {
   return (
@@ -124,6 +127,14 @@ export const RatedBlock = ({ className }) => {
 
   return Boolean(allReviews?.length) ? (
     <section className={`rated ${styles.rated} ${className}`}>
+      <Image
+        src={ratedBackground.src}
+        alt="background"
+        className="section-background"
+        objectFit="cover"
+        objectPosition="center"
+        layout="fill"
+      />
       <div className="wrapper flex">
         <div className="content flex flex-col justify-center pt-7x pt-20x_xl pb-8x pb-20x_xl mr-19x_xl">
           <p className="stars mb-2x">

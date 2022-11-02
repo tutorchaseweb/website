@@ -33,6 +33,7 @@ import image_810 from '~/assets/images/image_810.png'
 import image_811 from '~/assets/images/image_811.png'
 import image_812 from '~/assets/images/image_812.png'
 import image_813 from '~/assets/images/image_813.png'
+import mapBackground from '~/assets/images/bg_map.png'
 
 const TutorCard = ({ tutor }) => {
   const university = tutor.universities[0]
@@ -343,6 +344,14 @@ export const HomePage = ({ page }) => {
           )}
         </div>
         <div className="map flex pt-2x pt-6x_lg pb-2x pb-15x_lg mb-7x mb-10x_lg">
+          <Image
+            src={mapBackground.src}
+            alt="background"
+            className="map-background"
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
+          />
           <div className="container relative">
             <p className="avatar logo_1 border border-round absolute mx-auto">
               <Image
