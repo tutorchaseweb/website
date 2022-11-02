@@ -219,8 +219,8 @@ export const HomePage = ({ page }) => {
                 <h4 className="title fw-600 mb-5x">{studyCards.firstDescription}</h4>
               )}
               <p className="foot flex flex-wrap items-center">
-                <img src={avatarsImg.src} alt="avatars" className="block mr-2x" />
-                1000+ Satisfied Students
+                <Image src={avatarsImg} alt="avatars" />
+                <span className="block ml-2x">1000+ Satisfied Students</span>
               </p>
             </div>
             <div className="card card-2 bg-lightGray rounded-small p-4x flex flex-col">
@@ -240,12 +240,7 @@ export const HomePage = ({ page }) => {
                   <>
                     <h4 className="title fw-600">{studyCards.secondDescription}</h4>
                     <p className="logo">
-                      <img
-                        src={oxfordSmallLogo.src}
-                        alt="Oxford Logo"
-                        className="block"
-                        width="68"
-                      />
+                      <Image src={oxfordSmallLogo} alt="Oxford Logo" />
                     </p>
                   </>
                 )}

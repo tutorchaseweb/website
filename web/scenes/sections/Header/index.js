@@ -9,6 +9,7 @@ import SVG from '~/components/SVG'
 import { email as emailIcon, phone as phoneIcon } from '~/utils/svgImages'
 import text from '~/assets/text-content/en/static.json'
 import styles from './style.module.scss'
+import Image from 'next/image'
 
 export const Header = () => {
   const { route } = useRouter()
@@ -45,7 +46,12 @@ export const Header = () => {
               <div className="wrapper pt-3x pb-3x flex justify-between items-center gap-8">
                 <Link href="/">
                   <a className="logo">
-                    <img src={`${getImageUrl(logo.asset._ref)}`} alt={logo.alt} />
+                    <Image
+                      src={`${getImageUrl(logo.asset._ref)}`}
+                      alt={logo.alt}
+                      layout="fill"
+                      objectFit="contain"
+                    />
                   </a>
                 </Link>
                 <div

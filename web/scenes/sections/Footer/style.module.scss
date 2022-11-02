@@ -3,7 +3,10 @@
 .footer {
   :global {
     .logo {
+      width: 100%;
       max-width: 12rem;
+      position: relative;
+      aspect-ratio: 2/0.464;
       transform: translateY(-0.5rem);
     }
     .link-group-wrapper {
@@ -17,7 +20,7 @@
       padding-right: 2rem;
       position: relative;
       &::after {
-        content: url("/images/arrow_down_blue.svg");
+        content: url('/images/arrow_down_blue.svg');
         position: absolute;
         top: 0.5rem;
         right: 0;
@@ -51,7 +54,7 @@
     .circle {
       transition: all 0.2s linear;
       &:hover {
-        background-color: #4053B0 !important;
+        background-color: #4053b0 !important;
       }
     }
   }

@@ -17,7 +17,9 @@ export const InteractiveBlock = ({ className = '' }) => {
       <div className="container">
         <div className="flex flex-wrap items-center">
           <div className="w-full w-1/2_lg relative">
-            <img src={LessonsCard.src} alt="Lessons Card" className="absolute z-1 lessons" />
+            <div className="absolute z-1 lessons">
+              <Image src={LessonsCard} alt="Lessons Card" />
+            </div>
             <div className="image-container">
               <Image
                 src={
