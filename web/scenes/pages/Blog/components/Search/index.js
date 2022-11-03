@@ -25,7 +25,7 @@ export const Search = () => {
   const handler = debounce((event) => {
     setSearchResult(
       allPosts.filter(
-        (post) => event.target.value && post.title.toLowerCase().includes(event.target.value)
+        (post) => event.target.value && post?.title?.toLowerCase().includes(event.target.value)
       )
     )
   }, 500)

@@ -47,7 +47,7 @@ export const BlogCard = ({ article }) => {
       </div>
       <div className="flex items-center justify-between pt-4x pl-3x pr-2x pb-2x">
         <span className="color-lightGray">{article?.reading} min Read</span>
-        <Link href={`/blog/${article?.slug.current}`}>
+        <Link href={`/blog/${article?.slug?.current}`}>
           <a>
             <Circle size={40} color={Color.Transparent} classList="circle">
               <SVG content={arrowRight(Color.Blue)} size={24} />

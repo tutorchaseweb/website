@@ -17,8 +17,8 @@ export const Sorting = () => {
           }}
         >
           <option value="DEFAULT">Sort By</option>
-          <option value="_createdAt desc">Newest</option>
-          <option value="_createdAt asc">Oldest</option>
+          <option value="publishedAt desc">Newest</option>
+          <option value="publishedAt asc">Oldest</option>
         </select>
       </label>
     </form>

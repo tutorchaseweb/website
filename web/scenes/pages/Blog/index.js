@@ -15,7 +15,7 @@ export const BlogPage = ({ page, start }) => {
   const [currentPosts, setCurrentPosts] = useState([])
   const [postsLength, setPostsLength] = useState(0)
   const [postsLimit, setPostsLimit] = useState(page.postsPerPage)
-  const [postsOrder] = useGlobalState('postsOrder', '_createdAt desc')
+  const [postsOrder] = useGlobalState('postsOrder', 'publishedAt desc')
   const window = useWindowSize()
 
   useEffect(() => {

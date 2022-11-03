@@ -11,12 +11,16 @@ import groupImg from '~/assets/images/group-427319714.png'
 import ControlPanel from '~/assets/images/Control_Panel.png'
 import styles from './style.module.scss'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { useGlobalState } from '~/utils/state'
 
 export const TutorPage = ({ tutor }) => {
+  const router = useRouter()
   const { title, list } = tutor.reviews || {}
   const [firtsNumber, setFirstNumber] = useState(0)
   let lastNumber = firtsNumber + TUTOR_REVIEW_ITEMS
   const [reviewsList, setReviewsList] = useState(list?.slice(0, TUTOR_REVIEW_ITEMS))
+  const [subjectQuery, setSubjectQuery] = useGlobalState('subjectQuery', null)
 
   useEffect(() => {
     createReviewsList()
@@ -64,6 +68,12 @@ export const TutorPage = ({ tutor }) => {
     const newList = reviewsList.concat(list?.slice(firtsNumber, lastNumber))
     setFirstNumber(firtsNumber + TUTOR_REVIEW_ITEMS)
     setReviewsList(newList)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push(e.target.href)
+    setSubjectQuery(null)
   }
 
   return (
@@ -119,9 +129,14 @@ export const TutorPage = ({ tutor }) => {
               <p>
                 <span className="fz-18p fw-600">Teaches:</span>
                 {tutor.teaches.map((teach) => (
-                  <span key={teach._id} className="teach fz-14p fw-500 color-blue ml-1x mb-1x">
+                  <a
+                    key={teach._id}
+                    href={`/${teach?.slug?.current}`}
+                    onClick={handleClick}
+                    className="teach fz-14p fw-500 color-blue ml-1x mb-1x"
+                  >
                     {teach.title}
-                  </span>
+                  </a>
                 ))}
               </p>
             </div>
