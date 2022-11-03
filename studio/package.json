@@ -20,6 +20,7 @@
     "@sanity/default-login": "^2.29.8",
     "@sanity/desk-tool": "^2.29.8",
     "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/scheduled-publishing": "^0.1.13",
     "@sanity/vision": "^2.29.8",
     "react": "^17.0",
     "react-dom": "^17.0",
