@@ -22,8 +22,10 @@
       }
     }
     .form {
+      z-index: 1;
       max-width: 34rem;
       min-height: 26rem;
+      position: relative;
       color: $default-text-color;
       label {
         flex-basis: 100%;
