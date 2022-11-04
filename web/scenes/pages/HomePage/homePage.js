@@ -168,6 +168,7 @@ export const HomePage = ({ page }) => {
                     objectFit="cover"
                     objectPosition="center"
                     layout="fill"
+                    priority
                   />
                 </div>
               )}

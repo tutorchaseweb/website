@@ -51,6 +51,7 @@ export const Header = () => {
                       alt={logo.alt}
                       layout="fill"
                       objectFit="contain"
+                      priority
                     />
                   </a>
                 </Link>
