@@ -1,9 +1,8 @@
-import parsePhoneNumber from 'libphonenumber-js'
-import { log } from '~/utils/helpers'
-
 const validateName = (name) => /^[а-яА-Яa-zA-Z._\s'-]{2,30}$/.test(name)
 const validateEmail = (email) =>
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+const validatePhone = (phone) =>
+  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(phone)
 const validatePassword = (password) =>
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[\d\w!@#$%^&*]{8,}$/.test(password)
 const validateZip = (zip) => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip)
@@ -119,21 +118,13 @@ const checkValidateSelect = (initial, value) => {
   }
   return selectErrors
 }
-const checkValidatePhone = (phone, countryCode) => {
+const checkValidatePhone = (phone) => {
   let phoneErrors = []
-  const phoneNumber = parsePhoneNumber(phone, countryCode)
-
   if (phone === '') {
     phoneErrors = [{ type: 'empty', message: 'Please enter your phone' }]
-    // phoneErrors = []
-  } else if (phoneNumber?.isValid()) {
-    phoneErrors = []
-  } else {
+  } else if (!validatePhone(phone)) {
     phoneErrors = [{ type: 'invalid', message: 'Invalid phone number' }]
   }
-  log('checkValidatePhone input', phone)
-  log('checkValidatePhone result', phoneNumber)
-  log('checkValidatePhone valid', phoneNumber?.isValid())
   return phoneErrors
 }
 
