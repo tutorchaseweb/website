@@ -47,6 +47,7 @@ export const PartOfSection = ({ section, className = '' }) => {
                 objectFit="cover"
                 objectPosition="center"
                 layout="fill"
+                priority
               />
             )}
             {Boolean(section?.thumbnailImage?.asset) && (

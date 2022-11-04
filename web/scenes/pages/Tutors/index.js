@@ -12,7 +12,9 @@ import {
   TutorsList,
 } from '~/scenes/sections'
 
+import sectionBackground from '~/assets/images/bg-gradient-medium.png'
 import styles from './style.module.scss'
+import Image from 'next/image'
 
 export const TutorsPage = ({ page, tutors }) => {
   const { firstScreen, filterDescription, tutorsSection, blueCard, reviewBlock, faqSection } =
@@ -23,6 +25,15 @@ export const TutorsPage = ({ page, tutors }) => {
       <section
         className={`first-screen text-center pt-12x pt-20x_lg pb-8x pb-19x_lg ${styles.firstScreen}`}
       >
+        <Image
+          src={sectionBackground.src}
+          alt="background image"
+          className="bg-image"
+          objectFit="cover"
+          objectPosition="center"
+          layout="fill"
+          priority
+        />
         <div className="container">
           <BasedReviews center={true} />
           <h1 className="main-title fw-700 l-height-1 mb-3x mx-auto">

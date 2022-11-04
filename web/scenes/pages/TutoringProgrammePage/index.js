@@ -11,7 +11,7 @@ import { FAQ, HireFormBlock, RatedBlock, ReviewBlock } from '~/scenes/sections'
 import { getImageUrl } from '~/utils/helpers'
 import ILink from '~/components/Link'
 
-export const TutoringProgrammePage = ({ page }) => {
+export const TutoringProgrammePage = ({ page, layout }) => {
   const {
     firstScreen,
     firstSection,
@@ -60,18 +60,40 @@ export const TutoringProgrammePage = ({ page }) => {
               <SVG content={planet()} size={24} />
             </Circle>
             <p>
-              Online{' '}
-              <b>
-                tutoring for
-                <br /> schools
-              </b>
+              {layout === 'corporate' ? (
+                <TextComponent>
+                  Online
+                  <br />
+                  <b>
+                    education for
+                    <br /> businesses
+                  </b>
+                </TextComponent>
+              ) : (
+                <TextComponent>
+                  Online
+                  <br />
+                  <b>
+                    tutoring for
+                    <br /> schools
+                  </b>
+                </TextComponent>
+              )}
             </p>
           </div>
           <SVG content={academy(Color.Melrose)} size={56} display="" className="absolute academy" />
           <div className="right-card bg-white">
             <SVG content={academy(Color.Melrose)} size={24} />
             <p>
-              <b>High-quality subsidised tuition</b> through the NTA
+              {layout === 'corporate' ? (
+                <TextComponent>
+                  <b>High-quality tuition for</b> professionals
+                </TextComponent>
+              ) : (
+                <TextComponent>
+                  <b>High-quality subsidised tuition</b> through the NTP
+                </TextComponent>
+              )}
             </p>
           </div>
         </div>
@@ -125,7 +147,11 @@ export const TutoringProgrammePage = ({ page }) => {
       </section>
       <section className="pb-10x pb-18x_lg">
         <div className="container large">
-          <BlueCardBlock title={blueCard?.title} content={blueCard?.description} />
+          <BlueCardBlock
+            title={blueCard?.title}
+            content={blueCard?.description}
+            logo={blueCard?.logo}
+          />
         </div>
       </section>
       <section className={`pt-13x_lg pt-5x pb-10x bg-white ${styles.flexibility}`}>
@@ -195,27 +221,19 @@ export const TutoringProgrammePage = ({ page }) => {
               <img src={`${getImageUrl(secondScreenPart?.image.asset._ref)}`} alt="illustration" />
             </div>
             <div className="text-wrap">
-              {Boolean(secondScreenPart?.preTitle) && (
-                <p className="before-title fw-600 uppercase color-lightGray mb-2x mb-3x_lg">
-                  {secondScreenPart.preTitle}
-                </p>
-              )}
               <h4 className="fz-48p_lg fz-26p fw-600 l-height-1/1 mb-4x_lg mb-3x">
                 {secondScreenPart?.title}
               </h4>
-              {Boolean(secondScreenPart?.list) ? (
+              {Boolean(secondScreenPart?.list) && (
                 <ul className="ordered-list blue fz-18p_lg fz-16p">
-                  {secondScreenPart?.list.map((item, index) => {
-                    return <li key={index + 1}>{item}</li>
+                  {secondScreenPart?.list.map((item) => {
+                    return (
+                      <li key={item?._key}>
+                        <PortableText value={item?.content} />
+                      </li>
+                    )
                   })}
                 </ul>
-              ) : (
-                <div className="fz-18p">
-                  <PortableText value={secondScreenPart?.description} />
-                </div>
-              )}
-              {Boolean(secondScreenPart?.button) && (
-                <ILink link={secondScreenPart.button} className="btn btn-blue mt-4x" />
               )}
             </div>
           </div>

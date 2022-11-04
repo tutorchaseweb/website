@@ -20,7 +20,7 @@ export default {
     },
     {
       name: 'blueCard',
-      type: 'blueCard',
+      type: 'blueCardWithLogo',
       title: 'Blue card on tutors page',
     },
     {
@@ -89,7 +89,7 @@ export default {
     },
     {
       name: 'secondScreenPart',
-      type: 'partOfSection',
+      type: 'sectionWithList',
       title: 'Second section',
     },
     {

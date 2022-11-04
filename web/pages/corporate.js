@@ -8,7 +8,7 @@ export const CorporateTutoring = ({ page }) => {
   return (
     <Layout>
       <MetaTags title={page?.seoTitle} description={page?.seoDescription} />
-      <TutoringProgrammePage page={page} />
+      <TutoringProgrammePage page={page} layout="corporate" />
     </Layout>
   )
 }
