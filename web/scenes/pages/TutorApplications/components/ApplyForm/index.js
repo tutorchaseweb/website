@@ -73,13 +73,13 @@ export const ApplyForm = ({ className = '' }) => {
 
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
-    setPhoneErrors(checkValidatePhone(phone, countryCode))
+    setPhoneErrors(checkValidatePhone(phone))
     setEmailErrors(checkValidateEmail(email))
     setHearAboutUsErrors(checkValidateText(hearAboutUs))
     setCountryErrors(checkValidateSelect(country, countries[0]))
     if (
       !checkValidateFullName(fullName).length &&
-      !checkValidatePhone(phone, countryCode).length &&
+      !checkValidatePhone(phone).length &&
       !checkValidateEmail(email).length &&
       !checkValidateText(hearAboutUs).length &&
       !checkValidateSelect(country, countries[0]).length
@@ -307,13 +307,13 @@ export const ApplyForm = ({ className = '' }) => {
                       onChange={(phone) => {
                         setPhone(phone)
                         if (checkValidatePhone) {
-                          setPhoneErrors(checkValidatePhone(phone, countryCode))
+                          setPhoneErrors(checkValidatePhone(phone))
                         }
                       }}
                       onBlur={(e) => {
                         if (checkValidatePhone) {
                           checkValidatePhone(phone).length
-                            ? setPhoneErrors(checkValidatePhone(phone, countryCode))
+                            ? setPhoneErrors(checkValidatePhone(phone))
                             : setPhone(phone)
                         } else {
                           setPhone(phone)
@@ -366,13 +366,13 @@ export const ApplyForm = ({ className = '' }) => {
                     onChange={(phone) => {
                       setPhone(phone)
                       if (checkValidatePhone) {
-                        setPhoneErrors(checkValidatePhone(phone, countryCode))
+                        setPhoneErrors(checkValidatePhone(phone))
                       }
                     }}
                     onBlur={(e) => {
                       if (checkValidatePhone) {
                         checkValidatePhone(phone).length
-                          ? setPhoneErrors(checkValidatePhone(phone, countryCode))
+                          ? setPhoneErrors(checkValidatePhone(phone))
                           : setPhone(phone)
                       } else {
                         setPhone(phone)

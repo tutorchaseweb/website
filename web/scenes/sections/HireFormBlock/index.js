@@ -60,12 +60,12 @@ export const HireFormBlock = ({
 
   const checkMandatoryFields_step1 = () => {
     setFullNameErrors(checkValidateFullName(fullName))
-    setPhoneErrors(checkValidatePhone(phone, countryCode))
+    setPhoneErrors(checkValidatePhone(phone))
     setEmailErrors(checkValidateEmail(email))
     setCountryErrors(checkValidateSelect(country, countries[0]))
     if (
       !checkValidateFullName(fullName).length &&
-      !checkValidatePhone(phone, countryCode).length &&
+      !checkValidatePhone(phone).length &&
       !checkValidateEmail(email).length &&
       !checkValidateSelect(country, countries[0]).length
     ) {
@@ -209,7 +209,7 @@ export const HireFormBlock = ({
                         className="absolute"
                         onChange={(e) => setPosition(e.target.value)}
                       />
-                      <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
+                      <span className="fw-500 pointer border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
                         I am a parent
                       </span>
                     </label>
@@ -221,7 +221,7 @@ export const HireFormBlock = ({
                         className="absolute"
                         onChange={(e) => setPosition(e.target.value)}
                       />
-                      <span className="fw-500 border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
+                      <span className="fw-500 pointer border-light rounded-xSmall flex items-center justify-center w-full l-height-1 p-2x transition">
                         I am a student
                       </span>
                     </label>
@@ -267,13 +267,13 @@ export const HireFormBlock = ({
                         onChange={(phone) => {
                           setPhone(phone)
                           if (checkValidatePhone) {
-                            setPhoneErrors(checkValidatePhone(phone, countryCode))
+                            setPhoneErrors(checkValidatePhone(phone))
                           }
                         }}
                         onBlur={(e) => {
                           if (checkValidatePhone) {
                             checkValidatePhone(phone).length
-                              ? setPhoneErrors(checkValidatePhone(phone, countryCode))
+                              ? setPhoneErrors(checkValidatePhone(phone))
                               : setPhone(phone)
                           } else {
                             setPhone(phone)
