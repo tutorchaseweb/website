@@ -14,6 +14,7 @@ import reviewBlock from './objects/global/reviewBlock'
 import reviewSection from './objects/global/reviewSection'
 import faqSection from './objects/global/faqSection'
 import blueCard from './objects/global/blueCard'
+import blueCardWithLogo from './objects/global/blueCardWithLogo'
 import pageHead from './objects/global/pageHead'
 import faqGroup from './objects/global/faqGroup'
 import menuItem from './objects/global/menuItem'
@@ -30,6 +31,7 @@ import tutorsList from './objects/global/tutorsList'
 
 import admissionsTests from './objects/oxbridge/admissionsTests'
 import smallSection from './objects/oxbridge/smallSection'
+import sectionWithList from './objects/global/sectionWithList'
 
 export default [
   filterDescription,
@@ -54,10 +56,12 @@ export default [
   mainImage,
   videoSection,
   blueCard,
+  blueCardWithLogo,
   pageHead,
   faqGroup,
   menuItem,
   button,
   logo,
   link,
+  sectionWithList,
 ]
