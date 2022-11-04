@@ -28,6 +28,8 @@
       }
     }
     .btn {
+      z-index: 1;
+      position: relative;
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
     }
