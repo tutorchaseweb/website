@@ -25,6 +25,7 @@ import test from './documents/test'
 import faq from './documents/faq'
 import hireForm from './documents/hireForm'
 import applyForm from './documents/applyForm'
+import corporateForm from './documents/corporateForm'
 import schoolsPage from './documents/pages/schoolsPage'
 import corporatePage from './documents/pages/corporatePage'
 
@@ -56,6 +57,7 @@ export default [
   faq,
   hireForm,
   applyForm,
+  corporateForm,
   schoolsPage,
   corporatePage,
 ]

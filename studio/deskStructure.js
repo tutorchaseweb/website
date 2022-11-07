@@ -26,6 +26,7 @@ import {
   FaQuestionCircle,
   IoMdListBox,
   MdCorporateFare,
+  VscFileSubmodule,
 } from 'react-icons/all'
 
 // We filter document types defined in structure to prevent them from being listed twice
@@ -53,6 +54,7 @@ const hiddenDocTypes = (listItem) =>
     'test',
     'hireForm',
     'applyForm',
+    'corporateForm',
     'university',
     'termAndConditions',
     'privacyPolicy',
@@ -96,6 +98,10 @@ export default () =>
                 .title('Apply form for tutors')
                 .icon(GiTeacher)
                 .child(S.documentTypeList('applyForm').title('Apply form')),
+              S.listItem()
+                .title('Corporate query form')
+                .icon(VscFileSubmodule)
+                .child(S.documentTypeList('corporateForm').title('Corporate form')),
             ])
         ),
       S.listItem()
