@@ -76,6 +76,13 @@ export const TutorPage = ({ tutor }) => {
     setSubjectQuery(null)
   }
 
+  const redirectRules = (slug) => {
+    if (slug === 'epq') return 'a-level/epq'
+    else if (slug === 'extended-essay') return 'ib/extended-essay'
+    else if (slug === 'tok') return 'ib/tok'
+    else return slug
+  }
+
   return (
     <>
       <section className={`pt-20x relative bg-lightGray ${styles.section}`}>
@@ -131,7 +138,7 @@ export const TutorPage = ({ tutor }) => {
                 {tutor.teaches.map((teach) => (
                   <a
                     key={teach._id}
-                    href={`/${teach?.slug?.current}`}
+                    href={`/${redirectRules(teach?.slug?.current)}`}
                     onClick={handleClick}
                     className="teach fz-14p fw-500 color-blue ml-1x mb-1x"
                   >
