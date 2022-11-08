@@ -1,0 +1,120 @@
+@import 'styles/variables';
+
+.card {
+  position: relative;
+  transform: translate(0, 5.5rem);
+  margin-left: -1rem;
+  margin-right: -1rem;
+  @media (min-width: $lg) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global {
+    .bg-image {
+      z-index: -1;
+      border-radius: 1rem;
+    }
+    .description {
+      font-size: 20px;
+      @media (min-width: $lg) {
+        font-size: 22px;
+      }
+    }
+    .form {
+      z-index: 1;
+      max-width: 34rem;
+      min-height: 26rem;
+      position: relative;
+      color: $default-text-color;
+      label {
+        flex-basis: 100%;
+        @media (min-width: $sm) {
+          flex-basis: 0;
+        }
+      }
+      .special-label {
+        font-weight: 500;
+      }
+      select {
+        padding: 15px;
+      }
+      input,
+      select,
+      textarea {
+        font: inherit;
+        line-height: 2;
+        padding: 0.5rem;
+        min-height: 46px;
+        &::placeholder {
+          font-size: 14px;
+        }
+      }
+      textarea {
+        height: 100%;
+        resize: none;
+      }
+      input:focus,
+      select:focus {
+        outline-width: 1px;
+        outline-color: $color-blue;
+      }
+      input[type='radio'] {
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+      input[type='radio']:checked + span {
+        font-weight: 600;
+        color: $color-blue;
+        border-color: $color-blue;
+      }
+      .btn {
+        padding: 1rem;
+      }
+      .btn-gray {
+        min-width: 56px;
+      }
+      .btn-blue {
+        min-width: 11rem;
+        width: 100%;
+        @media (min-width: $lg) {
+          width: initial;
+        }
+      }
+      .round {
+        width: 4rem;
+        background: rgba(245, 124, 64, 0.2);
+      }
+    }
+  }
+}
+
+.contacts {
+  position: relative;
+
+  :global {
+    .contacts-background {
+      z-index: -1;
+    }
+    .medium-title {
+      max-width: 45rem;
+      margin-bottom: 16px;
+      @media (min-width: $sm) {
+        text-align: center;
+      }
+    }
+    p {
+      max-width: 45rem;
+      color: rgba(23, 29, 35, 0.9);
+      @media (min-width: $lg) {
+        text-align: center;
+      }
+    }
+    .links {
+      max-width: 34rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+}

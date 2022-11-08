@@ -6,4 +6,23 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/epq',
+        destination: '/a-level/epq',
+        permanent: true,
+      },
+      {
+        source: '/extended-essay',
+        destination: '/ib/extended-essay',
+        permanent: true,
+      },
+      {
+        source: '/tok',
+        destination: '/ib/tok',
+        permanent: true,
+      },
+    ]
+  },
 }

@@ -89,7 +89,7 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
 
     if (e.target.ariaLabel === 'subjects') {
       const currentSubject = subjectsList.filter((item) => item._id === e.target.value)[0]
-      setSubjectQuery(e.target.value !== 'all-levels' ? currentSubject : null)
+      setSubjectQuery(e.target.value !== 'all-subjects' ? currentSubject : null)
 
       const presenceOfLevel = currentSubject?.levels?.filter(({ slug }) => {
         return slug.current === levelQuery?.slug?.current
@@ -104,6 +104,15 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
       }
       if (!currentSubject && levelQuery) {
         path = `/${levelQuery.slug.current}`
+      }
+      if (currentSubject?.slug.current === 'epq') {
+        path = '/a-level/epq'
+      }
+      if (currentSubject?.slug.current === 'extended-essay') {
+        path = '/ib/extended-essay'
+      }
+      if (currentSubject?.slug.current === 'tok') {
+        path = '/ib/tok'
       }
       if (!currentSubject && !levelQuery) {
         path = '/tutors'

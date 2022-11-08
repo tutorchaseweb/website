@@ -7,9 +7,9 @@ import { BlueCardBlock } from './components/BlueCardBlock'
 import styles from './style.module.scss'
 
 import { PortableText } from '@portabletext/react'
-import { FAQ, HireFormBlock, RatedBlock, ReviewBlock } from '~/scenes/sections'
+import { FAQ, RatedBlock, ReviewBlock } from '~/scenes/sections'
 import { getImageUrl } from '~/utils/helpers'
-import ILink from '~/components/Link'
+import CorporateQueryForm from '~/scenes/sections/CorporateQueryForm'
 
 export const TutoringProgrammePage = ({ page, layout }) => {
   const {
@@ -240,12 +240,7 @@ export const TutoringProgrammePage = ({ page, layout }) => {
         </div>
       </section>
       <FAQ faqSection={faqSection} />
-      <HireFormBlock
-        onlyContacts={true}
-        className={`pt-15x_lg pt-10x ${styles.contacts}`}
-        title={contactTitle}
-        description={contactDescription}
-      />
+      <CorporateQueryForm title={contactTitle} description={contactDescription} />
     </>
   )
 }
