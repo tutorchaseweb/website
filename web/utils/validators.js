@@ -120,9 +120,8 @@ const checkValidateSelect = (initial, value) => {
 }
 const checkValidatePhone = (phone) => {
   let phoneErrors = []
-  if (phone === '') {
-    phoneErrors = [{ type: 'empty', message: 'Please enter your phone' }]
-  } else if (!validatePhone(phone)) {
+
+  if (phone !== '' && !validatePhone(phone)) {
     phoneErrors = [{ type: 'invalid', message: 'Invalid phone number' }]
   }
   return phoneErrors

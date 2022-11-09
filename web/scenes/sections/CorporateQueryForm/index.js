@@ -201,7 +201,7 @@ export const CorporateQueryForm = ({
                   <Input
                     id="fullName"
                     inputName="Full name"
-                    placeholder="Enter your name here"
+                    placeholder="Your name"
                     className="flex-1 fz-14p"
                     value={fullName}
                     setValue={setFullName}
@@ -232,7 +232,7 @@ export const CorporateQueryForm = ({
                       country={countryCode.toLowerCase()}
                       inputClass="p-1x border-light l-height-2 w-full rounded-xSmall"
                       placeholder="Enter your phone"
-                      specialLabel="Your phone (with country code)"
+                      specialLabel="Phone number (with country code)"
                       buttonStyle={{ display: 'none' }}
                       autoFormat={false}
                       onChange={(phone) => {
@@ -268,8 +268,8 @@ export const CorporateQueryForm = ({
                   </div>
                   <Input
                     id="email"
-                    inputName="Your email"
-                    placeholder="Enter your email"
+                    inputName="Email address"
+                    placeholder="Your email"
                     className="flex-1 fz-14p"
                     type="email"
                     value={email}
