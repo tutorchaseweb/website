@@ -124,8 +124,9 @@ export default {
     },
     {
       name: 'chatBotCode',
-      type: 'text',
+      type: 'string',
       title: 'Code for Chat bot',
+      description: 'Add external script file url to src attribute',
     },
     {
       name: 'ErrorTitle',
