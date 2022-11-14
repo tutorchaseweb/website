@@ -123,6 +123,11 @@ export default {
       validation: (Rule) => Rule.error('Add menu items').min(2),
     },
     {
+      name: 'chatBotCode',
+      type: 'text',
+      title: 'Code for Chat bot',
+    },
+    {
       name: 'ErrorTitle',
       type: 'string',
       title: 'Title',
