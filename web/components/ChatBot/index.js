@@ -1,5 +1,7 @@
 export const ChatBot = ({ siteconfig }) => {
-  return siteconfig?.chatBotCode ? <script src={siteconfig?.chatBotCode} async></script> : ''
+  const { chatBotCode, hideChatBot } = siteconfig || {}
+
+  return !hideChatBot && chatBotCode ? <script src={chatBotCode} async></script> : ''
 }
 
 export default ChatBot

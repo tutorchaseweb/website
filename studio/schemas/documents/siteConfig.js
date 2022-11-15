@@ -8,6 +8,7 @@ export default {
     { name: 'contacts', title: 'Contacts' },
     { name: 'raiting', title: 'Raiting', options: { columns: 2 } },
     { name: 'footerMenu', title: 'Footer Menus' },
+    { name: 'chatBotSettings', title: 'Chat bot settings' },
     { name: 'errorPage', title: 'Text on the 404 page' },
   ],
   fields: [
@@ -126,7 +127,15 @@ export default {
       name: 'chatBotCode',
       type: 'string',
       title: 'Code for Chat bot',
+      fieldset: 'chatBotSettings',
       description: 'Add external script file url to src attribute',
+    },
+    {
+      name: 'hideChatBot',
+      type: 'boolean',
+      title: 'Hide Chat Bot',
+      fieldset: 'chatBotSettings',
+      initialValue: false,
     },
     {
       name: 'ErrorTitle',
