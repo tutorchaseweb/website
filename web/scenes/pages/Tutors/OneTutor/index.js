@@ -80,6 +80,8 @@ export const TutorPage = ({ tutor }) => {
     if (slug === 'epq') return 'a-level/epq'
     else if (slug === 'extended-essay') return 'ib/extended-essay'
     else if (slug === 'tok') return 'ib/tok'
+    else if (slug === 'ess') return 'ib/ess'
+    else if (slug === 'business-management') return 'ib/business-management'
     else return slug
   }
 
