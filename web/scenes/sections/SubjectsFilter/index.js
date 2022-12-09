@@ -114,6 +114,12 @@ export const SubjectsFilter = ({ filterDescription: { price, description } = {} 
       if (currentSubject?.slug.current === 'tok') {
         path = '/ib/tok'
       }
+      if (currentSubject?.slug.current === 'ess') {
+        path = '/ib/ess'
+      }
+      if (currentSubject?.slug.current === 'business-management') {
+        path = '/ib/business-management'
+      }
       if (!currentSubject && !levelQuery) {
         path = '/tutors'
       }

@@ -23,6 +23,16 @@ module.exports = {
         destination: '/ib/tok',
         permanent: true,
       },
+      {
+        source: '/ess',
+        destination: '/ib/ess',
+        permanent: true,
+      },
+      {
+        source: '/business-management',
+        destination: '/ib/business-management',
+        permanent: true,
+      },
     ]
   },
 }
